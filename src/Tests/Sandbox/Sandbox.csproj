@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.3.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.1.1" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.0-beta009" PrivateAssets="all">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\PlayersBay.Common\PlayersBay.Common.csproj" />
+    <ProjectReference Include="..\..\Data\PlayersBay.Data.Common\PlayersBay.Data.Common.csproj" />
+    <ProjectReference Include="..\..\Data\PlayersBay.Data.Models\PlayersBay.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Data\PlayersBay.Data\PlayersBay.Data.csproj" />
+    <ProjectReference Include="..\..\Services\PlayersBay.Services.Data\PlayersBay.Services.Data.csproj" />
+    <ProjectReference Include="..\..\Services\PlayersBay.Services.Mapping\PlayersBay.Services.Mapping.csproj" />
+    <ProjectReference Include="..\..\Services\PlayersBay.Services.Messaging\PlayersBay.Services.Messaging.csproj" />
+    <ProjectReference Include="..\..\Services\PlayersBay.Services\PlayersBay.Services.csproj" />
+  </ItemGroup>
+
+</Project>
