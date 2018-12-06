@@ -10,6 +10,10 @@
     padding-right: 15px;
 }
 
+div.container-fluid:nth-child(2) {
+    margin-top: 55px;
+}
+
 /* Set widths on the form inputs since otherwise they're 100% wide */
 input,
 select,
@@ -52,4 +56,11 @@ textarea {
     .carousel-caption {
         display: none;
     }
+}
+
+footer {
+    height: 100px;
+    margin: auto;
+    margin-top: 50px;
+    width: 400px;
 }
