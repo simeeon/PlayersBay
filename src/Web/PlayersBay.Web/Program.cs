@@ -11,6 +11,8 @@
         }
 
         private static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args).UseStartup<Startup>();
+            WebHost.CreateDefaultBuilder(args)
+            .UseSetting("https_port", "5001")
+            .UseStartup<Startup>();
     }
 }
