@@ -55,11 +55,16 @@
                 .AddRoleStore<ApplicationRoleStore>()
                 .AddDefaultTokenProviders();
 
-            //Facebook login. AppId and AppSecret are stored in Secret Manager (locally {C:\Users\{User}\AppData\Roaming\Microsoft\UserSecrets\})
             services.AddAuthentication().AddFacebook(facebookOptions =>
             {
-                facebookOptions.AppId = configuration["Authentication:Facebook:AppId"];
-                facebookOptions.AppSecret = configuration["Authentication:Facebook:AppSecret"];
+                //Secret Manager 
+
+                //facebookOptions.AppId = configuration["Authentication:Facebook:AppId"];
+                //facebookOptions.AppSecret = configuration["Authentication:Facebook:AppSecret"];
+
+                //Build purposes - random AppId & AppSecret from internet
+                facebookOptions.AppId = "1777159912535412";
+                facebookOptions.AppSecret = "dd45f83d439c8be2fe6050e72029103e";
             });
 
             services
