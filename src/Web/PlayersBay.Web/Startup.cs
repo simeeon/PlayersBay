@@ -2,17 +2,6 @@
 {
     using System.Reflection;
 
-    using PlayersBay.Data;
-    using PlayersBay.Data.Common;
-    using PlayersBay.Data.Common.Repositories;
-    using PlayersBay.Data.Models;
-    using PlayersBay.Data.Repositories;
-    using PlayersBay.Data.Seeding;
-    using PlayersBay.Services.Data;
-    using PlayersBay.Services.Mapping;
-    using PlayersBay.Services.Messaging;
-    using PlayersBay.Web.ViewModels.Account;
-
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
@@ -23,6 +12,17 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
+
+    using PlayersBay.Data;
+    using PlayersBay.Data.Common;
+    using PlayersBay.Data.Common.Repositories;
+    using PlayersBay.Data.Models;
+    using PlayersBay.Data.Repositories;
+    using PlayersBay.Data.Seeding;
+    using PlayersBay.Services.Data;
+    using PlayersBay.Services.Mapping;
+    using PlayersBay.Services.Messaging;
+    using PlayersBay.Web.ViewModels.Account;
 
     public class Startup
     {
