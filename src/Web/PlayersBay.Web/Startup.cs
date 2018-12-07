@@ -1,17 +1,6 @@
-﻿namespace PlayersBay.Web
+﻿namespace AspNetCoreTemplate.Web
 {
     using System.Reflection;
-
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.AspNetCore.Identity.UI.Services;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Logging;
 
     using PlayersBay.Data;
     using PlayersBay.Data.Common;
@@ -23,6 +12,17 @@
     using PlayersBay.Services.Mapping;
     using PlayersBay.Services.Messaging;
     using PlayersBay.Web.ViewModels.Account;
+
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Identity.UI.Services;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Logging;
 
     public class Startup
     {
@@ -54,17 +54,6 @@
                 .AddUserStore<ApplicationUserStore>()
                 .AddRoleStore<ApplicationRoleStore>()
                 .AddDefaultTokenProviders();
-
-            services.AddAuthentication().AddFacebook(facebookOptions =>
-            {
-                // Secret Manager
-                facebookOptions.AppId = this.configuration["Authentication:Facebook:AppId"];
-                facebookOptions.AppSecret = this.configuration["Authentication:Facebook:AppSecret"];
-
-                // Build purposes - random AppId & AppSecret from internet
-                // facebookOptions.AppId = "1777159912535412";
-                // facebookOptions.AppSecret = "dd45f83d439c8be2fe6050e72029103e";
-            });
 
             services
                 .AddMvc()
@@ -140,8 +129,6 @@
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
-            app.UseHttpsRedirection();
 
             app.UseStaticFiles();
 

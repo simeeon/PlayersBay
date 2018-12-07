@@ -1,4 +1,4 @@
-﻿namespace PlayersBay.Web
+﻿namespace AspNetCoreTemplate.Web
 {
     using Microsoft.AspNetCore;
     using Microsoft.AspNetCore.Hosting;
@@ -11,8 +11,6 @@
         }
 
         private static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-            .UseSetting("https_port", "5001")
-            .UseStartup<Startup>();
+            WebHost.CreateDefaultBuilder(args).UseStartup<Startup>();
     }
 }
