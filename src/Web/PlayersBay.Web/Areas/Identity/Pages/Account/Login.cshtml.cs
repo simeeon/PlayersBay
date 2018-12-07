@@ -2,10 +2,8 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Text.RegularExpressions;
     using System.Threading.Tasks;
-
-    using PlayersBay.Data.Models;
-    using PlayersBay.Web.Areas.Identity.Pages.Account.InputModels;
 
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authorization;
@@ -13,6 +11,8 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.RazorPages;
     using Microsoft.Extensions.Logging;
+    using PlayersBay.Data.Models;
+    using PlayersBay.Web.Areas.Identity.Pages.Account.InputModels;
 
     [AllowAnonymous]
 #pragma warning disable SA1649 // File name should match first type name
@@ -63,7 +63,7 @@
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await this.signInManager.PasswordSignInAsync(this.Input.Email, this.Input.Password, this.Input.RememberMe, lockoutOnFailure: true);
+                var result = await this.signInManager.PasswordSignInAsync(this.Input.Username, this.Input.Password, this.Input.RememberMe, lockoutOnFailure: true);
                 if (result.Succeeded)
                 {
                     this.logger.LogInformation("User logged in.");

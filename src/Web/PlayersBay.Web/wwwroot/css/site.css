@@ -10,10 +10,6 @@
     padding-right: 15px;
 }
 
-div.container-fluid:nth-child(2) {
-    margin-top: 55px;
-}
-
 /* Set widths on the form inputs since otherwise they're 100% wide */
 input,
 select,
@@ -58,9 +54,34 @@ textarea {
     }
 }
 
+/*Custom*/
+#register-picture {
+    opacity: 0.3;
+    border-radius: 10px;
+}
+
 footer {
-    height: 100px;
+    height: 50px;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 30px;
     width: 400px;
+}
+
+.container-fluid:nth-child(2) {
+    margin-top: 40px;
+}
+
+#btn-provider {
+    width: 170px;
+    background: #4267b2;
+}
+
+#btn-provider:hover {
+    background: #1034A6;
+}
+
+#greeting-login-user {
+    padding-top: 14px;
+    padding-bottom: 10px;
+    line-height: 48px;
 }

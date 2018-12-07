@@ -4,9 +4,9 @@ namespace PlayersBay.Data.Models
     using System;
     using System.Collections.Generic;
 
-    using PlayersBay.Data.Common.Models;
-
     using Microsoft.AspNetCore.Identity;
+
+    using PlayersBay.Data.Common.Models;
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {

@@ -3,10 +3,11 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@this.ViewData["Title"] - PlayersBay.Web</title>
+    <title>PlayersBay - @this.ViewData["Title"]</title>
 
     <environment names="Development">
         <link href="~/css/reset.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-dark.css" />
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
@@ -28,7 +29,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">
-                <img src="~/images/logo.png" title="logo" alt="" /></a>
+                <img src="~/images/logo.png" alt="logo" /></a>
             </div>
             <div class="navbar-collapse collapse">
                 @*<ul class="nav navbar-nav">

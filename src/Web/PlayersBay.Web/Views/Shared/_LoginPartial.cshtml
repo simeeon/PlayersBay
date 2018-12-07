@@ -6,8 +6,9 @@
 {
     <form asp-area="Identity"  asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
+            <li id="greeting-login-user">Hi @this.UserManager.GetUserName(this.User)!&nbsp;</li>
             <li>
-                <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @this.UserManager.GetUserName(this.User)!</a>
+                <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">&nbsp;<i class="fas fa-cogs"></i>&nbsp;</a>
             </li>
             <li>
                 <button type="submit" class="btn btn-link navbar-btn navbar-link">Logout</button>
@@ -18,7 +19,7 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li><a asp-area="Identity" asp-page="/Account/Register">Register</a></li>
-        <li><a asp-area="Identity" asp-page="/Account/Login">Login</a></li>
+        <li><a asp-area="Identity" asp-page="/Account/Register"><i class="fas fa-plus"></i> Register</a></li>
+        <li><a asp-area="Identity" asp-page="/Account/Login"><i class="fas fa-user"></i> Login</a></li>
     </ul>
 }
