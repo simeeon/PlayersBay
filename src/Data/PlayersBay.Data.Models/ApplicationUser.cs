@@ -16,6 +16,8 @@ namespace PlayersBay.Data.Models
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
+            this.ReceivedMessages = new HashSet<Message>();
+            this.SentMessages = new HashSet<Message>();
         }
 
         // Audit info
@@ -33,5 +35,14 @@ namespace PlayersBay.Data.Models
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
+
+        // My props
+        public string ImageUrl { get; set; }
+
+        public decimal Balance { get; set; }
+
+        public virtual ICollection<Message> ReceivedMessages { get; set; }
+
+        public virtual ICollection<Message> SentMessages { get; set; }
     }
 }

@@ -3,9 +3,8 @@ namespace PlayersBay.Data.Models
 {
     using System;
 
-    using PlayersBay.Data.Common.Models;
-
     using Microsoft.AspNetCore.Identity;
+    using PlayersBay.Data.Common.Models;
 
     public class ApplicationRole : IdentityRole, IAuditInfo, IDeletableEntity
     {

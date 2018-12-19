@@ -2,10 +2,9 @@
 {
     using System.Security.Claims;
 
-    using PlayersBay.Data.Models;
-
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+    using PlayersBay.Data.Models;
 
     public class ApplicationUserStore : UserStore<
         ApplicationUser,

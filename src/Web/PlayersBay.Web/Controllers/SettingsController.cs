@@ -4,12 +4,11 @@
     using System.Linq;
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Mvc;
     using PlayersBay.Data.Common.Repositories;
     using PlayersBay.Data.Models;
     using PlayersBay.Services.Mapping;
     using PlayersBay.Web.ViewModels.Settings;
-
-    using Microsoft.AspNetCore.Mvc;
 
     public class SettingsController : BaseController
     {

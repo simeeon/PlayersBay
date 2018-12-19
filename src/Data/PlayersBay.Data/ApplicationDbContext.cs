@@ -26,6 +26,16 @@
 
         public DbSet<Setting> Settings { get; set; }
 
+        public DbSet<Game> Games { get; set; }
+
+        public DbSet<Feedback> Feedbacks { get; set; }
+
+        public DbSet<Message> Messages { get; set; }
+
+        public DbSet<Offer> Offers { get; set; }
+
+        public DbSet<Transaction> Transactions { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
@@ -72,6 +82,28 @@
             {
                 foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
             }
+
+            // Message configuration
+            builder.Entity<Message>().HasOne(x => x.Sender)
+                .WithMany(x => x.SentMessages)
+                .HasForeignKey(x => x.SenderId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Message>().HasOne(x => x.Receiver)
+                .WithMany(x => x.ReceivedMessages)
+                .HasForeignKey(x => x.ReceiverId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Feedback Offer configuration
+            builder.Entity<Feedback>()
+                .HasOne(x => x.Offer)
+                .WithOne(f => f.Feedback)
+                .HasForeignKey<Feedback>(f => f.OfferId);
+
+            builder.Entity<Offer>()
+                .HasOne(x => x.Feedback)
+                .WithOne(f => f.Offer)
+                .HasForeignKey<Offer>(f => f.FeedbackId);
         }
 
         private static void ConfigureUserIdentityRelations(ModelBuilder builder)
