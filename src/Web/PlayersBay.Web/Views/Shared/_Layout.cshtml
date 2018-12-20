@@ -29,12 +29,14 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">
-                <img src="~/images/logo.png" alt="logo" /></a>
+                    <img src="~/images/logo.png" alt="logo" />
+                </a>
             </div>
             <div class="navbar-collapse collapse">
-                @*<ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                </ul>*@
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active"></li>
+                    @await this.Html.PartialAsync("_AdminDropdownPartial")
+                </ul>
                 @await this.Html.PartialAsync("_LoginPartial")
             </div>
         </div>
@@ -44,7 +46,7 @@
 
     <div class="container-fluid">
         @this.RenderBody()
-        
+
         <footer>
             <hr />
             <p>## &copy; @DateTime.Now.Year - PlayersBay Join the Fun! ##</p>

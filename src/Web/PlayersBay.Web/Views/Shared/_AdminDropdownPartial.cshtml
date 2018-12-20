@@ -1,0 +1,13 @@
+﻿@if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+{
+<ul class="nav navbar-nav navbar-left">
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-crown"></i>  Administrator
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a asp-area="Administrator" asp-controller="Games" asp-action="Create">Create Game</a>
+        </div>
+    </li>
+</ul>
+}

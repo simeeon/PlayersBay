@@ -2,6 +2,7 @@
 {
     using System.Reflection;
 
+    using CloudinaryDotNet;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
@@ -97,6 +98,14 @@
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISmsSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
+
+            services.AddScoped<IGamesService, GamesService>();
+
+            // Cloudinary Setup
+            var cloudinaryAccount = new Account("playersbay", "786522667459557", "4dbF6YcUWfHcADOxztDfAyzxxDI");
+            var cloudinary = new Cloudinary(cloudinaryAccount);
+
+            services.AddSingleton(cloudinary);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -135,6 +144,10 @@
 
             app.UseMvc(routes =>
             {
+                routes.MapRoute(
+                    name: "areas",
+                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
                 routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
