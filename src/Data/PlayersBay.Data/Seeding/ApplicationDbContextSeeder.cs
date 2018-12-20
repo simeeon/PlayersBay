@@ -8,6 +8,9 @@
 
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;
+    using PlayersBay.Services.Data;
+    using PlayersBay.Data.Repositories;
+    using PlayersBay.Data.Common.Repositories;
 
     public static class ApplicationDbContextSeeder
     {
@@ -25,10 +28,18 @@
 
             var roleManager = serviceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
             var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-            Seed(dbContext, roleManager, userManager);
+            var gamesService = serviceProvider.GetRequiredService<IGamesService>();
+            var gameRepository = serviceProvider.GetRequiredService<IRepository<Game>>();
+
+            Seed(dbContext, roleManager, userManager, gamesService, gameRepository);
         }
 
-        public static void Seed(ApplicationDbContext dbContext, RoleManager<ApplicationRole> roleManager, UserManager<ApplicationUser> userManager)
+        public static void Seed(
+            ApplicationDbContext dbContext,
+            RoleManager<ApplicationRole> roleManager,
+            UserManager<ApplicationUser> userManager,
+            IGamesService gamesService,
+            IRepository<Game> gameRepository)
         {
             if (dbContext == null)
             {
@@ -42,6 +53,25 @@
 
             SeedRoles(roleManager);
             SeedUsers(userManager);
+            SeedGames(gamesService, gameRepository);
+        }
+
+        private static void SeedGames(IGamesService gamesService, IRepository<Game> gameRepository)
+        {
+            var allGames = gameRepository.All();
+            if (!allGames.Any())
+            {
+                gamesService.CreateAsync(
+                    "Diablo 2",
+                    "http://www.oldpcgaming.net/wp-content/uploads/2016/06/Snap182_1.jpg")
+                .GetAwaiter()
+                .GetResult();
+                gamesService.CreateAsync(
+                    "Diablo 3",
+                    "https://en.wikipedia.org/wiki/Diablo_III#/media/File:Diablo_III_cover.png")
+                .GetAwaiter()
+                .GetResult();
+            }
         }
 
         private static void SeedRoles(RoleManager<ApplicationRole> roleManager)

@@ -25,9 +25,21 @@
         public async Task<int> CreateAsync(params object[] parameters)
         {
             var name = parameters[0].ToString();
-            var image = parameters[1] as IFormFile;
 
-            var imageUrl = await ApplicationCloudinary.UploadImage(this.cloudinary, image, name);
+            var image = new object();
+            var imageUrl = string.Empty;
+
+            if (parameters[1] is string)
+            {
+                imageUrl = parameters[1].ToString();
+            }
+            else
+            {
+                image = parameters[1] as IFormFile;
+
+                imageUrl = await ApplicationCloudinary.UploadImage(this.cloudinary, (IFormFile)image, name);
+            }
+
 
             var game = new Game
             {

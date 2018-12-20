@@ -37,6 +37,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\PlayersBay.Common\PlayersBay.Common.csproj" />
+    <ProjectReference Include="..\..\Services\PlayersBay.Services.Data\PlayersBay.Services.Data.csproj" />
     <ProjectReference Include="..\PlayersBay.Data.Common\PlayersBay.Data.Common.csproj" />
     <ProjectReference Include="..\PlayersBay.Data.Models\PlayersBay.Data.Models.csproj" />
   </ItemGroup>
