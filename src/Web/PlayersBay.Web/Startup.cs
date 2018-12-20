@@ -13,7 +13,7 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
-
+    using PlayersBay.Common;
     using PlayersBay.Data;
     using PlayersBay.Data.Common;
     using PlayersBay.Data.Common.Repositories;
@@ -49,7 +49,7 @@
                     options.Password.RequireLowercase = false;
                     options.Password.RequireUppercase = false;
                     options.Password.RequireNonAlphanumeric = false;
-                    options.Password.RequiredLength = 6;
+                    options.Password.RequiredLength = 3;
                 })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddUserStore<ApplicationUserStore>()
@@ -102,7 +102,10 @@
             services.AddScoped<IGamesService, GamesService>();
 
             // Cloudinary Setup
-            var cloudinaryAccount = new Account("playersbay", "786522667459557", "4dbF6YcUWfHcADOxztDfAyzxxDI");
+            var cloudinaryAccount = new Account(
+                GlobalConstants.CloudinarySetup.CloudName,
+                GlobalConstants.CloudinarySetup.ApiKey,
+                GlobalConstants.CloudinarySetup.ApiSecret);
             var cloudinary = new Cloudinary(cloudinaryAccount);
 
             services.AddSingleton(cloudinary);

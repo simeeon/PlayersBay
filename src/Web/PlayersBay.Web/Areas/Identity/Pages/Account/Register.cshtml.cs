@@ -9,7 +9,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.RazorPages;
     using Microsoft.Extensions.Logging;
-
+    using PlayersBay.Common;
     using PlayersBay.Data.Models;
     using PlayersBay.Web.Areas.Identity.Pages.Account.InputModels;
 
@@ -54,6 +54,8 @@
                 var result = await this.userManager.CreateAsync(user, this.Input.Password);
                 if (result.Succeeded)
                 {
+                    this.userManager.AddToRoleAsync(user, GlobalConstants.UserRoleName).Wait();
+
                     this.logger.LogInformation("User created a new account with password.");
 
                     var code = await this.userManager.GenerateEmailConfirmationTokenAsync(user);

@@ -24,10 +24,11 @@
             }
 
             var roleManager = serviceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
-            Seed(dbContext, roleManager);
+            var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+            Seed(dbContext, roleManager, userManager);
         }
 
-        public static void Seed(ApplicationDbContext dbContext, RoleManager<ApplicationRole> roleManager)
+        public static void Seed(ApplicationDbContext dbContext, RoleManager<ApplicationRole> roleManager, UserManager<ApplicationUser> userManager)
         {
             if (dbContext == null)
             {
@@ -40,6 +41,7 @@
             }
 
             SeedRoles(roleManager);
+            SeedUsers(userManager);
         }
 
         private static void SeedRoles(RoleManager<ApplicationRole> roleManager)
@@ -59,6 +61,24 @@
                 if (!result.Succeeded)
                 {
                     throw new Exception(string.Join(Environment.NewLine, result.Errors.Select(e => e.Description)));
+                }
+            }
+        }
+
+        private static void SeedUsers(UserManager<ApplicationUser> userManager)
+        {
+            if (userManager.FindByNameAsync("admin").Result == null)
+            {
+                ApplicationUser user = new ApplicationUser();
+                user.UserName = "admin";
+                user.Email = "admin@admin.com";
+                user.UserName = "Admin";
+
+                IdentityResult result = userManager.CreateAsync(user, "admin").Result;
+
+                if (result.Succeeded)
+                {
+                    userManager.AddToRoleAsync(user, GlobalConstants.AdministratorRoleName).Wait();
                 }
             }
         }

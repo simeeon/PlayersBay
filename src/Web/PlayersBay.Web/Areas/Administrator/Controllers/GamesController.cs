@@ -40,7 +40,7 @@
                 .GetAwaiter()
                 .GetResult();
 
-            return this.RedirectToAction("All");
+            return this.RedirectToAction("Index", "Home");
         }
 
         public IActionResult All()

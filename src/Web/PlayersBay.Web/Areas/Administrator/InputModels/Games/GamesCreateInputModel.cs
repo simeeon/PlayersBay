@@ -10,6 +10,7 @@
         [StringLength(30, MinimumLength = 3, ErrorMessage = "Game name must be between 3 and 30 symbols")]
         public string Name { get; set; }
 
+        [Required]
         [Display(Name = "Image")]
         public IFormFile ImageUrl { get; set; }
     }
