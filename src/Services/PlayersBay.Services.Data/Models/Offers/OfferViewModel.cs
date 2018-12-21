@@ -1,14 +1,15 @@
-﻿using PlayersBay.Data.Models;
-using PlayersBay.Data.Models.Enums;
-using PlayersBay.Services.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PlayersBay.Services.Data.Models.Offers
+﻿namespace PlayersBay.Services.Data.Models.Offers
 {
+    using System;
+
+    using PlayersBay.Data.Models;
+    using PlayersBay.Data.Models.Enums;
+    using PlayersBay.Services.Mapping;
+
     public class OfferViewModel : IMapFrom<Offer>
     {
+        public int Id { get; set; }
+
         public string AuthorId { get; set; }
 
         public ApplicationUser Author { get; set; }
@@ -28,9 +29,5 @@ namespace PlayersBay.Services.Data.Models.Offers
         public string Description { get; set; }
 
         public string MessageToBuyer { get; set; }
-
-        // public int FeedbackId { get; set; }
-        // 
-        // public virtual Feedback Feedback { get; set; }
     }
 }

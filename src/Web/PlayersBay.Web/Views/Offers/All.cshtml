@@ -1,0 +1,37 @@
+﻿@model IEnumerable<PlayersBay.Services.Data.Models.Offers.OfferViewModel>
+
+@{
+    ViewData["Title"] = "All Offers";
+}
+
+@if(!Model.Any())
+{
+<h2 class="text-center"style="color: #ffa709">There are no offers for @ViewData["Game"].</h2>
+}
+else
+{
+<h2 class="text-center">All Offers for @ViewData["Game"]</h2>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>$ @item.Price</td>
+            <td>@item.Title</td>
+            <td><a asp-controller="Offers" asp-action="Details" asp-route-id=@item.Id>View</a></td>
+        </tr>
+            }
+    </tbody>
+</table>
+}

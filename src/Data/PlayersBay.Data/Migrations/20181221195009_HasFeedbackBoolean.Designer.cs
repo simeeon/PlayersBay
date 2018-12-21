@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PlayersBay.Data;
 
 namespace PlayersBay.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181221195009_HasFeedbackBoolean")]
+    partial class HasFeedbackBoolean
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -309,7 +311,7 @@ namespace PlayersBay.Data.Migrations
 
                     b.Property<int>("FeedbackId");
 
-                    b.Property<int>("GameId");
+                    b.Property<int?>("GameId");
 
                     b.Property<string>("ImageUrl");
 
@@ -472,10 +474,9 @@ namespace PlayersBay.Data.Migrations
                         .HasForeignKey("PlayersBay.Data.Models.Offer", "FeedbackId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("PlayersBay.Data.Models.Game", "Game")
+                    b.HasOne("PlayersBay.Data.Models.Game")
                         .WithMany("Offers")
-                        .HasForeignKey("GameId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .HasForeignKey("GameId");
                 });
 
             modelBuilder.Entity("PlayersBay.Data.Models.Transaction", b =>

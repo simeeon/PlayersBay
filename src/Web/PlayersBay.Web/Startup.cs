@@ -21,6 +21,7 @@
     using PlayersBay.Data.Repositories;
     using PlayersBay.Data.Seeding;
     using PlayersBay.Services.Data;
+    using PlayersBay.Services.Data.Contracts;
     using PlayersBay.Services.Mapping;
     using PlayersBay.Services.Messaging;
     using PlayersBay.Web.ViewModels.Account;
@@ -100,6 +101,7 @@
             services.AddTransient<ISettingsService, SettingsService>();
 
             services.AddScoped<IGamesService, GamesService>();
+            services.AddScoped<IOffersService, OffersService>();
 
             // Cloudinary Setup
             var cloudinaryAccount = new Account(

@@ -5,7 +5,7 @@
 }
 
 <div class="container-fluid text-center">
-    <h1 style="color: #ffa709" class="display-3">SECURE PLAYER-TO-PLAYER MARKETPLACE</h1>
+    <h1 class="display-3">SECURE <span style="color: #ffa709">PLAYER-TO-PLAYER</span> MARKETPLACE</h1>
 </div>
 <div class="row">
     @if (!Model.Any())
@@ -18,19 +18,21 @@
     @foreach (var item in Model)
     {
         <div class="col-md-3" style="margin-top: 20px">
-            <div class="card">
-                <div class="card-body text-center">
-                    <h2 class="card-title">@item.Name</h2>
-                    @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
-                    {
-                        <a class="btn btn-outline-primary" asp-area="Administrator" asp-controller="Games" asp-action="Edit" asp-route-id=@item.Id>Edit</a>
-                        <a class="btn btn-outline-primary" asp-area="Administrator" asp-controller="Games" asp-action="Delete" asp-route-id=@item.Id>Delete</a>
-                    }
+            <div class="card text-center">
+                <a asp-controller="Offers" asp-action="All" asp-route-id=@item.Id>
                     <div class="card-body">
-                        <img style="height: 300px; width: 100%; border-radius: 10%;" class="card-img-top" src="@item.ImageUrl" alt="Game image" />
+                        <h2 class="card-title">@item.Name</h2>
+
+                        <div class="card-body">
+                            <img style="height: 300px; width: 100%; border-radius: 10%;" class="card-img-top" src="@item.ImageUrl" alt="Game image" />
+                        </div>
                     </div>
-                </div>
-                
+                </a>
+                @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+                {
+                    <a class="btn btn-outline-primary" asp-area="Administrator" asp-controller="Games" asp-action="Edit" asp-route-id=@item.Id>Edit</a>
+                    <a class="btn btn-outline-primary" asp-area="Administrator" asp-controller="Games" asp-action="Delete" asp-route-id=@item.Id>Delete</a>
+                }
             </div>
         </div>
     }

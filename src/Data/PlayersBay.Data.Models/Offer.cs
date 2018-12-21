@@ -7,6 +7,11 @@
 
     public class Offer : BaseDeletableModel<int>
     {
+        public Offer()
+        {
+            this.Feedback = new Feedback();
+        }
+
         public string AuthorId { get; set; }
 
         public ApplicationUser Author { get; set; }
@@ -30,5 +35,9 @@
         public int FeedbackId { get; set; }
 
         public virtual Feedback Feedback { get; set; }
+
+        public int GameId { get; set; }
+
+        public virtual Game Game { get; set; }
     }
 }
