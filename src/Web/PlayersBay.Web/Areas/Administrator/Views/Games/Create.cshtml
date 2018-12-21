@@ -2,9 +2,10 @@
 @{
     this.ViewData["Title"] = "Create Game";
 }
+@await this.Html.PartialAsync("_PanelNav")
 
 <div class="row justify-content-center">
-    <form enctype="multipart/form-data" asp-area="Administrator" asp-controller="Games" asp-action="Create" method="post" class="col-md-4 col-md-offset-4">
+    <form enctype="multipart/form-data" asp-area="Administrator" asp-controller="Games" asp-action="Create" method="post" class="col-md-7 col-md-offset-1">
         <h2>Create new game</h2>
         <hr />
         <div class="form-group">
@@ -13,9 +14,9 @@
             <span asp-validation-for="@Model.Name" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <p>Image</p>
-            <input type="file" asp-for="ImageUrl" name="ImageUrl" />
-            <span asp-validation-for="ImageUrl" class="text-danger"></span>
+            <label asp-for="@Model.ImageUrl"></label>
+            <input type="file" asp-for="@Model.ImageUrl" name="ImageUrl" />
+            <span asp-validation-for="@Model.ImageUrl" class="text-danger"></span>
         </div>
 
         <button type="submit" class="btn btn-primary btn-lg">Create game</button>

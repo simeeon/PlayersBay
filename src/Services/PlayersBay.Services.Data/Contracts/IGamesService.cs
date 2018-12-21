@@ -2,12 +2,11 @@
 {
     using System.Threading.Tasks;
 
+    using PlayersBay.Services.Data.Contracts;
     using PlayersBay.Services.Data.Models.Games;
 
-    public interface IGamesService
+    public interface IGamesService : ICrudable
     {
-        Task<int> CreateAsync(params object[] parameters);
-
         Task<GameViewModel[]> GetAllGamesAsync();
     }
 }

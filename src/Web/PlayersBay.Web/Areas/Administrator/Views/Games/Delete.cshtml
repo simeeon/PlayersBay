@@ -1,0 +1,27 @@
+﻿@model PlayersBay.Services.Data.Models.Games.GameToEditViewModel
+@{
+    this.ViewData["Title"] = "Delete Game";
+}
+@await this.Html.PartialAsync("_PanelNav")
+<div class="row justify-content-center">
+    <form asp-area="Administrator" asp-controller="Games" asp-action="Delete" method="post" class="col-md-7 col-md-offset-1">
+        <h2>Delete game</h2>
+        <hr />
+        <fieldset disabled="">
+            <div class="form-group">
+                <label asp-for="@Model.Name"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div form-group>
+                <label>Image</label>
+                <img style="height: 200px; width: 200px;" class="card-img-top" src="@Model.ImageUrl" alt="Destination image" />
+            </div>
+        </fieldset>
+        <button type="submit" class="btn btn-primary btn-lg">Delete game</button>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

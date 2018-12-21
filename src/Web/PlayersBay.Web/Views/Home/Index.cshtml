@@ -17,14 +17,20 @@
     }
     @foreach (var item in Model)
     {
-        <div class="col-md-3">
+        <div class="col-md-3" style="margin-top: 20px">
             <div class="card">
                 <div class="card-body text-center">
                     <h2 class="card-title">@item.Name</h2>
+                    @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+                    {
+                        <a class="btn btn-outline-primary" asp-area="Administrator" asp-controller="Games" asp-action="Edit" asp-route-id=@item.Id>Edit</a>
+                        <a class="btn btn-outline-primary" asp-area="Administrator" asp-controller="Games" asp-action="Delete" asp-route-id=@item.Id>Delete</a>
+                    }
                     <div class="card-body">
                         <img style="height: 300px; width: 100%; border-radius: 10%;" class="card-img-top" src="@item.ImageUrl" alt="Game image" />
                     </div>
                 </div>
+                
             </div>
         </div>
     }

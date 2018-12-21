@@ -1,0 +1,32 @@
+﻿@model PlayersBay.Services.Data.Models.Games.GameToEditViewModel
+@{
+    this.ViewData["Title"] = "Edit Game";
+}
+@await this.Html.PartialAsync("_PanelNav")
+
+<div class="row justify-content-center">
+    <form enctype="multipart/form-data" asp-area="Administrator" asp-controller="Activities" asp-action="Edit" method="post" class="col-md-7 col-md-offset-1">
+        <h2>Edit game</h2>
+        <hr />
+        <div class="form-group">
+            <label asp-for="@Model.Name"></label>
+            <input asp-for="@Model.Name" class="form-control" />
+            <span asp-validation-for="@Model.Name" class="text-danger"></span>
+        </div>
+        <div form-group>
+            <label asp-for="@Model.ImageUrl"></label>
+            <img style="height: 200px; width: 200px;" class="card-img-top" src="@Model.ImageUrl" alt="Destination image" />
+        </div>
+        <div class="form-group">
+            <p>New image</p>
+            <input type="file" asp-for="NewImage" name="NewImage" />
+            <span asp-validation-for="NewImage" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg">Edit game</button>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

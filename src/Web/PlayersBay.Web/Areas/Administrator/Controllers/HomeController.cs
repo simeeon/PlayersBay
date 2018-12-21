@@ -7,11 +7,11 @@
 
     [Area("Administrator")]
     [Authorize(Roles = "Administrator")]
-    public class AdministratorController : BaseController
+    public class HomeController : AdministratorController
     {
-        protected bool IsImageTypeValid(string fileType)
+        public IActionResult Index()
         {
-            return fileType == DataConstants.JpgFormat || fileType == DataConstants.PngFormat || fileType == DataConstants.JpegFormat;
+            return this.View();
         }
     }
 }

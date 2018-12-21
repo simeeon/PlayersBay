@@ -2,6 +2,7 @@
 {
     using System.Linq;
     using System.Threading.Tasks;
+
     using CloudinaryDotNet;
     using Microsoft.AspNetCore.Http;
     using Microsoft.EntityFrameworkCore;
@@ -40,7 +41,6 @@
                 imageUrl = await ApplicationCloudinary.UploadImage(this.cloudinary, (IFormFile)image, name);
             }
 
-
             var game = new Game
             {
                 Name = name,
@@ -53,6 +53,34 @@
             return game.Id;
         }
 
+        public async Task DeleteAsync(int id)
+        {
+            var game = this.gamesRepository.All().FirstOrDefault(d => d.Id == id);
+            game.IsDeleted = true;
+
+            this.gamesRepository.Update(game);
+            await this.gamesRepository.SaveChangesAsync();
+        }
+
+        public async Task EditAsync(int id, params object[] parameters)
+        {
+            var name = parameters[0].ToString();
+            var newImage = parameters[1] as IFormFile;
+
+            var game = await this.gamesRepository.All().FirstOrDefaultAsync(a => a.Id == id);
+
+            if (newImage != null)
+            {
+                var newImageUrl = await ApplicationCloudinary.UploadImage(this.cloudinary, newImage, name);
+                game.ImageUrl = newImageUrl;
+            }
+
+            game.Name = name;
+
+            this.gamesRepository.Update(game);
+            await this.gamesRepository.SaveChangesAsync();
+        }
+
         public async Task<GameViewModel[]> GetAllGamesAsync()
         {
             var games = await this.gamesRepository
@@ -61,6 +89,17 @@
                 .ToArrayAsync();
 
             return games;
+        }
+
+        public async Task<TViewModel> GetViewModelAsync<TViewModel>(int id)
+        {
+            var game = await this.gamesRepository
+                .All()
+                .Where(a => a.Id == id)
+                .To<TViewModel>()
+                .FirstOrDefaultAsync();
+
+            return game;
         }
     }
 }
