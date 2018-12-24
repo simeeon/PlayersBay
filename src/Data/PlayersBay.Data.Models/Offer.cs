@@ -20,7 +20,7 @@
 
         public string ImageUrl { get; set; }
 
-        public DateTime Duration { get; set; }
+        public DateTime ExpiryDate { get; set; }
 
         public Status Status { get; set; }
 

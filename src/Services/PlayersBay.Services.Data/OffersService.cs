@@ -65,7 +65,7 @@
                 GameId = gameId,
                 Author = user,
                 Description = description,
-                Duration = DateTime.UtcNow.AddDays(duration),
+                ExpiryDate = DateTime.UtcNow.AddDays(duration),
                 ImageUrl = imageUrl,
                 MessageToBuyer = messageToBuyer,
                 OfferType = typeEnum,

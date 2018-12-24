@@ -4,34 +4,51 @@
     ViewData["Title"] = "All Offers";
 }
 
-@if(!Model.Any())
+@if (!Model.Any())
 {
-<h2 class="text-center"style="color: #ffa709">There are no offers for @ViewData["Game"].</h2>
+    <h2 class="text-center" style="color: #ffa709">There are no offers for @ViewData["Game"].</h2>
 }
 else
 {
-<h2 class="text-center">All Offers for @ViewData["Game"]</h2>
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-        <tr>
-            <td>$ @item.Price</td>
-            <td>@item.Title</td>
-            <td><a asp-controller="Offers" asp-action="Details" asp-route-id=@item.Id>View</a></td>
-        </tr>
+    <h2 class="text-center">All Offers for @ViewData["Game"]</h2>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Author)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OfferType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ShrotTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OfferExpiryDate)
+                </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Author.UserName</td>
+                    <td>@item.OfferType.ToString()</td>
+                    <td>@item.ShrotTitle</td>
+                    <td>$ @item.Price</td>
+                    <td>@item.OfferExpiryDate</td>
+                    <td><a class="btn btn-outline-primary" asp-controller="Offers" asp-action="Details" asp-route-id=@item.Id>View</a></td>
+                    @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName) || this.User.Identity.Name == @item.Author.UserName)
+                    {
+                        <a class="btn btn-outline-primary" asp-controller="Offers" asp-action="Edit" asp-route-id=@item.Id>Edit</a>
+                        <a class="btn btn-outline-primary" asp-controller="Offers" asp-action="Delete" asp-route-id=@item.Id>Delete</a>
+                    }
+                </tr>
             }
-    </tbody>
-</table>
+        </tbody>
+    </table>
 }
