@@ -1,9 +1,12 @@
 ﻿namespace PlayersBay.Services.Data.Models.Offers
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+    using System.Globalization;
 
+    using PlayersBay.Common;
     using PlayersBay.Data.Models;
     using PlayersBay.Services.Mapping;
-    using System.ComponentModel.DataAnnotations;
 
     public class OfferDetailsViewModel : IMapFrom<Offer>
     {
@@ -18,7 +21,10 @@
         [Display(Name = "Image")]
         public string ImageUrl { get; set; }
 
-        public string Duration { get; set; }
+        public DateTime ExpiryDate { get; set; }
+
+        [Display(Name = "Expiry date")]
+        public string OfferEnds => this.ExpiryDate.ToString(GlobalConstants.DateFormat, CultureInfo.InvariantCulture);
 
         public decimal Price { get; set; }
 

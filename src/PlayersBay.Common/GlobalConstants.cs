@@ -6,12 +6,6 @@
         public const string ModeratorRoleName = "Moderator";
         public const string UserRoleName = "User";
 
-// Add your CloudinarySetup
-        public class CloudinarySetup
-        {
-            public const string CloudName = "";
-            public const string ApiKey = "";
-            public const string ApiSecret = "";
-        }
+        public const string DateFormat = "dd-MMM-yyyy";
     }
 }

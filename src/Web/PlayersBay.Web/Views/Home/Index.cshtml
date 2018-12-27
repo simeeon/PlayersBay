@@ -30,8 +30,8 @@
                 </a>
                 @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
                 {
-                    <a class="btn btn-outline-primary" asp-area="Administrator" asp-controller="Games" asp-action="Edit" asp-route-id=@item.Id>Edit</a>
-                    <a class="btn btn-outline-primary" asp-area="Administrator" asp-controller="Games" asp-action="Delete" asp-route-id=@item.Id>Delete</a>
+                    <a style="margin-top: 10px" class="btn btn-outline-primary" asp-area="Administrator" asp-controller="Games" asp-action="Edit" asp-route-id=@item.Id>Edit</a>
+                    <a style="margin-top: 10px" class="btn btn-outline-primary" asp-area="Administrator" asp-controller="Games" asp-action="Delete" asp-route-id=@item.Id>Delete</a>
                 }
             </div>
         </div>

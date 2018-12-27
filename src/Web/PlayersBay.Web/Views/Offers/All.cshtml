@@ -11,7 +11,7 @@
 else
 {
     <h2 class="text-center">All Offers for @ViewData["Game"]</h2>
-    <table class="table table-hover">
+    <table id="all-offers" class="table table-hover">
         <thead>
             <tr>
                 <th>
@@ -27,7 +27,7 @@ else
                     @Html.DisplayNameFor(model => model.Price)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.OfferExpiryDate)
+                    @Html.DisplayNameFor(model => model.ExpiryDate)
                 </th>
                 <th>Actions</th>
             </tr>
@@ -40,13 +40,15 @@ else
                     <td>@item.OfferType.ToString()</td>
                     <td>@item.ShrotTitle</td>
                     <td>$ @item.Price</td>
-                    <td>@item.OfferExpiryDate</td>
-                    <td><a class="btn btn-outline-primary" asp-controller="Offers" asp-action="Details" asp-route-id=@item.Id>View</a></td>
-                    @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName) || this.User.Identity.Name == @item.Author.UserName)
-                    {
-                        <a class="btn btn-outline-primary" asp-controller="Offers" asp-action="Edit" asp-route-id=@item.Id>Edit</a>
-                        <a class="btn btn-outline-primary" asp-controller="Offers" asp-action="Delete" asp-route-id=@item.Id>Delete</a>
-                    }
+                    <td>@item.ExpiryDate</td>
+                    <td>
+                        <a class="btn btn-outline-primary" asp-controller="Offers" asp-action="Details" asp-route-id=@item.Id>View</a>
+                        @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName) || this.User.Identity.Name == @item.Author.UserName)
+                        {
+                            <a class="btn btn-outline-primary" asp-controller="Offers" asp-action="Edit" asp-route-id=@item.Id>Edit</a>
+                            <a class="btn btn-outline-primary" asp-controller="Offers" asp-action="Delete" asp-route-id=@item.Id>Delete</a>
+                        }
+                    </td>
                 </tr>
             }
         </tbody>

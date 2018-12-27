@@ -9,6 +9,7 @@
     using PlayersBay.Data.Common.Repositories;
     using PlayersBay.Data.Models;
     using PlayersBay.Services.Data;
+    using PlayersBay.Services.Data.Contracts;
 
     public static class ApplicationDbContextSeeder
     {
@@ -27,9 +28,11 @@
             var roleManager = serviceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
             var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
             var gamesService = serviceProvider.GetRequiredService<IGamesService>();
+            var offerService = serviceProvider.GetRequiredService<IOffersService>();
             var gameRepository = serviceProvider.GetRequiredService<IRepository<Game>>();
+            var offerRepository = serviceProvider.GetRequiredService<IRepository<Offer>>();
 
-            Seed(dbContext, roleManager, userManager, gamesService, gameRepository);
+            Seed(dbContext, roleManager, userManager, gamesService, gameRepository, offerService, offerRepository);
         }
 
         public static void Seed(
@@ -37,7 +40,9 @@
             RoleManager<ApplicationRole> roleManager,
             UserManager<ApplicationUser> userManager,
             IGamesService gamesService,
-            IRepository<Game> gameRepository)
+            IRepository<Game> gameRepository,
+            IOffersService offerService,
+            IRepository<Offer> offerRepository)
         {
             if (dbContext == null)
             {
@@ -52,6 +57,7 @@
             SeedRoles(roleManager);
             SeedUsers(userManager);
             SeedGames(gamesService, gameRepository);
+            SeedOffers(offerService, offerRepository);
         }
 
         private static void SeedGames(IGamesService gamesService, IRepository<Game> gameRepository)
@@ -137,6 +143,21 @@
                 if (result.Succeeded)
                 {
                     userManager.AddToRoleAsync(user, GlobalConstants.AdministratorRoleName).Wait();
+                }
+            }
+        }
+
+        private static void SeedOffers(IOffersService offerService, IRepository<Offer> offerRepository)
+        {
+            var allOffers = offerRepository.All();
+            if (!allOffers.Any())
+            {
+                for (int i = 0; i < 15; i++)
+                {
+                    var price = 14.90 + i;
+                    offerService.CreateAsync("admin", "1", $"Nice Item {i}. Buy it now!", "7", null, "Hello buyer", "Item", price.ToString(), $"My auto-generated title {i}")
+                        .GetAwaiter()
+                        .GetResult();
                 }
             }
         }

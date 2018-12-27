@@ -10,6 +10,7 @@
     using PlayersBay.Data.Models;
     using PlayersBay.Services.Data;
     using PlayersBay.Services.Data.Contracts;
+    using PlayersBay.Services.Data.Models.Offers;
     using PlayersBay.Web.ViewModels.Offers;
 
     public class OffersController : BaseController
@@ -76,6 +77,8 @@
                 .GetAwaiter()
                 .GetResult();
 
+            this.ViewData["Game"] = this.gameRepository.All().FirstOrDefault(g => g.Id == detailViewModel.GameId).Name;
+
             return this.View(detailViewModel);
         }
 
@@ -88,6 +91,70 @@
             this.ViewData["Game"] = this.gameRepository.All().FirstOrDefault(g => g.Id == id).Name;
 
             return this.View(offers);
+        }
+
+        public IActionResult Edit(int id)
+        {
+            var offerToEdit = this.offersService.GetViewModelAsync<OfferToEditViewModel>(id)
+                .GetAwaiter()
+                .GetResult();
+            if (offerToEdit == null)
+            {
+                return this.Redirect("/");
+            }
+
+            this.ViewData["Games"] = this.SelectAllGames();
+            return this.View(offerToEdit);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(OfferToEditViewModel offerToEditViewModel)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(offerToEditViewModel);
+            }
+
+            if (offerToEditViewModel.NewImage != null)
+            {
+                var fileType = offerToEditViewModel.NewImage.ContentType.Split('/')[1];
+                if (!this.IsImageTypeValid(fileType))
+                {
+                    return this.View(offerToEditViewModel);
+                }
+            }
+
+            var id = offerToEditViewModel.Id;
+            this.offersService.EditAsync(offerToEditViewModel)
+                .GetAwaiter()
+                .GetResult();
+
+            return this.Redirect("/");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var offerToDelete = this.offersService.GetViewModelAsync<OfferToEditViewModel>(id)
+                .GetAwaiter()
+                .GetResult();
+            if (offerToDelete == null)
+            {
+                return this.Redirect("/");
+            }
+
+            this.ViewData["Game"] = this.gameRepository.All().FirstOrDefault(g => g.Id == offerToDelete.GameId).Name;
+
+            return this.View(offerToDelete);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(OfferToEditViewModel offerToEditViewModel)
+        {
+            var id = offerToEditViewModel.Id;
+            this.offersService.DeleteAsync(id)
+                .GetAwaiter()
+                .GetResult();
+            return this.Redirect("/");
         }
 
         private IEnumerable<SelectListItem> SelectAllGames()

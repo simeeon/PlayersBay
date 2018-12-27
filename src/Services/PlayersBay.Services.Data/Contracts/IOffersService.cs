@@ -11,5 +11,11 @@
         Task<OfferViewModel[]> GetAllOffersAsync(int id);
 
         Task<OfferDetailsViewModel> GetDetailsAsync(int id);
+
+        Task<TViewModel> GetViewModelAsync<TViewModel>(int id);
+
+        Task EditAsync(OfferToEditViewModel offerToEdit);
+
+        Task DeleteAsync(int id);
     }
 }

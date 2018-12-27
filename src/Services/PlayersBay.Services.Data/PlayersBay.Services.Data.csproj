@@ -22,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\PlayersBay.Data.Common\PlayersBay.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\PlayersBay.Data.Models\PlayersBay.Data.Models.csproj" />
+    <ProjectReference Include="..\..\PlayersBay.Common\PlayersBay.Common.csproj" />
     <ProjectReference Include="..\PlayersBay.Services.Mapping\PlayersBay.Services.Mapping.csproj" />
   </ItemGroup>
 

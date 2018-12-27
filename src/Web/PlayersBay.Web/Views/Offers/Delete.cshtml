@@ -1,0 +1,68 @@
+﻿@model PlayersBay.Services.Data.Models.Offers.OfferToEditViewModel
+@{
+    this.ViewData["Title"] = "Delete Offer";
+
+}
+
+<div class="row justify-content-center">
+    <form enctype="multipart/form-data" asp-controller="Offers" asp-action="Delete" method="post" class="col-md-4 col-md-offset-4">
+        <h2>Delete offer</h2>
+        <hr />
+        <fieldset disabled="">
+            <div class="form-group">
+                <label asp-for="@Model.OfferType" class="custom-label"></label>
+                <select class="form-control" asp-for="OfferType"
+                        asp-items="@(Html.GetEnumSelectList<OfferType>())">
+                    <option selected="" disabled="">--Select offer type--</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="custom-label">Game:</label>
+                @ViewData["Game"]
+                <span asp-validation-for="GameId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div>
+                    <label asp-for="ExpiryDate" class="control-label custom-label"></label>
+                </div>
+                @Model.ExpiryDate
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label custom-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label custom-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label custom-label"></label>
+                <textarea rows="10" cols="20" asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Current Image:</label>
+                @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                {
+                    <img style="height: 200px; width: 200px;" src="@Model.ImageUrl" alt="Destination image" />
+                }
+                else
+                {
+                    <img style="height: 200px; width: 200px;" src="~/images/noimage.png" alt="Destination image" />
+                }
+            </div>
+            <div class="form-group">
+                <label asp-for="MessageToBuyer" class="control-label custom-label"></label>
+                <textarea asp-for="MessageToBuyer" class="form-control"></textarea>
+                <span asp-validation-for="MessageToBuyer" class="text-danger"></span>
+            </div>
+        </fieldset>
+        <button type="submit" class="btn btn-primary btn-lg">Delete offer</button>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

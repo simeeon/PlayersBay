@@ -1,35 +1,38 @@
-﻿@model PlayersBay.Web.ViewModels.Offers.OfferCreateInputModel
+﻿@model PlayersBay.Services.Data.Models.Offers.OfferToEditViewModel
 @{
-    this.ViewData["Title"] = "Create Offer";
+    this.ViewData["Title"] = "Edit Offer";
     var games = this.ViewData["Games"] as IEnumerable<SelectListItem>;
 }
 
 <div class="row justify-content-center">
-    <form enctype="multipart/form-data" asp-controller="Offers" asp-action="Create" method="post" class="col-md-4 col-md-offset-4">
-        <h2>Create new offer</h2>
+    <form enctype="multipart/form-data" asp-controller="Offers" asp-action="Edit" method="post" class="col-md-4 col-md-offset-4">
+        <h2>Edit offer #@Model.Id</h2>
         <hr />
         <div class="form-group">
             <label asp-for="@Model.OfferType" class="custom-label"></label>
             <select class="form-control" asp-for="OfferType"
                     asp-items="@(Html.GetEnumSelectList<OfferType>())">
-                <option selected="" disabled="">--Select offer type--</option>
+                <option value="@Model.OfferType" selected="" disabled="">-- Current: @Model.OfferType --</option>
             </select>
         </div>
-        <div class="form-group">
-            <label asp-for="GameId" class="custom-label"></label>
-            <select asp-for="GameId" asp-items="games" class="form-control">
-                <option selected="" disabled="">--Select game--</option>
-            </select>
-            <span asp-validation-for="GameId" class="text-danger"></span>
-        </div>
+        <fieldset disabled="">
+            <div class="form-group">
+                <label asp-for="GameId" class="custom-label"></label>
+                <select asp-for="GameId" asp-items="games" class="form-control">
+                    <option selected="" disabled="">--Select game--</option>
+                </select>
+                <span asp-validation-for="GameId" class="text-danger"></span>
+            </div>
+        </fieldset>
         <div class="form-group">
             <div>
                 <label asp-for="Duration" class="control-label custom-label"></label>
             </div>
             <input asp-for="Duration" type="radio" value="7" /> 7 Days
             <input asp-for="Duration" type="radio" value="15" /> 15 Days
-            <input asp-for="Duration" type="radio" value="30" /> 30 Days
+            <input asp-for="Duration" type="radio" value="30" checked="checked" /> 30 Days
         </div>
+        <div style="font-style: italic; color: azure; font-size: 16px;">Current Expiration Date is: @Model.ExpiryDate</div>
         <div class="form-group">
             <label asp-for="Price" class="control-label custom-label"></label>
             <input asp-for="Price" class="form-control" />
@@ -46,9 +49,20 @@
             <span asp-validation-for="Description" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="@Model.ImageUrl" class="custom-label"></label>
-            <input type="file" asp-for="@Model.ImageUrl" name="ImageUrl" />
-            <span asp-validation-for="@Model.ImageUrl" class="text-danger"></span>
+            <label class="custom-label">Current Image:</label>
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <img style="height: 200px; width: 200px;" src="@Model.ImageUrl" alt="Destination image" />
+            }
+            else
+            {
+                <img style="height: 200px; width: 200px;" src="~/images/noimage.png" alt="Destination image" />
+            }
+        </div>
+        <div class="form-group">
+            <p class="custom-label">New image</p>
+            <input type="file" asp-for="NewImage" name="NewImage" />
+            <span asp-validation-for="NewImage" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="MessageToBuyer" class="control-label custom-label"></label>
@@ -56,7 +70,7 @@
             <span asp-validation-for="MessageToBuyer" class="text-danger"></span>
         </div>
 
-        <button type="submit" class="btn btn-primary btn-lg">Create offer</button>
+        <button type="submit" class="btn btn-primary btn-lg">Edit offer</button>
     </form>
 </div>
 

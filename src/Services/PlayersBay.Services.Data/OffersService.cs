@@ -35,12 +35,6 @@
         {
             var user = await this.usersRepository.All().FirstOrDefaultAsync(u => u.UserName == username);
 
-            // createInputModel.Duration,
-            // createInputModel.ImageUrl,
-            // createInputModel.MessageToBuyer,
-            // createInputModel.OfferType,
-            // createInputModel.Price,
-            // createInputModel.Title
             var gameId = int.Parse(parameters[0].ToString());
             var description = parameters[1].ToString();
             var duration = double.Parse(parameters[2].ToString());
@@ -89,18 +83,27 @@
             await this.offersRepository.SaveChangesAsync();
         }
 
-        public async Task EditAsync(int id, params object[] parameters)
+        public async Task EditAsync(OfferToEditViewModel offerToEdit)
         {
-            var name = parameters[0].ToString();
-            var newImage = parameters[1] as IFormFile;
+            var offer = this.offersRepository.All().FirstOrDefault(d => d.Id == offerToEdit.Id);
 
-            var offer = await this.offersRepository.All().FirstOrDefaultAsync(a => a.Id == id);
-
-            if (newImage != null)
+            if (offer == null)
             {
-                var newImageUrl = await ApplicationCloudinary.UploadImage(this.cloudinary, newImage, name);
+                throw new NullReferenceException();
+            }
+
+            if (offerToEdit.NewImage != null)
+            {
+                var newImageUrl = await ApplicationCloudinary.UploadImage(this.cloudinary, offerToEdit.NewImage, offerToEdit.Description);
                 offer.ImageUrl = newImageUrl;
             }
+
+            offer.Price = offerToEdit.Price;
+            offer.Title = offerToEdit.Title;
+            offer.ExpiryDate = DateTime.UtcNow.AddDays(offerToEdit.Duration);
+            offer.OfferType = offerToEdit.OfferType;
+            offer.MessageToBuyer = offerToEdit.MessageToBuyer;
+            offer.Description = offerToEdit.Description;
 
             this.offersRepository.Update(offer);
             await this.offersRepository.SaveChangesAsync();
