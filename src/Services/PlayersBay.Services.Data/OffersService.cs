@@ -16,8 +16,6 @@
     using PlayersBay.Services.Data.Utilities;
     using PlayersBay.Services.Mapping;
 
-    // TODO: Extract interface
-
     public class OffersService : IOffersService
     {
         private readonly IRepository<Offer> offersRepository;
@@ -114,6 +112,17 @@
             var offers = await this.offersRepository
                 .All()
                 .Where(o => o.GameId == id)
+                .To<OfferViewModel>()
+                .ToArrayAsync();
+
+            return offers;
+        }
+
+        public async Task<OfferViewModel[]> GetMyActiveOffersAsync(string username)
+        {
+            var offers = await this.offersRepository
+                .All()
+                .Where(o => o.Author.UserName == username && o.Status == Status.Active)
                 .To<OfferViewModel>()
                 .ToArrayAsync();
 

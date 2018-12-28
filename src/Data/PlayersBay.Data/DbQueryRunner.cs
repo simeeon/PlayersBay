@@ -2,9 +2,8 @@
 {
     using System;
 
-    using PlayersBay.Data.Common;
-
     using Microsoft.EntityFrameworkCore;
+    using PlayersBay.Data.Common;
 
     public class DbQueryRunner : IDbQueryRunner
     {

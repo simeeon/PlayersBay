@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace PlayersBay.Data.Migrations
+﻿namespace PlayersBay.Data.Migrations
 {
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class HasFeedbackBoolean : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

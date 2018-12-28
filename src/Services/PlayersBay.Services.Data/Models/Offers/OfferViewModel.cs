@@ -24,6 +24,9 @@
         [Display(Name = "Offer ends")]
         public DateTime ExpiryDate { get; set; }
 
+        [Display(Name = "Created On")]
+        public DateTime CreatedOn { get; set; }
+
         public Status Status { get; set; }
 
         public decimal Price { get; set; }

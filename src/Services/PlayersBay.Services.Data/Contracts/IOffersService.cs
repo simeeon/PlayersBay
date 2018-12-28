@@ -10,6 +10,8 @@
 
         Task<OfferViewModel[]> GetAllOffersAsync(int id);
 
+        Task<OfferViewModel[]> GetMyActiveOffersAsync(string username);
+
         Task<OfferDetailsViewModel> GetDetailsAsync(int id);
 
         Task<TViewModel> GetViewModelAsync<TViewModel>(int id);

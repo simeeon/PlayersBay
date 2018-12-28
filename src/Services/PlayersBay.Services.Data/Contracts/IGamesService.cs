@@ -1,8 +1,7 @@
-﻿namespace PlayersBay.Services.Data
+﻿namespace PlayersBay.Services.Data.Contracts
 {
     using System.Threading.Tasks;
 
-    using PlayersBay.Services.Data.Contracts;
     using PlayersBay.Services.Data.Models.Games;
 
     public interface IGamesService : ICrudable

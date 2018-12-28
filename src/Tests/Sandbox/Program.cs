@@ -4,6 +4,13 @@
     using System.Diagnostics;
     using System.IO;
 
+    using CommandLine;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Identity.UI.Services;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Logging;
     using PlayersBay.Data;
     using PlayersBay.Data.Common;
     using PlayersBay.Data.Common.Repositories;
@@ -12,15 +19,6 @@
     using PlayersBay.Data.Seeding;
     using PlayersBay.Services.Data;
     using PlayersBay.Services.Messaging;
-
-    using CommandLine;
-
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.AspNetCore.Identity.UI.Services;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Logging;
 
     public static class Program
     {

@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
@@ -30,10 +31,6 @@
 
         public IActionResult Index()
         {
-            // var allGamesViewModel = this.offersService.GetAllActivitiesAsync()
-            //    .GetAwaiter()
-            //    .GetResult();
-
             return this.View();
         }
 
@@ -68,7 +65,7 @@
                 .GetAwaiter()
                 .GetResult();
 
-            return this.Redirect("/");
+            return this.RedirectToAction("ActiveOffers", "Offers", new { username = this.User.Identity.Name });
         }
 
         public IActionResult Details(int id)
@@ -89,6 +86,15 @@
                 .GetResult();
 
             this.ViewData["Game"] = this.gameRepository.All().FirstOrDefault(g => g.Id == id).Name;
+
+            return this.View(offers);
+        }
+
+        public IActionResult ActiveOffers(string username)
+        {
+            var offers = this.offersService.GetMyActiveOffersAsync(username)
+                .GetAwaiter()
+                .GetResult();
 
             return this.View(offers);
         }
@@ -129,7 +135,7 @@
                 .GetAwaiter()
                 .GetResult();
 
-            return this.Redirect("/");
+            return this.RedirectToAction("Details", "Offers", new { id });
         }
 
         public IActionResult Delete(int id)
@@ -154,7 +160,8 @@
             this.offersService.DeleteAsync(id)
                 .GetAwaiter()
                 .GetResult();
-            return this.Redirect("/");
+
+            return this.RedirectToAction("ActiveOffers", "Offers", new { username = this.User.Identity.Name });
         }
 
         private IEnumerable<SelectListItem> SelectAllGames()

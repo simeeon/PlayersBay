@@ -8,7 +8,8 @@
         <ul class="nav navbar-nav navbar-right">
             <li><a asp-controller="Offers" asp-action="Create"><i class="fas fa-money-bill"></i> Sell</a></li>
             <li>
-                <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">&nbsp;<i class="fas fa-cogs"></i>&nbsp; @this.UserManager.GetUserName(this.User)</a>
+                <a asp-controller="Offers" asp-action="ActiveOffers" asp-route-username="@this.UserManager.GetUserName(this.User)">
+                    &nbsp;<i class="fas fa-cogs"></i>&nbsp; @this.UserManager.GetUserName(this.User)</a>
             </li>
             <li>
                 <button type="submit" class="btn btn-link navbar-btn navbar-link">Logout</button>

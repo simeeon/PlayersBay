@@ -2,9 +2,8 @@
 {
     using System.Linq;
 
-    using PlayersBay.Data.Common.Models;
-
     using Microsoft.EntityFrameworkCore;
+    using PlayersBay.Data.Common.Models;
 
     internal static class EntityIndexesConfiguration
     {

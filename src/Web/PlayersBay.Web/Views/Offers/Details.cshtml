@@ -1,10 +1,12 @@
 ﻿@model PlayersBay.Services.Data.Models.Offers.OfferDetailsViewModel
 @{
     this.ViewData["Title"] = "Offer details";
+    var MsgInputModel = new PlayersBay.Services.Data.Models.Messages.MessageInputModel();
+    MsgInputModel.ReceiverName = @Model.AuthorUsername;
 }
 
 <div>
-    <a href='javascript:history.go(-1)'>Return to offers</a>
+    <a href='javascript:history.go(-1)'>Return</a>
 </div>
 <div class="container col-md-4 col-md-offset-4">
     <h2 style="font-style: italic;" class="text-center">@ViewData["Game"] offer #@Model.Id</h2>
@@ -19,6 +21,10 @@
         {
             <img style="height: 200px; width: 200px;" src="~/images/noimage.png" alt="Destination image" />
         }
+    </div>
+    <div>
+        <label asp-for="@Model.AuthorUsername" class="custom-label"></label>
+        : @Model.AuthorUsername
     </div>
     <div>
         <label asp-for="@Model.OfferType" class="custom-label"></label>
@@ -38,4 +44,10 @@
         <label asp-for="Description" class="custom-label"></label>
         : @Model.Description
     </div>
+    @await this.Html.PartialAsync("_SendMessagePartial", MsgInputModel)
 </div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<PlayersBay.Services.Data.Models.Messages.MessageOutputModel>
+@{
+    ViewData["Title"] = "All Messages";
+    int count = 0;
+}
+
+@await this.Html.PartialAsync("_NavProfile")
+
+@if (!Model.Any())
+{
+    <h2 class="text-center" style="color: #ffa709">You have no messages.</h2>
+}
+else
+{
+    <div class="container  col-md-12 mt-5 table-responsive">
+        <table class="table table-bordered" id="all-messages">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="text-center">#</th>
+                    <th class="text-center">From</th>
+                    <th class="text-center">Received on</th>
+                    <th class="text-center" style="word-wrap: break-word;">Text</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="text-white">
+                @foreach (var m in Model)
+                {
+                    {
+                        count++;
+                    }
+                    <tr>
+                        <th class="text-center">
+                            @if(m?.IsRead == false)
+                            {
+                                <span>"!!!"</span>
+                            }
+                        @count
+                        </th>
+                        <td class="text-center">@m.Sender</td>
+                        <td class="text-center">@m.CreatedOn</td>
+                        <td class="text-center" style="word-wrap: break-word;">@m.Text</td>
+
+                        <td>
+                            <div class=" d-flex justify-content-around">
+                                <a asp-action="MessageReply" asp-controller="Messages" asp-area="" asp-route-receiver="@m.Sender" class="btn btn-dark ">Reply</a>
+                                <a asp-action="MessageSeen" asp-controller="Messages" asp-area="" asp-route-id="@m.Id" class="btn btn-dark ">Mark As Seen</a>
+                                <a asp-action="DeleteMessage" asp-controller="Messages" asp-area="" asp-route-id="@m.Id" class="btn btn-danger ">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="btn-group-justified">
+
+        </div>
+    </div>
+}
+    @section scripts{
+        <script>
+        $(document).ready(function () {
+            $('#all-messages').DataTable();
+        });
+        </script>
+
+    }

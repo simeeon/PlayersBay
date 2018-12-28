@@ -2,15 +2,16 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using PlayersBay.Services.Data;
+    using PlayersBay.Services.Data.Contracts;
 
     public class HomeController : BaseController
     {
-        protected IGamesService GamesService { get; }
-
         public HomeController(IGamesService gamesService)
         {
             this.GamesService = gamesService;
         }
+
+        protected IGamesService GamesService { get; }
 
         public IActionResult Index()
         {

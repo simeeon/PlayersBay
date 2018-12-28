@@ -27,6 +27,9 @@ else
                     @Html.DisplayNameFor(model => model.Price)
                 </th>
                 <th>
+                    @Html.DisplayNameFor(model => model.CreatedOn)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.ExpiryDate)
                 </th>
                 <th>Actions</th>
@@ -40,6 +43,7 @@ else
                     <td>@item.OfferType.ToString()</td>
                     <td>@item.ShrotTitle</td>
                     <td>$ @item.Price</td>
+                    <td>@item.CreatedOn</td>
                     <td>@item.ExpiryDate</td>
                     <td>
                         <a class="btn btn-outline-primary" asp-controller="Offers" asp-action="Details" asp-route-id=@item.Id>View</a>
@@ -53,4 +57,12 @@ else
             }
         </tbody>
     </table>
+}
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#all-offers').DataTable();
+        });
+    </script>
 }

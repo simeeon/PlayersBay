@@ -2,13 +2,12 @@
 {
     using System.Threading.Tasks;
 
-    using PlayersBay.Data.Models;
-    using PlayersBay.Web.Areas.Identity.Pages.Account.Manage.InputModels;
-
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.RazorPages;
     using Microsoft.Extensions.Logging;
+    using PlayersBay.Data.Models;
+    using PlayersBay.Web.Areas.Identity.Pages.Account.Manage.InputModels;
 
 #pragma warning disable SA1649 // File name should match first type name
     public class ChangePasswordModel : PageModel

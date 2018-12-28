@@ -1,0 +1,62 @@
+﻿@model IEnumerable<PlayersBay.Services.Data.Models.Offers.OfferViewModel>
+
+@{
+    ViewData["Title"] = "My Offers";
+}
+
+@await this.Html.PartialAsync("_NavProfile")
+
+@if (!Model.Any())
+{
+<h2 class="text-center" style="color: #ffa709">You have no offers.</h2>
+}
+else
+{
+<h2 class="text-center">Active Offers</h2>
+<table id="my-offers" class="table table-hover col-md-7 col-md-offset-1">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OfferType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShrotTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpiryDate)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+            {
+        <tr>
+            <td>@item.OfferType.ToString()</td>
+            <td>@item.ShrotTitle</td>
+            <td>$ @item.Price</td>
+            <td>@item.ExpiryDate</td>
+            <td>
+                <a class="btn btn-outline-primary" asp-controller="Offers" asp-action="Details" asp-route-id=@item.Id>View</a>
+                @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName) || this.User.Identity.Name == @item.Author.UserName)
+                        {
+                <a class="btn btn-outline-primary" asp-controller="Offers" asp-action="Edit" asp-route-id=@item.Id>Edit</a>
+                <a class="btn btn-outline-primary" asp-controller="Offers" asp-action="Delete" asp-route-id=@item.Id>Delete</a>
+                        }
+            </td>
+        </tr>
+            }
+    </tbody>
+</table>
+}
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#my-offers').DataTable();
+        });
+    </script>
+}

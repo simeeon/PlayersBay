@@ -6,11 +6,10 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    using PlayersBay.Data.Common.Models;
-    using PlayersBay.Data.Models;
-
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
+    using PlayersBay.Data.Common.Models;
+    using PlayersBay.Data.Models;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
