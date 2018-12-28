@@ -8,5 +8,11 @@
     public interface IUsersService
     {
         Task<UserViewModel[]> GetAllUsersAsync();
+
+        Task<string> MakeModerator(string id);
+
+        Task<string> DemoteFromModerator(string id);
+
+        Task DeleteAsync(string id);
     }
 }

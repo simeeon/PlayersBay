@@ -1,4 +1,7 @@
-﻿@model IEnumerable<PlayersBay.Services.Data.Models.Users.UserViewModel>
+﻿@using PlayersBay.Data.Models
+@using PlayersBay.Common
+@model IEnumerable<PlayersBay.Services.Data.Models.Users.UserViewModel>
+@inject SignInManager<ApplicationUser> SignInManager
 
 @{
     ViewData["Title"] = "All Users";
@@ -17,7 +20,7 @@
                 @Html.DisplayNameFor(model => model.Username)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Role)
+                Role
             </th>
 
             <th>Actions</th>
@@ -25,17 +28,35 @@
     </thead>
     <tbody>
         @foreach (var item in Model)
-            {
-        <tr>
-            <td>@item.Id</td>
-            <td>@item.Username</td>
-            <td>@item.Role</td>
-            <td>
-                <a class="btn btn-outline-primary" asp-controller="Users" asp-action="Promote" asp-route-id=@item.Id>Promote</a>
-                <a class="btn btn-outline-primary" asp-controller="Users" asp-action="Delete" asp-route-id=@item.Id>Delete</a>
-            </td>
-        </tr>
-            }
+        {
+            <tr>
+                <td class="col-md-3">@item.Id</td>
+                <td class="col-md-1">@item.Username</td>
+                <td class="col-md-2">
+                    @{
+                        var user = this.SignInManager.UserManager.Users.FirstOrDefault(x => x.UserName == item.Username);
+                    }
+                    @if (this.SignInManager.UserManager.IsInRoleAsync(user, GlobalConstants.AdministratorRoleName).Result)
+                    {
+                        <span>Admin</span>
+                    }
+                    else if (this.SignInManager.UserManager.IsInRoleAsync(user, GlobalConstants.ModeratorRoleName).Result)
+                    {
+                        <span>Moderator</span>
+                        <a asp-action="DemoteUserFromModerator" asp-controller="Users" asp-route-id="@item.Id" class="btn btn-green">Demote</a>
+                    }
+                    else
+                    {
+                        <span>User</span>
+                        <a asp-action="MakeUserModerator" asp-controller="Users" asp-route-id="@item.Id" class="btn btn-green">Make Moderator</a>
+                    }
+
+                </td>
+                <td>
+                    <a class="btn btn-outline-primary" asp-controller="Users" asp-action="Delete" asp-route-id=@item.Id>Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 
