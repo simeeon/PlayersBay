@@ -1,0 +1,48 @@
+﻿@model IEnumerable<PlayersBay.Services.Data.Models.Users.UserViewModel>
+
+@{
+    ViewData["Title"] = "All Users";
+}
+
+@await this.Html.PartialAsync("_PanelNav")
+
+<h2 class="text-center">Users</h2>
+<table id="all-users" class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Role)
+            </th>
+
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+            {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Username</td>
+            <td>@item.Role</td>
+            <td>
+                <a class="btn btn-outline-primary" asp-controller="Users" asp-action="Promote" asp-route-id=@item.Id>Promote</a>
+                <a class="btn btn-outline-primary" asp-controller="Users" asp-action="Delete" asp-route-id=@item.Id>Delete</a>
+            </td>
+        </tr>
+            }
+    </tbody>
+</table>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#all-users').DataTable();
+        });
+    </script>
+}

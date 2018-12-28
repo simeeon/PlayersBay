@@ -12,7 +12,8 @@
 }
 else
 {
-    <div class="container  col-md-12 mt-5 table-responsive">
+    <h2 class="text-center">Messages</h2>
+    <div class="container  col-md-12 mt-5 table-responsive" style="margin-top: 25px;">
         <table class="table table-bordered" id="all-messages">
             <thead class="thead-dark">
                 <tr>
@@ -31,11 +32,11 @@ else
                     }
                     <tr>
                         <th class="text-center">
-                            @if(m?.IsRead == false)
+                            @if (m?.IsRead == false)
                             {
-                                <span>"!!!"</span>
+                                <span style="color: red">New</span>
                             }
-                        @count
+                            @count
                         </th>
                         <td class="text-center">@m.Sender</td>
                         <td class="text-center">@m.CreatedOn</td>
@@ -57,11 +58,11 @@ else
         </div>
     </div>
 }
-    @section scripts{
-        <script>
+@section scripts{
+    <script>
         $(document).ready(function () {
             $('#all-messages').DataTable();
         });
-        </script>
+    </script>
 
-    }
+}
