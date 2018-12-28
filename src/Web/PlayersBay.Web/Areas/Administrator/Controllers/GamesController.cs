@@ -2,6 +2,7 @@
 {
     using CloudinaryDotNet;
     using Microsoft.AspNetCore.Mvc;
+    using PlayersBay.Common.Extensions.Alerts;
     using PlayersBay.Services.Data;
     using PlayersBay.Services.Data.Contracts;
     using PlayersBay.Services.Data.Models.Games;
@@ -42,7 +43,7 @@
                 .GetAwaiter()
                 .GetResult();
 
-            return this.Redirect("/");
+            return this.Redirect("/").WithSuccess("Success!", "Game created.");
         }
 
         public IActionResult Edit(int id)

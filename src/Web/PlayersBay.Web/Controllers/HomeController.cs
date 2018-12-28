@@ -1,6 +1,7 @@
 ﻿namespace PlayersBay.Web.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
+    using PlayersBay.Common.Extensions.Alerts;
     using PlayersBay.Services.Data;
     using PlayersBay.Services.Data.Contracts;
 

@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using PlayersBay.Common.Extensions.Alerts;
     using PlayersBay.Data.Common.Repositories;
     using PlayersBay.Data.Models;
     using PlayersBay.Services.Data.Contracts;
@@ -50,7 +51,7 @@
                 .GetAwaiter()
                 .GetResult();
 
-            return this.Redirect("/");
+            return this.Redirect("/").WithSuccess("Success", "Message sent.");
         }
 
         [HttpGet]

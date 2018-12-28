@@ -46,6 +46,7 @@
     <partial name="_CookieConsentPartial" />
 
     <div class="container-fluid">
+        @Html.Partial("_StatusMessages")
         @this.RenderBody()
 
         <footer>
@@ -59,6 +60,14 @@
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
+        <script>
+            $(document).ready(function () {
+                setTimeout(function () {
+                    $(".divStatus").fadeOut(2000);
+                }, 2000);
+            });
+        </script>
+
     </environment>
     <environment names="Staging,Production">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.2.1.min.js"

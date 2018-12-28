@@ -60,7 +60,7 @@
             await this.userManager.RemoveFromRoleAsync(user, Common.GlobalConstants.ModeratorRoleName);
             await this.userManager.AddToRoleAsync(user, Common.GlobalConstants.UserRoleName);
 
-            return $"{user.UserName} demoted";
+            return $"{user.UserName} demoted.";
         }
 
         public async Task DeleteAsync(string id)
