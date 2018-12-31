@@ -2,14 +2,21 @@
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
+@{
+    var user = await UserManager.GetUserAsync(User);
+
+}
+
 @if (this.SignInManager.IsSignedIn(this.User))
 {
-    <form asp-area="Identity"  asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
+    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">$@user.Balance</a></li>
             <li><a asp-controller="Offers" asp-action="Create"><i class="fas fa-money-bill"></i> Sell</a></li>
             <li>
                 <a asp-controller="Offers" asp-action="ActiveOffers" asp-route-username="@this.UserManager.GetUserName(this.User)">
-                    &nbsp;<i class="fas fa-cogs"></i>&nbsp; @this.UserManager.GetUserName(this.User)</a>
+                    &nbsp;<i class="fas fa-cogs"></i>&nbsp; @this.UserManager.GetUserName(this.User)
+                </a>
             </li>
             <li>
                 <button type="submit" class="btn btn-link navbar-btn navbar-link">Logout</button>

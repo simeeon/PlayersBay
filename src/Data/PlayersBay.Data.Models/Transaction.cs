@@ -6,17 +6,13 @@
 
     public class Transaction : BaseDeletableModel<int>
     {
-        public decimal Amount { get; set; }
+        public string SellerId { get; set; }
 
-        public DateTime Date { get; set; }
+        public virtual ApplicationUser Seller { get; set; }
 
-        public string SenderId { get; set; }
+        public string BuyerId { get; set; }
 
-        public virtual ApplicationUser Sender { get; set; }
-
-        public string ReceiverId { get; set; }
-
-        public virtual ApplicationUser Receiver { get; set; }
+        public virtual ApplicationUser Buyer { get; set; }
 
         public int OfferId { get; set; }
 

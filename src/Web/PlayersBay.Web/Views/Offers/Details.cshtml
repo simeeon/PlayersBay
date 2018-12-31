@@ -1,53 +1,68 @@
 ﻿@model PlayersBay.Services.Data.Models.Offers.OfferDetailsViewModel
+
+@using PlayersBay.Data.Models
+@inject SignInManager<ApplicationUser> SignInManager
+
 @{
     this.ViewData["Title"] = "Offer details";
+
     var MsgInputModel = new PlayersBay.Services.Data.Models.Messages.MessageInputModel();
     MsgInputModel.ReceiverName = @Model.AuthorUsername;
+
+    var TransacInputModel = new PlayersBay.Services.Data.Models.Transactions.TransactionInputModel();
+    TransacInputModel.SellerName = @Model.AuthorUsername;
+    TransacInputModel.OfferId = @Model.Id;
 }
 
-<div>
-    <a href='javascript:history.go(-1)'>Return</a>
-</div>
-<div class="container col-md-4 col-md-offset-4">
-    <h2 style="font-style: italic;" class="text-center">@ViewData["Game"] offer #@Model.Id</h2>
-    <hr />
-    <h3 class="text-center" style="color: #00b400">@Model.Title</h3>
-    <div class="text-center">
-        @if (!string.IsNullOrEmpty(Model.ImageUrl))
-        {
-            <img style="height: 200px; width: 200px;" src="@Model.ImageUrl" alt="Destination image" />
-        }
-        else
-        {
-            <img style="height: 200px; width: 200px;" src="~/images/noimage.png" alt="Destination image" />
-        }
-    </div>
-    <div>
-        <label asp-for="@Model.AuthorUsername" class="custom-label"></label>
-        : @Model.AuthorUsername
-    </div>
-    <div>
-        <label asp-for="@Model.OfferType" class="custom-label"></label>
-        : @Model.OfferType
-    </div>
-    <div>
+<div class="row" style="margin: 20px;">
+    <div class="col-md-offset-1 col-md-4">
         <div>
-            <label asp-for="OfferEnds" class="custom-label"></label>
-            : @Model.OfferEnds
+            <a href='javascript:history.go(-1)'>Return</a>
+        </div>
+        <h2 style="font-style: italic;" class="text-center">@ViewData["Game"] offer #@Model.Id</h2>
+        <hr />
+        <h3 class="text-center" style="color: #00b400">@Model.Title</h3>
+        <div class="text-center">
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <img style="height: 200px; width: 200px;" src="@Model.ImageUrl" alt="Destination image" />
+            }
+            else
+            {
+                <img style="height: 200px; width: 200px;" src="~/images/noimage.png" alt="Destination image" />
+            }
+        </div>
+        <div>
+            <label asp-for="@Model.AuthorUsername" class="custom-label"></label>
+            : @Model.AuthorUsername
+        </div>
+        <div>
+            <label asp-for="@Model.OfferType" class="custom-label"></label>
+            : @Model.OfferType
+        </div>
+        <div>
+            <div>
+                <label asp-for="OfferEnds" class="custom-label"></label>
+                : @Model.OfferEnds
+            </div>
+        </div>
+        <div>
+            <label asp-for="Price" class="custom-label"></label>
+            : $ @Model.Price
+        </div>
+        <div style="word-wrap: break-word;">
+            <label asp-for="Description" class="custom-label"></label>
+            : @Model.Description
         </div>
     </div>
-    <div>
-        <label asp-for="Price" class="custom-label"></label>
-        : $ @Model.Price
-    </div>
-    <div style="word-wrap: break-word;">
-        <label asp-for="Description" class="custom-label"></label>
-        : @Model.Description
-    </div>
-    @await this.Html.PartialAsync("_SendMessagePartial", MsgInputModel)
+    @if (this.SignInManager.IsSignedIn(this.User))
+    {
+        <div class="col-md-offset-1 col-md-4">
+            @await this.Html.PartialAsync("_SendMessagePartial", MsgInputModel)
+            @await this.Html.PartialAsync("_BuyOfferPartial", TransacInputModel)
+        </div>
+    }
 </div>
-
-
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

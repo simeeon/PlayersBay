@@ -1,32 +1,32 @@
 ﻿@using PlayersBay.Data.Models
 @inject UserManager<ApplicationUser> UserManager
 
-<div class="col-md-offset-1 col-md-4 row" style="margin-bottom: 35px;">
-    <hr />
-    <ul class="nav nav-pills nav-stacked text-center">
-        <li>
-            <a asp-controller="Messages" asp-action="Inbox" asp-route-username="@this.UserManager.GetUserName(this.User)">My Messages</a>
-        </li>
-        <li>
-            <a asp-controller="Offers" asp-action="ActiveOffers" asp-route-username="@this.UserManager.GetUserName(this.User)">My Offers</a>
-        </li>
-        <li>
-            <a href="/Identity/Account/Manage/ChangePassword">Change Password</a>
-        </li>
-    </ul>
-</div>
+<div class="row" style="margin: 20px;">
+    <div class="col-md-offset-1 col-md-4 text-center">
+            <ul class="nav nav-pills nav-stacked text-center">
+                <li>
+                    <a asp-controller="Messages" asp-action="Inbox" asp-route-username="@this.UserManager.GetUserName(this.User)">My Messages</a>
+                </li>
+                <li>
+                    <a asp-controller="Offers" asp-action="ActiveOffers" asp-route-username="@this.UserManager.GetUserName(this.User)">My Offers</a>
+                </li>
+                <li>
+                    <a href="/Identity/Account/Manage/ChangePassword">Change Password</a>
+                </li>
+            </ul>
+    </div>
 
-<div class="col-md-offset-1 col-md-4 row" style="margin-bottom: 35px; margin-right: 250px;">
-    <hr />
-    <ul class="nav nav-pills nav-stacked text-center">
-        <li>
-            <a asp-controller="Messages" asp-action="Inbox" asp-route-username="@this.UserManager.GetUserName(this.User)">My Messages</a>
-        </li>
-        <li>
-            <a asp-controller="Offers" asp-action="ActiveOffers" asp-route-username="@this.UserManager.GetUserName(this.User)">My Offers</a>
-        </li>
-        <li>
-            <a href="/Identity/Account/Manage/ChangePassword">Change Password</a>
-        </li>
-    </ul>
+    <div class="col-md-4 text-center">
+            <ul class="nav nav-pills nav-stacked text-center">
+                <li>
+                    <a asp-controller="Messages" asp-action="Inbox" asp-route-username="@this.UserManager.GetUserName(this.User)">My Messages</a>
+                </li>
+                <li>
+                    <a asp-controller="Offers" asp-action="ActiveOffers" asp-route-username="@this.UserManager.GetUserName(this.User)">My Offers</a>
+                </li>
+                <li>
+                    <a href="/Identity/Account/Manage/ChangePassword">Change Password</a>
+                </li>
+            </ul>
+    </div>
 </div>

@@ -111,7 +111,7 @@
         {
             var offers = await this.offersRepository
                 .All()
-                .Where(o => o.GameId == id)
+                .Where(o => o.GameId == id && o.Status == Status.Active)
                 .To<OfferViewModel>()
                 .ToArrayAsync();
 

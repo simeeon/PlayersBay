@@ -104,6 +104,7 @@
             services.AddScoped<IOffersService, OffersService>();
             services.AddScoped<IMessagesService, MessagesService>();
             services.AddScoped<IUsersService, UsersService>();
+            services.AddScoped<ITransactionsService, TransactionsService>();
 
             // Cloudinary Setup
             var cloudinaryAccount = new Account(

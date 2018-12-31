@@ -1,26 +1,28 @@
 ﻿@using PlayersBay.Data.Models
 @inject UserManager<ApplicationUser> UserManager
 
-<div class="col-md-offset-1 col-md-4 row" style="margin-bottom: 35px;">
-    <hr />
-    <ul class="nav nav-pills nav-stacked text-center">
-        <li>
-            <a asp-area="Administrator" asp-controller="Games" asp-action="Create">Create Game</a>
-        </li>
-        <li>
-            <a asp-area="Administrator" asp-controller="Users" asp-action="All">All Users</a>
-        </li>
-    </ul>
-</div>
+    <div class="row" style="margin: 20px;">
+        <div class="col-md-offset-1 col-md-4 text-center">
+            <hr />
+            <ul class="nav nav-pills nav-stacked text-center">
+                <li>
+                    <a asp-area="Administrator" asp-controller="Games" asp-action="Create">Create Game</a>
+                </li>
+                <li>
+                    <a asp-area="Administrator" asp-controller="Users" asp-action="All">All Users</a>
+                </li>
+            </ul>
+        </div>
 
-<div class="col-md-offset-1 col-md-4 row" style="margin-bottom: 35px; margin-right: 250px;">
-    <hr />
-    <ul class="nav nav-pills nav-stacked text-center">
-        <li>
-            <a asp-area="Administrator" asp-controller="Games" asp-action="Create">Create Game</a>
-        </li>
-        <li>
-            <a asp-area="Administrator" asp-controller="Games" asp-action="Create">Create Game</a>
-        </li>
-    </ul>
-</div>
+        <div class="col-md-4 text-center">
+            <hr />
+            <ul class="nav nav-pills nav-stacked text-center">
+                <li>
+                    <a asp-area="Administrator" asp-controller="Games" asp-action="Create">Create Game</a>
+                </li>
+                <li>
+                    <a asp-area="Administrator" asp-controller="Games" asp-action="Create">Create Game</a>
+                </li>
+            </ul>
+        </div>
+    </div>
