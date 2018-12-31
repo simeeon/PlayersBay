@@ -47,5 +47,28 @@
 
             return this.Redirect("/").WithSuccess("Success!", $"Offer #{transactionId} purchased.");
         }
+
+        [Authorize]
+        public IActionResult TopUp()
+        {
+            return this.View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult TopUp(TopUpInputModel inputModel)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(inputModel);
+            }
+
+            this.transactionsService
+                .TopUpAsync(inputModel)
+                .GetAwaiter()
+                .GetResult();
+
+            return this.Redirect("/").WithSuccess("Success!", $"Debited {inputModel.Amount}!");
+        }
     }
 }

@@ -8,7 +8,7 @@
                     <a asp-controller="Messages" asp-action="Inbox" asp-route-username="@this.UserManager.GetUserName(this.User)">My Messages</a>
                 </li>
                 <li>
-                    <a asp-controller="Offers" asp-action="ActiveOffers" asp-route-username="@this.UserManager.GetUserName(this.User)">My Offers</a>
+                    <a asp-controller="Transactions" asp-action="TopUp">Add funds</a>
                 </li>
                 <li>
                     <a href="/Identity/Account/Manage/ChangePassword">Change Password</a>
@@ -17,16 +17,16 @@
     </div>
 
     <div class="col-md-4 text-center">
-            <ul class="nav nav-pills nav-stacked text-center">
-                <li>
-                    <a asp-controller="Messages" asp-action="Inbox" asp-route-username="@this.UserManager.GetUserName(this.User)">My Messages</a>
-                </li>
-                <li>
-                    <a asp-controller="Offers" asp-action="ActiveOffers" asp-route-username="@this.UserManager.GetUserName(this.User)">My Offers</a>
-                </li>
-                <li>
-                    <a href="/Identity/Account/Manage/ChangePassword">Change Password</a>
-                </li>
-            </ul>
+        <ul class="nav nav-pills nav-stacked text-center">
+            <li>
+                <a asp-controller="Offers" asp-action="ActiveOffers" asp-route-username="@this.UserManager.GetUserName(this.User)">Offers (active)</a>
+            </li>
+            <li>
+                <a asp-controller="Offers" asp-action="SoldOffers" asp-route-username="@this.UserManager.GetUserName(this.User)">Offers (sold)</a>
+            </li>
+            <li>
+                <a asp-controller="Offers" asp-action="BoughtOffers" asp-route-username="@this.UserManager.GetUserName(this.User)">Offers (bought)</a>
+            </li>
+        </ul>
     </div>
 </div>

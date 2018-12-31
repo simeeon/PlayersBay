@@ -7,5 +7,7 @@
     public interface ITransactionsService
     {
         Task<int> CreateAsync(TransactionInputModel inputModel);
+
+        Task TopUpAsync(TopUpInputModel inputModel);
     }
 }

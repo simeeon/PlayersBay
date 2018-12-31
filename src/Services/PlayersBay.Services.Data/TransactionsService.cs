@@ -67,5 +67,14 @@
 
             return 0;
         }
+
+        public async Task TopUpAsync(TopUpInputModel inputModel)
+        {
+            var user = this.usersManager.FindByNameAsync(inputModel.Username).GetAwaiter().GetResult();
+
+            user.Balance += inputModel.Amount;
+            this.usersRepository.Update(user);
+            await this.usersRepository.SaveChangesAsync();
+        }
     }
 }

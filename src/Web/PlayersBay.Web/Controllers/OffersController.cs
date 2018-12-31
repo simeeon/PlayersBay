@@ -34,14 +34,14 @@
             return this.View();
         }
 
-        [Authorize(Roles = GlobalConstants.AdministratorRoleName + "," + GlobalConstants.UserRoleName)]
+        [Authorize]
         public IActionResult Create()
         {
             this.ViewData["Games"] = this.SelectAllGames();
             return this.View();
         }
 
-        [Authorize(Roles = GlobalConstants.AdministratorRoleName + "," + GlobalConstants.UserRoleName)]
+        [Authorize]
         [HttpPost]
         public IActionResult Create(OfferCreateInputModel createInputModel)
         {
@@ -90,9 +90,30 @@
             return this.View(offers);
         }
 
+        [Authorize]
         public IActionResult ActiveOffers(string username)
         {
             var offers = this.offersService.GetMyActiveOffersAsync(username)
+                .GetAwaiter()
+                .GetResult();
+
+            return this.View(offers);
+        }
+
+        [Authorize]
+        public IActionResult SoldOffers(string username)
+        {
+            var offers = this.offersService.GetMyActiveOffersAsync(username)
+                .GetAwaiter()
+                .GetResult();
+
+            return this.View(offers);
+        }
+
+        [Authorize]
+        public IActionResult BoughtOffers(string username)
+        {
+            var offers = this.offersService.GetMyBoughtOffersAsync(username)
                 .GetAwaiter()
                 .GetResult();
 
@@ -138,6 +159,7 @@
             return this.RedirectToAction("Details", "Offers", new { id });
         }
 
+        [Authorize]
         public IActionResult Delete(int id)
         {
             var offerToDelete = this.offersService.GetViewModelAsync<OfferToEditViewModel>(id)
@@ -153,6 +175,7 @@
             return this.View(offerToDelete);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Delete(OfferToEditViewModel offerToEditViewModel)
         {

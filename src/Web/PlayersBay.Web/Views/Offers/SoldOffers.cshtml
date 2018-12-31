@@ -1,0 +1,55 @@
+﻿@model IEnumerable<PlayersBay.Services.Data.Models.Offers.OfferViewModel>
+
+@{
+    ViewData["Title"] = "Sold Offers";
+}
+
+@await this.Html.PartialAsync("_NavProfile")
+
+@if (!Model.Any())
+{
+<h2 class="text-center" style="color: #ffa709">You have not sold any offers.</h2>
+}
+else
+{
+<div>
+    <h2 class="text-center">Sold Offers</h2>
+</div>
+<table id="my-offers" class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OfferType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShrotTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                Feedback
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+            {
+        <tr>
+            <td>@item.OfferType.ToString()</td>
+            <td>@item.ShrotTitle</td>
+            <td>$ @item.Price</td>
+            <td>Add feedbackView</td>
+        </tr>
+            }
+    </tbody>
+</table>
+}
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#my-offers').DataTable();
+        });
+    </script>
+}
