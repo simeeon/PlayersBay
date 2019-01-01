@@ -1,17 +1,13 @@
 ﻿namespace PlayersBay.Services.Data
 {
-    using System;
-    using System.Linq;
-    using System.Threading;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Identity;
-    using Microsoft.EntityFrameworkCore;
     using PlayersBay.Data.Common.Repositories;
     using PlayersBay.Data.Models;
     using PlayersBay.Services.Data.Contracts;
+    using PlayersBay.Services.Data.Models.Messages;
     using PlayersBay.Services.Data.Models.Transactions;
-    using PlayersBay.Services.Mapping;
 
     public class TransactionsService : ITransactionsService
     {
@@ -20,19 +16,25 @@
         private readonly IRepository<Offer> offersRepository;
         private readonly UserManager<ApplicationUser> usersManager;
         private readonly IOffersService offersService;
+        private readonly IMessagesService messagesService;
+        private readonly IRepository<Message> messagesRepository;
 
         public TransactionsService(
             IRepository<ApplicationUser> usersRepository,
             UserManager<ApplicationUser> usersManager,
             IOffersService offersService,
             IRepository<Offer> offersRepository,
-            IRepository<Transaction> transactionsRepository)
+            IRepository<Transaction> transactionsRepository,
+            IRepository<Message> messagesRepository,
+            IMessagesService messagesService)
         {
             this.usersRepository = usersRepository;
             this.usersManager = usersManager;
             this.offersService = offersService;
             this.offersRepository = offersRepository;
             this.transactionsRepository = transactionsRepository;
+            this.messagesRepository = messagesRepository;
+            this.messagesService = messagesService;
         }
 
         public async Task<int> CreateAsync(TransactionInputModel inputModel)
@@ -57,6 +59,14 @@
                     SellerId = seller.Id,
                     Offer = offer,
                 };
+
+                await this.messagesService.CreateAsync(new MessageInputModel
+                {
+                    Message = offer.MessageToBuyer,
+                    ReceiverName = buyer.UserName,
+                    SenderName = seller.UserName,
+                });
+
                 this.transactionsRepository.Add(transaction);
                 await this.offersRepository.SaveChangesAsync();
                 await this.usersRepository.SaveChangesAsync();

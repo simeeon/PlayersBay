@@ -6,12 +6,12 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
-    using PlayersBay.Common;
+    using PlayersBay.Common.Extensions.Alerts;
     using PlayersBay.Data.Common.Repositories;
     using PlayersBay.Data.Models;
-    using PlayersBay.Services.Data;
     using PlayersBay.Services.Data.Contracts;
     using PlayersBay.Services.Data.Models.Offers;
+    using PlayersBay.Web.ViewModels.Feedbacks;
     using PlayersBay.Web.ViewModels.Offers;
 
     public class OffersController : BaseController
@@ -19,14 +19,21 @@
         private readonly IOffersService offersService;
         private readonly IGamesService gamesService;
         private readonly IRepository<Offer> offerRepository;
+        private readonly IRepository<Feedback> feedbackRepository;
         private readonly IRepository<Game> gameRepository;
 
-        public OffersController(IOffersService offersService, IGamesService gamesService, IRepository<Offer> offerRepository, IRepository<Game> gameRepository)
+        public OffersController(
+            IOffersService offersService,
+            IGamesService gamesService,
+            IRepository<Offer> offerRepository,
+            IRepository<Game> gameRepository,
+            IRepository<Feedback> feedbackRepository)
         {
             this.offersService = offersService;
             this.gamesService = gamesService;
             this.offerRepository = offerRepository;
             this.gameRepository = gameRepository;
+            this.feedbackRepository = feedbackRepository;
         }
 
         public IActionResult Index()
@@ -103,7 +110,14 @@
         [Authorize]
         public IActionResult SoldOffers(string username)
         {
-            var offers = this.offersService.GetMyActiveOffersAsync(username)
+            this.ViewData["Feedbacks"] = this.feedbackRepository.All().Select(x => new FeedbacksViewModel
+            {
+                OfferId = x.OfferId,
+                Content = x.Content,
+                FeedbackRating = x.FeedbackRating,
+            }).ToArray();
+
+            var offers = this.offersService.GetMySoldOffersAsync(username)
                 .GetAwaiter()
                 .GetResult();
 
@@ -113,6 +127,13 @@
         [Authorize]
         public IActionResult BoughtOffers(string username)
         {
+            this.ViewData["Feedbacks"] = this.feedbackRepository.All().Select(x => new FeedbacksViewModel
+            {
+                  OfferId = x.OfferId,
+                  Content = x.Content,
+                  FeedbackRating = x.FeedbackRating,
+            }).ToArray();
+
             var offers = this.offersService.GetMyBoughtOffersAsync(username)
                 .GetAwaiter()
                 .GetResult();
@@ -125,6 +146,7 @@
             var offerToEdit = this.offersService.GetViewModelAsync<OfferToEditViewModel>(id)
                 .GetAwaiter()
                 .GetResult();
+
             if (offerToEdit == null)
             {
                 return this.Redirect("/");
@@ -156,7 +178,7 @@
                 .GetAwaiter()
                 .GetResult();
 
-            return this.RedirectToAction("Details", "Offers", new { id });
+            return this.RedirectToAction("Details", "Offers", new { id }).WithInfo("Success!", $"Offer #{id} edited");
         }
 
         [Authorize]

@@ -1,49 +1,60 @@
-﻿@model IEnumerable<PlayersBay.Services.Data.Models.Offers.OfferViewModel>
+﻿@using PlayersBay.Web.ViewModels.Feedbacks;
+@model IEnumerable<PlayersBay.Services.Data.Models.Offers.OfferViewModel>
 
 @{
     ViewData["Title"] = "Sold Offers";
+    var feedbacks = ViewData["Feedbacks"] as IEnumerable<FeedbacksViewModel>;
 }
 
 @await this.Html.PartialAsync("_NavProfile")
 
 @if (!Model.Any())
 {
-<h2 class="text-center" style="color: #ffa709">You have not sold any offers.</h2>
+    <h2 class="text-center" style="color: #ffa709">You have not sold any offers.</h2>
 }
 else
 {
-<div>
-    <h2 class="text-center">Sold Offers</h2>
-</div>
-<table id="my-offers" class="table table-hover">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.OfferType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ShrotTitle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                Feedback
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
+    <div>
+        <h2 class="text-center">Sold Offers</h2>
+    </div>
+    <table id="my-offers" class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.OfferType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ShrotTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    Feedback
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
             {
-        <tr>
-            <td>@item.OfferType.ToString()</td>
-            <td>@item.ShrotTitle</td>
-            <td>$ @item.Price</td>
-            <td>Add feedbackView</td>
-        </tr>
+                var feedback = feedbacks.FirstOrDefault(f => f.OfferId == item.Id);
+                <tr>
+                    <td>@item.OfferType.ToString()</td>
+                    <td>@item.ShrotTitle</td>
+                    <td>$ @item.Price</td>
+                    @if (feedback != null)
+                    {
+                        <td>@feedback.FeedbackRating : @feedback.Content</td>
+
+                    }
+                    else
+                    {
+                        <td>No feedback</td>
+                    }
+                </tr>
             }
-    </tbody>
-</table>
+        </tbody>
+    </table>
 }
 
 @section scripts{

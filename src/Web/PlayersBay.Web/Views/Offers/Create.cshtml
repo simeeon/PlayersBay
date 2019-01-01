@@ -4,59 +4,62 @@
     var games = this.ViewData["Games"] as IEnumerable<SelectListItem>;
 }
 
-<div class="row justify-content-center">
-    <form enctype="multipart/form-data" asp-controller="Offers" asp-action="Create" method="post" class="col-md-4 col-md-offset-4">
-        <h2>Create new offer</h2>
-        <hr />
-        <div class="form-group">
-            <label asp-for="@Model.OfferType" class="custom-label"></label>
-            <select class="form-control" asp-for="OfferType"
-                    asp-items="@(Html.GetEnumSelectList<OfferType>())">
-                <option selected="" disabled="">--Select offer type--</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label asp-for="GameId" class="custom-label"></label>
-            <select asp-for="GameId" asp-items="games" class="form-control">
-                <option selected="" disabled="">--Select game--</option>
-            </select>
-            <span asp-validation-for="GameId" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <div>
-                <label asp-for="Duration" class="control-label custom-label"></label>
+<div class="row">
+    <form enctype="multipart/form-data" asp-controller="Offers" asp-action="Create" method="post">
+        <div class="col-md-offset-1 col-md-4">
+            <h2>Create new offer</h2>
+            <hr />
+            <div class="form-group">
+                <label asp-for="@Model.OfferType" class="custom-label"></label>
+                <select class="form-control" asp-for="OfferType"
+                        asp-items="@(Html.GetEnumSelectList<OfferType>())">
+                    <option selected="" disabled="">--Select offer type--</option>
+                </select>
             </div>
-            <input asp-for="Duration" type="radio" value="7" /> 7 Days
-            <input asp-for="Duration" type="radio" value="15" /> 15 Days
-            <input asp-for="Duration" type="radio" value="30" /> 30 Days
+            <div class="form-group">
+                <label asp-for="GameId" class="custom-label"></label>
+                <select asp-for="GameId" asp-items="games" class="form-control">
+                    <option selected="" disabled="">--Select game--</option>
+                </select>
+                <span asp-validation-for="GameId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div>
+                    <label asp-for="Duration" class="control-label custom-label"></label>
+                </div>
+                <input asp-for="Duration" type="radio" value="7" /> 7 Days
+                <input asp-for="Duration" type="radio" value="15" /> 15 Days
+                <input asp-for="Duration" type="radio" value="30" /> 30 Days
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label custom-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label custom-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
         </div>
-        <div class="form-group">
-            <label asp-for="Price" class="control-label custom-label"></label>
-            <input asp-for="Price" class="form-control" />
-            <span asp-validation-for="Price" class="text-danger"></span>
+        <div class="col-md-offset-1 col-md-4">
+            <div class="form-group">
+                <label asp-for="Description" class="control-label custom-label"></label>
+                <textarea rows="10" cols="20" asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.ImageUrl" class="custom-label"></label>
+                <input type="file" asp-for="@Model.ImageUrl" name="ImageUrl" />
+                <span asp-validation-for="@Model.ImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MessageToBuyer" class="control-label custom-label"></label>
+                <textarea asp-for="MessageToBuyer" class="form-control"></textarea>
+                <span asp-validation-for="MessageToBuyer" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg">Create offer</button>
         </div>
-        <div class="form-group">
-            <label asp-for="Title" class="control-label custom-label"></label>
-            <input asp-for="Title" class="form-control" />
-            <span asp-validation-for="Title" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Description" class="control-label custom-label"></label>
-            <textarea rows="10" cols="20" asp-for="Description" class="form-control"></textarea>
-            <span asp-validation-for="Description" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="@Model.ImageUrl" class="custom-label"></label>
-            <input type="file" asp-for="@Model.ImageUrl" name="ImageUrl" />
-            <span asp-validation-for="@Model.ImageUrl" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="MessageToBuyer" class="control-label custom-label"></label>
-            <textarea asp-for="MessageToBuyer" class="form-control"></textarea>
-            <span asp-validation-for="MessageToBuyer" class="text-danger"></span>
-        </div>
-
-        <button type="submit" class="btn btn-primary btn-lg">Create offer</button>
     </form>
 </div>
 
