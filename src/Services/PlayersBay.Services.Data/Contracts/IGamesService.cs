@@ -4,8 +4,16 @@
 
     using PlayersBay.Services.Data.Models.Games;
 
-    public interface IGamesService : ICrudable
+    public interface IGamesService
     {
+        Task<int> CreateAsync(params object[] parameters);
+
+        Task DeleteAsync(int id);
+
+        Task EditAsync(GameToEditViewModel editViewModel);
+
         Task<GameViewModel[]> GetAllGamesAsync();
+
+        Task<TViewModel> GetViewModelAsync<TViewModel>(int id);
     }
 }

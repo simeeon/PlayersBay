@@ -48,6 +48,8 @@
 
         public IActionResult Edit(int id)
         {
+            this.ViewData["id"] = id;
+
             var gameToEdit = this.gamesService.GetViewModelAsync<GameToEditViewModel>(id)
                 .GetAwaiter()
                 .GetResult();
@@ -77,10 +79,7 @@
             }
 
             var id = gameToEditViewModel.Id;
-            this.gamesService.EditAsync(
-                id,
-                gameToEditViewModel.Name,
-                gameToEditViewModel.NewImage)
+            this.gamesService.EditAsync(gameToEditViewModel)
                 .GetAwaiter()
                 .GetResult();
 

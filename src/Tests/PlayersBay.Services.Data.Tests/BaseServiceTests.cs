@@ -13,12 +13,15 @@
     using PlayersBay.Services.Data.Contracts;
     using PlayersBay.Services.Data;
     using PlayersBay.Services.Mapping;
-    using PlayersBay.Services.Data.Models.Games;
     using System.Reflection;
     using PlayersBay.Web.ViewModels.Account;
 
     public abstract class BaseServiceTests : IDisposable
     {
+        private const string CloudinaryCloudName = "YourCloudinaryName";
+        private const string CloudinaryApiKey = "YourCloudinaryApiKey";
+        private const string CloudinaryApiSecret = "YourCloudinaryApiSecret";
+
         protected BaseServiceTests()
         {
             var services = this.SetServices();
@@ -74,9 +77,9 @@
 
             // Cloudinary Setup
             var cloudinaryAccount = new Account(
-                "playersbay",
-                "786522667459557",
-                "4dbF6YcUWfHcADOxztDfAyzxxDI");
+                CloudinaryCloudName,
+                CloudinaryApiKey,
+                CloudinaryApiSecret);
             var cloudinary = new Cloudinary(cloudinaryAccount);
 
             services.AddSingleton(cloudinary);

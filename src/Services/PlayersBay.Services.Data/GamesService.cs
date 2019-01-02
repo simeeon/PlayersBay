@@ -63,20 +63,17 @@
             await this.gamesRepository.SaveChangesAsync();
         }
 
-        public async Task EditAsync(int id, params object[] parameters)
+        public async Task EditAsync(GameToEditViewModel editViewModel)
         {
-            var name = parameters[0].ToString();
-            var newImage = parameters[1] as IFormFile;
+            var game = await this.gamesRepository.All().FirstOrDefaultAsync(a => a.Id == editViewModel.Id);
 
-            var game = await this.gamesRepository.All().FirstOrDefaultAsync(a => a.Id == id);
-
-            if (newImage != null)
+            if (editViewModel.NewImage != null)
             {
-                var newImageUrl = await ApplicationCloudinary.UploadImage(this.cloudinary, newImage, name);
+                var newImageUrl = await ApplicationCloudinary.UploadImage(this.cloudinary, editViewModel.NewImage, editViewModel.Name);
                 game.ImageUrl = newImageUrl;
             }
 
-            game.Name = name;
+            game.Name = editViewModel.Name;
 
             this.gamesRepository.Update(game);
             await this.gamesRepository.SaveChangesAsync();

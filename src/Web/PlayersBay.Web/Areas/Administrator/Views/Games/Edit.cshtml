@@ -5,9 +5,10 @@
 @await this.Html.PartialAsync("_PanelNav")
 
 <div class="row justify-content-center">
-    <form enctype="multipart/form-data" asp-area="Administrator" asp-controller="Activities" asp-action="Edit" method="post" class="col-md-7 col-md-offset-1">
+    <form enctype="multipart/form-data" asp-area="Administrator" asp-controller="Activities" asp-action="Edit" method="post" class="col-md-4 col-md-offset-4">
         <h2>Edit game</h2>
         <hr />
+        <input type="text" hidden="hidden" value="@this.ViewData["id"]" name="Id" />
         <div class="form-group">
             <label asp-for="@Model.Name"></label>
             <input asp-for="@Model.Name" class="form-control" />
