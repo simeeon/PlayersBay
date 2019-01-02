@@ -10,6 +10,7 @@
     using PlayersBay.Data.Models;
     using PlayersBay.Services.Data;
     using PlayersBay.Services.Data.Contracts;
+    using PlayersBay.Services.Data.Models.Offers;
 
     public static class ApplicationDbContextSeeder
     {
@@ -154,8 +155,20 @@
             {
                 for (int i = 0; i < 15; i++)
                 {
-                    var price = 14.90 + i;
-                    offerService.CreateAsync("admin", "1", $"Nice Item {i}. Buy it now!", "7", null, "Hello buyer", "Item", price.ToString(), $"My auto-generated title {i}")
+                    var offer = new OfferCreateInputModel
+                    {
+                        Author = "admin",
+                        GameId = 1,
+                        Description = $"Nice Item {i}. Buy it now!",
+                        Duration = 7,
+                        ImageUrl = null,
+                        MessageToBuyer = "Hello buyer",
+                        OfferType = Models.Enums.OfferType.Items,
+                        Price = 14.90m + i,
+                        Title = $"My title {i}",
+                    };
+
+                    offerService.CreateAsync(offer)
                         .GetAwaiter()
                         .GetResult();
                 }

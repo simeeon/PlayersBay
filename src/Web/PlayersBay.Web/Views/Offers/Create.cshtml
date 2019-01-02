@@ -1,4 +1,4 @@
-﻿@model PlayersBay.Web.ViewModels.Offers.OfferCreateInputModel
+﻿@model PlayersBay.Services.Data.Models.Offers.OfferCreateInputModel
 @{
     this.ViewData["Title"] = "Create Offer";
     var games = this.ViewData["Games"] as IEnumerable<SelectListItem>;
@@ -9,6 +9,7 @@
         <div class="col-md-offset-1 col-md-4">
             <h2>Create new offer</h2>
             <hr />
+            <input type="text" hidden="hidden" value="@this.User.Identity.Name" name="Author" />
             <div class="form-group">
                 <label asp-for="@Model.OfferType" class="custom-label"></label>
                 <select class="form-control" asp-for="OfferType"

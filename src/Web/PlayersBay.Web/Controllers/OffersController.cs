@@ -4,6 +4,7 @@
     using System.Linq;
 
     using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using PlayersBay.Common.Extensions.Alerts;
@@ -12,7 +13,6 @@
     using PlayersBay.Services.Data.Contracts;
     using PlayersBay.Services.Data.Models.Offers;
     using PlayersBay.Web.ViewModels.Feedbacks;
-    using PlayersBay.Web.ViewModels.Offers;
 
     public class OffersController : BaseController
     {
@@ -57,18 +57,7 @@
                 return this.View(createInputModel);
             }
 
-            var username = this.User.Identity.Name;
-
-            var offerId = this.offersService.CreateAsync(
-                username,
-                createInputModel.GameId,
-                createInputModel.Description,
-                createInputModel.Duration,
-                createInputModel.ImageUrl,
-                createInputModel.MessageToBuyer,
-                createInputModel.OfferType,
-                createInputModel.Price,
-                createInputModel.Title)
+            var offerId = this.offersService.CreateAsync(createInputModel)
                 .GetAwaiter()
                 .GetResult();
 

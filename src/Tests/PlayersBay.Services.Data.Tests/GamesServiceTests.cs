@@ -4,10 +4,13 @@ using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.Extensions.DependencyInjection;
 using PlayersBay.Data.Models;
 using PlayersBay.Services.Data.Contracts;
+using PlayersBay.Services.Data.Models.Feedbacks;
 using PlayersBay.Services.Data.Models.Games;
 using PlayersBay.Services.Data.Utilities;
+using PlayersBay.Services.Mapping;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -21,6 +24,13 @@ namespace PlayersBay.Services.Data.Tests
         private const string Minecraft = "Minecraft";
         private const string DefaultImage = "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png";
         private const string NewImage = "newImage.png";
+
+        public GamesServiceTests()
+        {
+            // AutoMapper
+            AutoMapper.Mapper.Reset();
+            AutoMapperConfig.RegisterMappings(typeof(FeedbackInputModel).GetTypeInfo().Assembly);
+        }
 
         private IGamesService GamesServiceMock => this.ServiceProvider.GetRequiredService<IGamesService>();
 
@@ -72,7 +82,7 @@ namespace PlayersBay.Services.Data.Tests
             };
 
             var actual = await this.GamesServiceMock.CreateAsync(Diablo, DefaultImage);
-            
+
             Assert.Equal(actual, expected[0].Id);
         }
 
@@ -163,16 +173,6 @@ namespace PlayersBay.Services.Data.Tests
             Assert.NotEqual(NewImage, this.DbContext.Games.Find(TestGameId).ImageUrl);
         }
 
-        private async Task AddTestingGameToDb()
-        {
-            this.DbContext.Games.Add(new Game
-            {
-                Id = TestGameId,
-                Name = Diablo,
-            });
-            await this.DbContext.SaveChangesAsync();
-        }
-
         [Fact]
         public async Task GetViewModelByIdAsyncReturnsCorrectViewModel()
         {
@@ -189,6 +189,16 @@ namespace PlayersBay.Services.Data.Tests
                     Assert.Equal(expected.First().Id, actual.Id);
                     Assert.Equal(expected.First().Name, actual.Name);
                 });
+        }
+
+        private async Task AddTestingGameToDb()
+        {
+            this.DbContext.Games.Add(new Game
+            {
+                Id = TestGameId,
+                Name = Diablo,
+            });
+            await this.DbContext.SaveChangesAsync();
         }
     }
 }

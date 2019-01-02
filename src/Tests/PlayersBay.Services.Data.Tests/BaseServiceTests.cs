@@ -48,7 +48,7 @@
                         options.Password.RequireLowercase = false;
                         options.Password.RequireUppercase = false;
                         options.Password.RequireNonAlphanumeric = false;
-                        options.Password.RequiredLength = 6;
+                        options.Password.RequiredLength = 3;
                     })
                     .AddEntityFrameworkStores<ApplicationDbContext>()
                     .AddUserStore<ApplicationUserStore>()
@@ -71,9 +71,9 @@
             services.AddTransient<IUserStore<ApplicationUser>, ApplicationUserStore>();
             services.AddTransient<IRoleStore<ApplicationRole>, ApplicationRoleStore>();
 
-            // AutoMapper
-            AutoMapper.Mapper.Reset();
-            AutoMapperConfig.RegisterMappings(typeof(LoginViewModel).GetTypeInfo().Assembly);
+            // AutoMapper ????
+            // AutoMapper.Mapper.Reset();
+            // AutoMapperConfig.RegisterMappings(typeof(FeedbackInputModel).GetTypeInfo().Assembly);
 
             // Cloudinary Setup
             var cloudinaryAccount = new Account(
@@ -83,7 +83,7 @@
             var cloudinary = new Cloudinary(cloudinaryAccount);
 
             services.AddSingleton(cloudinary);
-
+           
             var context = new DefaultHttpContext();
             services.AddSingleton<IHttpContextAccessor>(new HttpContextAccessor { HttpContext = context });
 

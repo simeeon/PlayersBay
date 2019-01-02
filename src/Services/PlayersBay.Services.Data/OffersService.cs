@@ -6,6 +6,7 @@
 
     using CloudinaryDotNet;
     using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using PlayersBay.Data.Common.Repositories;
     using PlayersBay.Data.Models;
@@ -21,53 +22,43 @@
         private readonly IRepository<Transaction> transactionRepository;
         private readonly Cloudinary cloudinary;
         private readonly IRepository<ApplicationUser> usersRepository;
+        private readonly UserManager<ApplicationUser> usersManager;
 
         public OffersService(
             IRepository<Offer> offersRepository,
             Cloudinary cloudinary,
             IRepository<ApplicationUser> usersRepository,
-            IRepository<Transaction> transactionRepository)
+            IRepository<Transaction> transactionRepository,
+            UserManager<ApplicationUser> usersManager)
         {
             this.offersRepository = offersRepository;
             this.cloudinary = cloudinary;
             this.usersRepository = usersRepository;
             this.transactionRepository = transactionRepository;
+            this.usersManager = usersManager;
         }
 
-        public async Task<int> CreateAsync(string username, params object[] parameters)
+        public async Task<int> CreateAsync(OfferCreateInputModel inputModel)
         {
-            var user = await this.usersRepository.All().FirstOrDefaultAsync(u => u.UserName == username);
+            var seller = this.usersManager.FindByNameAsync(inputModel.Author).GetAwaiter().GetResult();
 
-            var gameId = int.Parse(parameters[0].ToString());
-            var description = parameters[1].ToString();
-            var duration = double.Parse(parameters[2].ToString());
-
-            var image = new object();
             var imageUrl = string.Empty;
-
-            if (parameters[3] != null)
+            if (inputModel.ImageUrl != null)
             {
-                image = parameters[3] as IFormFile;
-                imageUrl = await ApplicationCloudinary.UploadImage(this.cloudinary, (IFormFile)image, parameters[1].ToString());
+                imageUrl = await ApplicationCloudinary.UploadImage(this.cloudinary, inputModel.ImageUrl, inputModel.Title);
             }
-
-            var messageToBuyer = parameters[4].ToString();
-            var offerType = parameters[5].ToString();
-            Enum.TryParse(offerType, true, out OfferType typeEnum);
-            var price = decimal.Parse(parameters[6].ToString());
-            var title = parameters[7].ToString();
 
             var offer = new Offer
             {
-                GameId = gameId,
-                Author = user,
-                Description = description,
-                ExpiryDate = DateTime.UtcNow.AddDays(duration),
+                GameId = inputModel.GameId,
+                Author = seller,
+                Description = inputModel.Description,
+                ExpiryDate = DateTime.UtcNow.AddDays(inputModel.Duration),
                 ImageUrl = imageUrl,
-                MessageToBuyer = messageToBuyer,
-                OfferType = typeEnum,
-                Price = price,
-                Title = title,
+                MessageToBuyer = inputModel.MessageToBuyer,
+                OfferType = inputModel.OfferType,
+                Price = inputModel.Price,
+                Title = inputModel.Title,
                 Status = Status.Active,
             };
 

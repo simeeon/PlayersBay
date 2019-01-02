@@ -1,15 +1,20 @@
-﻿namespace PlayersBay.Web.ViewModels.Offers
+﻿namespace PlayersBay.Services.Data.Models.Offers
 {
     using System.ComponentModel.DataAnnotations;
 
     using Microsoft.AspNetCore.Http;
+    using PlayersBay.Data.Models;
     using PlayersBay.Data.Models.Enums;
+    using PlayersBay.Services.Mapping;
 
     public class OfferCreateInputModel
     {
         [Required]
         [Display(Name = "Game")]
         public int GameId { get; set; }
+
+        [Required]
+        public string Author { get; set; }
 
         [Required]
         [Display(Name = "Offer Type")]
@@ -19,23 +24,23 @@
         public IFormFile ImageUrl { get; set; }
 
         [Required]
-        public string Duration { get; set; }
+        public int Duration { get; set; }
 
         [Required]
         [DataType(DataType.Currency)]
-        [Range(1, 50000)]
+        [Range(Constants.Offer.MinPrice, Constants.Offer.MaxPrice)]
         public decimal Price { get; set; }
 
         public string Title { get; set; }
 
         [Required]
         [DataType(DataType.MultilineText)]
-        [StringLength(500, MinimumLength = 5, ErrorMessage = "Content must be between 5 and 500 symbols")]
+        [StringLength(Constants.Offer.DescriptionMaxLength, MinimumLength = Constants.Offer.DescriptionMinLength, ErrorMessage = Constants.Offer.DescriptionLengthError)]
         public string Description { get; set; }
 
-        [Display(Name = "Message To Buyer")]
+        [Display(Name = "Message to Buyer")]
         [DataType(DataType.MultilineText)]
-        [StringLength(500, MinimumLength = 5, ErrorMessage = "Content must be between 5 and 500 symbols")]
+        [StringLength(Constants.Offer.MessageToBuyerMaxLength, MinimumLength = Constants.Offer.MessageToBuyerMinLength, ErrorMessage = Constants.Offer.MessageToBuyerLengthError)]
         public string MessageToBuyer { get; set; }
     }
 }
