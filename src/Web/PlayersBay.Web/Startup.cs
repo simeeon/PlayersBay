@@ -109,9 +109,9 @@
 
             // Cloudinary Setup
             var cloudinaryAccount = new Account(
-                CloudinaryAccess.Name,
-                CloudinaryAccess.ApiKey,
-                CloudinaryAccess.ApiSecret);
+                this.configuration["Cloudinary:CloudName"],
+                this.configuration["Cloudinary:ApiKey"],
+                this.configuration["Cloudinary:ApiSecret"]);
             var cloudinary = new Cloudinary(cloudinaryAccount);
 
             services.AddSingleton(cloudinary);
