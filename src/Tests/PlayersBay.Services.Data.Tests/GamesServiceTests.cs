@@ -4,13 +4,10 @@ using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.Extensions.DependencyInjection;
 using PlayersBay.Data.Models;
 using PlayersBay.Services.Data.Contracts;
-using PlayersBay.Services.Data.Models.Feedbacks;
 using PlayersBay.Services.Data.Models.Games;
 using PlayersBay.Services.Data.Utilities;
-using PlayersBay.Services.Mapping;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -24,13 +21,6 @@ namespace PlayersBay.Services.Data.Tests
         private const string Minecraft = "Minecraft";
         private const string DefaultImage = "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png";
         private const string NewImage = "newImage.png";
-
-        public GamesServiceTests()
-        {
-            // AutoMapper
-            AutoMapper.Mapper.Reset();
-            AutoMapperConfig.RegisterMappings(typeof(FeedbackInputModel).GetTypeInfo().Assembly);
-        }
 
         private IGamesService GamesServiceMock => this.ServiceProvider.GetRequiredService<IGamesService>();
 

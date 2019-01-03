@@ -30,8 +30,8 @@
 
         public async Task CreateAsync(MessageInputModel inputModel)
         {
-            var sender = this.usersManager.FindByNameAsync(inputModel.SenderName).GetAwaiter().GetResult();
-            var receiver = this.usersManager.FindByNameAsync(inputModel.ReceiverName).GetAwaiter().GetResult();
+            var sender = await this.usersRepository.All().FirstOrDefaultAsync(u => u.UserName == inputModel.SenderName);
+            var receiver = await this.usersRepository.All().FirstOrDefaultAsync(u => u.UserName == inputModel.ReceiverName);
 
             var message = new Message
             {

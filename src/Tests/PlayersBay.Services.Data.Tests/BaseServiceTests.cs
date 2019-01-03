@@ -15,6 +15,7 @@
     using PlayersBay.Services.Mapping;
     using System.Reflection;
     using PlayersBay.Web.ViewModels.Account;
+    using PlayersBay.Services.Data.Models.Feedbacks;
 
     public abstract class BaseServiceTests : IDisposable
     {
@@ -71,9 +72,8 @@
             services.AddTransient<IUserStore<ApplicationUser>, ApplicationUserStore>();
             services.AddTransient<IRoleStore<ApplicationRole>, ApplicationRoleStore>();
 
-            // AutoMapper ????
-            // AutoMapper.Mapper.Reset();
-            // AutoMapperConfig.RegisterMappings(typeof(FeedbackInputModel).GetTypeInfo().Assembly);
+            // AutoMapper 
+            AutoMapperConfig.RegisterMappings(typeof(LoginViewModel).GetTypeInfo().Assembly);
 
             // Cloudinary Setup
             var cloudinaryAccount = new Account(

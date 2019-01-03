@@ -5,7 +5,6 @@
     using System.Threading.Tasks;
 
     using CloudinaryDotNet;
-    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using PlayersBay.Data.Common.Repositories;

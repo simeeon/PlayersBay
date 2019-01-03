@@ -1,5 +1,6 @@
 ﻿namespace PlayersBay.Services.Data
 {
+    using System;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -39,7 +40,7 @@
 
             if (user == null || await this.userManager.IsInRoleAsync(user, Common.GlobalConstants.ModeratorRoleName))
             {
-                return "";
+                throw new NullReferenceException();
             }
 
             await this.userManager.RemoveFromRoleAsync(user, Common.GlobalConstants.UserRoleName);
@@ -54,7 +55,7 @@
 
             if (user == null || await this.userManager.IsInRoleAsync(user, Common.GlobalConstants.UserRoleName))
             {
-                return "";
+                throw new NullReferenceException();
             }
 
             await this.userManager.RemoveFromRoleAsync(user, Common.GlobalConstants.ModeratorRoleName);

@@ -3,6 +3,7 @@
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
     using PlayersBay.Data.Common.Repositories;
     using PlayersBay.Data.Models;
     using PlayersBay.Services.Data.Contracts;
@@ -15,32 +16,27 @@
         private readonly IRepository<Transaction> transactionsRepository;
         private readonly IRepository<Offer> offersRepository;
         private readonly UserManager<ApplicationUser> usersManager;
-        private readonly IOffersService offersService;
         private readonly IMessagesService messagesService;
         private readonly IRepository<Message> messagesRepository;
 
         public TransactionsService(
             IRepository<ApplicationUser> usersRepository,
             UserManager<ApplicationUser> usersManager,
-            IOffersService offersService,
             IRepository<Offer> offersRepository,
             IRepository<Transaction> transactionsRepository,
-            IRepository<Message> messagesRepository,
             IMessagesService messagesService)
         {
             this.usersRepository = usersRepository;
             this.usersManager = usersManager;
-            this.offersService = offersService;
             this.offersRepository = offersRepository;
             this.transactionsRepository = transactionsRepository;
-            this.messagesRepository = messagesRepository;
             this.messagesService = messagesService;
         }
 
         public async Task<int> CreateAsync(TransactionInputModel inputModel)
         {
-            var buyer = this.usersManager.FindByNameAsync(inputModel.BuyerName).GetAwaiter().GetResult();
-            var seller = this.usersManager.FindByNameAsync(inputModel.SellerName).GetAwaiter().GetResult();
+            var buyer = await this.usersRepository.All().FirstOrDefaultAsync(u => u.UserName == inputModel.BuyerName);
+            var seller = await this.usersRepository.All().FirstOrDefaultAsync(u => u.UserName == inputModel.SellerName);
             var offer = this.offersRepository.GetByIdAsync(inputModel.OfferId).GetAwaiter().GetResult();
 
             if (buyer.Balance >= offer.Price)
@@ -53,6 +49,7 @@
                 this.usersRepository.Update(buyer);
                 this.usersRepository.Update(seller);
                 this.offersRepository.Update(offer);
+
                 var transaction = new Transaction
                 {
                     BuyerId = buyer.Id,

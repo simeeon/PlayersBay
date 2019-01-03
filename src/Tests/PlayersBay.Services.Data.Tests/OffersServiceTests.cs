@@ -1,12 +1,12 @@
 ﻿using CloudinaryDotNet;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Internal;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using PlayersBay.Data.Models;
 using PlayersBay.Services.Data.Contracts;
 using PlayersBay.Services.Data.Models.Offers;
 using PlayersBay.Services.Data.Utilities;
+using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,6 +17,7 @@ namespace PlayersBay.Services.Data.Tests
     public class OffersServiceTests : BaseServiceTests
     {
         private const string Username = "admin";
+
         private const string GameName = "Diablo";
         // First offer info
         private const int FirstId = 1;
@@ -43,14 +44,10 @@ namespace PlayersBay.Services.Data.Tests
         private const decimal ForthOfferPrice = 55.90m;
         private const string ForthOfferMessagetoBuyer = "Forth Message to buyer";
 
+        private readonly string testUserId = Guid.NewGuid().ToString();
+
         private const string DefaultImage = "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png";
         private const string NewImage = "newImage.png";
-
-        public OffersServiceTests()
-        {
-            // AutoMapper
-            AutoMapper.Mapper.Reset();
-        }
 
         private IOffersService OffersServiceMock => this.ServiceProvider.GetRequiredService<IOffersService>();
 
@@ -96,7 +93,7 @@ namespace PlayersBay.Services.Data.Tests
         [Fact]
         public async Task DeleteByIdOnlyDeletesOneOffer()
         {
-            await this.AddTestingOfferToDb();
+            await this.AddTestingOfferToDb(testUserId);
 
             var secondOfferToDelete = new Offer
             {
@@ -110,7 +107,7 @@ namespace PlayersBay.Services.Data.Tests
                 MessageToBuyer = OfferMessagetoBuyer,
                 ImageUrl = DefaultImage,
             };
-            
+
             this.DbContext.Offers.Add(secondOfferToDelete);
             await this.DbContext.SaveChangesAsync();
 
@@ -123,7 +120,7 @@ namespace PlayersBay.Services.Data.Tests
         [Fact]
         public async Task EditAsyncEditsOfferWhenImageStaysTheSame()
         {
-            await this.AddTestingOfferToDb();
+            await this.AddTestingOfferToDb(testUserId);
 
             this.DbContext.Offers.Add(new Offer
             {
@@ -212,12 +209,80 @@ namespace PlayersBay.Services.Data.Tests
         [Fact]
         public async Task GetAllAsyncReturnsAllOffers()
         {
-            AutoMapper.Mapper.Reset();
+            await this.AddTestingOfferToDb(testUserId);
+            await this.AddSecondTestingOfferToDb(testUserId);
+            await this.AddThirdTestingOfferToDb(testUserId);
+            await this.AddForthTestingOfferToDb(testUserId);
 
-            await this.AddTestingOfferToDb();
-            await this.AddSecondTestingOfferToDb();
-            await this.AddThirdTestingOfferToDb();
-            await this.AddForthTestingOfferToDb();
+            var expected = new OfferViewModel[]
+            {
+                new OfferViewModel
+                {
+                    AuthorId = testUserId,
+                    Description = OfferDescription,
+                    Id = FirstId,
+                    Price = OfferPrice,
+                    OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
+                    Status = PlayersBay.Data.Models.Enums.Status.Active,
+                    Title = OfferTitle,
+                    MessageToBuyer = OfferMessagetoBuyer,
+                    ImageUrl = DefaultImage,
+                },
+                new OfferViewModel
+                {
+                    AuthorId = testUserId,
+                    Description = SecondOfferDescription,
+                    Id = SecondId,
+                    Price = SecondOfferPrice,
+                    OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
+                    Status = PlayersBay.Data.Models.Enums.Status.Active,
+                    Title = SecondOfferTitle,
+                    MessageToBuyer = SecondOfferMessagetoBuyer,
+                    ImageUrl = DefaultImage,
+                },
+            };
+
+            var actual = await this.OffersServiceMock.GetAllOffersAsync(1);
+
+            Assert.Collection(actual,
+                elem1 =>
+                {
+                    Assert.Equal(expected[0].AuthorId, elem1.AuthorId);
+                    Assert.Equal(expected[0].Id, elem1.Id);
+                    Assert.Equal(expected[0].Description, elem1.Description);
+                    Assert.Equal(expected[0].MessageToBuyer, elem1.MessageToBuyer);
+                    Assert.Equal(expected[0].Title, elem1.Title);
+                    Assert.Equal(expected[0].Status, elem1.Status);
+                    Assert.Equal(expected[0].OfferType, elem1.OfferType);
+                    Assert.Equal(expected[0].Price, elem1.Price);
+                    Assert.Equal(expected[0].ImageUrl, elem1.ImageUrl);
+                },
+                elem2 =>
+                {
+                    Assert.Equal(expected[1].AuthorId, elem2.AuthorId);
+                    Assert.Equal(expected[1].Id, elem2.Id);
+                    Assert.Equal(expected[1].Description, elem2.Description);
+                    Assert.Equal(expected[1].MessageToBuyer, elem2.MessageToBuyer);
+                    Assert.Equal(expected[1].Title, elem2.Title);
+                    Assert.Equal(expected[1].Status, elem2.Status);
+                    Assert.Equal(expected[1].OfferType, elem2.OfferType);
+                    Assert.Equal(expected[1].Price, elem2.Price);
+                    Assert.Equal(expected[1].ImageUrl, elem2.ImageUrl);
+                });
+
+            Assert.Equal(expected.Length, actual.Length);
+        }
+
+        [Fact]
+        public async Task GetMyActiveOfferAsyncReturnsAllMyActiveOffers()
+        {
+            this.DbContext.Users.Add(new ApplicationUser { Id = testUserId, UserName = Username });
+            await this.DbContext.SaveChangesAsync();
+
+            await this.AddTestingOfferToDb(testUserId);
+            await this.AddSecondTestingOfferToDb(testUserId);
+            await this.AddThirdTestingOfferToDb(testUserId);
+            await this.AddForthTestingOfferToDb(testUserId);
 
             var expected = new OfferViewModel[]
             {
@@ -225,7 +290,7 @@ namespace PlayersBay.Services.Data.Tests
                 {
                     Description = OfferDescription,
                     Id = FirstId,
-                    AuthorId = "1",
+                    AuthorId = testUserId,
                     Price = OfferPrice,
                     OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
                     Status = PlayersBay.Data.Models.Enums.Status.Active,
@@ -237,7 +302,7 @@ namespace PlayersBay.Services.Data.Tests
                 {
                     Description = SecondOfferDescription,
                     Id = SecondId,
-                    AuthorId = "1",
+                    AuthorId = testUserId,
                     Price = SecondOfferPrice,
                     OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
                     Status = PlayersBay.Data.Models.Enums.Status.Active,
@@ -246,8 +311,78 @@ namespace PlayersBay.Services.Data.Tests
                     ImageUrl = DefaultImage,
                 },
             };
+            
+            var actual = await this.OffersServiceMock.GetMyActiveOffersAsync(Username);
 
-            var actual = await this.OffersServiceMock.GetAllOffersAsync(1);
+            Assert.Collection(actual,
+                elem1 =>
+                {
+                    Assert.Equal(expected[0].Id, elem1.Id);
+                    Assert.Equal(expected[0].AuthorId, elem1.AuthorId);
+                    Assert.Equal(expected[0].Description, elem1.Description);
+                    Assert.Equal(expected[0].MessageToBuyer, elem1.MessageToBuyer);
+                    Assert.Equal(expected[0].Title, elem1.Title);
+                    Assert.Equal(expected[0].Status, elem1.Status);
+                    Assert.Equal(expected[0].OfferType, elem1.OfferType);
+                    Assert.Equal(expected[0].Price, elem1.Price);
+                    Assert.Equal(expected[0].ImageUrl, elem1.ImageUrl);
+                },
+                elem2 =>
+                {
+                    Assert.Equal(expected[1].AuthorId, elem2.AuthorId);
+                    Assert.Equal(expected[1].Id, elem2.Id);
+                    Assert.Equal(expected[1].Description, elem2.Description);
+                    Assert.Equal(expected[1].MessageToBuyer, elem2.MessageToBuyer);
+                    Assert.Equal(expected[1].Title, elem2.Title);
+                    Assert.Equal(expected[1].Status, elem2.Status);
+                    Assert.Equal(expected[1].OfferType, elem2.OfferType);
+                    Assert.Equal(expected[1].Price, elem2.Price);
+                    Assert.Equal(expected[1].ImageUrl, elem2.ImageUrl);
+                });
+
+            Assert.Equal(expected.Length, actual.Length);
+        }
+
+        [Fact]
+        public async Task GetMySoldOfferAsyncReturnsAllMySoldOffers()
+        {
+            this.DbContext.Users.Add(new ApplicationUser { Id = testUserId, UserName = Username });
+            await this.DbContext.SaveChangesAsync();
+
+            await this.AddTestingOfferToDb(testUserId);
+            await this.AddSecondTestingOfferToDb(testUserId);
+            await this.AddThirdTestingOfferToDb(testUserId);
+            await this.AddForthTestingOfferToDb(testUserId);
+
+            var expected = new OfferViewModel[]
+            {
+                new OfferViewModel
+                {
+                    Description = ThirdOfferDescription,
+                    Id = ThirdId,
+                    AuthorId = testUserId,
+                    Price = ThirdOfferPrice,
+                    OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
+                    Status = PlayersBay.Data.Models.Enums.Status.Completed,
+                    Title = ThirdOfferTitle,
+                    MessageToBuyer = ThirdOfferMessagetoBuyer,
+                    ImageUrl = DefaultImage,
+                },
+                new OfferViewModel
+                {
+                    Description = ForthOfferDescription,
+                    Id = ForthId,
+                    AuthorId = testUserId,
+                    Price = ForthOfferPrice,
+                    OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
+                    Status = PlayersBay.Data.Models.Enums.Status.Completed,
+                    Title = ForthOfferTitle,
+                    MessageToBuyer = ForthOfferMessagetoBuyer,
+                    ImageUrl = DefaultImage,
+                },
+            };
+
+            var actual = await this.OffersServiceMock.GetMySoldOffersAsync(Username);
 
             Assert.Collection(actual,
                 elem1 =>
@@ -278,80 +413,11 @@ namespace PlayersBay.Services.Data.Tests
             Assert.Equal(expected.Length, actual.Length);
         }
 
-        //[Fact]
-        //public async Task GetMyActiveOfferAsyncReturnsAllMyActiveOffers()
-        //{
-        //    AutoMapperConfig.RegisterMappings(typeof(FeedbackInputModel).GetTypeInfo().Assembly);
-
-        //    await this.AddTestingOfferToDb();
-        //    await this.AddSecondTestingOfferToDb();
-        //    await this.AddThirdTestingOfferToDb();
-        //    await this.AddForthTestingOfferToDb();
-
-        //    var expected = new OfferViewModel[]
-        //    {
-        //        new OfferViewModel
-        //        {
-        //            Description = OfferDescription,
-        //            Id = FirstId,
-        //            AuthorUsername = "1",
-        //            Price = OfferPrice,
-        //            OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
-        //            Status = PlayersBay.Data.Models.Enums.Status.Active,
-        //            Title = OfferTitle,
-        //            MessageToBuyer = OfferMessagetoBuyer,
-        //            ImageUrl = DefaultImage,
-        //        },
-        //        new OfferViewModel
-        //        {
-        //            Description = SecondOfferDescription,
-        //            Id = SecondId,
-        //            AuthorUsername = "1",
-        //            Price = SecondOfferPrice,
-        //            OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
-        //            Status = PlayersBay.Data.Models.Enums.Status.Active,
-        //            Title = SecondOfferTitle,
-        //            MessageToBuyer = SecondOfferMessagetoBuyer,
-        //            ImageUrl = DefaultImage,
-        //        },
-        //    };
-
-        //    var actual = await this.OffersServiceMock.GetMyActiveOffersAsync("1");
-
-        //    Assert.Collection(actual,
-        //        elem1 =>
-        //        {
-        //            Assert.Equal(expected[0].Id, elem1.Id);
-        //            Assert.Equal(expected[0].AuthorId, elem1.AuthorId);
-        //            Assert.Equal(expected[0].Description, elem1.Description);
-        //            Assert.Equal(expected[0].MessageToBuyer, elem1.MessageToBuyer);
-        //            Assert.Equal(expected[0].Title, elem1.Title);
-        //            Assert.Equal(expected[0].Status, elem1.Status);
-        //            Assert.Equal(expected[0].OfferType, elem1.OfferType);
-        //            Assert.Equal(expected[0].Price, elem1.Price);
-        //            Assert.Equal(expected[0].ImageUrl, elem1.ImageUrl);
-        //        },
-        //        elem2 =>
-        //        {
-        //            Assert.Equal(expected[1].Id, elem2.Id);
-        //            Assert.Equal(expected[1].Description, elem2.Description);
-        //            Assert.Equal(expected[1].MessageToBuyer, elem2.MessageToBuyer);
-        //            Assert.Equal(expected[1].Title, elem2.Title);
-        //            Assert.Equal(expected[1].Status, elem2.Status);
-        //            Assert.Equal(expected[1].OfferType, elem2.OfferType);
-        //            Assert.Equal(expected[1].Price, elem2.Price);
-        //            Assert.Equal(expected[1].ImageUrl, elem2.ImageUrl);
-        //        });
-
-        //    Assert.Equal(expected.Length, actual.Length);
-        //    AutoMapper.Mapper.Reset();
-        //}
-
         [Fact]
         public async Task GetViewModelByIdAsyncReturnsCorrectViewModel()
         {
             await this.AddTestingGameToDb();
-            await this.AddTestingOfferToDb();
+            await this.AddTestingOfferToDb(testUserId);
 
             var expected = this.DbContext.Offers.OrderBy(r => r.CreatedOn);
 
@@ -362,6 +428,7 @@ namespace PlayersBay.Services.Data.Tests
                 elem1 =>
                 {
                     Assert.Equal(expected.First().Id, actual.Id);
+                    Assert.Equal(expected.First().AuthorId, actual.AuthorId);
                     Assert.Equal(expected.First().MessageToBuyer, actual.MessageToBuyer);
                     Assert.Equal(expected.First().OfferType, actual.OfferType);
                     Assert.Equal(expected.First().Price, actual.Price);
@@ -383,14 +450,14 @@ namespace PlayersBay.Services.Data.Tests
             await this.DbContext.SaveChangesAsync();
         }
 
-        private async Task AddTestingOfferToDb()
+        private async Task AddTestingOfferToDb(string userId)
         {
             this.DbContext.Offers.Add(new Offer
             {
                 Description = OfferDescription,
                 GameId = FirstId,
                 Id = FirstId,
-                AuthorId = "1",
+                AuthorId = userId,
                 Price = OfferPrice,
                 OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
                 Status = PlayersBay.Data.Models.Enums.Status.Active,
@@ -401,13 +468,13 @@ namespace PlayersBay.Services.Data.Tests
             await this.DbContext.SaveChangesAsync();
         }
 
-        private async Task AddSecondTestingOfferToDb()
+        private async Task AddSecondTestingOfferToDb(string userId)
         {
             this.DbContext.Offers.Add(new Offer
             {
                 Description = SecondOfferDescription,
                 GameId = FirstId,
-                AuthorId = "1",
+                AuthorId = userId,
                 Id = SecondId,
                 Price = SecondOfferPrice,
                 OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
@@ -419,13 +486,13 @@ namespace PlayersBay.Services.Data.Tests
             await this.DbContext.SaveChangesAsync();
         }
 
-        private async Task AddThirdTestingOfferToDb()
+        private async Task AddThirdTestingOfferToDb(string userId)
         {
             this.DbContext.Offers.Add(new Offer
             {
                 Description = ThirdOfferDescription,
                 GameId = FirstId,
-                AuthorId = "3",
+                AuthorId = userId,
                 Id = ThirdId,
                 Price = ThirdOfferPrice,
                 OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
@@ -437,13 +504,13 @@ namespace PlayersBay.Services.Data.Tests
             await this.DbContext.SaveChangesAsync();
         }
 
-        private async Task AddForthTestingOfferToDb()
+        private async Task AddForthTestingOfferToDb(string userId)
         {
             this.DbContext.Offers.Add(new Offer
             {
                 Description = ForthOfferDescription,
                 GameId = FirstId,
-                AuthorId = "1",
+                AuthorId = userId,
                 Id = ForthId,
                 Price = ForthOfferPrice,
                 OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
