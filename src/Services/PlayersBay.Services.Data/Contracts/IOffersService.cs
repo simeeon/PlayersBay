@@ -16,8 +16,6 @@
 
         Task<OfferViewModel[]> GetMyBoughtOffersAsync(string username);
 
-        Task<OfferDetailsViewModel> GetDetailsAsync(int id);
-
         Task<TViewModel> GetViewModelAsync<TViewModel>(int id);
 
         Task EditAsync(OfferToEditViewModel offerToEdit);

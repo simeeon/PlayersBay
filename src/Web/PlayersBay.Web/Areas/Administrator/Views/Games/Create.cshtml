@@ -1,4 +1,4 @@
-﻿@model PlayersBay.Web.Areas.Administrator.InputModels.Games.GamesCreateInputModel
+﻿@model PlayersBay.Services.Data.Models.Games.GamesCreateInputModel
 @{
     this.ViewData["Title"] = "Create Game";
 }
@@ -14,9 +14,9 @@
             <span asp-validation-for="@Model.Name" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="@Model.ImageUrl"></label>
-            <input type="file" asp-for="@Model.ImageUrl" name="ImageUrl" />
-            <span asp-validation-for="@Model.ImageUrl" class="text-danger"></span>
+            <label asp-for="@Model.Image"></label>
+            <input type="file" asp-for="@Model.Image" name="Image" />
+            <span asp-validation-for="@Model.Image" class="text-danger"></span>
         </div>
 
         <button type="submit" class="btn btn-primary btn-lg">Create game</button>

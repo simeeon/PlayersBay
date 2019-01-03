@@ -81,7 +81,13 @@ namespace PlayersBay.Services.Data.Tests
                 new GameViewModel {Id = 1, Name = Diablo, ImageUrl = DefaultImage},
             };
 
-            var actual = await this.GamesServiceMock.CreateAsync(Diablo, DefaultImage);
+            var gameCreateInputModel = new GamesCreateInputModel()
+            {
+                 Name = Diablo,
+                 ImageUrl = DefaultImage
+            };
+
+            var actual = await this.GamesServiceMock.CreateAsync(gameCreateInputModel);
 
             Assert.Equal(actual, expected[0].Id);
         }

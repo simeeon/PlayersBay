@@ -6,7 +6,7 @@
 
     public interface IGamesService
     {
-        Task<int> CreateAsync(params object[] parameters);
+        Task<int> CreateAsync(GamesCreateInputModel inputModel);
 
         Task DeleteAsync(int id);
 

@@ -4,15 +4,14 @@
     using System.Linq;
 
     using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using PlayersBay.Common.Extensions.Alerts;
     using PlayersBay.Data.Common.Repositories;
     using PlayersBay.Data.Models;
     using PlayersBay.Services.Data.Contracts;
+    using PlayersBay.Services.Data.Models.Feedbacks;
     using PlayersBay.Services.Data.Models.Offers;
-    using PlayersBay.Web.ViewModels.Feedbacks;
 
     public class OffersController : BaseController
     {
@@ -61,12 +60,12 @@
                 .GetAwaiter()
                 .GetResult();
 
-            return this.RedirectToAction("ActiveOffers", "Offers", new { username = this.User.Identity.Name });
+            return this.RedirectToAction("ActiveOffers", "Offers", new { username = this.User.Identity.Name }).WithInfo("Success!", $"Offer #{offerId} created.");
         }
 
         public IActionResult Details(int id)
         {
-            var detailViewModel = this.offersService.GetDetailsAsync(id)
+            var detailViewModel = this.offersService.GetViewModelAsync<OfferDetailsViewModel>(id)
                 .GetAwaiter()
                 .GetResult();
 
@@ -130,6 +129,7 @@
             return this.View(offers);
         }
 
+        [Authorize]
         public IActionResult Edit(int id)
         {
             var offerToEdit = this.offersService.GetViewModelAsync<OfferToEditViewModel>(id)
@@ -145,6 +145,7 @@
             return this.View(offerToEdit);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Edit(OfferToEditViewModel offerToEditViewModel)
         {
@@ -195,7 +196,7 @@
                 .GetAwaiter()
                 .GetResult();
 
-            return this.RedirectToAction("ActiveOffers", "Offers", new { username = this.User.Identity.Name });
+            return this.RedirectToAction("ActiveOffers", "Offers", new { username = this.User.Identity.Name }).WithInfo("Success!", $"Offer deleted.");
         }
 
         private IEnumerable<SelectListItem> SelectAllGames()

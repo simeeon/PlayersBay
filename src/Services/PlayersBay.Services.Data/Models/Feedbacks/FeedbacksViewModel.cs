@@ -1,4 +1,4 @@
-﻿namespace PlayersBay.Web.ViewModels.Feedbacks
+﻿namespace PlayersBay.Services.Data.Models.Feedbacks
 {
     using PlayersBay.Data.Models;
     using PlayersBay.Data.Models.Enums;

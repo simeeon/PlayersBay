@@ -6,7 +6,6 @@
     using PlayersBay.Services.Data;
     using PlayersBay.Services.Data.Contracts;
     using PlayersBay.Services.Data.Models.Games;
-    using PlayersBay.Web.Areas.Administrator.InputModels.Games;
 
     public class GamesController : AdministratorController
     {
@@ -30,16 +29,14 @@
                 return this.View(gameCreateInputModel);
             }
 
-            var fileType = gameCreateInputModel.ImageUrl.ContentType.Split('/')[1];
+            var fileType = gameCreateInputModel.ImageUrl == null ? gameCreateInputModel.Image.ContentType.Split('/')[1] : gameCreateInputModel.ImageUrl.Split('/')[1];
 
             if (!this.IsImageTypeValid(fileType))
             {
                 return this.View(gameCreateInputModel);
             }
 
-            var gameId = this.gamesService.CreateAsync(
-                    gameCreateInputModel.Name,
-                    gameCreateInputModel.ImageUrl)
+            var gameId = this.gamesService.CreateAsync(gameCreateInputModel)
                 .GetAwaiter()
                 .GetResult();
 

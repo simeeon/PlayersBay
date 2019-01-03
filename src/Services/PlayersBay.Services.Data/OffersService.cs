@@ -88,7 +88,7 @@
 
             if (offerToEdit.NewImage != null)
             {
-                var newImageUrl = await ApplicationCloudinary.UploadImage(this.cloudinary, offerToEdit.NewImage, offerToEdit.Description);
+                var newImageUrl = await ApplicationCloudinary.UploadImage(this.cloudinary, offerToEdit.NewImage, offerToEdit.Title);
                 offer.ImageUrl = newImageUrl;
             }
 
@@ -153,25 +153,15 @@
             return offers;
         }
 
-        public async Task<OfferDetailsViewModel> GetDetailsAsync(int id)
-        {
-            var offerDetailsViewModel = await this.offersRepository
-                .All()
-                .To<OfferDetailsViewModel>()
-                .FirstOrDefaultAsync(r => r.Id == id);
-
-            return offerDetailsViewModel;
-        }
-
         public async Task<TViewModel> GetViewModelAsync<TViewModel>(int id)
         {
-            var game = await this.offersRepository
+            var offer = await this.offersRepository
                 .All()
                 .Where(a => a.Id == id)
                 .To<TViewModel>()
                 .FirstOrDefaultAsync();
 
-            return game;
+            return offer;
         }
     }
 }

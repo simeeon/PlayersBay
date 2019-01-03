@@ -10,6 +10,7 @@
     using PlayersBay.Data.Models;
     using PlayersBay.Services.Data;
     using PlayersBay.Services.Data.Contracts;
+    using PlayersBay.Services.Data.Models.Games;
     using PlayersBay.Services.Data.Models.Offers;
 
     public static class ApplicationDbContextSeeder
@@ -66,44 +67,60 @@
             var allGames = gameRepository.All();
             if (!allGames.Any())
             {
-                gamesService.CreateAsync(
-                    "Diablo 2",
-                    "http://media.foxygamer.com/2013/08/diablo_poster13-200x200.jpg")
+                gamesService.CreateAsync(new GamesCreateInputModel()
+                {
+                    Name = "Diablo 2",
+                    ImageUrl = "http://media.foxygamer.com/2013/08/diablo_poster13-200x200.jpg",
+                })
+            .GetAwaiter()
+                .GetResult();
+                gamesService.CreateAsync(new GamesCreateInputModel()
+                {
+                    Name = "Diablo 3",
+                    ImageUrl = "http://media.wow-europe.com/events/gamescom-2013/news/11/gamescom_d3-expansion-announcement_facebook-thumb-gl.jpg",
+                })
                 .GetAwaiter()
                 .GetResult();
-                gamesService.CreateAsync(
-                    "Diablo 3",
-                    "http://media.wow-europe.com/events/gamescom-2013/news/11/gamescom_d3-expansion-announcement_facebook-thumb-gl.jpg")
+                gamesService.CreateAsync(new GamesCreateInputModel()
+                {
+                    Name = "Counter-Strike: GO",
+                    ImageUrl = "https://d23wybgr07mqxm.cloudfront.net/wp-content/uploads/2016/10/25225911/CSGO-Main-2.png",
+                })
                 .GetAwaiter()
                 .GetResult();
-                gamesService.CreateAsync(
-                    "Counter-Strike: GO",
-                    "https://d23wybgr07mqxm.cloudfront.net/wp-content/uploads/2016/10/25225911/CSGO-Main-2.png")
+                gamesService.CreateAsync(new GamesCreateInputModel()
+                {
+                    Name = "OSRS",
+                    ImageUrl = "https://p.apk4fun.com/bc/2c/56/com.jagex.oldscape.android-logo.jpg",
+                })
                 .GetAwaiter()
                 .GetResult();
-                gamesService.CreateAsync(
-                    "OSRS",
-                    "https://p.apk4fun.com/bc/2c/56/com.jagex.oldscape.android-logo.jpg")
+                gamesService.CreateAsync(new GamesCreateInputModel()
+                {
+                    Name = "Path of Exile",
+                    ImageUrl = "https://steamuserimages-a.akamaihd.net/ugc/541849273143870272/533E218036411B98AF3EC48B01C881B5C6E9AD77/?interpolation=lanczos-none&output-format=jpeg&output-quality=95&fit=inside%7C200%3A200&composite-to=*,*%7C200%3A200&background-color=black",
+                })
                 .GetAwaiter()
                 .GetResult();
-                gamesService.CreateAsync(
-                    "Path of Exile",
-                    "https://steamuserimages-a.akamaihd.net/ugc/541849273143870272/533E218036411B98AF3EC48B01C881B5C6E9AD77/?interpolation=lanczos-none&output-format=jpeg&output-quality=95&fit=inside%7C200%3A200&composite-to=*,*%7C200%3A200&background-color=black")
+                gamesService.CreateAsync(new GamesCreateInputModel()
+                {
+                    Name = "World of Warcraft",
+                    ImageUrl = "http://bnetcmsus-a.akamaihd.net/cms/template_resource/fh/FHSCSCG9CXOC1462229977849.png",
+                })
                 .GetAwaiter()
                 .GetResult();
-                gamesService.CreateAsync(
-                    "World of Warcraft",
-                    "http://bnetcmsus-a.akamaihd.net/cms/template_resource/fh/FHSCSCG9CXOC1462229977849.png")
+                gamesService.CreateAsync(new GamesCreateInputModel()
+                {
+                    Name = "Fortnite",
+                    ImageUrl = "https://fortnitestats.net/assets/img/img2.jpg",
+                })
                 .GetAwaiter()
                 .GetResult();
-                gamesService.CreateAsync(
-                    "Fortnite",
-                    "https://fortnitestats.net/assets/img/img2.jpg")
-                .GetAwaiter()
-                .GetResult();
-                gamesService.CreateAsync(
-                    "Black Desert",
-                    "https://cdn.gracza.pl/galeria/gry13/grupy/13149.jpg")
+                gamesService.CreateAsync(new GamesCreateInputModel()
+                {
+                    Name = "Black Desert",
+                    ImageUrl = "https://cdn.gracza.pl/galeria/gry13/grupy/13149.jpg",
+                })
                 .GetAwaiter()
                 .GetResult();
             }

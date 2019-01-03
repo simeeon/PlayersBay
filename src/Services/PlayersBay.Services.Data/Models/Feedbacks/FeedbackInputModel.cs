@@ -13,9 +13,9 @@
         public int OfferId { get; set; }
 
         [Required]
-        [Display(Name = "Commentext")]
+        [Display(Name = "Feedback text")]
         [DataType(DataType.MultilineText)]
-        [StringLength(100, MinimumLength = 5, ErrorMessage = "Content must be between 5 and 100 symbols")]
+        [StringLength(Constants.Feedback.FeedbackMaxLength, MinimumLength = Constants.Feedback.FeedbackMinLength, ErrorMessage = Constants.Feedback.FeedbackLengthError)]
         public string Content { get; set; }
     }
 }

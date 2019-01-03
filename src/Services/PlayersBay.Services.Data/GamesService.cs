@@ -4,7 +4,6 @@
     using System.Threading.Tasks;
 
     using CloudinaryDotNet;
-    using Microsoft.AspNetCore.Http;
     using Microsoft.EntityFrameworkCore;
     using PlayersBay.Data.Common.Repositories;
     using PlayersBay.Data.Models;
@@ -24,29 +23,21 @@
             this.cloudinary = cloudinary;
         }
 
-        public async Task<int> CreateAsync(params object[] parameters)
+        public async Task<int> CreateAsync(GamesCreateInputModel inputModel)
         {
-            var name = parameters[0].ToString();
-
-            var image = new object();
-            var imageUrl = string.Empty;
-
-            if (parameters[1] is string)
+            var game = new Game
             {
-                imageUrl = parameters[1].ToString();
+                Name = inputModel.Name,
+            };
+
+            if (inputModel.Image != null)
+            {
+                game.ImageUrl = await ApplicationCloudinary.UploadImage(this.cloudinary, inputModel.Image, inputModel.Name);
             }
             else
             {
-                image = parameters[1] as IFormFile;
-
-                imageUrl = await ApplicationCloudinary.UploadImage(this.cloudinary, (IFormFile)image, name);
+                game.ImageUrl = inputModel.ImageUrl;
             }
-
-            var game = new Game
-            {
-                Name = name,
-                ImageUrl = imageUrl,
-            };
 
             this.gamesRepository.Add(game);
             await this.gamesRepository.SaveChangesAsync();

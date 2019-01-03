@@ -33,7 +33,6 @@
 
         public string Title { get; set; }
 
-        [StringLength(500, MinimumLength = 5, ErrorMessage = "Content must be between 5 and 500 symbols")]
         public string Description { get; set; }
     }
 }

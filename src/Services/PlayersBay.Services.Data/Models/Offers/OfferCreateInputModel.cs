@@ -3,17 +3,13 @@
     using System.ComponentModel.DataAnnotations;
 
     using Microsoft.AspNetCore.Http;
-    using PlayersBay.Data.Models;
     using PlayersBay.Data.Models.Enums;
-    using PlayersBay.Services.Mapping;
 
     public class OfferCreateInputModel
     {
-        [Required]
         [Display(Name = "Game")]
         public int GameId { get; set; }
 
-        [Required]
         public string Author { get; set; }
 
         [Required]
@@ -31,6 +27,8 @@
         [Range(Constants.Offer.MinPrice, Constants.Offer.MaxPrice)]
         public decimal Price { get; set; }
 
+        [Required]
+        [StringLength(Constants.Offer.TitleMaxLength, MinimumLength = Constants.Offer.TitleMinLength, ErrorMessage = Constants.Offer.TitleLengthError)]
         public string Title { get; set; }
 
         [Required]
