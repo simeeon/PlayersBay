@@ -11,6 +11,7 @@
     using PlayersBay.Data.Models;
     using PlayersBay.Data.Models.Enums;
     using PlayersBay.Services.Data.Contracts;
+    using PlayersBay.Services.Data.Models;
     using PlayersBay.Services.Data.Models.Offers;
     using PlayersBay.Services.Data.Utilities;
     using PlayersBay.Services.Mapping;
@@ -79,11 +80,6 @@
         public async Task EditAsync(OfferToEditViewModel offerToEdit)
         {
             var offer = this.offersRepository.All().FirstOrDefault(d => d.Id == offerToEdit.Id);
-
-            if (offer == null)
-            {
-                throw new NullReferenceException();
-            }
 
             if (offerToEdit.NewImage != null)
             {
@@ -159,6 +155,11 @@
                 .Where(a => a.Id == id)
                 .To<TViewModel>()
                 .FirstOrDefaultAsync();
+
+            if (offer == null)
+            {
+                throw new NullReferenceException(string.Format(Constants.NullReferenceOfferId, id));
+            }
 
             return offer;
         }

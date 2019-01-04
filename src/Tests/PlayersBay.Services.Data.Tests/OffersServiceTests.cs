@@ -11,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
+using PlayersBay.Services.Data.Models;
 
 namespace PlayersBay.Services.Data.Tests
 {
@@ -414,6 +415,67 @@ namespace PlayersBay.Services.Data.Tests
         }
 
         [Fact]
+        public async Task GetMyBoughtOfferAsyncReturnsAllMyBoughtOffers()
+        {
+            this.DbContext.Users.Add(new ApplicationUser { Id = testUserId, UserName = Username });
+            await this.DbContext.SaveChangesAsync();
+
+            var buyer = this.DbContext.Users.FirstOrDefault(u => u.Id == testUserId);
+
+            this.DbContext.Transactions.Add(new Transaction {  BuyerId = testUserId, Buyer = buyer});
+            await this.DbContext.SaveChangesAsync();
+
+            this.DbContext.Offers.Add(new Offer
+            {
+                Description = ThirdOfferDescription,
+                GameId = FirstId,
+                AuthorId = testUserId,
+                Id = FirstId,
+                Price = ThirdOfferPrice,
+                OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
+                Status = PlayersBay.Data.Models.Enums.Status.Completed,
+                Title = ThirdOfferTitle,
+                MessageToBuyer = ThirdOfferMessagetoBuyer,
+                ImageUrl = DefaultImage,
+            });
+            await this.DbContext.SaveChangesAsync();
+
+            var expected = new OfferViewModel[]
+            {
+                new OfferViewModel
+                {
+                    Description = ThirdOfferDescription,
+                    Id = FirstId,
+                    AuthorId = testUserId,
+                    Price = ThirdOfferPrice,
+                    OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
+                    Status = PlayersBay.Data.Models.Enums.Status.Completed,
+                    Title = ThirdOfferTitle,
+                    MessageToBuyer = ThirdOfferMessagetoBuyer,
+                    ImageUrl = DefaultImage,
+                }
+            };
+
+            var actual = await this.OffersServiceMock.GetMyBoughtOffersAsync(Username);
+
+            Assert.Collection(actual,
+                elem1 =>
+                {
+                    Assert.Equal(expected[0].Id, elem1.Id);
+                    Assert.Equal(expected[0].AuthorId, elem1.AuthorId);
+                    Assert.Equal(expected[0].Description, elem1.Description);
+                    Assert.Equal(expected[0].MessageToBuyer, elem1.MessageToBuyer);
+                    Assert.Equal(expected[0].Title, elem1.Title);
+                    Assert.Equal(expected[0].Status, elem1.Status);
+                    Assert.Equal(expected[0].OfferType, elem1.OfferType);
+                    Assert.Equal(expected[0].Price, elem1.Price);
+                    Assert.Equal(expected[0].ImageUrl, elem1.ImageUrl);
+                });
+
+            Assert.Equal(expected.Length, actual.Length);
+        }
+
+        [Fact]
         public async Task GetViewModelByIdAsyncReturnsCorrectViewModel()
         {
             await this.AddTestingGameToDb();
@@ -438,6 +500,19 @@ namespace PlayersBay.Services.Data.Tests
                     Assert.Equal(expected.First().GameId, actual.GameId);
                     Assert.Equal(expected.First().ImageUrl, actual.ImageUrl);
                 });
+        }
+
+        [Fact]
+        public async Task GetViewModelByIdThrowsNullReferenceExceptionIfOfferIdNotFound()
+        {
+            await this.AddTestingOfferToDb(testUserId);
+
+            var invalidId = 999;
+
+            var exception = await Assert.ThrowsAsync<NullReferenceException>(() =>
+                this.OffersServiceMock.GetViewModelAsync<OfferToEditViewModel>(invalidId));
+
+            Assert.Equal(string.Format(Constants.NullReferenceOfferId, invalidId), exception.Message);
         }
 
         private async Task AddTestingGameToDb()

@@ -15,19 +15,15 @@
         private readonly IRepository<ApplicationUser> usersRepository;
         private readonly IRepository<Transaction> transactionsRepository;
         private readonly IRepository<Offer> offersRepository;
-        private readonly UserManager<ApplicationUser> usersManager;
         private readonly IMessagesService messagesService;
-        private readonly IRepository<Message> messagesRepository;
 
         public TransactionsService(
             IRepository<ApplicationUser> usersRepository,
-            UserManager<ApplicationUser> usersManager,
             IRepository<Offer> offersRepository,
             IRepository<Transaction> transactionsRepository,
             IMessagesService messagesService)
         {
             this.usersRepository = usersRepository;
-            this.usersManager = usersManager;
             this.offersRepository = offersRepository;
             this.transactionsRepository = transactionsRepository;
             this.messagesService = messagesService;
@@ -77,7 +73,7 @@
 
         public async Task TopUpAsync(TopUpInputModel inputModel)
         {
-            var user = this.usersManager.FindByNameAsync(inputModel.Username).GetAwaiter().GetResult();
+            var user = await this.usersRepository.All().FirstOrDefaultAsync(u => u.UserName == inputModel.Username);
 
             user.Balance += inputModel.Amount;
             this.usersRepository.Update(user);

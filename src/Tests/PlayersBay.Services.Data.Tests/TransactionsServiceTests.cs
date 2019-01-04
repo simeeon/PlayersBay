@@ -1,14 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using PlayersBay.Data.Models;
 using PlayersBay.Services.Data.Contracts;
-using PlayersBay.Services.Data.Models.Feedbacks;
 using PlayersBay.Services.Data.Models.Transactions;
-using PlayersBay.Services.Data.Models.Users;
-using PlayersBay.Services.Mapping;
 using System;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -16,6 +11,8 @@ namespace PlayersBay.Services.Data.Tests
 {
     public class TransactionsServiceTests : BaseServiceTests
     {
+        private const decimal InitialBalance = 100;
+        private const decimal TopUpBalance = 50;
         // User 1
         private readonly string FirstId = Guid.NewGuid().ToString();
         private const string Username = "admin";
@@ -49,7 +46,27 @@ namespace PlayersBay.Services.Data.Tests
 
             var actual = await this.TransactionsServiceMock.CreateAsync(transactionInputModel);
 
-            Assert.Equal(actual, 1);
+            Assert.Equal(actual, offerId);
+        }
+
+        [Fact]
+        public async Task TopUpAsyncAddsFundsToUserBalance()
+        {
+            await this.AddTestingUserToDb(FirstId, Username, Email);
+            await this.AddTestingUserToDb(SecondId, UsernameTwo, EmailTwo);
+
+            var topUpInputModel = new TopUpInputModel
+            {
+                Amount = TopUpBalance,
+                Username = Username,
+            };
+
+            await this.TransactionsServiceMock.TopUpAsync(topUpInputModel);
+
+            var user = this.DbContext.Users.FirstOrDefault(u => u.UserName == Username);
+
+            var expectedBalance = InitialBalance + TopUpBalance;
+            Assert.Equal(expectedBalance, user.Balance);
         }
 
         private async Task AddTestingUserToDb(string id, string username, string email)
@@ -59,7 +76,7 @@ namespace PlayersBay.Services.Data.Tests
                 Id = id,
                 UserName = username,
                 Email = email,
-                Balance = 100,
+                Balance = InitialBalance,
             });
             await this.DbContext.SaveChangesAsync();
         }

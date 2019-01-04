@@ -28,7 +28,7 @@
             this.usersManager = usersManager;
         }
 
-        public async Task CreateAsync(MessageInputModel inputModel)
+        public async Task<int> CreateAsync(MessageInputModel inputModel)
         {
             var sender = await this.usersRepository.All().FirstOrDefaultAsync(u => u.UserName == inputModel.SenderName);
             var receiver = await this.usersRepository.All().FirstOrDefaultAsync(u => u.UserName == inputModel.ReceiverName);
@@ -43,6 +43,8 @@
 
             this.messageRepository.Add(message);
             await this.messageRepository.SaveChangesAsync();
+
+            return message.Id;
         }
 
         public async Task DeleteAsync(int id)

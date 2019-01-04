@@ -6,7 +6,7 @@
 
     public interface IMessagesService
     {
-        Task CreateAsync(MessageInputModel inputModel);
+        Task<int> CreateAsync(MessageInputModel inputModel);
 
         Task DeleteAsync(int id);
 

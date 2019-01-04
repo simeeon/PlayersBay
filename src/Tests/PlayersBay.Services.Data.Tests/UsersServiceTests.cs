@@ -6,6 +6,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
+using Microsoft.AspNetCore.Identity;
 
 namespace PlayersBay.Services.Data.Tests
 {
@@ -15,12 +16,17 @@ namespace PlayersBay.Services.Data.Tests
         private readonly string FirstId = Guid.NewGuid().ToString();
         private const string Username = "admin";
         private const string Email = "admin@gmail.com";
+        private const string Password = "123";
         // User 2
         private readonly string SecondId = Guid.NewGuid().ToString();
         private const string UsernameTwo = "user";
         private const string EmailTwo = "user@gmail.com";
 
         private IUsersService UsersServiceMock => this.ServiceProvider.GetRequiredService<IUsersService>();
+
+        protected UserManager<ApplicationUser> UserManager => this.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+
+        protected RoleManager<ApplicationRole> RoleManager => this.ServiceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
 
         [Fact]
         public async Task GetAllAsyncReturnsAllUsers()
@@ -61,6 +67,66 @@ namespace PlayersBay.Services.Data.Tests
                 });
 
             Assert.Equal(expected.Length, actual.Length);
+        }
+
+        [Fact]
+        public async Task MakeModeratorShouldMakeUserWithUserRoleToModerator()
+        {
+            var user = new ApplicationUser
+            {
+                Id = FirstId,
+                UserName = Username
+            };
+
+            await RoleManager.CreateAsync(new ApplicationRole
+            {
+                Name = Common.GlobalConstants.ModeratorRoleName
+            });
+
+            await RoleManager.CreateAsync(new ApplicationRole
+            {
+                Name = Common.GlobalConstants.UserRoleName
+            });
+
+            this.UserManager.CreateAsync(user).GetAwaiter().GetResult();
+            this.UserManager.AddPasswordAsync(user, Password).GetAwaiter().GetResult();
+            await this.UserManager.AddToRoleAsync(user, Common.GlobalConstants.UserRoleName);
+
+            Assert.False(await this.UserManager.IsInRoleAsync(user, Common.GlobalConstants.ModeratorRoleName));
+
+            await this.UsersServiceMock.MakeModerator(FirstId);
+
+            Assert.True(await this.UserManager.IsInRoleAsync(user, Common.GlobalConstants.ModeratorRoleName));
+        }
+
+        [Fact]
+        public async Task DemoteFromModeratorShouldMakeUserWithModeratorRoleToUser()
+        {
+            var user = new ApplicationUser
+            {
+                Id = FirstId,
+                UserName = Username
+            };
+
+            await RoleManager.CreateAsync(new ApplicationRole
+            {
+                Name = Common.GlobalConstants.ModeratorRoleName
+            });
+
+            await RoleManager.CreateAsync(new ApplicationRole
+            {
+                Name = Common.GlobalConstants.UserRoleName
+            });
+
+            this.UserManager.CreateAsync(user).GetAwaiter().GetResult();
+            this.UserManager.AddPasswordAsync(user, Password).GetAwaiter().GetResult();
+            await this.UserManager.AddToRoleAsync(user, Common.GlobalConstants.ModeratorRoleName);
+
+            Assert.False(await this.UserManager.IsInRoleAsync(user, Common.GlobalConstants.UserRoleName));
+
+            await this.UsersServiceMock.DemoteFromModerator(FirstId);
+
+            Assert.True(await this.UserManager.IsInRoleAsync(user, Common.GlobalConstants.UserRoleName));
         }
 
         [Fact]
