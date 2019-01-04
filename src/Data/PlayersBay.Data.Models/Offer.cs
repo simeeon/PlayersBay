@@ -12,9 +12,9 @@
             this.Feedback = new Feedback();
         }
 
-        public string AuthorId { get; set; }
+        public string SellerId { get; set; }
 
-        public ApplicationUser Author { get; set; }
+        public ApplicationUser Seller { get; set; }
 
         public OfferType OfferType { get; set; }
 
@@ -22,7 +22,7 @@
 
         public DateTime ExpiryDate { get; set; }
 
-        public Status Status { get; set; }
+        public OfferStatus Status { get; set; }
 
         public decimal Price { get; set; }
 

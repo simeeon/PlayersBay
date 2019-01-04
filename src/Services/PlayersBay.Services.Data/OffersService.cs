@@ -19,7 +19,7 @@
     public class OffersService : IOffersService
     {
         private readonly IRepository<Offer> offersRepository;
-        private readonly IRepository<Transaction> transactionRepository;
+        private readonly IRepository<Deal> transactionRepository;
         private readonly Cloudinary cloudinary;
         private readonly IRepository<ApplicationUser> usersRepository;
         private readonly UserManager<ApplicationUser> usersManager;
@@ -28,7 +28,7 @@
             IRepository<Offer> offersRepository,
             Cloudinary cloudinary,
             IRepository<ApplicationUser> usersRepository,
-            IRepository<Transaction> transactionRepository,
+            IRepository<Deal> transactionRepository,
             UserManager<ApplicationUser> usersManager)
         {
             this.offersRepository = offersRepository;
@@ -51,7 +51,7 @@
             var offer = new Offer
             {
                 GameId = inputModel.GameId,
-                Author = seller,
+                Seller = seller,
                 Description = inputModel.Description,
                 ExpiryDate = DateTime.UtcNow.AddDays(inputModel.Duration),
                 ImageUrl = imageUrl,
@@ -59,7 +59,7 @@
                 OfferType = inputModel.OfferType,
                 Price = inputModel.Price,
                 Title = inputModel.Title,
-                Status = Status.Active,
+                Status = OfferStatus.Active,
             };
 
             this.offersRepository.Add(offer);
@@ -102,7 +102,7 @@
         {
             var offers = await this.offersRepository
                 .All()
-                .Where(o => o.GameId == id && o.Status == Status.Active)
+                .Where(o => o.GameId == id && o.Status == OfferStatus.Active)
                 .To<OfferViewModel>()
                 .ToArrayAsync();
 
@@ -113,7 +113,7 @@
         {
             var offers = await this.offersRepository
                 .All()
-                .Where(o => o.Author.UserName == username && o.Status == Status.Active)
+                .Where(o => o.Seller.UserName == username && o.Status == OfferStatus.Active)
                 .To<OfferViewModel>()
                 .ToArrayAsync();
 
@@ -124,7 +124,7 @@
         {
             var offers = await this.offersRepository
                 .All()
-                .Where(o => o.Author.UserName == username && o.Status == Status.Completed)
+                .Where(o => o.Seller.UserName == username && o.Status == OfferStatus.Completed)
                 .To<OfferViewModel>()
                 .ToArrayAsync();
 
@@ -141,7 +141,7 @@
 
             var offers = await this.offersRepository
                 .All()
-                .Where(o => offerIds.Contains(o.Id) && o.Status == Status.Completed)
+                .Where(o => offerIds.Contains(o.Id) && o.Status == OfferStatus.Completed)
                 .To<OfferViewModel>()
                 .ToArrayAsync();
 

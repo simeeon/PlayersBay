@@ -7,11 +7,11 @@
     this.ViewData["Title"] = "Offer details";
 
     var MsgInputModel = new PlayersBay.Services.Data.Models.Messages.MessageInputModel();
-    MsgInputModel.ReceiverName = @Model.AuthorUsername;
+    MsgInputModel.ReceiverName = @Model.SellerUsername;
 
-    var TransacInputModel = new PlayersBay.Services.Data.Models.Transactions.TransactionInputModel();
-    TransacInputModel.SellerName = @Model.AuthorUsername;
-    TransacInputModel.OfferId = @Model.Id;
+    var dealInputModel = new PlayersBay.Services.Data.Models.Deals.DealInputModel();
+    dealInputModel.SellerName = @Model.SellerUsername;
+    dealInputModel.OfferId = @Model.Id;
 }
 
 <div class="row" style="margin: 20px;">
@@ -33,8 +33,8 @@
             }
         </div>
         <div>
-            <label asp-for="@Model.AuthorUsername" class="custom-label"></label>
-            : @Model.AuthorUsername
+            <label asp-for="@Model.SellerUsername" class="custom-label"></label>
+            : @Model.SellerUsername
         </div>
         <div>
             <label asp-for="@Model.OfferType" class="custom-label"></label>
@@ -59,10 +59,11 @@
     {
         <div class="col-md-offset-1 col-md-4">
             @await this.Html.PartialAsync("_SendMessagePartial", MsgInputModel)
-            @await this.Html.PartialAsync("_BuyOfferPartial", TransacInputModel)
+            @await this.Html.PartialAsync("_BuyOfferPartial", dealInputModel)
         </div>
     }
 </div>
+
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

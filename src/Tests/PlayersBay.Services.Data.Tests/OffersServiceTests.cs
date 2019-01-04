@@ -103,7 +103,7 @@ namespace PlayersBay.Services.Data.Tests
                 Id = 2,
                 Price = OfferPrice,
                 OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
-                Status = PlayersBay.Data.Models.Enums.Status.Active,
+                Status = PlayersBay.Data.Models.Enums.OfferStatus.Active,
                 Title = OfferTitle,
                 MessageToBuyer = OfferMessagetoBuyer,
                 ImageUrl = DefaultImage,
@@ -130,7 +130,7 @@ namespace PlayersBay.Services.Data.Tests
                 Id = 2,
                 Price = OfferPrice,
                 OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
-                Status = PlayersBay.Data.Models.Enums.Status.Active,
+                Status = PlayersBay.Data.Models.Enums.OfferStatus.Active,
                 Title = OfferTitle,
                 MessageToBuyer = OfferMessagetoBuyer,
                 ImageUrl = DefaultImage,
@@ -150,7 +150,7 @@ namespace PlayersBay.Services.Data.Tests
                 Id = FirstId,
                 Price = OfferPrice,
                 OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
-                Status = PlayersBay.Data.Models.Enums.Status.Active,
+                Status = PlayersBay.Data.Models.Enums.OfferStatus.Active,
                 Title = OfferTitle,
                 MessageToBuyer = OfferMessagetoBuyer,
                 ImageUrl = DefaultImage,
@@ -171,7 +171,7 @@ namespace PlayersBay.Services.Data.Tests
                 Id = FirstId,
                 Price = OfferPrice,
                 OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
-                Status = PlayersBay.Data.Models.Enums.Status.Active,
+                Status = PlayersBay.Data.Models.Enums.OfferStatus.Active,
                 Title = OfferTitle,
                 MessageToBuyer = OfferMessagetoBuyer,
                 ImageUrl = DefaultImage,
@@ -193,7 +193,7 @@ namespace PlayersBay.Services.Data.Tests
                     Id = FirstId,
                     Price = OfferPrice,
                     OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
-                    Status = PlayersBay.Data.Models.Enums.Status.Active,
+                    Status = PlayersBay.Data.Models.Enums.OfferStatus.Active,
                     Title = OfferTitle,
                     MessageToBuyer = OfferMessagetoBuyer,
                     NewImage = file,
@@ -219,24 +219,24 @@ namespace PlayersBay.Services.Data.Tests
             {
                 new OfferViewModel
                 {
-                    AuthorId = testUserId,
+                    SellerId = testUserId,
                     Description = OfferDescription,
                     Id = FirstId,
                     Price = OfferPrice,
                     OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
-                    Status = PlayersBay.Data.Models.Enums.Status.Active,
+                    Status = PlayersBay.Data.Models.Enums.OfferStatus.Active,
                     Title = OfferTitle,
                     MessageToBuyer = OfferMessagetoBuyer,
                     ImageUrl = DefaultImage,
                 },
                 new OfferViewModel
                 {
-                    AuthorId = testUserId,
+                    SellerId = testUserId,
                     Description = SecondOfferDescription,
                     Id = SecondId,
                     Price = SecondOfferPrice,
                     OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
-                    Status = PlayersBay.Data.Models.Enums.Status.Active,
+                    Status = PlayersBay.Data.Models.Enums.OfferStatus.Active,
                     Title = SecondOfferTitle,
                     MessageToBuyer = SecondOfferMessagetoBuyer,
                     ImageUrl = DefaultImage,
@@ -248,7 +248,7 @@ namespace PlayersBay.Services.Data.Tests
             Assert.Collection(actual,
                 elem1 =>
                 {
-                    Assert.Equal(expected[0].AuthorId, elem1.AuthorId);
+                    Assert.Equal(expected[0].SellerId, elem1.SellerId);
                     Assert.Equal(expected[0].Id, elem1.Id);
                     Assert.Equal(expected[0].Description, elem1.Description);
                     Assert.Equal(expected[0].MessageToBuyer, elem1.MessageToBuyer);
@@ -260,7 +260,7 @@ namespace PlayersBay.Services.Data.Tests
                 },
                 elem2 =>
                 {
-                    Assert.Equal(expected[1].AuthorId, elem2.AuthorId);
+                    Assert.Equal(expected[1].SellerId, elem2.SellerId);
                     Assert.Equal(expected[1].Id, elem2.Id);
                     Assert.Equal(expected[1].Description, elem2.Description);
                     Assert.Equal(expected[1].MessageToBuyer, elem2.MessageToBuyer);
@@ -291,10 +291,10 @@ namespace PlayersBay.Services.Data.Tests
                 {
                     Description = OfferDescription,
                     Id = FirstId,
-                    AuthorId = testUserId,
+                    SellerId = testUserId,
                     Price = OfferPrice,
                     OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
-                    Status = PlayersBay.Data.Models.Enums.Status.Active,
+                    Status = PlayersBay.Data.Models.Enums.OfferStatus.Active,
                     Title = OfferTitle,
                     MessageToBuyer = OfferMessagetoBuyer,
                     ImageUrl = DefaultImage,
@@ -303,10 +303,10 @@ namespace PlayersBay.Services.Data.Tests
                 {
                     Description = SecondOfferDescription,
                     Id = SecondId,
-                    AuthorId = testUserId,
+                    SellerId = testUserId,
                     Price = SecondOfferPrice,
                     OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
-                    Status = PlayersBay.Data.Models.Enums.Status.Active,
+                    Status = PlayersBay.Data.Models.Enums.OfferStatus.Active,
                     Title = SecondOfferTitle,
                     MessageToBuyer = SecondOfferMessagetoBuyer,
                     ImageUrl = DefaultImage,
@@ -319,7 +319,7 @@ namespace PlayersBay.Services.Data.Tests
                 elem1 =>
                 {
                     Assert.Equal(expected[0].Id, elem1.Id);
-                    Assert.Equal(expected[0].AuthorId, elem1.AuthorId);
+                    Assert.Equal(expected[0].SellerId, elem1.SellerId);
                     Assert.Equal(expected[0].Description, elem1.Description);
                     Assert.Equal(expected[0].MessageToBuyer, elem1.MessageToBuyer);
                     Assert.Equal(expected[0].Title, elem1.Title);
@@ -330,7 +330,7 @@ namespace PlayersBay.Services.Data.Tests
                 },
                 elem2 =>
                 {
-                    Assert.Equal(expected[1].AuthorId, elem2.AuthorId);
+                    Assert.Equal(expected[1].SellerId, elem2.SellerId);
                     Assert.Equal(expected[1].Id, elem2.Id);
                     Assert.Equal(expected[1].Description, elem2.Description);
                     Assert.Equal(expected[1].MessageToBuyer, elem2.MessageToBuyer);
@@ -361,10 +361,10 @@ namespace PlayersBay.Services.Data.Tests
                 {
                     Description = ThirdOfferDescription,
                     Id = ThirdId,
-                    AuthorId = testUserId,
+                    SellerId = testUserId,
                     Price = ThirdOfferPrice,
                     OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
-                    Status = PlayersBay.Data.Models.Enums.Status.Completed,
+                    Status = PlayersBay.Data.Models.Enums.OfferStatus.Completed,
                     Title = ThirdOfferTitle,
                     MessageToBuyer = ThirdOfferMessagetoBuyer,
                     ImageUrl = DefaultImage,
@@ -373,10 +373,10 @@ namespace PlayersBay.Services.Data.Tests
                 {
                     Description = ForthOfferDescription,
                     Id = ForthId,
-                    AuthorId = testUserId,
+                    SellerId = testUserId,
                     Price = ForthOfferPrice,
                     OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
-                    Status = PlayersBay.Data.Models.Enums.Status.Completed,
+                    Status = PlayersBay.Data.Models.Enums.OfferStatus.Completed,
                     Title = ForthOfferTitle,
                     MessageToBuyer = ForthOfferMessagetoBuyer,
                     ImageUrl = DefaultImage,
@@ -389,7 +389,7 @@ namespace PlayersBay.Services.Data.Tests
                 elem1 =>
                 {
                     Assert.Equal(expected[0].Id, elem1.Id);
-                    Assert.Equal(expected[0].AuthorId, elem1.AuthorId);
+                    Assert.Equal(expected[0].SellerId, elem1.SellerId);
                     Assert.Equal(expected[0].Description, elem1.Description);
                     Assert.Equal(expected[0].MessageToBuyer, elem1.MessageToBuyer);
                     Assert.Equal(expected[0].Title, elem1.Title);
@@ -401,7 +401,7 @@ namespace PlayersBay.Services.Data.Tests
                 elem2 =>
                 {
                     Assert.Equal(expected[1].Id, elem2.Id);
-                    Assert.Equal(expected[1].AuthorId, elem2.AuthorId);
+                    Assert.Equal(expected[1].SellerId, elem2.SellerId);
                     Assert.Equal(expected[1].Description, elem2.Description);
                     Assert.Equal(expected[1].MessageToBuyer, elem2.MessageToBuyer);
                     Assert.Equal(expected[1].Title, elem2.Title);
@@ -422,18 +422,18 @@ namespace PlayersBay.Services.Data.Tests
 
             var buyer = this.DbContext.Users.FirstOrDefault(u => u.Id == testUserId);
 
-            this.DbContext.Transactions.Add(new Transaction {  BuyerId = testUserId, Buyer = buyer});
+            this.DbContext.Deals.Add(new Deal {  BuyerId = testUserId, Buyer = buyer});
             await this.DbContext.SaveChangesAsync();
 
             this.DbContext.Offers.Add(new Offer
             {
                 Description = ThirdOfferDescription,
                 GameId = FirstId,
-                AuthorId = testUserId,
+                SellerId = testUserId,
                 Id = FirstId,
                 Price = ThirdOfferPrice,
                 OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
-                Status = PlayersBay.Data.Models.Enums.Status.Completed,
+                Status = PlayersBay.Data.Models.Enums.OfferStatus.Completed,
                 Title = ThirdOfferTitle,
                 MessageToBuyer = ThirdOfferMessagetoBuyer,
                 ImageUrl = DefaultImage,
@@ -446,10 +446,10 @@ namespace PlayersBay.Services.Data.Tests
                 {
                     Description = ThirdOfferDescription,
                     Id = FirstId,
-                    AuthorId = testUserId,
+                    SellerId = testUserId,
                     Price = ThirdOfferPrice,
                     OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
-                    Status = PlayersBay.Data.Models.Enums.Status.Completed,
+                    Status = PlayersBay.Data.Models.Enums.OfferStatus.Completed,
                     Title = ThirdOfferTitle,
                     MessageToBuyer = ThirdOfferMessagetoBuyer,
                     ImageUrl = DefaultImage,
@@ -462,7 +462,7 @@ namespace PlayersBay.Services.Data.Tests
                 elem1 =>
                 {
                     Assert.Equal(expected[0].Id, elem1.Id);
-                    Assert.Equal(expected[0].AuthorId, elem1.AuthorId);
+                    Assert.Equal(expected[0].SellerId, elem1.SellerId);
                     Assert.Equal(expected[0].Description, elem1.Description);
                     Assert.Equal(expected[0].MessageToBuyer, elem1.MessageToBuyer);
                     Assert.Equal(expected[0].Title, elem1.Title);
@@ -490,7 +490,7 @@ namespace PlayersBay.Services.Data.Tests
                 elem1 =>
                 {
                     Assert.Equal(expected.First().Id, actual.Id);
-                    Assert.Equal(expected.First().AuthorId, actual.AuthorId);
+                    Assert.Equal(expected.First().SellerId, actual.SellerId);
                     Assert.Equal(expected.First().MessageToBuyer, actual.MessageToBuyer);
                     Assert.Equal(expected.First().OfferType, actual.OfferType);
                     Assert.Equal(expected.First().Price, actual.Price);
@@ -532,10 +532,10 @@ namespace PlayersBay.Services.Data.Tests
                 Description = OfferDescription,
                 GameId = FirstId,
                 Id = FirstId,
-                AuthorId = userId,
+                SellerId = userId,
                 Price = OfferPrice,
                 OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
-                Status = PlayersBay.Data.Models.Enums.Status.Active,
+                Status = PlayersBay.Data.Models.Enums.OfferStatus.Active,
                 Title = OfferTitle,
                 MessageToBuyer = OfferMessagetoBuyer,
                 ImageUrl = DefaultImage,
@@ -549,11 +549,11 @@ namespace PlayersBay.Services.Data.Tests
             {
                 Description = SecondOfferDescription,
                 GameId = FirstId,
-                AuthorId = userId,
+                SellerId = userId,
                 Id = SecondId,
                 Price = SecondOfferPrice,
                 OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
-                Status = PlayersBay.Data.Models.Enums.Status.Active,
+                Status = PlayersBay.Data.Models.Enums.OfferStatus.Active,
                 Title = SecondOfferTitle,
                 MessageToBuyer = SecondOfferMessagetoBuyer,
                 ImageUrl = DefaultImage,
@@ -567,11 +567,11 @@ namespace PlayersBay.Services.Data.Tests
             {
                 Description = ThirdOfferDescription,
                 GameId = FirstId,
-                AuthorId = userId,
+                SellerId = userId,
                 Id = ThirdId,
                 Price = ThirdOfferPrice,
                 OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
-                Status = PlayersBay.Data.Models.Enums.Status.Completed,
+                Status = PlayersBay.Data.Models.Enums.OfferStatus.Completed,
                 Title = ThirdOfferTitle,
                 MessageToBuyer = ThirdOfferMessagetoBuyer,
                 ImageUrl = DefaultImage,
@@ -585,11 +585,11 @@ namespace PlayersBay.Services.Data.Tests
             {
                 Description = ForthOfferDescription,
                 GameId = FirstId,
-                AuthorId = userId,
+                SellerId = userId,
                 Id = ForthId,
                 Price = ForthOfferPrice,
                 OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
-                Status = PlayersBay.Data.Models.Enums.Status.Completed,
+                Status = PlayersBay.Data.Models.Enums.OfferStatus.Completed,
                 Title = ForthOfferTitle,
                 MessageToBuyer = ForthOfferMessagetoBuyer,
                 ImageUrl = DefaultImage,

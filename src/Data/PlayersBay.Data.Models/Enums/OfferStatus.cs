@@ -1,9 +1,8 @@
 ﻿namespace PlayersBay.Data.Models.Enums
 {
-    public enum Status
+    public enum OfferStatus
     {
         Active = 1,
-        Pending = 2,
-        Completed = 3,
+        Completed = 2,
     }
 }

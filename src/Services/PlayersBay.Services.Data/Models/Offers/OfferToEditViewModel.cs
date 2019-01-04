@@ -19,10 +19,9 @@
         [Required]
         public int Duration { get; set; }
 
-        public string AuthorId { get; set; }
+        public string SellerId { get; set; }
 
-        [Display(Name = "Seller")]
-        public ApplicationUser Author { get; set; }
+        public ApplicationUser Seller { get; set; }
 
         [Required]
         [Display(Name = "Offer Type")]
@@ -39,7 +38,7 @@
         [Display(Name = "Offer ends")]
         public DateTime ExpiryDate { get; set; }
 
-        public Status Status { get; set; }
+        public OfferStatus Status { get; set; }
 
         [Required]
         [DataType(DataType.Currency)]

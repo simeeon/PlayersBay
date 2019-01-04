@@ -1,16 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.DependencyInjection;
-using PlayersBay.Data.Models;
+﻿using Microsoft.Extensions.DependencyInjection;
 using PlayersBay.Data.Models.Enums;
 using PlayersBay.Services.Data.Contracts;
 using PlayersBay.Services.Data.Models.Feedbacks;
-using PlayersBay.Services.Data.Models.Messages;
-using PlayersBay.Services.Data.Models.Transactions;
-using PlayersBay.Services.Data.Models.Users;
-using PlayersBay.Services.Mapping;
-using System;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 using Xunit;
 

@@ -11,10 +11,9 @@
     {
         public int Id { get; set; }
 
-        public string AuthorId { get; set; }
+        public string SellerId { get; set; }
 
-        [Display(Name = "Seller")]
-        public ApplicationUser Author { get; set; }
+        public ApplicationUser Seller { get; set; }
 
         [Display(Name = "Offer Type")]
         public OfferType OfferType { get; set; }
@@ -27,7 +26,7 @@
         [Display(Name = "Created On")]
         public DateTime CreatedOn { get; set; }
 
-        public Status Status { get; set; }
+        public OfferStatus Status { get; set; }
 
         public decimal Price { get; set; }
 

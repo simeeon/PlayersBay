@@ -1,7 +1,7 @@
-﻿@model PlayersBay.Services.Data.Models.Transactions.TransactionInputModel
+﻿@model PlayersBay.Services.Data.Models.Deals.DealInputModel
 
 <h2 class="custom-label" style="margin-top: 20px;">Get this offer now!</h2>
-<form asp-controller="Transactions" asp-action="Purchase" method="post">
+<form asp-controller="Deals" asp-action="Purchase" method="post">
     <div class="form-group">
         <input type="text" hidden="hidden" value="@this.User.Identity.Name" name="BuyerName" />
         <input type="text" hidden="hidden" value="@Model.SellerName" name="SellerName" />

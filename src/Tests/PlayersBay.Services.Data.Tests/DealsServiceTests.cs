@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using PlayersBay.Data.Models;
 using PlayersBay.Services.Data.Contracts;
-using PlayersBay.Services.Data.Models.Transactions;
+using PlayersBay.Services.Data.Models.Deals;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,7 +9,7 @@ using Xunit;
 
 namespace PlayersBay.Services.Data.Tests
 {
-    public class TransactionsServiceTests : BaseServiceTests
+    public class DealsServiceTests : BaseServiceTests
     {
         private const decimal InitialBalance = 100;
         private const decimal TopUpBalance = 50;
@@ -28,23 +28,23 @@ namespace PlayersBay.Services.Data.Tests
         private const decimal OfferPrice = 15.90m;
         private const string OfferMessagetoBuyer = "Message to buyer";
 
-        private ITransactionsService TransactionsServiceMock => this.ServiceProvider.GetRequiredService<ITransactionsService>();
+        private IDealsService DealsServiceMock => this.ServiceProvider.GetRequiredService<IDealsService>();
 
         [Fact]
-        public async Task CreateAsyncReturnsCreatedTransaction()
+        public async Task CreateAsyncReturnsCreatedDeal()
         {
             await this.AddTestingUserToDb(FirstId, Username, Email);
             await this.AddTestingUserToDb(SecondId, UsernameTwo, EmailTwo);
             await this.AddTestingOfferToDb();
 
-            var transactionInputModel = new TransactionInputModel
+            var dealInputModel = new DealInputModel
             {
                 BuyerName = Username,
                 SellerName = UsernameTwo,
                 OfferId = offerId
             };
 
-            var actual = await this.TransactionsServiceMock.CreateAsync(transactionInputModel);
+            var actual = await this.DealsServiceMock.CreateAsync(dealInputModel);
 
             Assert.Equal(actual, offerId);
         }
@@ -61,7 +61,7 @@ namespace PlayersBay.Services.Data.Tests
                 Username = Username,
             };
 
-            await this.TransactionsServiceMock.TopUpAsync(topUpInputModel);
+            await this.DealsServiceMock.TopUpAsync(topUpInputModel);
 
             var user = this.DbContext.Users.FirstOrDefault(u => u.UserName == Username);
 
@@ -89,7 +89,7 @@ namespace PlayersBay.Services.Data.Tests
                 Id = offerId,
                 Price = OfferPrice,
                 OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
-                Status = PlayersBay.Data.Models.Enums.Status.Active,
+                Status = PlayersBay.Data.Models.Enums.OfferStatus.Active,
                 Title = OfferTitle,
                 MessageToBuyer = OfferMessagetoBuyer,
             });

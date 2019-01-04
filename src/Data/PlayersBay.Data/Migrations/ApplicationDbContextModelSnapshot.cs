@@ -160,8 +160,6 @@ namespace PlayersBay.Data.Migrations
 
                     b.Property<bool>("EmailConfirmed");
 
-                    b.Property<string>("ImageUrl");
-
                     b.Property<bool>("IsDeleted");
 
                     b.Property<bool>("LockoutEnabled");
@@ -202,6 +200,39 @@ namespace PlayersBay.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("PlayersBay.Data.Models.Deal", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BuyerId");
+
+                    b.Property<DateTime>("CreatedOn");
+
+                    b.Property<DateTime?>("DeletedOn");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("ModifiedOn");
+
+                    b.Property<int>("OfferId");
+
+                    b.Property<string>("SellerId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BuyerId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("OfferId");
+
+                    b.HasIndex("SellerId");
+
+                    b.ToTable("Deals");
                 });
 
             modelBuilder.Entity("PlayersBay.Data.Models.Feedback", b =>
@@ -297,8 +328,6 @@ namespace PlayersBay.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AuthorId");
-
                     b.Property<DateTime>("CreatedOn");
 
                     b.Property<DateTime?>("DeletedOn");
@@ -323,13 +352,13 @@ namespace PlayersBay.Data.Migrations
 
                     b.Property<decimal>("Price");
 
+                    b.Property<string>("SellerId");
+
                     b.Property<int>("Status");
 
                     b.Property<string>("Title");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AuthorId");
 
                     b.HasIndex("FeedbackId")
                         .IsUnique();
@@ -337,6 +366,8 @@ namespace PlayersBay.Data.Migrations
                     b.HasIndex("GameId");
 
                     b.HasIndex("IsDeleted");
+
+                    b.HasIndex("SellerId");
 
                     b.ToTable("Offers");
                 });
@@ -366,13 +397,13 @@ namespace PlayersBay.Data.Migrations
                     b.ToTable("Settings");
                 });
 
-            modelBuilder.Entity("PlayersBay.Data.Models.Transaction", b =>
+            modelBuilder.Entity("PlayersBay.Data.Models.Transfer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("BuyerId");
+                    b.Property<decimal>("Amount");
 
                     b.Property<DateTime>("CreatedOn");
 
@@ -382,21 +413,19 @@ namespace PlayersBay.Data.Migrations
 
                     b.Property<DateTime?>("ModifiedOn");
 
-                    b.Property<int>("OfferId");
+                    b.Property<int>("Status");
 
-                    b.Property<string>("SellerId");
+                    b.Property<int>("Type");
+
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BuyerId");
-
                     b.HasIndex("IsDeleted");
 
-                    b.HasIndex("OfferId");
+                    b.HasIndex("UserId");
 
-                    b.HasIndex("SellerId");
-
-                    b.ToTable("Transactions");
+                    b.ToTable("Transfers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -444,6 +473,22 @@ namespace PlayersBay.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
+            modelBuilder.Entity("PlayersBay.Data.Models.Deal", b =>
+                {
+                    b.HasOne("PlayersBay.Data.Models.ApplicationUser", "Buyer")
+                        .WithMany()
+                        .HasForeignKey("BuyerId");
+
+                    b.HasOne("PlayersBay.Data.Models.Offer", "Offer")
+                        .WithMany()
+                        .HasForeignKey("OfferId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("PlayersBay.Data.Models.ApplicationUser", "Seller")
+                        .WithMany()
+                        .HasForeignKey("SellerId");
+                });
+
             modelBuilder.Entity("PlayersBay.Data.Models.Message", b =>
                 {
                     b.HasOne("PlayersBay.Data.Models.ApplicationUser", "Receiver")
@@ -459,10 +504,6 @@ namespace PlayersBay.Data.Migrations
 
             modelBuilder.Entity("PlayersBay.Data.Models.Offer", b =>
                 {
-                    b.HasOne("PlayersBay.Data.Models.ApplicationUser", "Author")
-                        .WithMany()
-                        .HasForeignKey("AuthorId");
-
                     b.HasOne("PlayersBay.Data.Models.Feedback", "Feedback")
                         .WithOne("Offer")
                         .HasForeignKey("PlayersBay.Data.Models.Offer", "FeedbackId")
@@ -472,22 +513,17 @@ namespace PlayersBay.Data.Migrations
                         .WithMany("Offers")
                         .HasForeignKey("GameId")
                         .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("PlayersBay.Data.Models.Transaction", b =>
-                {
-                    b.HasOne("PlayersBay.Data.Models.ApplicationUser", "Buyer")
-                        .WithMany()
-                        .HasForeignKey("BuyerId");
-
-                    b.HasOne("PlayersBay.Data.Models.Offer", "Offer")
-                        .WithMany()
-                        .HasForeignKey("OfferId")
-                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("PlayersBay.Data.Models.ApplicationUser", "Seller")
                         .WithMany()
                         .HasForeignKey("SellerId");
+                });
+
+            modelBuilder.Entity("PlayersBay.Data.Models.Transfer", b =>
+                {
+                    b.HasOne("PlayersBay.Data.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,9 +1,9 @@
-﻿namespace PlayersBay.Services.Data.Models.Transactions
+﻿namespace PlayersBay.Services.Data.Models.Deals
 {
     using PlayersBay.Data.Models;
     using PlayersBay.Services.Mapping;
 
-    public class TransactionInputModel : IMapTo<Transaction>
+    public class DealInputModel : IMapTo<Deal>
     {
         public string SellerName { get; set; }
 

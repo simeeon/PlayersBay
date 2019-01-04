@@ -15,7 +15,7 @@ else
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Author)
+                    @Html.DisplayNameFor(model => model.Seller)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.OfferType)
@@ -39,7 +39,7 @@ else
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>@item.Author.UserName</td>
+                    <td>@item.Seller.UserName</td>
                     <td>@item.OfferType.ToString()</td>
                     <td>@item.ShrotTitle</td>
                     <td>$ @item.Price</td>
@@ -47,7 +47,7 @@ else
                     <td>@item.ExpiryDate</td>
                     <td>
                         <a class="btn btn-outline-primary" asp-controller="Offers" asp-action="Details" asp-route-id=@item.Id>View</a>
-                        @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName) || this.User.IsInRole(GlobalConstants.ModeratorRoleName) || this.User.Identity.Name == @item.Author.UserName)
+                        @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName) || this.User.IsInRole(GlobalConstants.ModeratorRoleName) || this.User.Identity.Name == @item.Seller.UserName)
                         {
                             <a class="btn btn-outline-primary" asp-controller="Offers" asp-action="Edit" asp-route-id=@item.Id>Edit</a>
                             <a class="btn btn-outline-primary" asp-controller="Offers" asp-action="Delete" asp-route-id=@item.Id>Delete</a>

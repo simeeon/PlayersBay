@@ -37,8 +37,6 @@ namespace PlayersBay.Data.Models
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
 
         // My props
-        public string ImageUrl { get; set; }
-
         public decimal Balance { get; set; }
 
         public virtual ICollection<Message> ReceivedMessages { get; set; }

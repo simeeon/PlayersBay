@@ -4,7 +4,7 @@
 
     using PlayersBay.Data.Common.Models;
 
-    public class Transaction : BaseDeletableModel<int>
+    public class Deal : BaseDeletableModel<int>
     {
         public string SellerId { get; set; }
 

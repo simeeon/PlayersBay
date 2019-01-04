@@ -16,7 +16,7 @@
         public int GameId { get; set; }
 
         [Display(Name = "Seller")]
-        public string AuthorUsername { get; set; }
+        public string SellerUsername { get; set; }
 
         [Display(Name = "Offer Type")]
         public string OfferType { get; set; }

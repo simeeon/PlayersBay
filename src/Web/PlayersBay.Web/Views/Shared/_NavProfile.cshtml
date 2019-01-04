@@ -8,7 +8,7 @@
                     <a asp-controller="Messages" asp-action="Inbox" asp-route-username="@this.UserManager.GetUserName(this.User)">My Messages</a>
                 </li>
                 <li>
-                    <a asp-controller="Transactions" asp-action="TopUp">Add funds</a>
+                    <a asp-controller="Transfers" asp-action="All" asp-route-username="@this.UserManager.GetUserName(this.User)">Transfers</a>
                 </li>
                 <li>
                     <a href="/Identity/Account/Manage/ChangePassword">Change Password</a>

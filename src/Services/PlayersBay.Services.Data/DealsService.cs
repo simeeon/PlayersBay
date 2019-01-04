@@ -2,34 +2,33 @@
 {
     using System.Threading.Tasks;
 
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using PlayersBay.Data.Common.Repositories;
     using PlayersBay.Data.Models;
     using PlayersBay.Services.Data.Contracts;
+    using PlayersBay.Services.Data.Models.Deals;
     using PlayersBay.Services.Data.Models.Messages;
-    using PlayersBay.Services.Data.Models.Transactions;
 
-    public class TransactionsService : ITransactionsService
+    public class DealsService : IDealsService
     {
         private readonly IRepository<ApplicationUser> usersRepository;
-        private readonly IRepository<Transaction> transactionsRepository;
+        private readonly IRepository<Deal> dealsRepository;
         private readonly IRepository<Offer> offersRepository;
         private readonly IMessagesService messagesService;
 
-        public TransactionsService(
+        public DealsService(
             IRepository<ApplicationUser> usersRepository,
             IRepository<Offer> offersRepository,
-            IRepository<Transaction> transactionsRepository,
+            IRepository<Deal> transactionsRepository,
             IMessagesService messagesService)
         {
-            this.usersRepository = usersRepository;
             this.offersRepository = offersRepository;
-            this.transactionsRepository = transactionsRepository;
+            this.dealsRepository = transactionsRepository;
             this.messagesService = messagesService;
+            this.usersRepository = usersRepository;
         }
 
-        public async Task<int> CreateAsync(TransactionInputModel inputModel)
+        public async Task<int> CreateAsync(DealInputModel inputModel)
         {
             var buyer = await this.usersRepository.All().FirstOrDefaultAsync(u => u.UserName == inputModel.BuyerName);
             var seller = await this.usersRepository.All().FirstOrDefaultAsync(u => u.UserName == inputModel.SellerName);
@@ -40,13 +39,13 @@
                 buyer.Balance -= offer.Price;
                 seller.Balance += offer.Price;
 
-                offer.Status = PlayersBay.Data.Models.Enums.Status.Completed;
+                offer.Status = PlayersBay.Data.Models.Enums.OfferStatus.Completed;
 
                 this.usersRepository.Update(buyer);
                 this.usersRepository.Update(seller);
                 this.offersRepository.Update(offer);
 
-                var transaction = new Transaction
+                var deal = new Deal
                 {
                     BuyerId = buyer.Id,
                     SellerId = seller.Id,
@@ -60,12 +59,12 @@
                     SenderName = seller.UserName,
                 });
 
-                this.transactionsRepository.Add(transaction);
+                this.dealsRepository.Add(deal);
                 await this.offersRepository.SaveChangesAsync();
                 await this.usersRepository.SaveChangesAsync();
-                await this.transactionsRepository.SaveChangesAsync();
+                await this.dealsRepository.SaveChangesAsync();
 
-                return transaction.Id;
+                return deal.Id;
             }
 
             return 0;

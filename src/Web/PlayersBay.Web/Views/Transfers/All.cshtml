@@ -1,0 +1,62 @@
+﻿@model IEnumerable<PlayersBay.Services.Data.Models.Transfers.TransferViewModel>
+
+@using PlayersBay.Services.Data.Models.Transfers;
+
+@{
+    ViewData["Title"] = "My Transfers";
+}
+
+@await this.Html.PartialAsync("_NavProfile")
+
+@await this.Html.PartialAsync("_TransferPartial", new TransferInputModel())
+
+@await this.Html.PartialAsync("_WithdrawalPartial", new WithdrawalInputModel())
+
+@if (!Model.Any())
+{
+<h2 class="text-center" style="color: #ffa709">You have no transfers.</h2>
+}
+else
+{
+<div>
+    <h2 class="text-center">All transfers</h2>
+</div>
+<table id="my-transfers" class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                Created
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+            {
+        <tr>
+            <td>@item.CreatedOn</td>
+            <td>@item.Type</td>
+            <td>@item.Status</td>
+            <td>$ @item.Amount</td>
+        </tr>
+            }
+    </tbody>
+</table>
+}
+
+@section scripts{
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function () {
+            $('#my-transfers').DataTable();
+        });
+    </script>
+}

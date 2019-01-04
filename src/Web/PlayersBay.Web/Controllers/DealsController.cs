@@ -3,26 +3,22 @@
 
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using PlayersBay.Common;
     using PlayersBay.Common.Extensions.Alerts;
-    using PlayersBay.Data.Common.Repositories;
-    using PlayersBay.Data.Models;
     using PlayersBay.Services.Data.Contracts;
-    using PlayersBay.Services.Data.Models.Transactions;
+    using PlayersBay.Services.Data.Models.Deals;
 
-    public class TransactionsController : BaseController
+    public class DealsController : BaseController
     {
-        private readonly ITransactionsService transactionsService;
+        private readonly IDealsService dealsService;
 
-        public TransactionsController(
-            ITransactionsService transactionsService)
+        public DealsController(IDealsService dealsService)
         {
-            this.transactionsService = transactionsService;
+            this.dealsService = dealsService;
         }
 
         [Authorize]
         [HttpPost]
-        public IActionResult Purchase(TransactionInputModel createInputModel)
+        public IActionResult Purchase(DealInputModel createInputModel)
         {
             if (!this.ModelState.IsValid)
             {
@@ -31,15 +27,15 @@
 
             var username = this.User.Identity.Name;
 
-            var transactionId = this.transactionsService.CreateAsync(createInputModel).GetAwaiter()
+            var dealId = this.dealsService.CreateAsync(createInputModel).GetAwaiter()
                 .GetResult();
 
-            if (transactionId == 0)
+            if (dealId == 0)
             {
                 return this.Redirect("/").WithWarning("Failed!", "Not enough funds.");
             }
 
-            return this.Redirect("/").WithSuccess("Success!", $"Offer #{transactionId} purchased.");
+            return this.Redirect("/").WithSuccess("Success!", $"Offer #{dealId} purchased.");
         }
 
         [Authorize]
@@ -57,7 +53,7 @@
                 return this.View(inputModel);
             }
 
-            this.transactionsService
+            this.dealsService
                 .TopUpAsync(inputModel)
                 .GetAwaiter()
                 .GetResult();

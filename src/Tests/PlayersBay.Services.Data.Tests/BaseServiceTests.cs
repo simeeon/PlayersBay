@@ -65,7 +65,7 @@
             services.AddScoped<IOffersService, OffersService>();
             services.AddScoped<IMessagesService, MessagesService>();
             services.AddScoped<IUsersService, UsersService>();
-            services.AddScoped<ITransactionsService, TransactionsService>();
+            services.AddScoped<IDealsService, DealsService>();
             services.AddScoped<IFeedbacksService, FeedbacksService>();
 
             // Identity stores
