@@ -117,3 +117,12 @@ body {
     color: #ffa709;
     margin-top: 10px;
 }
+
+#divStatus {
+    position: absolute;
+    left: 27.5%;
+    width: 45%;
+    height: 55px;   
+    top: 80px;
+    z-index: 1000;
+}

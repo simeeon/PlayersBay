@@ -12,17 +12,11 @@
 
     public class TransactionsController : BaseController
     {
-        private readonly IOffersService offersService;
-        private readonly IRepository<Offer> offerRepository;
         private readonly ITransactionsService transactionsService;
 
         public TransactionsController(
-            IOffersService offersService,
-            IRepository<Offer> offerRepository,
             ITransactionsService transactionsService)
         {
-            this.offersService = offersService;
-            this.offerRepository = offerRepository;
             this.transactionsService = transactionsService;
         }
 

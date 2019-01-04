@@ -5,7 +5,7 @@
     public class MessageInputModel
     {
         [Required]
-        [Display(Name = "Send Message to Seller:")]
+        [Display(Name = "Send Message:")]
         [StringLength(Constants.Message.MessageMaxLength, MinimumLength = Constants.Message.MessageMinLength, ErrorMessage = Constants.Message.MessageLengthError)]
         public string Message { get; set; }
 

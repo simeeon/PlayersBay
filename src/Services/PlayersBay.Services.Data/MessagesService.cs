@@ -67,7 +67,7 @@
 
         public async Task<MessageOutputModel[]> GetAllMessagesAsync(string username)
         {
-            var receiver = this.usersRepository.GetByIdAsync(username).GetAwaiter().GetResult();
+            var receiver = this.usersRepository.All().FirstOrDefault(u => u.UserName == username);
 
             var messages = await this.messageRepository
                 .All()

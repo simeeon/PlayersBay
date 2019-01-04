@@ -34,19 +34,22 @@ else
                         <th class="text-center">
                             @if (m?.IsRead == false)
                             {
-                                <span style="color: red">New</span>
+                                <span style="color: red;">@count</span>
                             }
-                            @count
+                            else
+                            {
+                                @count
+                            }
                         </th>
                         <td class="text-center">@m.Sender</td>
                         <td class="text-center">@m.CreatedOn</td>
-                        <td class="text-center" style="word-wrap: break-word;">@m.Text</td>
+                        <td class="text-center col-md-5" style="word-wrap: break-word;">@m.Text</td>
 
                         <td>
-                            <div class=" d-flex justify-content-around">
-                                <a asp-action="MessageReply" asp-controller="Messages" asp-area="" asp-route-receiver="@m.Sender" class="btn btn-dark ">Reply</a>
-                                <a asp-action="MessageSeen" asp-controller="Messages" asp-area="" asp-route-id="@m.Id" class="btn btn-dark ">Mark As Seen</a>
-                                <a asp-action="DeleteMessage" asp-controller="Messages" asp-area="" asp-route-id="@m.Id" class="btn btn-danger ">Delete</a>
+                            <div class="text-center">
+                                <a asp-action="Reply" asp-controller="Messages" asp-route-receiver="@m.Sender" class="btn btn-dark ">Reply</a>
+                                <a asp-action="MessageSeen" asp-controller="Messages" asp-route-id="@m.Id" class="btn btn-dark ">Mark As Seen</a>
+                                <a asp-action="DeleteMessage" asp-controller="Messages" asp-route-id="@m.Id" class="btn btn-danger ">Delete</a>
                             </div>
                         </td>
                     </tr>

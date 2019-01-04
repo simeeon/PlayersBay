@@ -10,10 +10,16 @@
 {
     <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
-            <li><a asp-controller="Transactions" asp-action="TopUp">$@user.Balance</a></li>
-            <li><a asp-controller="Offers" asp-action="Create"><i class="fas fa-money-bill"></i> Sell</a></li>
+            <li>
+               <a asp-controller="Transactions" asp-action="TopUp" style="color: #00b400">$ @user.Balance</a>
+            </li>
+            <li>
+                <a asp-controller="Offers" asp-action="Create"><i class="fas fa-money-bill"></i> Sell</a></li>
             <li>
                 <a asp-controller="Messages" asp-action="Inbox" asp-route-username="@this.UserManager.GetUserName(this.User)">
+                    <span style="color: red">
+                        @await Component.InvokeAsync("MessageList", new { username = user.UserName })
+                    </span>
                     <i class="far fa-envelope"></i>
                 </a>
             </li>

@@ -1,0 +1,15 @@
+﻿@model PlayersBay.Services.Data.Models.Messages.MessageInputModel
+
+<div class="col-m4 col-md-offset-4">
+    <h2 class="custom-label">Send message to @this.ViewData["receiver"]:</h2>
+    <form asp-controller="Messages" asp-action="SendMessage" method="post">
+        <div class="form-group">
+            <input type="text" hidden="hidden" value="@this.User.Identity.Name" name="senderName" />
+            <input type="text" hidden="hidden" value="@this.ViewData["receiver"]" name="receiverName" />
+        </div>
+        <div class="form-group">
+            <textarea asp-for="@Model.Message" class="form-control" placeholder="Leave message..." rows="6"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg">Send message</button>
+    </form>
+</div>

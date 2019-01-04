@@ -45,8 +45,9 @@
 
     <partial name="_CookieConsentPartial" />
 
+    
     <div class="container-fluid">
-        @Html.Partial("_StatusMessages")
+        @await Html.PartialAsync("_StatusMessages")
         @this.RenderBody()
 
         <footer>
@@ -63,8 +64,8 @@
         <script>
             $(document).ready(function () {
                 setTimeout(function () {
-                    $(".divStatus").fadeOut(2000);
-                }, 2000);
+                    $("#divStatus").fadeOut(3000);
+                }, 1000);
             });
         </script>
 

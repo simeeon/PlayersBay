@@ -155,7 +155,7 @@ namespace PlayersBay.Services.Data.Tests
                 }
             };
 
-            var actual = await this.MessagesServiceMock.GetAllMessagesAsync(FirstId);
+            var actual = await this.MessagesServiceMock.GetAllMessagesAsync(Username);
 
             Assert.Collection(actual,
                 elem1 =>

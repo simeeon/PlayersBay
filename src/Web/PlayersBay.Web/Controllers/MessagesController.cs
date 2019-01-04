@@ -26,10 +26,7 @@
         [HttpGet]
         public IActionResult Inbox(string username)
         {
-            var user = this.userManager.GetUserAsync(this.HttpContext.User);
-            var userId = user.Result.Id;
-
-            var inbox = this.messagesService.GetAllMessagesAsync(userId)
+            var inbox = this.messagesService.GetAllMessagesAsync(username)
                 .GetAwaiter()
                 .GetResult();
 
@@ -61,7 +58,7 @@
                 .GetAwaiter()
                 .GetResult();
 
-            return this.RedirectToAction("Inbox", "Messages", new { username = this.User.Identity.Name });
+            return this.RedirectToAction("Inbox", "Messages", new { username = this.User.Identity.Name }).WithInfo("Success", $"Message with id #{id} deleted.");
         }
 
         [HttpGet]
@@ -72,6 +69,13 @@
                 .GetResult();
 
             return this.RedirectToAction("Inbox", "Messages", new { username = this.User.Identity.Name });
+        }
+
+        [HttpGet]
+        public IActionResult Reply(string receiver)
+        {
+            this.ViewData["receiver"] = receiver;
+            return this.View();
         }
     }
 }
