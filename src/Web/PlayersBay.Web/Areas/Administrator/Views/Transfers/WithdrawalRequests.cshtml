@@ -1,0 +1,66 @@
+﻿@using PlayersBay.Data.Models
+@model IEnumerable<PlayersBay.Services.Data.Models.Transfers.TransferViewModel>
+@inject SignInManager<ApplicationUser> SignInManager
+
+@{
+    ViewData["Title"] = "All Withdrawal Requests";
+}
+
+@await this.Html.PartialAsync("_PanelNav")
+
+<h2 class="text-center">Action Required</h2>
+<table id="all-withdrawal-requests" class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                User Balance
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td class="col-md-3">@item.CreatedOn</td>
+            <td class="col-md-1">
+                @{
+                    var user = this.SignInManager.UserManager.Users.FirstOrDefault(x => x.Id == item.UserId);
+                }
+                @user.UserName
+            </td>
+            <td class="col-md-1">@user.Balance</td>
+            <td class="col-md-1">@item.Type</td>
+            <td class="col-md-1">@item.Status</td>
+            <td class="col-md-1">@item.Amount</td>
+            <td class="col-md-2">
+                <a class="btn btn-green" asp-area="Administrator" asp-controller="Transfers" asp-action="ApproveTransfer" asp-route-transferId="@item.Id">Approve</a>
+                <a class="btn btn-danger" asp-area="Administrator" asp-controller="Transfers" asp-action="DeclineTransfer" asp-route-transferId=@item.Id>Decline</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#all-withdrawal-requests').DataTable();
+        });
+    </script>
+}

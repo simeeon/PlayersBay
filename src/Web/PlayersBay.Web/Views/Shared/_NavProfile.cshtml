@@ -19,13 +19,13 @@
     <div class="col-md-4 text-center">
         <ul class="nav nav-pills nav-stacked text-center">
             <li>
-                <a asp-controller="Offers" asp-action="ActiveOffers" asp-route-username="@this.UserManager.GetUserName(this.User)">Offers (active)</a>
+                <a asp-controller="Offers" asp-action="ActiveOffers" asp-route-username="@this.UserManager.GetUserName(this.User)">Active offers</a>
             </li>
             <li>
-                <a asp-controller="Offers" asp-action="SoldOffers" asp-route-username="@this.UserManager.GetUserName(this.User)">Offers (sold)</a>
+                <a asp-controller="Offers" asp-action="SoldOffers" asp-route-username="@this.UserManager.GetUserName(this.User)">Sold offers</a>
             </li>
             <li>
-                <a asp-controller="Offers" asp-action="BoughtOffers" asp-route-username="@this.UserManager.GetUserName(this.User)">Offers (bought)</a>
+                <a asp-controller="Offers" asp-action="BoughtOffers" asp-route-username="@this.UserManager.GetUserName(this.User)">Bought offers</a>
             </li>
         </ul>
     </div>

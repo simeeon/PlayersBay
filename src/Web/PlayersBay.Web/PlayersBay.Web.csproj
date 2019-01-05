@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Views\Deals\" />
     <Folder Include="wwwroot\lib\" />
   </ItemGroup>
 

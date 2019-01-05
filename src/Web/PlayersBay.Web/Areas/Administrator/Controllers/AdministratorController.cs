@@ -2,11 +2,10 @@
 {
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using PlayersBay.Services.Data.Utilities;
     using PlayersBay.Web.Controllers;
 
     [Area("Administrator")]
-    [Authorize(Roles = "Administrator")]
+    [Authorize(Roles = Common.GlobalConstants.AdministratorRoleName)]
     public class AdministratorController : BaseController
     {
     }

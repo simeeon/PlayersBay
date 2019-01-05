@@ -67,6 +67,7 @@
             services.AddScoped<IUsersService, UsersService>();
             services.AddScoped<IDealsService, DealsService>();
             services.AddScoped<IFeedbacksService, FeedbacksService>();
+            services.AddScoped<ITransfersService, TransfersService>();
 
             // Identity stores
             services.AddTransient<IUserStore<ApplicationUser>, ApplicationUserStore>();

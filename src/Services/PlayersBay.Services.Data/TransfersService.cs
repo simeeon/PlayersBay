@@ -1,16 +1,14 @@
 ﻿namespace PlayersBay.Services.Data
 {
-    using System;
+    using System.Linq;
     using System.Threading.Tasks;
 
-    using CloudinaryDotNet;
-    using PlayersBay.Data.Models.Enums;
     using Microsoft.EntityFrameworkCore;
     using PlayersBay.Data.Common.Repositories;
     using PlayersBay.Data.Models;
+    using PlayersBay.Data.Models.Enums;
     using PlayersBay.Services.Data.Contracts;
     using PlayersBay.Services.Data.Models.Transfers;
-    using System.Linq;
     using PlayersBay.Services.Mapping;
 
     public class TransfersService : ITransfersService
@@ -73,6 +71,69 @@
                 .ToArrayAsync();
 
             return transfers;
+        }
+
+        public async Task<TransferViewModel[]> GetAllDepositRequestsAsync()
+        {
+            var depositRequests = await this.transfersRepository
+                .All()
+                .Where(u => u.Type == TransferType.Deposit && u.Status == TransferStatus.Pending)
+                .To<TransferViewModel>()
+                .ToArrayAsync();
+
+            return depositRequests;
+        }
+
+        public async Task<TransferViewModel[]> GetAllWithdrawalRequestsAsync()
+        {
+            var withdrawalRequests = await this.transfersRepository
+                .All()
+                .Where(u => u.Type == TransferType.Withdraw && u.Status == TransferStatus.Pending)
+                .To<TransferViewModel>()
+                .ToArrayAsync();
+
+            return withdrawalRequests;
+        }
+
+        public async Task ApproveTransferAsync(int id)
+        {
+            var transfer = this.transfersRepository
+                .All()
+                .FirstOrDefault(u => u.Id == id);
+
+            var user = this.usersRepository.All().FirstOrDefault(u => u.Id == transfer.UserId);
+
+            if (transfer.Type == TransferType.Deposit)
+            {
+                user.Balance += transfer.Amount;
+            }
+            else
+            {
+                if (user.Balance >= transfer.Amount)
+                {
+                    user.Balance -= transfer.Amount;
+                }
+            }
+
+            this.usersRepository.Update(user);
+            await this.usersRepository.SaveChangesAsync();
+
+            transfer.Status = TransferStatus.Approved;
+
+            this.transfersRepository.Update(transfer);
+            await this.usersRepository.SaveChangesAsync();
+        }
+
+        public async Task DeclineTransferAsync(int id)
+        {
+            var transfer = this.transfersRepository
+                .All()
+                .FirstOrDefault(u => u.Id == id);
+
+            transfer.Status = TransferStatus.Declined;
+
+            this.transfersRepository.Update(transfer);
+            await this.usersRepository.SaveChangesAsync();
         }
     }
 }

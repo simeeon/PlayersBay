@@ -47,7 +47,7 @@
                 .GetAwaiter()
                 .GetResult();
 
-            return this.Redirect("/").WithSuccess("Success!", $"Debit request for {inputModel.Amount} created.");
+            return this.RedirectToAction("All", "Transfers", new { username = inputModel.Username }).WithInfo("Done.", $"Debit request for ${inputModel.Amount} created.");
         }
 
         [Authorize]
@@ -64,7 +64,7 @@
                 .GetAwaiter()
                 .GetResult();
 
-            return this.Redirect("/").WithSuccess("Success!", $"Withdrawal request for {inputModel.Amount} created.");
+            return this.RedirectToAction("All", "Transfers", new { username = inputModel.Username }).WithInfo("Done.", $"Withdrawal request for ${inputModel.Amount} created.");
         }
     }
 }

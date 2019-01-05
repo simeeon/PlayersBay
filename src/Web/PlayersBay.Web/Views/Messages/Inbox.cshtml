@@ -49,7 +49,7 @@ else
                             <div class="text-center">
                                 <a asp-action="Reply" asp-controller="Messages" asp-route-receiver="@m.Sender" class="btn btn-dark ">Reply</a>
                                 <a asp-action="MessageSeen" asp-controller="Messages" asp-route-id="@m.Id" class="btn btn-dark ">Mark As Seen</a>
-                                <a asp-action="DeleteMessage" asp-controller="Messages" asp-route-id="@m.Id" class="btn btn-danger ">Delete</a>
+                                <a asp-action="DeleteMessage" asp-controller="Messages" asp-route-id="@m.Id" class="btn btn-danger">Delete</a>
                             </div>
                         </td>
                     </tr>

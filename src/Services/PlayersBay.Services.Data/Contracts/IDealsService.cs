@@ -7,7 +7,5 @@
     public interface IDealsService
     {
         Task<int> CreateAsync(DealInputModel inputModel);
-
-        Task TopUpAsync(TopUpInputModel inputModel);
     }
 }

@@ -8,6 +8,12 @@
     {
         public const string NullReferenceOfferId = "Offer with id {0} not found.";
 
+        public class Transfer
+        {
+            public const int MinAmount = 1;
+            public const int MaxAmount = 2000;
+        }
+
         public class Offer
         {
             public const int MinPrice = 5;

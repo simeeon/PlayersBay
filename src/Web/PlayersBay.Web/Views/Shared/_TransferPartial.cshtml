@@ -7,8 +7,22 @@
         <input type="text" hidden="hidden" value="@this.User.Identity.Name" name="Username" />
         <div class="form-group">
             <label asp-for="Amount" class="control-label custom-label"></label>
-            <input asp-for="Amount" class="form-control" />
+            <input asp-for="Amount" class="form-control" step=0.01 />
             <span asp-validation-for="Amount" class="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-primary btn-lg">Deposit</button>
     </form>
+
+    <form asp-controller="Transfers" asp-action="Withdraw" method="post" class="col-md-offset-1 col-md-4 col-lg-offset-1 col-lg-4">
+        <h2>Withdraw</h2>
+        <hr />
+        <input type="text" hidden="hidden" value="@this.User.Identity.Name" name="Username" />
+
+        <div class="form-group">
+            <label asp-for="Amount" class="control-label custom-label"></label>
+            <input asp-for="Amount" class="form-control" step=0.01 />
+            <span asp-validation-for="Amount" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg">Withdraw</button>
+    </form>
+</div>

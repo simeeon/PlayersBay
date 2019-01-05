@@ -37,28 +37,5 @@
 
             return this.Redirect("/").WithSuccess("Success!", $"Offer #{dealId} purchased.");
         }
-
-        [Authorize]
-        public IActionResult TopUp()
-        {
-            return this.View();
-        }
-
-        [Authorize]
-        [HttpPost]
-        public IActionResult TopUp(TopUpInputModel inputModel)
-        {
-            if (!this.ModelState.IsValid)
-            {
-                return this.View(inputModel);
-            }
-
-            this.dealsService
-                .TopUpAsync(inputModel)
-                .GetAwaiter()
-                .GetResult();
-
-            return this.Redirect("/").WithSuccess("Success!", $"Debited {inputModel.Amount}!");
-        }
     }
 }

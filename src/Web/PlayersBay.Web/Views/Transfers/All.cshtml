@@ -10,8 +10,6 @@
 
 @await this.Html.PartialAsync("_TransferPartial", new TransferInputModel())
 
-@await this.Html.PartialAsync("_WithdrawalPartial", new WithdrawalInputModel())
-
 @if (!Model.Any())
 {
 <h2 class="text-center" style="color: #ffa709">You have no transfers.</h2>

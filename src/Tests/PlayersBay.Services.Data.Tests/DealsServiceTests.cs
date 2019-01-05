@@ -3,7 +3,6 @@ using PlayersBay.Data.Models;
 using PlayersBay.Services.Data.Contracts;
 using PlayersBay.Services.Data.Models.Deals;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -47,27 +46,7 @@ namespace PlayersBay.Services.Data.Tests
             var actual = await this.DealsServiceMock.CreateAsync(dealInputModel);
 
             Assert.Equal(actual, offerId);
-        }
-
-        [Fact]
-        public async Task TopUpAsyncAddsFundsToUserBalance()
-        {
-            await this.AddTestingUserToDb(FirstId, Username, Email);
-            await this.AddTestingUserToDb(SecondId, UsernameTwo, EmailTwo);
-
-            var topUpInputModel = new TopUpInputModel
-            {
-                Amount = TopUpBalance,
-                Username = Username,
-            };
-
-            await this.DealsServiceMock.TopUpAsync(topUpInputModel);
-
-            var user = this.DbContext.Users.FirstOrDefault(u => u.UserName == Username);
-
-            var expectedBalance = InitialBalance + TopUpBalance;
-            Assert.Equal(expectedBalance, user.Balance);
-        }
+        }        
 
         private async Task AddTestingUserToDb(string id, string username, string email)
         {

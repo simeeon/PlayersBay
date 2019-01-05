@@ -11,5 +11,13 @@
         Task<int> CreateWithdrawalRequestAsync(TransferInputModel inputModel);
 
         Task<TransferViewModel[]> GetAllTransfersAsync(string username);
+
+        Task<TransferViewModel[]> GetAllDepositRequestsAsync();
+
+        Task<TransferViewModel[]> GetAllWithdrawalRequestsAsync();
+
+        Task ApproveTransferAsync(int id);
+
+        Task DeclineTransferAsync(int id);
     }
 }

@@ -8,13 +8,17 @@
 
 @if (this.SignInManager.IsSignedIn(this.User))
 {
+    <ul class="nav navbar-nav navbar-left">
+        <li>
+            <a asp-controller="Offers" asp-action="Create"><i class="fas fa-money-bill"></i> Sell</a>
+        </li>
+    </ul>
     <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
+
         <ul class="nav navbar-nav navbar-right">
             <li>
-               <a asp-controller="Deals" asp-action="TopUp" style="color: #00b400">$ @user.Balance</a>
+                <a asp-controller="Transfers" asp-action="All" asp-route-username="@this.UserManager.GetUserName(this.User)" style="color: #00b400">$ @user.Balance</a>
             </li>
-            <li>
-                <a asp-controller="Offers" asp-action="Create"><i class="fas fa-money-bill"></i> Sell</a></li>
             <li>
                 <a asp-controller="Messages" asp-action="Inbox" asp-route-username="@this.UserManager.GetUserName(this.User)">
                     <span style="color: red">

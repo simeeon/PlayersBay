@@ -35,7 +35,5 @@
 
             await this.Result.ExecuteResultAsync(context);
         }
-
     }
-
 }

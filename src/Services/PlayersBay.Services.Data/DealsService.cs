@@ -69,14 +69,5 @@
 
             return 0;
         }
-
-        public async Task TopUpAsync(TopUpInputModel inputModel)
-        {
-            var user = await this.usersRepository.All().FirstOrDefaultAsync(u => u.UserName == inputModel.Username);
-
-            user.Balance += inputModel.Amount;
-            this.usersRepository.Update(user);
-            await this.usersRepository.SaveChangesAsync();
-        }
     }
 }
