@@ -1,5 +1,6 @@
 ﻿namespace PlayersBay.Services.Data
 {
+    using System;
     using System.Threading.Tasks;
 
     using Microsoft.EntityFrameworkCore;
@@ -8,6 +9,7 @@
     using PlayersBay.Services.Data.Contracts;
     using PlayersBay.Services.Data.Models.Deals;
     using PlayersBay.Services.Data.Models.Messages;
+    using PlayersBay.Services.Data.Utilities;
 
     public class DealsService : IDealsService
     {
@@ -28,9 +30,9 @@
             this.usersRepository = usersRepository;
         }
 
-        public async Task<int> CreateAsync(DealInputModel inputModel)
+        public async Task CreateAsync(string buyerUsername, DealInputModel inputModel)
         {
-            var buyer = await this.usersRepository.All().FirstOrDefaultAsync(u => u.UserName == inputModel.BuyerName);
+            var buyer = await this.usersRepository.All().FirstOrDefaultAsync(u => u.UserName == buyerUsername);
             var seller = await this.usersRepository.All().FirstOrDefaultAsync(u => u.UserName == inputModel.SellerName);
             var offer = this.offersRepository.GetByIdAsync(inputModel.OfferId).GetAwaiter().GetResult();
 
@@ -63,11 +65,11 @@
                 await this.offersRepository.SaveChangesAsync();
                 await this.usersRepository.SaveChangesAsync();
                 await this.dealsRepository.SaveChangesAsync();
-
-                return deal.Id;
             }
-
-            return 0;
+            else
+            {
+                throw new InvalidOperationException(string.Format(DataConstants.InsufficientFundsError, offer.Price, buyer.Balance));
+            }
         }
     }
 }

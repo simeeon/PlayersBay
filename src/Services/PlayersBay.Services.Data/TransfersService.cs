@@ -1,5 +1,6 @@
 ﻿namespace PlayersBay.Services.Data
 {
+    using System;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -9,6 +10,7 @@
     using PlayersBay.Data.Models.Enums;
     using PlayersBay.Services.Data.Contracts;
     using PlayersBay.Services.Data.Models.Transfers;
+    using PlayersBay.Services.Data.Utilities;
     using PlayersBay.Services.Mapping;
 
     public class TransfersService : ITransfersService
@@ -24,9 +26,9 @@
             this.usersRepository = usersRepository;
         }
 
-        public async Task<int> CreateDepositRequestAsync(TransferInputModel inputModel)
+        public async Task<int> CreateDepositRequestAsync(string username, TransferInputModel inputModel)
         {
-            var user = await this.usersRepository.All().FirstOrDefaultAsync(u => u.UserName == inputModel.Username);
+            var user = await this.usersRepository.All().FirstOrDefaultAsync(u => u.UserName == username);
 
             var deposit = new Transfer
             {
@@ -42,9 +44,9 @@
             return deposit.Id;
         }
 
-        public async Task<int> CreateWithdrawalRequestAsync(TransferInputModel inputModel)
+        public async Task<int> CreateWithdrawalRequestAsync(string username, TransferInputModel inputModel)
         {
-            var user = await this.usersRepository.All().FirstOrDefaultAsync(u => u.UserName == inputModel.Username);
+            var user = await this.usersRepository.All().FirstOrDefaultAsync(u => u.UserName == username);
 
             var withdrawal = new Transfer
             {
@@ -97,9 +99,7 @@
 
         public async Task ApproveTransferAsync(int id)
         {
-            var transfer = this.transfersRepository
-                .All()
-                .FirstOrDefault(u => u.Id == id);
+            var transfer = this.transfersRepository.All().FirstOrDefault(t => t.Id == id);
 
             var user = this.usersRepository.All().FirstOrDefault(u => u.Id == transfer.UserId);
 
@@ -112,6 +112,10 @@
                 if (user.Balance >= transfer.Amount)
                 {
                     user.Balance -= transfer.Amount;
+                }
+                else
+                {
+                    throw new InvalidOperationException(string.Format(DataConstants.InvalidWithdrawalAmount, transfer.Amount, user.UserName, user.Balance));
                 }
             }
 
@@ -126,9 +130,7 @@
 
         public async Task DeclineTransferAsync(int id)
         {
-            var transfer = this.transfersRepository
-                .All()
-                .FirstOrDefault(u => u.Id == id);
+            var transfer = this.transfersRepository.All().FirstOrDefault(u => u.Id == id);
 
             transfer.Status = TransferStatus.Declined;
 

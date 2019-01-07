@@ -1,6 +1,5 @@
 ﻿namespace PlayersBay.Web.Controllers
 {
-
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using PlayersBay.Common.Extensions.Alerts;
@@ -8,7 +7,6 @@
     using PlayersBay.Data.Models;
     using PlayersBay.Services.Data.Contracts;
     using PlayersBay.Services.Data.Models.Transfers;
-    using System.Linq;
 
     public class TransfersController : BaseController
     {
@@ -24,8 +22,10 @@
         }
 
         [Authorize]
-        public IActionResult All(string username)
+        public IActionResult All()
         {
+            var username = this.User.Identity.Name;
+
             var transfers = this.transfersService.GetAllTransfersAsync(username)
                 .GetAwaiter()
                 .GetResult();
@@ -42,12 +42,14 @@
                 return this.View(inputModel);
             }
 
+            var username = this.User.Identity.Name;
+
             this.transfersService
-                .CreateDepositRequestAsync(inputModel)
+                .CreateDepositRequestAsync(username, inputModel)
                 .GetAwaiter()
                 .GetResult();
 
-            return this.RedirectToAction("All", "Transfers", new { username = inputModel.Username }).WithInfo("Done.", $"Debit request for ${inputModel.Amount} created.");
+            return this.RedirectToAction("All", "Transfers").WithInfo("Done.", $"Debit request for ${inputModel.Amount} created.");
         }
 
         [Authorize]
@@ -59,12 +61,14 @@
                 return this.View(inputModel);
             }
 
+            var username = this.User.Identity.Name;
+
             this.transfersService
-                .CreateWithdrawalRequestAsync(inputModel)
+                .CreateWithdrawalRequestAsync(username, inputModel)
                 .GetAwaiter()
                 .GetResult();
 
-            return this.RedirectToAction("All", "Transfers", new { username = inputModel.Username }).WithInfo("Done.", $"Withdrawal request for ${inputModel.Amount} created.");
+            return this.RedirectToAction("All", "Transfers").WithInfo("Done.", $"Withdrawal request for ${inputModel.Amount} created.");
         }
     }
 }

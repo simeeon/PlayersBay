@@ -24,13 +24,23 @@
         }
 
         [HttpGet]
-        public IActionResult Inbox(string username)
+        public IActionResult Inbox()
         {
-            var inbox = this.messagesService.GetAllMessagesAsync(username)
-                .GetAwaiter()
-                .GetResult();
+            var username = this.User.Identity.Name;
+
+            var inbox = this.messagesService.GetAllMessagesAsync(username).GetAwaiter().GetResult();
 
             return this.View(inbox);
+        }
+
+        [HttpGet]
+        public IActionResult Outbox()
+        {
+            var username = this.User.Identity.Name;
+
+            var outbox = this.messagesService.GetOutboxAsync(username).GetAwaiter().GetResult();
+
+            return this.View(outbox);
         }
 
         [HttpGet]
@@ -43,30 +53,23 @@
         [HttpPost]
         public IActionResult SendMessage(MessageInputModel inputModel)
         {
-            this.messagesService.CreateAsync(
-                    inputModel)
-                .GetAwaiter()
-                .GetResult();
+            this.messagesService.CreateAsync(inputModel).GetAwaiter().GetResult();
 
-            return this.Redirect("/").WithSuccess("Success", "Message sent.");
+            return this.RedirectToAction("Outbox", "Messages").WithSuccess("Success", "Message sent.");
         }
 
         [HttpGet]
         public IActionResult DeleteMessage(int id)
         {
-            this.messagesService.DeleteAsync(id)
-                .GetAwaiter()
-                .GetResult();
+            this.messagesService.DeleteAsync(id).GetAwaiter().GetResult();
 
-            return this.RedirectToAction("Inbox", "Messages", new { username = this.User.Identity.Name }).WithInfo("Success", $"Message with id #{id} deleted.");
+            return this.RedirectToAction("Inbox", "Messages").WithInfo("Success", $"Message with id #{id} deleted.");
         }
 
         [HttpGet]
         public IActionResult MessageSeen(int id)
         {
-            this.messagesService.MessageSeenAsync(id)
-                .GetAwaiter()
-                .GetResult();
+            this.messagesService.MessageSeenAsync(id).GetAwaiter().GetResult();
 
             return this.RedirectToAction("Inbox", "Messages", new { username = this.User.Identity.Name });
         }

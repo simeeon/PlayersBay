@@ -6,7 +6,7 @@
 
     public interface IOffersService
     {
-        Task<int> CreateAsync(OfferCreateInputModel inputModel);
+        Task<int> CreateAsync(string sellerUsername, OfferCreateInputModel inputModel);
 
         Task<OfferViewModel[]> GetAllOffersAsync(int id);
 

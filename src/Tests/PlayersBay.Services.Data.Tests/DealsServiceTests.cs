@@ -3,6 +3,7 @@ using PlayersBay.Data.Models;
 using PlayersBay.Services.Data.Contracts;
 using PlayersBay.Services.Data.Models.Deals;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -43,9 +44,11 @@ namespace PlayersBay.Services.Data.Tests
                 OfferId = offerId
             };
 
-            var actual = await this.DealsServiceMock.CreateAsync(dealInputModel);
+            await this.DealsServiceMock.CreateAsync(Username, dealInputModel);
 
-            Assert.Equal(actual, offerId);
+            var offersCount = this.DbContext.Offers.Count();
+
+            Assert.Equal(offersCount, offerId);
         }        
 
         private async Task AddTestingUserToDb(string id, string username, string email)
@@ -57,6 +60,7 @@ namespace PlayersBay.Services.Data.Tests
                 Email = email,
                 Balance = InitialBalance,
             });
+
             await this.DbContext.SaveChangesAsync();
         }
 
@@ -72,6 +76,7 @@ namespace PlayersBay.Services.Data.Tests
                 Title = OfferTitle,
                 MessageToBuyer = OfferMessagetoBuyer,
             });
+
             await this.DbContext.SaveChangesAsync();
         }
     }

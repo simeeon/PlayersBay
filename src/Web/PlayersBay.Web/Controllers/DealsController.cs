@@ -25,17 +25,11 @@
                 return this.View(createInputModel);
             }
 
-            var username = this.User.Identity.Name;
+            var buyerUsername = this.User.Identity.Name;
 
-            var dealId = this.dealsService.CreateAsync(createInputModel).GetAwaiter()
-                .GetResult();
+            this.dealsService.CreateAsync(buyerUsername, createInputModel).GetAwaiter().GetResult();
 
-            if (dealId == 0)
-            {
-                return this.Redirect("/").WithWarning("Failed!", "Not enough funds.");
-            }
-
-            return this.Redirect("/").WithSuccess("Success!", $"Offer #{dealId} purchased.");
+            return this.RedirectToAction("BoughtOffers", "Offers").WithSuccess("Success!", $"Offer #{createInputModel.OfferId} purchased.");
         }
     }
 }

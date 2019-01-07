@@ -13,5 +13,7 @@
         Task MessageSeenAsync(int id);
 
         Task<MessageOutputModel[]> GetAllMessagesAsync(string username);
+
+        Task<MessageOutputModel[]> GetOutboxAsync(string username);
     }
 }

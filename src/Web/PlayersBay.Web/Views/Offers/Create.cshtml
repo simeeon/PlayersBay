@@ -10,56 +10,61 @@
             <h2>Create new offer</h2>
             <hr />
             <input type="text" hidden="hidden" value="@this.User.Identity.Name" name="Author" />
-            <div class="form-group">
-                <label asp-for="@Model.OfferType" class="custom-label"></label>
+            <div class="input-group input-group-lg">
+                <label asp-for="@Model.OfferType" class="input-group-addon custom-label"></label>
                 <select class="form-control" asp-for="OfferType"
                         asp-items="@(Html.GetEnumSelectList<OfferType>())">
                     <option selected="" disabled="">--Select offer type--</option>
                 </select>
             </div>
-            <div class="form-group">
-                <label asp-for="GameId" class="custom-label"></label>
+            <div class="input-group input-group-lg">
+                <label asp-for="GameId" class="input-group-addon custom-label"></label>
                 <select asp-for="GameId" asp-items="games" class="form-control">
                     <option selected="" disabled="">--Select game--</option>
                 </select>
                 <span asp-validation-for="GameId" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <div>
-                    <label asp-for="Duration" class="control-label custom-label"></label>
-                </div>
-                <input asp-for="Duration" type="radio" value="7" /> 7 Days
-                <input asp-for="Duration" type="radio" value="15" /> 15 Days
-                <input asp-for="Duration" type="radio" value="30" /> 30 Days
+
+            <div class="input-group input-group-lg">
+                <label asp-for="Duration" class="input-group-addon custom-label"></label>
+                <input asp-for="Duration" type="radio" value="7" id="7" style="margin-top: 20px;" />
+                <label for="7">7 Days&nbsp;&nbsp;</label>
+                <input asp-for="Duration" type="radio" id="15" value="15" />
+                <label for="15">15 Days&nbsp;&nbsp;</label>
+                <input asp-for="Duration" type="radio" id="30" value="30" />
+                <label for="30">30 Days</label>
             </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label custom-label"></label>
-                <input asp-for="Price" class="form-control" step=0.01/>
+
+            <div class="input-group input-group-lg">
+                <label asp-for="Price" class="input-group-addon custom-label"></label>
+                <input asp-for="Price" class="form-control" step=0.01 placeholder="Get your $" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label custom-label"></label>
-                <input asp-for="Title" class="form-control" />
+
+            <div class="input-group input-group-lg">
+                <label asp-for="Title" class="input-group-addon custom-label"></label>
+                <input asp-for="Title" class="form-control" placeholder="First thing buyer checks!" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
+
+            <div class="input-group input-group-lg">
+                <label asp-for="@Model.ImageUrl" class="input-group-addon custom-label"></label>
+                <input type="file" asp-for="@Model.ImageUrl" name="ImageUrl" style="margin-top: 12px; margin-left: 10px;" />
+                <span asp-validation-for="@Model.ImageUrl" class="text-danger"></span>
+            </div>
         </div>
-        <div class="col-md-offset-1 col-md-4">
+        <div class="col-md-offset-2 col-md-4">
             <div class="form-group">
                 <label asp-for="Description" class="control-label custom-label"></label>
-                <textarea rows="10" cols="20" asp-for="Description" class="form-control"></textarea>
+                <textarea rows="9" cols="20" asp-for="Description" class="form-control" placeholder="Good description makes good deals..."></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="@Model.ImageUrl" class="custom-label"></label>
-                <input type="file" asp-for="@Model.ImageUrl" name="ImageUrl" />
-                <span asp-validation-for="@Model.ImageUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="MessageToBuyer" class="control-label custom-label"></label>
-                <textarea asp-for="MessageToBuyer" class="form-control"></textarea>
+                <textarea asp-for="MessageToBuyer" class="form-control" placeholder="Message that will be send to buyer immediately after purchase."></textarea>
                 <span asp-validation-for="MessageToBuyer" class="text-danger"></span>
             </div>
-            <button type="submit" class="btn btn-primary btn-lg">Create offer</button>
+            <button type="submit" class="btn btn-primary btn-lg" style="width: 80%">Create offer</button>
         </div>
     </form>
 </div>

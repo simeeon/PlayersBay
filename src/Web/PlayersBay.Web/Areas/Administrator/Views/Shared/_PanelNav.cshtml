@@ -1,28 +1,24 @@
-﻿@using PlayersBay.Data.Models
-@inject UserManager<ApplicationUser> UserManager
+﻿<div class="row" style="margin-top: 20px;">
+    <div class="col-md-5 text-center">
 
-    <div class="row" style="margin: 20px;">
-        <div class="col-md-offset-1 col-md-4 text-center">
-            <hr />
-            <ul class="nav nav-pills nav-stacked text-center">
-                <li>
-                    <a asp-area="Administrator" asp-controller="Games" asp-action="Create">Create Game</a>
-                </li>
-                <li>
-                    <a asp-area="Administrator" asp-controller="Transfers" asp-action="WithdrawalRequests">Withdrawal requests</a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="col-md-4 text-center">
-            <hr />
-            <ul class="nav nav-pills nav-stacked text-center">
-                <li>
-                    <a asp-area="Administrator" asp-controller="Users" asp-action="All">All Users</a>
-                </li>
-                <li>
-                    <a asp-area="Administrator" asp-controller="Transfers" asp-action="DepositRequests">Deposit requests</a>
-                </li>
-            </ul>
-        </div>
+        <ul class="nav nav-pills nav-stacked text-center">
+            <li>
+                <a asp-area="Administrator" asp-controller="Games" asp-action="Create">Create Game</a>
+            </li>
+            <li>
+                <a asp-area="Administrator" asp-controller="Transfers" asp-action="WithdrawalRequests">Withdrawal requests</a>
+            </li>
+        </ul>
     </div>
+
+    <div class="col-md-offset-2 col-md-5 text-center">
+        <ul class="nav nav-pills nav-stacked text-center">
+            <li>
+                <a asp-area="Administrator" asp-controller="Users" asp-action="All">All Users</a>
+            </li>
+            <li>
+                <a asp-area="Administrator" asp-controller="Transfers" asp-action="DepositRequests">Deposit requests</a>
+            </li>
+        </ul>
+    </div>
+</div>

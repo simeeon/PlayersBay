@@ -126,3 +126,22 @@ body {
     top: 80px;
     z-index: 1000;
 }
+
+.custom-collapse-dropdown {
+    background-color: dimgray;
+    margin: 0 auto;
+}
+
+.custom-collapse-dropdown:hover {
+    text-decoration: none;
+    background-color: lightslategray;
+}
+
+.input-group-lg {
+    margin-top: 15px;
+}
+
+.input-group-addon {
+    min-width: 130px;
+    // if you want width please write here // text-align:left;
+}

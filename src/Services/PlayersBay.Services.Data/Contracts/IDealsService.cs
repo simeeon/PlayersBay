@@ -6,6 +6,6 @@
 
     public interface IDealsService
     {
-        Task<int> CreateAsync(DealInputModel inputModel);
+        Task CreateAsync(string buyerUsername, DealInputModel inputModel);
     }
 }

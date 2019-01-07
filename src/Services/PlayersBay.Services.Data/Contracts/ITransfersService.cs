@@ -6,9 +6,9 @@
 
     public interface ITransfersService
     {
-        Task<int> CreateDepositRequestAsync(TransferInputModel inputModel);
+        Task<int> CreateDepositRequestAsync(string username, TransferInputModel inputModel);
 
-        Task<int> CreateWithdrawalRequestAsync(TransferInputModel inputModel);
+        Task<int> CreateWithdrawalRequestAsync(string username, TransferInputModel inputModel);
 
         Task<TransferViewModel[]> GetAllTransfersAsync(string username);
 

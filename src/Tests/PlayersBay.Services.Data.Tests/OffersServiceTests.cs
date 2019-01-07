@@ -11,7 +11,6 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
-using PlayersBay.Services.Data.Models;
 
 namespace PlayersBay.Services.Data.Tests
 {
@@ -54,7 +53,7 @@ namespace PlayersBay.Services.Data.Tests
 
         [Fact]
         public async Task CreateAsyncReturnsCreatedOffer()
-        {
+        { 
             var expected = new OfferViewModel
             {
                 Id = FirstId,
@@ -75,7 +74,6 @@ namespace PlayersBay.Services.Data.Tests
 
                 var offerCreateInputModel = new OfferCreateInputModel()
                 {
-                    Author = Username,
                     Description = OfferDescription,
                     GameId = FirstId,
                     Price = OfferPrice,
@@ -85,7 +83,7 @@ namespace PlayersBay.Services.Data.Tests
                     ImageUrl = file,
                 };
 
-                var actual = await this.OffersServiceMock.CreateAsync(offerCreateInputModel);
+                var actual = await this.OffersServiceMock.CreateAsync(Username, offerCreateInputModel);
 
                 Assert.Equal(actual, expected.Id);
             }
@@ -512,7 +510,7 @@ namespace PlayersBay.Services.Data.Tests
             var exception = await Assert.ThrowsAsync<NullReferenceException>(() =>
                 this.OffersServiceMock.GetViewModelAsync<OfferToEditViewModel>(invalidId));
 
-            Assert.Equal(string.Format(Constants.NullReferenceOfferId, invalidId), exception.Message);
+            Assert.Equal(string.Format(DataConstants.NullReferenceOfferId, invalidId), exception.Message);
         }
 
         private async Task AddTestingGameToDb()

@@ -38,9 +38,9 @@
             this.usersManager = usersManager;
         }
 
-        public async Task<int> CreateAsync(OfferCreateInputModel inputModel)
+        public async Task<int> CreateAsync(string sellerUsername, OfferCreateInputModel inputModel)
         {
-            var seller = this.usersManager.FindByNameAsync(inputModel.Author).GetAwaiter().GetResult();
+            var seller = this.usersManager.FindByNameAsync(sellerUsername).GetAwaiter().GetResult();
 
             var imageUrl = string.Empty;
             if (inputModel.ImageUrl != null)
@@ -158,7 +158,7 @@
 
             if (offer == null)
             {
-                throw new NullReferenceException(string.Format(Constants.NullReferenceOfferId, id));
+                throw new NullReferenceException(string.Format(DataConstants.NullReferenceOfferId, id));
             }
 
             return offer;

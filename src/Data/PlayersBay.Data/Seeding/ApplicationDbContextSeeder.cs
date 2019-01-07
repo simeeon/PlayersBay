@@ -150,10 +150,11 @@
         {
             if (userManager.FindByNameAsync("admin").Result == null)
             {
-                ApplicationUser user = new ApplicationUser();
-                user.UserName = "admin";
-                user.Email = "admin@admin.com";
-                user.UserName = "Admin";
+                ApplicationUser user = new ApplicationUser
+                {
+                    UserName = "admin",
+                    Email = "admin@admin.com",
+                };
 
                 IdentityResult result = userManager.CreateAsync(user, "admin").Result;
 
@@ -166,6 +167,7 @@
 
         private static void SeedOffers(IOffersService offerService, IRepository<Offer> offerRepository)
         {
+            var sellerUsername = "admin";
             var allOffers = offerRepository.All();
             if (!allOffers.Any())
             {
@@ -173,7 +175,6 @@
                 {
                     var offer = new OfferCreateInputModel
                     {
-                        Author = "admin",
                         GameId = 1,
                         Description = $"Nice Item {i}. Buy it now!",
                         Duration = 7,
@@ -184,7 +185,7 @@
                         Title = $"My title {i}",
                     };
 
-                    offerService.CreateAsync(offer)
+                    offerService.CreateAsync(sellerUsername, offer)
                         .GetAwaiter()
                         .GetResult();
                 }

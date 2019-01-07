@@ -3,6 +3,7 @@ using PlayersBay.Data.Models;
 using PlayersBay.Data.Models.Enums;
 using PlayersBay.Services.Data.Contracts;
 using PlayersBay.Services.Data.Models.Transfers;
+using PlayersBay.Services.Data.Utilities;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace PlayersBay.Services.Data.Tests
 {
     public class TransfersServiceTests : BaseServiceTests
     {
+        private const decimal InitialBalance = 20;
         // User 1
         private readonly string FirstUserId = Guid.NewGuid().ToString();
         private const string FirstUsername = "admin";
@@ -58,7 +60,7 @@ namespace PlayersBay.Services.Data.Tests
                 Status = FirstStatus,
             };
 
-            var actual = await this.TransfersServiceMock.CreateDepositRequestAsync(transferCreateInputModel);
+            var actual = await this.TransfersServiceMock.CreateDepositRequestAsync(FirstUsername, transferCreateInputModel);
 
             Assert.Equal(actual, expected.Id);
         }
@@ -81,7 +83,7 @@ namespace PlayersBay.Services.Data.Tests
                 Status = SecondStatus,
             };
 
-            var actual = await this.TransfersServiceMock.CreateWithdrawalRequestAsync(transferCreateInputModel);
+            var actual = await this.TransfersServiceMock.CreateWithdrawalRequestAsync(FirstUsername, transferCreateInputModel);
 
             Assert.Equal(actual, expected.Id);
         }
@@ -193,6 +195,18 @@ namespace PlayersBay.Services.Data.Tests
         }
 
         [Fact]
+        public async Task ApproveTransferAsyncThrowsInvalidOperationExceptionIfWithdrawalAmountIsBiggerThanBalance()
+        {
+            await this.AddTestingUserToDb(FirstUserId, FirstUsername, FirstEmail);
+            await this.AddTestingTransferToDb(FirstTransferId, ThirdTransferAmount, TransferType.Withdraw, TransferStatus.Pending, FirstUserId);
+
+            var exception = await Assert.ThrowsAsync<InvalidOperationException>(() =>
+                this.TransfersServiceMock.ApproveTransferAsync(FirstTransferId));
+
+            Assert.Equal(string.Format(DataConstants.InvalidWithdrawalAmount, ThirdTransferAmount, FirstUsername, InitialBalance), exception.Message);
+        }
+
+        [Fact]
         public async Task GetAllTransfersAsyncReturnsAllTransfers()
         {
             await this.AddTestingUserToDb(FirstUserId, FirstUsername, FirstEmail);
@@ -251,6 +265,7 @@ namespace PlayersBay.Services.Data.Tests
                 Id = id,
                 UserName = username,
                 Email = email,
+                Balance = InitialBalance
             });
             await this.DbContext.SaveChangesAsync();
         }

@@ -8,17 +8,17 @@
 
 @if (!Model.Any())
 {
-    <h2 class="text-center" style="color: #ffa709">You have no messages.</h2>
+    <h2 class="text-center" style="color: #ffa709">You have sent messages.</h2>
 }
 else
 {
-    <h2 class="text-center">Inbox</h2>
+    <h2 class="text-center">Outbox</h2>
     <div class="container  col-md-12 mt-5 table-responsive" style="margin-top: 25px;">
         <table class="table table-bordered" id="all-messages">
             <thead class="thead-dark">
                 <tr>
                     <th class="text-center">#</th>
-                    <th class="text-center">From</th>
+                    <th class="text-center">To</th>
                     <th class="text-center">Received on</th>
                     <th class="text-center" style="word-wrap: break-word;">Text</th>
                     <th class="text-center">Actions</th>
@@ -41,14 +41,12 @@ else
                                 @count
                             }
                         </th>
-                        <td class="text-center">@m.Sender</td>
+                        <td class="text-center">@m.Receiver</td>
                         <td class="text-center">@m.CreatedOn</td>
                         <td class="text-center col-md-5" style="word-wrap: break-word;">@m.Text</td>
 
                         <td>
                             <div class="text-center">
-                                <a asp-action="Reply" asp-controller="Messages" asp-route-receiver="@m.Sender" class="btn btn-dark ">Reply</a>
-                                <a asp-action="MessageSeen" asp-controller="Messages" asp-route-id="@m.Id" class="btn btn-dark ">Mark As Seen</a>
                                 <a asp-action="DeleteMessage" asp-controller="Messages" asp-route-id="@m.Id" class="btn btn-danger">Delete</a>
                             </div>
                         </td>

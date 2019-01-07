@@ -17,10 +17,10 @@
 
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a asp-controller="Transfers" asp-action="All" asp-route-username="@this.UserManager.GetUserName(this.User)" style="color: #00b400">$ @user.Balance</a>
+                <a asp-controller="Transfers" asp-action="All" style="color: #00b400">$ @user.Balance</a>
             </li>
             <li>
-                <a asp-controller="Messages" asp-action="Inbox" asp-route-username="@this.UserManager.GetUserName(this.User)">
+                <a asp-controller="Messages" asp-action="Inbox">
                     <span style="color: red">
                         @await Component.InvokeAsync("MessageList", new { username = user.UserName })
                     </span>
@@ -28,7 +28,7 @@
                 </a>
             </li>
             <li>
-                <a asp-controller="Offers" asp-action="ActiveOffers" asp-route-username="@this.UserManager.GetUserName(this.User)">
+                <a asp-controller="Offers" asp-action="ActiveOffers">
                     &nbsp;<i class="fas fa-cogs"></i>&nbsp; @this.UserManager.GetUserName(this.User)
                 </a>
             </li>

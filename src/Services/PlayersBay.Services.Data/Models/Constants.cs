@@ -6,8 +6,6 @@
 
     public class Constants
     {
-        public const string NullReferenceOfferId = "Offer with id {0} not found.";
-
         public class Transfer
         {
             public const int MinAmount = 1;

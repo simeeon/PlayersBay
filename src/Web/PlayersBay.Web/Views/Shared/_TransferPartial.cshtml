@@ -1,28 +1,25 @@
 ﻿@model PlayersBay.Services.Data.Models.Transfers.TransferInputModel
 
-<div class="row justify-content-center">
-    <form asp-controller="Transfers" asp-action="Deposit" method="post" class="col-md-4 col-md-offset-1 col-lg-offset-1 col-lg-4">
-        <h2>Deposit</h2>
+<div class="row">
+    <form asp-controller="Transfers" asp-action="Deposit" method="post" class="col-md-offset-1 col-md-3">
+        <h2 class="text-center">Deposit</h2>
         <hr />
-        <input type="text" hidden="hidden" value="@this.User.Identity.Name" name="Username" />
         <div class="form-group">
             <label asp-for="Amount" class="control-label custom-label"></label>
             <input asp-for="Amount" class="form-control" step=0.01 />
             <span asp-validation-for="Amount" class="text-danger"></span>
         </div>
-        <button type="submit" class="btn btn-primary btn-lg">Deposit</button>
+        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Deposit</button>
     </form>
 
-    <form asp-controller="Transfers" asp-action="Withdraw" method="post" class="col-md-offset-1 col-md-4 col-lg-offset-1 col-lg-4">
-        <h2>Withdraw</h2>
+    <form asp-controller="Transfers" asp-action="Withdraw" method="post" class="col-md-offset-4 col-md-3">
+        <h2 class="text-center">Withdraw</h2>
         <hr />
-        <input type="text" hidden="hidden" value="@this.User.Identity.Name" name="Username" />
-
         <div class="form-group">
             <label asp-for="Amount" class="control-label custom-label"></label>
             <input asp-for="Amount" class="form-control" step=0.01 />
             <span asp-validation-for="Amount" class="text-danger"></span>
         </div>
-        <button type="submit" class="btn btn-primary btn-lg">Withdraw</button>
+        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Withdraw</button>
     </form>
 </div>

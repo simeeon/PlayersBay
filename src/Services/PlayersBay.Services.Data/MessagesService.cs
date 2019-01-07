@@ -67,11 +67,24 @@
 
         public async Task<MessageOutputModel[]> GetAllMessagesAsync(string username)
         {
-            var receiver = this.usersRepository.All().FirstOrDefault(u => u.UserName == username);
+            var user = this.usersRepository.All().FirstOrDefault(u => u.UserName == username);
 
             var messages = await this.messageRepository
                 .All()
-                .Where(u => u.Receiver == receiver)
+                .Where(u => u.Receiver == user)
+                .To<MessageOutputModel>()
+                .ToArrayAsync();
+
+            return messages;
+        }
+
+        public async Task<MessageOutputModel[]> GetOutboxAsync(string username)
+        {
+            var user = this.usersRepository.All().FirstOrDefault(u => u.UserName == username);
+
+            var messages = await this.messageRepository
+                .All()
+                .Where(u => u.Sender == user)
                 .To<MessageOutputModel>()
                 .ToArrayAsync();
 

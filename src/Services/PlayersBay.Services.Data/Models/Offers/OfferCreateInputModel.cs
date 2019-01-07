@@ -10,8 +10,6 @@
         [Display(Name = "Game")]
         public int GameId { get; set; }
 
-        public string Author { get; set; }
-
         [Required]
         [Display(Name = "Offer Type")]
         public OfferType OfferType { get; set; }

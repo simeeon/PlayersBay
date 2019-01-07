@@ -8,8 +8,6 @@
     {
         public int Id { get; set; }
 
-        public string Username { get; set; }
-
         [Required]
         [DataType(DataType.Currency)]
         [Range(Constants.Transfer.MinAmount, Constants.Transfer.MaxAmount)]

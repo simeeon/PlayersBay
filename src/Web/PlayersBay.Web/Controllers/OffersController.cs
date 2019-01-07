@@ -51,12 +51,14 @@
         [HttpPost]
         public IActionResult Create(OfferCreateInputModel createInputModel)
         {
+            var sellerUsername = this.User.Identity.Name;
+
             if (!this.ModelState.IsValid)
             {
                 return this.View(createInputModel);
             }
 
-            var offerId = this.offersService.CreateAsync(createInputModel)
+            var offerId = this.offersService.CreateAsync(sellerUsername, createInputModel)
                 .GetAwaiter()
                 .GetResult();
 
@@ -86,17 +88,17 @@
         }
 
         [Authorize]
-        public IActionResult ActiveOffers(string username)
+        public IActionResult ActiveOffers()
         {
-            var offers = this.offersService.GetMyActiveOffersAsync(username)
-                .GetAwaiter()
-                .GetResult();
+            var username = this.User.Identity.Name;
+
+            var offers = this.offersService.GetMyActiveOffersAsync(username).GetAwaiter().GetResult();
 
             return this.View(offers);
         }
 
         [Authorize]
-        public IActionResult SoldOffers(string username)
+        public IActionResult SoldOffers()
         {
             this.ViewData["Feedbacks"] = this.feedbackRepository.All().Select(x => new FeedbacksViewModel
             {
@@ -105,15 +107,15 @@
                 FeedbackRating = x.FeedbackRating,
             }).ToArray();
 
-            var offers = this.offersService.GetMySoldOffersAsync(username)
-                .GetAwaiter()
-                .GetResult();
+            var username = this.User.Identity.Name;
+
+            var offers = this.offersService.GetMySoldOffersAsync(username).GetAwaiter().GetResult();
 
             return this.View(offers);
         }
 
         [Authorize]
-        public IActionResult BoughtOffers(string username)
+        public IActionResult BoughtOffers()
         {
             this.ViewData["Feedbacks"] = this.feedbackRepository.All().Select(x => new FeedbacksViewModel
             {
@@ -122,9 +124,9 @@
                   FeedbackRating = x.FeedbackRating,
             }).ToArray();
 
-            var offers = this.offersService.GetMyBoughtOffersAsync(username)
-                .GetAwaiter()
-                .GetResult();
+            var username = this.User.Identity.Name;
+
+            var offers = this.offersService.GetMyBoughtOffersAsync(username).GetAwaiter().GetResult();
 
             return this.View(offers);
         }
@@ -164,9 +166,7 @@
             }
 
             var id = offerToEditViewModel.Id;
-            this.offersService.EditAsync(offerToEditViewModel)
-                .GetAwaiter()
-                .GetResult();
+            this.offersService.EditAsync(offerToEditViewModel).GetAwaiter().GetResult();
 
             return this.RedirectToAction("Details", "Offers", new { id }).WithInfo("Success!", $"Offer #{id} edited");
         }
@@ -177,10 +177,6 @@
             var offerToDelete = this.offersService.GetViewModelAsync<OfferToEditViewModel>(id)
                 .GetAwaiter()
                 .GetResult();
-            if (offerToDelete == null)
-            {
-                return this.Redirect("/");
-            }
 
             this.ViewData["Game"] = this.gameRepository.All().FirstOrDefault(g => g.Id == offerToDelete.GameId).Name;
 
@@ -192,18 +188,14 @@
         public IActionResult Delete(OfferToEditViewModel offerToEditViewModel)
         {
             var id = offerToEditViewModel.Id;
-            this.offersService.DeleteAsync(id)
-                .GetAwaiter()
-                .GetResult();
+            this.offersService.DeleteAsync(id).GetAwaiter().GetResult();
 
             return this.RedirectToAction("ActiveOffers", "Offers", new { username = this.User.Identity.Name }).WithInfo("Success!", $"Offer deleted.");
         }
 
         private IEnumerable<SelectListItem> SelectAllGames()
         {
-            return this.gamesService.GetAllGamesAsync()
-                .GetAwaiter()
-                .GetResult()
+            return this.gamesService.GetAllGamesAsync().GetAwaiter().GetResult()
                 .Select(x => new SelectListItem
                 {
                     Value = x.Id.ToString(),
