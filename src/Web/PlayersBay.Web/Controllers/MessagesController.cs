@@ -53,7 +53,9 @@
         [HttpPost]
         public IActionResult SendMessage(MessageInputModel inputModel)
         {
-            this.messagesService.CreateAsync(inputModel).GetAwaiter().GetResult();
+            var senderUsername = this.User.Identity.Name;
+
+            this.messagesService.CreateAsync(senderUsername, inputModel).GetAwaiter().GetResult();
 
             return this.RedirectToAction("Outbox", "Messages").WithSuccess("Success", "Message sent.");
         }

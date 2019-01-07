@@ -28,9 +28,9 @@
             this.usersManager = usersManager;
         }
 
-        public async Task<int> CreateAsync(MessageInputModel inputModel)
+        public async Task<int> CreateAsync(string senderUsername, MessageInputModel inputModel)
         {
-            var sender = await this.usersRepository.All().FirstOrDefaultAsync(u => u.UserName == inputModel.SenderName);
+            var sender = await this.usersRepository.All().FirstOrDefaultAsync(u => u.UserName == senderUsername);
             var receiver = await this.usersRepository.All().FirstOrDefaultAsync(u => u.UserName == inputModel.ReceiverName);
 
             var message = new Message

@@ -54,11 +54,10 @@
                     Offer = offer,
                 };
 
-                await this.messagesService.CreateAsync(new MessageInputModel
+                await this.messagesService.CreateAsync(seller.UserName, new MessageInputModel
                 {
                     Message = offer.MessageToBuyer,
                     ReceiverName = buyer.UserName,
-                    SenderName = seller.UserName,
                 });
 
                 this.dealsRepository.Add(deal);

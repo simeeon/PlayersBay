@@ -39,7 +39,7 @@ namespace PlayersBay.Services.Data.Tests
                 Message = MessageText,
             };
 
-            var messageId = await this.MessagesServiceMock.CreateAsync(messageInputModel);
+            var messageId = await this.MessagesServiceMock.CreateAsync(Username, messageInputModel);
 
             var message = this.DbContext.Messages.FirstOrDefault(u => u.SenderId == FirstId);
 

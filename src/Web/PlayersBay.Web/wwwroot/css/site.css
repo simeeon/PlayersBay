@@ -145,3 +145,9 @@ body {
     min-width: 130px;
     // if you want width please write here // text-align:left;
 }
+
+.offer-view-field {
+    margin-top: 13px;
+    margin-left: 8px;
+    color: #00b400;
+}

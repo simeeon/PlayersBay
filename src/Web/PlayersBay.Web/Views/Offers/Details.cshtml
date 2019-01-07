@@ -14,15 +14,50 @@
     dealInputModel.OfferId = @Model.Id;
 }
 
-<div class="row" style="margin: 20px;">
+
     <div class="col-md-offset-1 col-md-4">
         <div>
             <a href='javascript:history.go(-1)'>Return</a>
         </div>
         <h2 style="font-style: italic;" class="text-center">@ViewData["Game"] offer #@Model.Id</h2>
         <hr />
-        <h3 class="text-center" style="color: #00b400">@Model.Title</h3>
-        <div class="text-center">
+        <div class="input-group input-group-lg">
+            <label asp-for="@Model.OfferType" class="input-group-addon custom-label"></label>
+            <div class="offer-view-field">@Model.OfferType</div>
+        </div>
+        <div class="input-group input-group-lg">
+            <label asp-for="@Model.SellerUsername" class="input-group-addon custom-label"></label>
+            <div class="offer-view-field">
+                @Model.SellerUsername
+            </div>
+        </div>
+        <div class="input-group input-group-lg">
+            <label asp-for="GameId" class="input-group-addon custom-label"></label>
+            <div class="offer-view-field">
+                @ViewData["Game"]
+            </div>
+        </div>
+        <div class="input-group input-group-lg">
+            <label asp-for="Title" class="input-group-addon custom-label"></label>
+            <div class="offer-view-field">
+                @Model.Title
+            </div>
+        </div>
+        <div class="input-group input-group-lg">
+            <label asp-for="OfferEnds" class="input-group-addon custom-label"></label>
+            <div class="offer-view-field">
+                @Model.OfferEnds
+            </div>
+        </div>
+        <div class="input-group input-group-lg">
+            <label asp-for="Price" class="input-group-addon custom-label"></label>
+            <div class="offer-view-field">
+                $@Model.Price
+            </div>
+        </div>
+
+        <div class="input-group input-group-lg">
+            <label class="input-group-addon custom-label">Image:</label>
             @if (!string.IsNullOrEmpty(Model.ImageUrl))
             {
                 <img style="height: 200px; width: 200px;" src="@Model.ImageUrl" alt="Destination image" />
@@ -32,38 +67,23 @@
                 <img style="height: 200px; width: 200px;" src="~/images/noimage.png" alt="Destination image" />
             }
         </div>
-        <div>
-            <label asp-for="@Model.SellerUsername" class="custom-label"></label>
-            : @Model.SellerUsername
-        </div>
-        <div>
-            <label asp-for="@Model.OfferType" class="custom-label"></label>
-            : @Model.OfferType
-        </div>
-        <div>
-            <div>
-                <label asp-for="OfferEnds" class="custom-label"></label>
-                : @Model.OfferEnds
+    </div>
+    <div class="col-md-offset-2 col-md-4" style="margin-top: 70px;">
+        <div class="input-group input-group-lg">
+            <label asp-for="Description" class="input-group-addon custom-label"></label>
+            <div class="offer-view-field">
+                @Model.Description
             </div>
         </div>
-        <div>
-            <label asp-for="Price" class="custom-label"></label>
-            : $ @Model.Price
-        </div>
-        <div style="word-wrap: break-word;">
-            <label asp-for="Description" class="custom-label"></label>
-            : @Model.Description
-        </div>
+        @if (this.SignInManager.IsSignedIn(this.User))
+        {
+            <div>
+                @await this.Html.PartialAsync("_SendMessagePartial", MsgInputModel)
+                @await this.Html.PartialAsync("_BuyOfferPartial", dealInputModel)
+            </div>
+        }
     </div>
-    @if (this.SignInManager.IsSignedIn(this.User))
-    {
-        <div class="col-md-offset-1 col-md-4">
-            @await this.Html.PartialAsync("_SendMessagePartial", MsgInputModel)
-            @await this.Html.PartialAsync("_BuyOfferPartial", dealInputModel)
-        </div>
-    }
-</div>
 
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
