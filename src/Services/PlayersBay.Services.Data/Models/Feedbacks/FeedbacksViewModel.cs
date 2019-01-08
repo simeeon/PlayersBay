@@ -11,5 +11,7 @@
         public int OfferId { get; set; }
 
         public string Content { get; set; }
+
+        public bool HasFeedback { get; set; }
     }
 }

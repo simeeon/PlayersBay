@@ -12,6 +12,6 @@
 
         public const string InsufficientFundsError = "Cannot afford this offer. You need ${0}, when balance is ${1}.";
 
-        public const string NullReferenceOfferId = "Offer with id {0} not found.";
+        public const string NullReferenceOfferId = "Offer with id {0} was not found.";
     }
 }

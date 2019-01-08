@@ -18,6 +18,9 @@ else
                     @Html.DisplayNameFor(model => model.Seller)
                 </th>
                 <th>
+                    Rating
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.OfferType)
                 </th>
                 <th>
@@ -40,6 +43,7 @@ else
             {
                 <tr>
                     <td>@item.Seller.UserName</td>
+                    <td>@await Component.InvokeAsync("RatingList", new { username = item.Seller.UserName })</td>
                     <td>@item.OfferType.ToString()</td>
                     <td>@item.ShrotTitle</td>
                     <td>$ @item.Price</td>

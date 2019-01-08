@@ -11,7 +11,6 @@
     using PlayersBay.Data.Models;
     using PlayersBay.Data.Models.Enums;
     using PlayersBay.Services.Data.Contracts;
-    using PlayersBay.Services.Data.Models;
     using PlayersBay.Services.Data.Models.Offers;
     using PlayersBay.Services.Data.Utilities;
     using PlayersBay.Services.Mapping;
@@ -19,7 +18,7 @@
     public class OffersService : IOffersService
     {
         private readonly IRepository<Offer> offersRepository;
-        private readonly IRepository<Deal> transactionRepository;
+        private readonly IRepository<Deal> dealsRepository;
         private readonly Cloudinary cloudinary;
         private readonly IRepository<ApplicationUser> usersRepository;
         private readonly UserManager<ApplicationUser> usersManager;
@@ -28,13 +27,13 @@
             IRepository<Offer> offersRepository,
             Cloudinary cloudinary,
             IRepository<ApplicationUser> usersRepository,
-            IRepository<Deal> transactionRepository,
+            IRepository<Deal> dealsRepository,
             UserManager<ApplicationUser> usersManager)
         {
             this.offersRepository = offersRepository;
             this.cloudinary = cloudinary;
             this.usersRepository = usersRepository;
-            this.transactionRepository = transactionRepository;
+            this.dealsRepository = dealsRepository;
             this.usersManager = usersManager;
         }
 
@@ -63,6 +62,9 @@
             };
 
             this.offersRepository.Add(offer);
+            await this.offersRepository.SaveChangesAsync();
+
+            offer.Feedback.OfferId = offer.Id;
             await this.offersRepository.SaveChangesAsync();
 
             return offer.Id;
@@ -133,10 +135,10 @@
 
         public async Task<OfferViewModel[]> GetMyBoughtOffersAsync(string username)
         {
-            var offerIds = this.transactionRepository
+            var offerIds = this.dealsRepository
                 .All()
                 .Where(b => b.Buyer.UserName == username)
-                .Select(o => o.Id)
+                .Select(o => o.OfferId)
                 .ToList();
 
             var offers = await this.offersRepository

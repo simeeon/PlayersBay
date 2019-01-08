@@ -37,7 +37,7 @@
                 .GetAwaiter()
                 .GetResult();
 
-            return this.Redirect("/").WithSuccess("Success", "Feedback added.");
+            return this.RedirectToAction("BoughtOffers", "Offers").WithSuccess("Success", "Feedback added.");
         }
     }
 }

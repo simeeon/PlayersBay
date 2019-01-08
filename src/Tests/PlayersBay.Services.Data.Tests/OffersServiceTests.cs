@@ -18,6 +18,15 @@ namespace PlayersBay.Services.Data.Tests
     {
         private const string Username = "admin";
 
+        // User 1
+        private readonly string FirstUserId = Guid.NewGuid().ToString();
+        private const string FirstUsername = "admin";
+        private const string FirstEmail = "admin@gmail.com";
+        // User 2
+        private readonly string SecondUserId = Guid.NewGuid().ToString();
+        private const string SecondUsername = "user";
+        private const string SecondEmail = "user@gmail.com";
+
         private const string GameName = "Diablo";
         // First offer info
         private const int FirstId = 1;
@@ -53,7 +62,7 @@ namespace PlayersBay.Services.Data.Tests
 
         [Fact]
         public async Task CreateAsyncReturnsCreatedOffer()
-        { 
+        {
             var expected = new OfferViewModel
             {
                 Id = FirstId,
@@ -310,7 +319,7 @@ namespace PlayersBay.Services.Data.Tests
                     ImageUrl = DefaultImage,
                 },
             };
-            
+
             var actual = await this.OffersServiceMock.GetMyActiveOffersAsync(Username);
 
             Assert.Collection(actual,
@@ -415,36 +424,32 @@ namespace PlayersBay.Services.Data.Tests
         [Fact]
         public async Task GetMyBoughtOfferAsyncReturnsAllMyBoughtOffers()
         {
-            this.DbContext.Users.Add(new ApplicationUser { Id = testUserId, UserName = Username });
-            await this.DbContext.SaveChangesAsync();
+            await this.AddTestingUserToDb(FirstUserId, FirstUsername, FirstEmail);
+            await this.AddTestingUserToDb(SecondUserId, SecondUsername, SecondEmail);
 
-            var buyer = this.DbContext.Users.FirstOrDefault(u => u.Id == testUserId);
 
-            this.DbContext.Deals.Add(new Deal {  BuyerId = testUserId, Buyer = buyer});
-            await this.DbContext.SaveChangesAsync();
+            var buyer = this.DbContext.Users.FirstOrDefault(u => u.Id == FirstUserId);
+            var seller = this.DbContext.Users.FirstOrDefault(u => u.Id == SecondUserId);
 
-            this.DbContext.Offers.Add(new Offer
+            this.DbContext.Deals.Add(new Deal
             {
-                Description = ThirdOfferDescription,
-                GameId = FirstId,
-                SellerId = testUserId,
-                Id = FirstId,
-                Price = ThirdOfferPrice,
-                OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
-                Status = PlayersBay.Data.Models.Enums.OfferStatus.Completed,
-                Title = ThirdOfferTitle,
-                MessageToBuyer = ThirdOfferMessagetoBuyer,
-                ImageUrl = DefaultImage,
+                BuyerId = FirstUserId,
+                Buyer = buyer,
+                OfferId = ThirdId,
             });
             await this.DbContext.SaveChangesAsync();
+
+            await this.AddThirdTestingOfferToDb(seller.Id);
+
+            var offer = this.DbContext.Offers.FirstOrDefault(u => u.Id == ThirdId);
 
             var expected = new OfferViewModel[]
             {
                 new OfferViewModel
                 {
                     Description = ThirdOfferDescription,
-                    Id = FirstId,
-                    SellerId = testUserId,
+                    SellerId = seller.Id,
+                    Id = ThirdId,
                     Price = ThirdOfferPrice,
                     OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
                     Status = PlayersBay.Data.Models.Enums.OfferStatus.Completed,
@@ -573,6 +578,17 @@ namespace PlayersBay.Services.Data.Tests
                 Title = ThirdOfferTitle,
                 MessageToBuyer = ThirdOfferMessagetoBuyer,
                 ImageUrl = DefaultImage,
+            });
+            await this.DbContext.SaveChangesAsync();
+        }
+
+        private async Task AddTestingUserToDb(string id, string username, string email)
+        {
+            DbContext.Users.Add(new ApplicationUser
+            {
+                Id = id,
+                UserName = username,
+                Email = email,
             });
             await this.DbContext.SaveChangesAsync();
         }

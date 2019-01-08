@@ -105,6 +105,7 @@
                 OfferId = x.OfferId,
                 Content = x.Content,
                 FeedbackRating = x.FeedbackRating,
+                HasFeedback = x.HasFeedback,
             }).ToArray();
 
             var username = this.User.Identity.Name;
@@ -122,6 +123,7 @@
                   OfferId = x.OfferId,
                   Content = x.Content,
                   FeedbackRating = x.FeedbackRating,
+                  HasFeedback = x.HasFeedback,
             }).ToArray();
 
             var username = this.User.Identity.Name;

@@ -38,20 +38,30 @@ else
             @foreach (var item in Model)
             {
                 var feedback = feedbacks.FirstOrDefault(f => f.OfferId == item.Id);
-                <tr>
-                    <td>@item.OfferType.ToString()</td>
-                    <td>@item.ShrotTitle</td>
-                    <td>$ @item.Price</td>
-                    @if (feedback != null)
+            <tr>
+                <td>@item.OfferType.ToString()</td>
+                <td>@item.ShrotTitle</td>
+                <td>$ @item.Price</td>
+                @if (feedback != null && feedback.HasFeedback)
+                {
+                    if (feedback.FeedbackRating == FeedbackRating.Negative)
                     {
-                        <td>@feedback.FeedbackRating : @feedback.Content</td>
-
+                        <td><i class="far fa-frown" style="color: orangered;"> @feedback.FeedbackRating</i> : @feedback.Content</td>
+                    }
+                    else if (feedback.FeedbackRating == FeedbackRating.Neutral)
+                    {
+                        <td><i class="far fa-meh" style="color: yellow;"> @feedback.FeedbackRating</i> : @feedback.Content</td>
                     }
                     else
                     {
-                        <td><a class="btn btn-outline-primary" asp-controller="Feedbacks" asp-action="Create" asp-route-offerId=@item.Id>Leave feedback</a></td>
+                        <td><i class="far fa-smile" style="color: lawngreen;"> @feedback.FeedbackRating</i>  : @feedback.Content</td>
                     }
-                </tr>
+                }
+                else
+                {
+                    <td><a class="btn btn-outline-primary" asp-controller="Feedbacks" asp-action="Create" asp-route-offerId=@item.Id>Leave feedback</a></td>
+                }
+            </tr>
             }
         </tbody>
     </table>
