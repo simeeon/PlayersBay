@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Mvc;
     using PlayersBay.Common.Extensions.Alerts;
     using PlayersBay.Services.Data.Contracts;
+    using PlayersBay.Services.Data.Utilities;
 
     public class UsersController : AdministratorController
     {
@@ -15,25 +16,23 @@
 
         public IActionResult All()
         {
-            var allGamesViewModel = this.usersService.GetAllUsersAsync()
-                .GetAwaiter()
-                .GetResult();
+            var allGamesViewModel = this.usersService.GetAllUsersAsync().GetAwaiter().GetResult();
 
             return this.View(allGamesViewModel);
         }
 
         public IActionResult MakeUserModerator(string id)
         {
-            var data = this.usersService.MakeModerator(id).Result;
+            this.usersService.MakeModerator(id).GetAwaiter().GetResult();
 
-            return this.RedirectToAction("All", "Users").WithSuccess("Success!", data);
+            return this.RedirectToAction("All", "Users").WithSuccess(DataConstants.NotificationMessages.Success, string.Format(DataConstants.NotificationMessages.UserPromoted, id));
         }
 
         public IActionResult DemoteUserFromModerator(string id)
         {
-            var data = this.usersService.DemoteFromModerator(id).Result;
+            this.usersService.DemoteFromModerator(id).GetAwaiter().GetResult();
 
-            return this.RedirectToAction("All", "Users").WithSuccess("Success!", data);
+            return this.RedirectToAction("All", "Users").WithSuccess(DataConstants.NotificationMessages.Success, string.Format(DataConstants.NotificationMessages.UserDemoted, id));
         }
 
         public IActionResult Delete(string id)

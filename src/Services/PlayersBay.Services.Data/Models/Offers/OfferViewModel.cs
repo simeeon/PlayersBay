@@ -3,12 +3,12 @@
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.Globalization;
+
     using PlayersBay.Common;
     using PlayersBay.Data.Models;
     using PlayersBay.Data.Models.Enums;
-    using PlayersBay.Services.Mapping;
 
-    public class OfferViewModel : IMapFrom<Offer>
+    public class OfferViewModel
     {
         public int Id { get; set; }
 

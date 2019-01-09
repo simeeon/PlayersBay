@@ -13,6 +13,7 @@
     using PlayersBay.Services.Data.Contracts;
     using PlayersBay.Services.Data.Models.Feedbacks;
     using PlayersBay.Services.Data.Models.Offers;
+    using PlayersBay.Services.Data.Utilities;
 
     public class OffersController : BaseController
     {
@@ -59,7 +60,7 @@
 
             var offerId = this.offersService.CreateAsync(sellerUsername, createInputModel).GetAwaiter().GetResult();
 
-            return this.RedirectToAction("ActiveOffers", "Offers").WithInfo("Success!", $"Offer #{offerId} created.");
+            return this.RedirectToAction("ActiveOffers", "Offers").WithInfo(DataConstants.NotificationMessages.Info, string.Format(DataConstants.NotificationMessages.OfferCreated, offerId));
         }
 
         public IActionResult Details(int id)
@@ -153,7 +154,7 @@
             var offerId = offerToEditViewModel.Id;
             this.offersService.EditAsync(offerToEditViewModel).GetAwaiter().GetResult();
 
-            return this.RedirectToAction("Details", "Offers", new { offerId }).WithInfo("Success!", $"Offer #{offerId} edited");
+            return this.RedirectToAction("Details", "Offers", new { id = offerId }).WithInfo(DataConstants.NotificationMessages.Info, string.Format(DataConstants.NotificationMessages.OfferEdited, offerId));
         }
 
         [Authorize]
@@ -181,7 +182,7 @@
             var id = offerToEditViewModel.Id;
             this.offersService.DeleteAsync(id).GetAwaiter().GetResult();
 
-            return this.RedirectToAction("ActiveOffers", "Offers").WithInfo("Success!", $"Offer deleted.");
+            return this.RedirectToAction("ActiveOffers", "Offers").WithInfo(DataConstants.NotificationMessages.Info, string.Format(DataConstants.NotificationMessages.OfferDeleted, id));
         }
 
         private IEnumerable<SelectListItem> SelectAllGames()

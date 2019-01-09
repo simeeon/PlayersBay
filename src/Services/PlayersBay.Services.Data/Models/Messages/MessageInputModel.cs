@@ -2,11 +2,13 @@
 {
     using System.ComponentModel.DataAnnotations;
 
+    using PlayersBay.Services.Data.Utilities;
+
     public class MessageInputModel
     {
         [Required]
         [Display(Name = "Send Message:")]
-        [StringLength(Constants.Message.MessageMaxLength, MinimumLength = Constants.Message.MessageMinLength, ErrorMessage = Constants.Message.MessageLengthError)]
+        [StringLength(DataConstants.Message.MessageMaxLength, MinimumLength = DataConstants.Message.MessageMinLength, ErrorMessage = DataConstants.Message.MessageLengthError)]
         public string Message { get; set; }
 
         public string SenderName { get; set; }

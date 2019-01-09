@@ -6,6 +6,7 @@ using PlayersBay.Data.Models;
 using PlayersBay.Services.Data.Contracts;
 using PlayersBay.Services.Data.Models.Games;
 using PlayersBay.Services.Data.Utilities;
+using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,6 +22,7 @@ namespace PlayersBay.Services.Data.Tests
         private const string Minecraft = "Minecraft";
         private const string DefaultImage = "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png";
         private const string NewImage = "newImage.png";
+        private const string InvalidImage = "InvalidImage.exe";
 
         private IGamesService GamesServiceMock => this.ServiceProvider.GetRequiredService<IGamesService>();
 
@@ -83,6 +85,29 @@ namespace PlayersBay.Services.Data.Tests
         }
 
         [Fact]
+        public async Task CreateAsyncWithInvalidImageThrowsInvalidOperationException()
+        {
+            using (var stream = File.OpenRead(InvalidImage))
+            {
+                var file = new FormFile(stream, 0, stream.Length, null, Path.GetFileName(stream.Name))
+                {
+                    Headers = new HeaderDictionary(),
+                    ContentType = "exe",
+                };
+
+                var gamesCreateInputModel = new GamesCreateInputModel()
+                {
+                    Name = Diablo,
+                    Image = file,
+                };
+                var exception = await Assert.ThrowsAsync<InvalidOperationException>(() =>
+                this.GamesServiceMock.CreateAsync(gamesCreateInputModel));
+
+                Assert.Equal(string.Format(DataConstants.InvalidImageFormat), exception.Message);
+            }
+        }
+
+        [Fact]
         public async Task DeleteByIdOnlyDeletesOneGame()
         {
             await this.AddTestingGameToDb();
@@ -136,6 +161,31 @@ namespace PlayersBay.Services.Data.Tests
         }
 
         [Fact]
+        public async Task EditAsyncWithInvalidImageThrowsInvalidOperationException()
+        {
+            using (var stream = File.OpenRead(InvalidImage))
+            {
+                var file = new FormFile(stream, 0, stream.Length, null, Path.GetFileName(stream.Name))
+                {
+                    Headers = new HeaderDictionary(),
+                    ContentType = "exe",
+                };
+
+                var gameToEditViewModel = new GameToEditViewModel()
+                {
+                    Id = 1,
+                    Name = Diablo,
+                    NewImage = file,
+                };
+
+                var exception = await Assert.ThrowsAsync<InvalidOperationException>(() =>
+                this.GamesServiceMock.EditAsync(gameToEditViewModel));
+
+                Assert.Equal(string.Format(DataConstants.InvalidImageFormat), exception.Message);
+            }
+        }
+
+        [Fact]
         public async Task EditAsyncEditsGameImage()
         {
             this.DbContext.Games.Add(new Game
@@ -185,6 +235,22 @@ namespace PlayersBay.Services.Data.Tests
                     Assert.Equal(expected.First().Id, actual.Id);
                     Assert.Equal(expected.First().Name, actual.Name);
                 });
+        }
+
+        [Fact]
+        public async Task GetViewModelByIdAsyncThrowsNullReferenceExceptionWithIdvalidId()
+        {
+            await this.AddTestingGameToDb();
+
+            var expected = this.DbContext.Games.OrderBy(r => r.CreatedOn);
+
+            var actual = await this.GamesServiceMock.GetViewModelAsync<GameToEditViewModel>(TestGameId);
+
+            var invalidId = TestGameId + 1;
+            var exception = await Assert.ThrowsAsync<NullReferenceException>(() =>
+                this.GamesServiceMock.GetViewModelAsync<GameToEditViewModel>(invalidId));
+
+            Assert.Equal(string.Format(DataConstants.NullReferenceOfferId, invalidId), exception.Message);
         }
 
         private async Task AddTestingGameToDb()

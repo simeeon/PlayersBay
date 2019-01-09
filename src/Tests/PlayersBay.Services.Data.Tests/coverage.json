@@ -5,13 +5,13 @@
       "PlayersBay.Data.Common.Models.BaseDeletableModel`1": {
         "System.Boolean PlayersBay.Data.Common.Models.BaseDeletableModel`1::get_IsDeleted()": {
           "Lines": {
-            "7": 768
+            "7": 837
           },
           "Branches": []
         },
         "System.Nullable`1<System.DateTime> PlayersBay.Data.Common.Models.BaseDeletableModel`1::get_DeletedOn()": {
           "Lines": {
-            "9": 720
+            "9": 786
           },
           "Branches": []
         }
@@ -21,19 +21,19 @@
       "PlayersBay.Data.Common.Models.BaseModel`1": {
         "TKey PlayersBay.Data.Common.Models.BaseModel`1::get_Id()": {
           "Lines": {
-            "9": 1859
+            "9": 2028
           },
           "Branches": []
         },
         "System.DateTime PlayersBay.Data.Common.Models.BaseModel`1::get_CreatedOn()": {
           "Lines": {
-            "11": 998
+            "11": 1093
           },
           "Branches": []
         },
         "System.Nullable`1<System.DateTime> PlayersBay.Data.Common.Models.BaseModel`1::get_ModifiedOn()": {
           "Lines": {
-            "13": 736
+            "13": 803
           },
           "Branches": []
         }
@@ -45,43 +45,43 @@
       "PlayersBay.Data.ApplicationDbContext": {
         "Microsoft.EntityFrameworkCore.DbSet`1<PlayersBay.Data.Models.Setting> PlayersBay.Data.ApplicationDbContext::get_Settings()": {
           "Lines": {
-            "26": 35
+            "26": 42
           },
           "Branches": []
         },
         "Microsoft.EntityFrameworkCore.DbSet`1<PlayersBay.Data.Models.Game> PlayersBay.Data.ApplicationDbContext::get_Games()": {
           "Lines": {
-            "28": 52
+            "28": 61
           },
           "Branches": []
         },
         "Microsoft.EntityFrameworkCore.DbSet`1<PlayersBay.Data.Models.Feedback> PlayersBay.Data.ApplicationDbContext::get_Feedbacks()": {
           "Lines": {
-            "30": 37
+            "30": 44
           },
           "Branches": []
         },
         "Microsoft.EntityFrameworkCore.DbSet`1<PlayersBay.Data.Models.Message> PlayersBay.Data.ApplicationDbContext::get_Messages()": {
           "Lines": {
-            "32": 44
+            "32": 55
           },
           "Branches": []
         },
         "Microsoft.EntityFrameworkCore.DbSet`1<PlayersBay.Data.Models.Offer> PlayersBay.Data.ApplicationDbContext::get_Offers()": {
           "Lines": {
-            "34": 65
+            "34": 74
           },
           "Branches": []
         },
         "Microsoft.EntityFrameworkCore.DbSet`1<PlayersBay.Data.Models.Deal> PlayersBay.Data.ApplicationDbContext::get_Deals()": {
           "Lines": {
-            "36": 36
+            "36": 43
           },
           "Branches": []
         },
         "Microsoft.EntityFrameworkCore.DbSet`1<PlayersBay.Data.Models.Transfer> PlayersBay.Data.ApplicationDbContext::get_Transfers()": {
           "Lines": {
-            "38": 53
+            "38": 63
           },
           "Branches": []
         },
@@ -102,56 +102,56 @@
         },
         "System.Threading.Tasks.Task`1<System.Int32> PlayersBay.Data.ApplicationDbContext::SaveChangesAsync(System.Threading.CancellationToken)": {
           "Lines": {
-            "49": 120
+            "49": 137
           },
           "Branches": []
         },
         "System.Threading.Tasks.Task`1<System.Int32> PlayersBay.Data.ApplicationDbContext::SaveChangesAsync(System.Boolean,System.Threading.CancellationToken)": {
           "Lines": {
-            "54": 121,
-            "55": 120,
-            "56": 120,
-            "57": 120
+            "54": 137,
+            "55": 137,
+            "56": 138,
+            "57": 137
           },
           "Branches": []
         },
         "System.Void PlayersBay.Data.ApplicationDbContext::OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)": {
           "Lines": {
-            "60": 35,
-            "62": 35,
-            "64": 33,
-            "66": 34,
-            "68": 35,
-            "71": 35,
-            "72": 517,
-            "73": 728,
-            "74": 307,
-            "75": 308,
-            "76": 312,
-            "77": 303,
-            "80": 34,
-            "81": 970,
-            "82": 521,
-            "83": 208,
-            "84": 208,
-            "85": 208,
-            "88": 34,
-            "89": 34,
-            "90": 34,
-            "91": 34,
-            "93": 33,
-            "94": 33,
-            "95": 33,
-            "96": 33,
-            "99": 34,
-            "100": 34,
-            "101": 34,
-            "102": 34,
-            "104": 32,
-            "105": 32,
-            "106": 32,
-            "107": 32,
-            "108": 35
+            "60": 42,
+            "62": 42,
+            "64": 42,
+            "66": 42,
+            "68": 41,
+            "71": 40,
+            "72": 624,
+            "73": 875,
+            "74": 377,
+            "75": 377,
+            "76": 375,
+            "77": 375,
+            "80": 41,
+            "81": 1171,
+            "82": 626,
+            "83": 252,
+            "84": 252,
+            "85": 251,
+            "88": 42,
+            "89": 42,
+            "90": 42,
+            "91": 42,
+            "93": 41,
+            "94": 41,
+            "95": 41,
+            "96": 41,
+            "99": 39,
+            "100": 39,
+            "101": 39,
+            "102": 39,
+            "104": 38,
+            "105": 38,
+            "106": 38,
+            "107": 38,
+            "108": 41
           },
           "Branches": [
             {
@@ -168,7 +168,7 @@
               "EndOffset": 72,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 35
+              "Hits": 42
             },
             {
               "Line": 73,
@@ -176,7 +176,7 @@
               "EndOffset": 88,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 313
+              "Hits": 374
             },
             {
               "Line": 73,
@@ -184,7 +184,7 @@
               "EndOffset": 153,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 34
+              "Hits": 42
             },
             {
               "Line": 80,
@@ -192,7 +192,7 @@
               "EndOffset": 175,
               "Path": 0,
               "Ordinal": 4,
-              "Hits": 3
+              "Hits": 1
             },
             {
               "Line": 80,
@@ -200,7 +200,7 @@
               "EndOffset": 198,
               "Path": 1,
               "Ordinal": 5,
-              "Hits": 34
+              "Hits": 42
             },
             {
               "Line": 82,
@@ -208,7 +208,7 @@
               "EndOffset": 215,
               "Path": 1,
               "Ordinal": 7,
-              "Hits": 209
+              "Hits": 252
             },
             {
               "Line": 82,
@@ -216,63 +216,63 @@
               "EndOffset": 244,
               "Path": 0,
               "Ordinal": 6,
-              "Hits": 35
+              "Hits": 42
             }
           ]
         },
         "System.Void PlayersBay.Data.ApplicationDbContext::ConfigureUserIdentityRelations(Microsoft.EntityFrameworkCore.ModelBuilder)": {
           "Lines": {
-            "111": 34,
-            "112": 34,
-            "113": 34,
-            "114": 34,
-            "115": 34,
-            "116": 34,
-            "117": 34,
-            "119": 34,
-            "120": 34,
-            "121": 34,
-            "122": 34,
-            "123": 34,
-            "124": 34,
-            "126": 33,
-            "127": 33,
-            "128": 33,
-            "129": 33,
-            "130": 33,
-            "131": 33,
-            "132": 35
+            "111": 42,
+            "112": 42,
+            "113": 42,
+            "114": 42,
+            "115": 42,
+            "116": 42,
+            "117": 42,
+            "119": 42,
+            "120": 42,
+            "121": 42,
+            "122": 42,
+            "123": 42,
+            "124": 42,
+            "126": 40,
+            "127": 40,
+            "128": 40,
+            "129": 40,
+            "130": 40,
+            "131": 40,
+            "132": 42
           },
           "Branches": []
         },
         "System.Void PlayersBay.Data.ApplicationDbContext::SetIsDeletedQueryFilter(Microsoft.EntityFrameworkCore.ModelBuilder)": {
           "Lines": {
-            "136": 307,
-            "137": 309,
-            "138": 301
+            "136": 377,
+            "137": 377,
+            "138": 375
           },
           "Branches": []
         },
         "System.Void PlayersBay.Data.ApplicationDbContext::ApplyAuditInfoRules()": {
           "Lines": {
-            "141": 120,
-            "142": 120,
-            "143": 120,
-            "144": 120,
-            "145": 480,
-            "146": 480,
-            "148": 662,
-            "149": 150,
-            "150": 150,
-            "151": 150,
-            "152": 122,
-            "153": 123,
-            "154": 124,
-            "156": 27,
-            "157": 27,
-            "158": 27,
-            "159": 151,
-            "160": 120
+            "141": 136,
+            "142": 136,
+            "143": 136,
+            "144": 136,
+            "145": 543,
+            "146": 543,
+            "148": 754,
+            "149": 170,
+            "150": 170,
+            "151": 169,
+            "152": 142,
+            "153": 142,
+            "154": 142,
+            "156": 28,
+            "157": 28,
+            "158": 28,
+            "159": 170,
+            "160": 138
           },
           "Branches": [
             {
@@ -289,7 +289,7 @@
               "EndOffset": 43,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 120
+              "Hits": 137
             },
             {
               "Line": 148,
@@ -297,7 +297,7 @@
               "EndOffset": 59,
               "Path": 1,
               "Ordinal": 7,
-              "Hits": 151
+              "Hits": 171
             },
             {
               "Line": 151,
@@ -305,7 +305,7 @@
               "EndOffset": 88,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 123
+              "Hits": 142
             },
             {
               "Line": 151,
@@ -313,7 +313,7 @@
               "EndOffset": 111,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 27
+              "Hits": 28
             },
             {
               "Line": 151,
@@ -321,7 +321,7 @@
               "EndOffset": 118,
               "Path": 0,
               "Ordinal": 4,
-              "Hits": 123
+              "Hits": 142
             },
             {
               "Line": 151,
@@ -329,7 +329,7 @@
               "EndOffset": 134,
               "Path": 1,
               "Ordinal": 5,
-              "Hits": 27
+              "Hits": 28
             },
             {
               "Line": 148,
@@ -337,15 +337,15 @@
               "EndOffset": 162,
               "Path": 0,
               "Ordinal": 6,
-              "Hits": 120
+              "Hits": 138
             }
           ]
         },
         "System.Void PlayersBay.Data.ApplicationDbContext::.ctor(Microsoft.EntityFrameworkCore.DbContextOptions`1<PlayersBay.Data.ApplicationDbContext>)": {
           "Lines": {
-            "22": 35,
-            "23": 34,
-            "24": 34
+            "22": 42,
+            "23": 42,
+            "24": 42
           },
           "Branches": []
         },
@@ -369,7 +369,7 @@
               "EndOffset": 14,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 488
+              "Hits": 588
             },
             {
               "Line": 72,
@@ -398,7 +398,7 @@
               "EndOffset": 37,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 485
+              "Hits": 584
             }
           ]
         },
@@ -411,7 +411,7 @@
               "EndOffset": 13,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 354
+              "Hits": 401
             },
             {
               "Line": 145,
@@ -419,7 +419,7 @@
               "EndOffset": 22,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 232
+              "Hits": 259
             },
             {
               "Line": 145,
@@ -427,7 +427,7 @@
               "EndOffset": 33,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 123
+              "Hits": 143
             },
             {
               "Line": 145,
@@ -513,9 +513,9 @@
         },
         "System.Void PlayersBay.Data.ApplicationUserStore::.ctor(PlayersBay.Data.ApplicationDbContext,Microsoft.AspNetCore.Identity.IdentityErrorDescriber)": {
           "Lines": {
-            "21": 19,
-            "22": 19,
-            "23": 19
+            "21": 22,
+            "22": 22,
+            "23": 22
           },
           "Branches": []
         }
@@ -737,15 +737,15 @@
       "PlayersBay.Data.EntityIndexesConfiguration": {
         "System.Void PlayersBay.Data.EntityIndexesConfiguration::Configure(Microsoft.EntityFrameworkCore.ModelBuilder)": {
           "Lines": {
-            "11": 34,
-            "13": 34,
-            "14": 34,
-            "15": 519,
-            "16": 718,
-            "17": 310,
-            "18": 311,
-            "19": 308,
-            "20": 35
+            "11": 42,
+            "13": 42,
+            "14": 42,
+            "15": 621,
+            "16": 866,
+            "17": 374,
+            "18": 375,
+            "19": 371,
+            "20": 41
           },
           "Branches": [
             {
@@ -762,7 +762,7 @@
               "EndOffset": 43,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 34
+              "Hits": 42
             },
             {
               "Line": 16,
@@ -770,7 +770,7 @@
               "EndOffset": 59,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 310
+              "Hits": 371
             },
             {
               "Line": 16,
@@ -778,7 +778,7 @@
               "EndOffset": 108,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 35
+              "Hits": 41
             }
           ]
         }
@@ -793,7 +793,7 @@
               "EndOffset": 14,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 487
+              "Hits": 581
             },
             {
               "Line": 15,
@@ -1328,19 +1328,19 @@
       "PlayersBay.Data.Repositories.EfRepository`1": {
         "Microsoft.EntityFrameworkCore.DbSet`1<TEntity> PlayersBay.Data.Repositories.EfRepository`1::get_DbSet()": {
           "Lines": {
-            "19": 126
+            "19": 149
           },
           "Branches": []
         },
         "PlayersBay.Data.ApplicationDbContext PlayersBay.Data.Repositories.EfRepository`1::get_Context()": {
           "Lines": {
-            "21": 189
+            "21": 217
           },
           "Branches": []
         },
         "System.Linq.IQueryable`1<TEntity> PlayersBay.Data.Repositories.EfRepository`1::All()": {
           "Lines": {
-            "23": 44
+            "23": 53
           },
           "Branches": []
         },
@@ -1352,7 +1352,7 @@
         },
         "System.Threading.Tasks.Task`1<TEntity> PlayersBay.Data.Repositories.EfRepository`1::GetByIdAsync(System.Object[])": {
           "Lines": {
-            "27": 1
+            "27": 2
           },
           "Branches": []
         },
@@ -1366,14 +1366,14 @@
         },
         "System.Void PlayersBay.Data.Repositories.EfRepository`1::Update(TEntity)": {
           "Lines": {
-            "35": 17,
-            "36": 17,
-            "37": 17,
+            "35": 18,
+            "36": 18,
+            "37": 18,
             "38": 0,
             "39": 0,
             "40": 0,
-            "42": 17,
-            "43": 17
+            "42": 18,
+            "43": 18
           },
           "Branches": [
             {
@@ -1390,7 +1390,7 @@
               "EndOffset": 42,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 17
+              "Hits": 18
             }
           ]
         },
@@ -1404,7 +1404,7 @@
         },
         "System.Threading.Tasks.Task`1<System.Int32> PlayersBay.Data.Repositories.EfRepository`1::SaveChangesAsync()": {
           "Lines": {
-            "50": 24
+            "50": 25
           },
           "Branches": []
         },
@@ -1416,11 +1416,11 @@
         },
         "System.Void PlayersBay.Data.Repositories.EfRepository`1::.ctor(PlayersBay.Data.ApplicationDbContext)": {
           "Lines": {
-            "13": 74,
-            "14": 74,
-            "15": 74,
-            "16": 74,
-            "17": 74
+            "13": 87,
+            "14": 87,
+            "15": 87,
+            "16": 87,
+            "17": 87
           },
           "Branches": [
             {
@@ -1437,7 +1437,7 @@
               "EndOffset": 25,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 74
+              "Hits": 87
             }
           ]
         }
@@ -10324,75 +10324,75 @@
       "PlayersBay.Data.Models.ApplicationUser": {
         "System.DateTime PlayersBay.Data.Models.ApplicationUser::get_CreatedOn()": {
           "Lines": {
-            "24": 480
+            "24": 594
           },
           "Branches": []
         },
         "System.Nullable`1<System.DateTime> PlayersBay.Data.Models.ApplicationUser::get_ModifiedOn()": {
           "Lines": {
-            "26": 398
+            "26": 487
           },
           "Branches": []
         },
         "System.Boolean PlayersBay.Data.Models.ApplicationUser::get_IsDeleted()": {
           "Lines": {
-            "29": 422
+            "29": 517
           },
           "Branches": []
         },
         "System.Nullable`1<System.DateTime> PlayersBay.Data.Models.ApplicationUser::get_DeletedOn()": {
           "Lines": {
-            "31": 385
+            "31": 472
           },
           "Branches": []
         },
         "System.Collections.Generic.ICollection`1<Microsoft.AspNetCore.Identity.IdentityUserRole`1<System.String>> PlayersBay.Data.Models.ApplicationUser::get_Roles()": {
           "Lines": {
-            "33": 412
+            "33": 507
           },
           "Branches": []
         },
         "System.Collections.Generic.ICollection`1<Microsoft.AspNetCore.Identity.IdentityUserClaim`1<System.String>> PlayersBay.Data.Models.ApplicationUser::get_Claims()": {
           "Lines": {
-            "35": 402
+            "35": 502
           },
           "Branches": []
         },
         "System.Collections.Generic.ICollection`1<Microsoft.AspNetCore.Identity.IdentityUserLogin`1<System.String>> PlayersBay.Data.Models.ApplicationUser::get_Logins()": {
           "Lines": {
-            "37": 406
+            "37": 501
           },
           "Branches": []
         },
         "System.Decimal PlayersBay.Data.Models.ApplicationUser::get_Balance()": {
           "Lines": {
-            "40": 417
+            "40": 516
           },
           "Branches": []
         },
         "System.Collections.Generic.ICollection`1<PlayersBay.Data.Models.Message> PlayersBay.Data.Models.ApplicationUser::get_ReceivedMessages()": {
           "Lines": {
-            "42": 422
+            "42": 522
           },
           "Branches": []
         },
         "System.Collections.Generic.ICollection`1<PlayersBay.Data.Models.Message> PlayersBay.Data.Models.ApplicationUser::get_SentMessages()": {
           "Lines": {
-            "44": 417
+            "44": 524
           },
           "Branches": []
         },
         "System.Void PlayersBay.Data.Models.ApplicationUser::.ctor()": {
           "Lines": {
-            "13": 31,
-            "14": 32,
-            "15": 32,
-            "16": 32,
-            "17": 31,
-            "18": 30,
-            "19": 32,
-            "20": 32,
-            "21": 32
+            "13": 41,
+            "14": 40,
+            "15": 40,
+            "16": 40,
+            "17": 40,
+            "18": 40,
+            "19": 39,
+            "20": 41,
+            "21": 40
           },
           "Branches": []
         }
@@ -10442,31 +10442,31 @@
       "PlayersBay.Data.Models.Feedback": {
         "PlayersBay.Data.Models.Enums.FeedbackRating PlayersBay.Data.Models.Feedback::get_FeedbackRating()": {
           "Lines": {
-            "8": 212
+            "8": 217
           },
           "Branches": []
         },
         "System.String PlayersBay.Data.Models.Feedback::get_Content()": {
           "Lines": {
-            "10": 212
+            "10": 217
           },
           "Branches": []
         },
         "System.Int32 PlayersBay.Data.Models.Feedback::get_OfferId()": {
           "Lines": {
-            "12": 214
+            "12": 219
           },
           "Branches": []
         },
         "PlayersBay.Data.Models.Offer PlayersBay.Data.Models.Feedback::get_Offer()": {
           "Lines": {
-            "14": 299
+            "14": 308
           },
           "Branches": []
         },
         "System.Boolean PlayersBay.Data.Models.Feedback::get_HasFeedback()": {
           "Lines": {
-            "16": 212
+            "16": 217
           },
           "Branches": []
         }
@@ -10476,28 +10476,28 @@
       "PlayersBay.Data.Models.Game": {
         "System.String PlayersBay.Data.Models.Game::get_Name()": {
           "Lines": {
-            "16": 116
+            "16": 124
           },
           "Branches": []
         },
         "System.String PlayersBay.Data.Models.Game::get_ImageUrl()": {
           "Lines": {
-            "18": 103
+            "18": 108
           },
           "Branches": []
         },
         "System.Collections.Generic.ICollection`1<PlayersBay.Data.Models.Offer> PlayersBay.Data.Models.Game::get_Offers()": {
           "Lines": {
-            "20": 98
+            "20": 105
           },
           "Branches": []
         },
         "System.Void PlayersBay.Data.Models.Game::.ctor()": {
           "Lines": {
-            "11": 12,
-            "12": 12,
-            "13": 12,
-            "14": 12
+            "11": 14,
+            "12": 14,
+            "13": 14,
+            "14": 14
           },
           "Branches": []
         }
@@ -10507,37 +10507,37 @@
       "PlayersBay.Data.Models.Message": {
         "System.String PlayersBay.Data.Models.Message::get_SenderId()": {
           "Lines": {
-            "9": 135
+            "9": 192
           },
           "Branches": []
         },
         "PlayersBay.Data.Models.ApplicationUser PlayersBay.Data.Models.Message::get_Sender()": {
           "Lines": {
-            "11": 64
+            "11": 92
           },
           "Branches": []
         },
         "System.String PlayersBay.Data.Models.Message::get_ReceiverId()": {
           "Lines": {
-            "13": 132
+            "13": 190
           },
           "Branches": []
         },
         "PlayersBay.Data.Models.ApplicationUser PlayersBay.Data.Models.Message::get_Receiver()": {
           "Lines": {
-            "15": 64
+            "15": 92
           },
           "Branches": []
         },
         "System.String PlayersBay.Data.Models.Message::get_Text()": {
           "Lines": {
-            "17": 68
+            "17": 96
           },
           "Branches": []
         },
         "System.Nullable`1<System.Boolean> PlayersBay.Data.Models.Message::get_IsRead()": {
           "Lines": {
-            "19": 69
+            "19": 97
           },
           "Branches": []
         }
@@ -10547,94 +10547,94 @@
       "PlayersBay.Data.Models.Offer": {
         "System.String PlayersBay.Data.Models.Offer::get_SellerId()": {
           "Lines": {
-            "15": 446
+            "15": 456
           },
           "Branches": []
         },
         "PlayersBay.Data.Models.ApplicationUser PlayersBay.Data.Models.Offer::get_Seller()": {
           "Lines": {
-            "17": 223
+            "17": 229
           },
           "Branches": []
         },
         "PlayersBay.Data.Models.Enums.OfferType PlayersBay.Data.Models.Offer::get_OfferType()": {
           "Lines": {
-            "19": 226
+            "19": 232
           },
           "Branches": []
         },
         "System.String PlayersBay.Data.Models.Offer::get_ImageUrl()": {
           "Lines": {
-            "21": 244
+            "21": 249
           },
           "Branches": []
         },
         "System.DateTime PlayersBay.Data.Models.Offer::get_ExpiryDate()": {
           "Lines": {
-            "23": 202
+            "23": 207
           },
           "Branches": []
         },
         "PlayersBay.Data.Models.Enums.OfferStatus PlayersBay.Data.Models.Offer::get_Status()": {
           "Lines": {
-            "25": 224
+            "25": 230
           },
           "Branches": []
         },
         "System.Decimal PlayersBay.Data.Models.Offer::get_Price()": {
           "Lines": {
-            "27": 229
+            "27": 237
           },
           "Branches": []
         },
         "System.String PlayersBay.Data.Models.Offer::get_Title()": {
           "Lines": {
-            "29": 250
+            "29": 257
           },
           "Branches": []
         },
         "System.String PlayersBay.Data.Models.Offer::get_Description()": {
           "Lines": {
-            "31": 252
+            "31": 259
           },
           "Branches": []
         },
         "System.String PlayersBay.Data.Models.Offer::get_MessageToBuyer()": {
           "Lines": {
-            "33": 251
+            "33": 258
           },
           "Branches": []
         },
         "System.Int32 PlayersBay.Data.Models.Offer::get_FeedbackId()": {
           "Lines": {
-            "35": 593
+            "35": 611
           },
           "Branches": []
         },
         "PlayersBay.Data.Models.Feedback PlayersBay.Data.Models.Offer::get_Feedback()": {
           "Lines": {
-            "37": 292
+            "37": 301
           },
           "Branches": []
         },
         "System.Int32 PlayersBay.Data.Models.Offer::get_GameId()": {
           "Lines": {
-            "39": 396
+            "39": 405
           },
           "Branches": []
         },
         "PlayersBay.Data.Models.Game PlayersBay.Data.Models.Offer::get_Game()": {
           "Lines": {
-            "41": 198
+            "41": 204
           },
           "Branches": []
         },
         "System.Void PlayersBay.Data.Models.Offer::.ctor()": {
           "Lines": {
-            "10": 24,
-            "11": 24,
-            "12": 24,
-            "13": 24
+            "10": 25,
+            "11": 25,
+            "12": 25,
+            "13": 25
           },
           "Branches": []
         }
@@ -10660,31 +10660,31 @@
       "PlayersBay.Data.Models.Transfer": {
         "PlayersBay.Data.Models.Enums.TransferType PlayersBay.Data.Models.Transfer::get_Type()": {
           "Lines": {
-            "9": 179
+            "9": 213
           },
           "Branches": []
         },
         "System.String PlayersBay.Data.Models.Transfer::get_UserId()": {
           "Lines": {
-            "11": 379
+            "11": 452
           },
           "Branches": []
         },
         "PlayersBay.Data.Models.ApplicationUser PlayersBay.Data.Models.Transfer::get_User()": {
           "Lines": {
-            "13": 192
+            "13": 228
           },
           "Branches": []
         },
         "System.Decimal PlayersBay.Data.Models.Transfer::get_Amount()": {
           "Lines": {
-            "15": 181
+            "15": 215
           },
           "Branches": []
         },
         "PlayersBay.Data.Models.Enums.TransferStatus PlayersBay.Data.Models.Transfer::get_Status()": {
           "Lines": {
-            "17": 182
+            "17": 219
           },
           "Branches": []
         }
@@ -10696,17 +10696,17 @@
       "PlayersBay.Services.Data.DealsService": {
         "System.Void PlayersBay.Services.Data.DealsService::.ctor(PlayersBay.Data.Common.Repositories.IRepository`1<PlayersBay.Data.Models.ApplicationUser>,PlayersBay.Data.Common.Repositories.IRepository`1<PlayersBay.Data.Models.Offer>,PlayersBay.Data.Common.Repositories.IRepository`1<PlayersBay.Data.Models.Deal>,PlayersBay.Services.Data.Contracts.IMessagesService)": {
           "Lines": {
-            "21": 1,
-            "22": 1,
-            "23": 1,
-            "24": 1,
-            "25": 1,
-            "26": 1,
-            "27": 1,
-            "28": 1,
-            "29": 1,
-            "30": 1,
-            "31": 1
+            "21": 2,
+            "22": 2,
+            "23": 2,
+            "24": 2,
+            "25": 2,
+            "26": 2,
+            "27": 2,
+            "28": 2,
+            "29": 2,
+            "30": 2,
+            "31": 2
           },
           "Branches": []
         }
@@ -10714,11 +10714,11 @@
       "PlayersBay.Services.Data.DealsService/<CreateAsync>d__5": {
         "System.Void PlayersBay.Services.Data.DealsService/<CreateAsync>d__5::MoveNext()": {
           "Lines": {
-            "34": 1,
-            "35": 1,
-            "36": 1,
-            "37": 1,
-            "39": 1,
+            "34": 2,
+            "35": 2,
+            "36": 2,
+            "37": 2,
+            "39": 2,
             "40": 1,
             "41": 1,
             "42": 1,
@@ -10742,8 +10742,8 @@
             "65": 1,
             "66": 1,
             "67": 1,
-            "69": 0,
-            "70": 0,
+            "69": 1,
+            "70": 1,
             "72": 1
           },
           "Branches": [
@@ -10753,7 +10753,7 @@
               "EndOffset": 331,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 1
+              "Hits": 2
             },
             {
               "Line": 36,
@@ -10761,7 +10761,7 @@
               "EndOffset": 602,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 1
+              "Hits": 2
             },
             {
               "Line": 39,
@@ -10801,6 +10801,14 @@
               "EndOffset": 1454,
               "Path": 1,
               "Ordinal": 13,
+              "Hits": 1
+            },
+            {
+              "Line": 39,
+              "Offset": 731,
+              "EndOffset": 1472,
+              "Path": 1,
+              "Ordinal": 5,
               "Hits": 1
             }
           ]
@@ -10950,11 +10958,11 @@
       "PlayersBay.Services.Data.GamesService": {
         "System.Void PlayersBay.Services.Data.GamesService::.ctor(PlayersBay.Data.Common.Repositories.IRepository`1<PlayersBay.Data.Models.Game>,CloudinaryDotNet.Cloudinary)": {
           "Lines": {
-            "20": 6,
-            "21": 6,
-            "22": 6,
-            "23": 6,
-            "24": 6
+            "21": 9,
+            "22": 9,
+            "23": 9,
+            "24": 9,
+            "25": 9
           },
           "Branches": []
         }
@@ -10962,46 +10970,76 @@
       "PlayersBay.Services.Data.GamesService/<CreateAsync>d__3": {
         "System.Void PlayersBay.Services.Data.GamesService/<CreateAsync>d__3::MoveNext()": {
           "Lines": {
-            "27": 1,
-            "28": 1,
-            "29": 1,
-            "30": 1,
-            "31": 1,
-            "33": 1,
-            "34": 0,
-            "35": 0,
-            "36": 0,
+            "28": 2,
+            "29": 2,
+            "30": 2,
+            "31": 2,
+            "32": 2,
+            "34": 2,
+            "35": 1,
+            "36": 1,
+            "37": 1,
             "38": 1,
-            "39": 1,
             "40": 1,
+            "41": 1,
             "42": 1,
-            "43": 1,
-            "45": 1,
-            "46": 1
+            "45": 0,
+            "46": 0,
+            "48": 1,
+            "49": 1,
+            "50": 1,
+            "52": 1,
+            "53": 1,
+            "55": 1,
+            "56": 1
           },
           "Branches": [
             {
-              "Line": 27,
+              "Line": 28,
               "Offset": 14,
               "EndOffset": 28,
               "Path": 0,
               "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 34,
+              "Offset": 74,
+              "EndOffset": 79,
+              "Path": 0,
+              "Ordinal": 2,
               "Hits": 1
             },
             {
-              "Line": 33,
+              "Line": 36,
+              "Offset": 105,
+              "EndOffset": 107,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 1
+            },
+            {
+              "Line": 40,
+              "Offset": 180,
+              "EndOffset": 182,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 1
+            },
+            {
+              "Line": 34,
               "Offset": 74,
-              "EndOffset": 261,
+              "EndOffset": 385,
               "Path": 1,
               "Ordinal": 3,
               "Hits": 1
             },
             {
-              "Line": 43,
-              "Offset": 339,
-              "EndOffset": 408,
+              "Line": 53,
+              "Offset": 463,
+              "EndOffset": 532,
               "Path": 1,
-              "Ordinal": 7,
+              "Ordinal": 11,
               "Hits": 1
             }
           ]
@@ -11010,16 +11048,16 @@
       "PlayersBay.Services.Data.GamesService/<DeleteAsync>d__4": {
         "System.Void PlayersBay.Services.Data.GamesService/<DeleteAsync>d__4::MoveNext()": {
           "Lines": {
-            "49": 1,
-            "50": 1,
-            "51": 1,
-            "53": 1,
-            "54": 1,
-            "55": 1
+            "59": 1,
+            "60": 1,
+            "61": 1,
+            "63": 1,
+            "64": 1,
+            "65": 1
           },
           "Branches": [
             {
-              "Line": 54,
+              "Line": 64,
               "Offset": 241,
               "EndOffset": 307,
               "Path": 1,
@@ -11032,65 +11070,97 @@
       "PlayersBay.Services.Data.GamesService/<EditAsync>d__5": {
         "System.Void PlayersBay.Services.Data.GamesService/<EditAsync>d__5::MoveNext()": {
           "Lines": {
-            "58": 2,
-            "59": 2,
-            "61": 2,
-            "62": 1,
-            "63": 1,
-            "64": 1,
-            "65": 1,
-            "67": 2,
-            "69": 2,
-            "70": 2,
-            "71": 2
+            "68": 3,
+            "69": 3,
+            "71": 3,
+            "72": 2,
+            "73": 2,
+            "74": 2,
+            "75": 2,
+            "77": 2,
+            "78": 1,
+            "79": 1,
+            "82": 1,
+            "83": 1,
+            "84": 1,
+            "85": 1,
+            "86": 1,
+            "88": 2,
+            "90": 2,
+            "91": 2,
+            "92": 2
           },
           "Branches": [
             {
-              "Line": 59,
+              "Line": 69,
               "Offset": 237,
               "EndOffset": 307,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 2
+              "Hits": 3
             },
             {
-              "Line": 61,
+              "Line": 71,
               "Offset": 362,
               "EndOffset": 367,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 1
+              "Hits": 2
             },
             {
-              "Line": 63,
-              "Offset": 430,
-              "EndOffset": 432,
+              "Line": 73,
+              "Offset": 398,
+              "EndOffset": 400,
               "Path": 0,
               "Ordinal": 4,
+              "Hits": 2
+            },
+            {
+              "Line": 77,
+              "Offset": 485,
+              "EndOffset": 487,
+              "Path": 0,
+              "Ordinal": 6,
               "Hits": 1
             },
             {
-              "Line": 63,
-              "Offset": 430,
-              "EndOffset": 502,
+              "Line": 77,
+              "Offset": 485,
+              "EndOffset": 499,
               "Path": 1,
-              "Ordinal": 5,
+              "Ordinal": 7,
               "Hits": 1
             },
             {
-              "Line": 61,
+              "Line": 83,
+              "Offset": 562,
+              "EndOffset": 564,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 1
+            },
+            {
+              "Line": 83,
+              "Offset": 562,
+              "EndOffset": 634,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 1
+            },
+            {
+              "Line": 71,
               "Offset": 362,
-              "EndOffset": 560,
+              "EndOffset": 700,
               "Path": 1,
               "Ordinal": 3,
               "Hits": 2
             },
             {
-              "Line": 70,
-              "Offset": 641,
-              "EndOffset": 710,
+              "Line": 91,
+              "Offset": 781,
+              "EndOffset": 850,
               "Path": 1,
-              "Ordinal": 7,
+              "Ordinal": 11,
               "Hits": 2
             }
           ]
@@ -11099,17 +11169,17 @@
       "PlayersBay.Services.Data.GamesService/<GetAllGamesAsync>d__6": {
         "System.Void PlayersBay.Services.Data.GamesService/<GetAllGamesAsync>d__6::MoveNext()": {
           "Lines": {
-            "74": 1,
-            "75": 1,
-            "76": 1,
-            "77": 1,
-            "78": 1,
-            "80": 1,
-            "81": 1
+            "95": 1,
+            "96": 1,
+            "97": 1,
+            "98": 1,
+            "99": 1,
+            "101": 1,
+            "102": 1
           },
           "Branches": [
             {
-              "Line": 75,
+              "Line": 96,
               "Offset": 68,
               "EndOffset": 135,
               "Path": 1,
@@ -11122,26 +11192,25 @@
       "PlayersBay.Services.Data.GamesService/<GetViewModelAsync>d__7`1": {
         "System.Void PlayersBay.Services.Data.GamesService/<GetViewModelAsync>d__7`1::MoveNext()": {
           "Lines": {
-            "84": 1,
-            "85": 1,
-            "86": 1,
-            "87": 1,
-            "88": 1,
-            "89": 1,
-            "91": 1,
-            "92": 1
+            "105": 3,
+            "106": 3,
+            "108": 3,
+            "109": 1,
+            "110": 1,
+            "113": 2,
+            "114": 2
           },
           "Branches": [
             {
-              "Line": 84,
+              "Line": 105,
               "Offset": 8,
               "EndOffset": 17,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 1
+              "Hits": 3
             },
             {
-              "Line": 85,
+              "Line": 106,
               "Offset": 213,
               "EndOffset": 215,
               "Path": 0,
@@ -11149,20 +11218,36 @@
               "Hits": 0
             },
             {
-              "Line": 84,
+              "Line": 105,
               "Offset": 8,
-              "EndOffset": 252,
+              "EndOffset": 255,
               "Path": 1,
               "Ordinal": 1,
               "Hits": 0
             },
             {
-              "Line": 85,
+              "Line": 106,
               "Offset": 213,
-              "EndOffset": 280,
+              "EndOffset": 283,
               "Path": 1,
               "Ordinal": 3,
+              "Hits": 3
+            },
+            {
+              "Line": 108,
+              "Offset": 338,
+              "EndOffset": 340,
+              "Path": 0,
+              "Ordinal": 4,
               "Hits": 1
+            },
+            {
+              "Line": 108,
+              "Offset": 338,
+              "EndOffset": 373,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 2
             }
           ]
         }
@@ -11172,15 +11257,15 @@
       "PlayersBay.Services.Data.MessagesService": {
         "System.Void PlayersBay.Services.Data.MessagesService::.ctor(PlayersBay.Data.Common.Repositories.IRepository`1<PlayersBay.Data.Models.ApplicationUser>,PlayersBay.Data.Common.Repositories.IRepository`1<PlayersBay.Data.Models.Message>,Microsoft.AspNetCore.Identity.UserManager`1<PlayersBay.Data.Models.ApplicationUser>)": {
           "Lines": {
-            "21": 5,
-            "22": 5,
-            "23": 5,
-            "24": 5,
-            "25": 5,
-            "26": 5,
-            "27": 5,
-            "28": 5,
-            "29": 5
+            "22": 8,
+            "23": 8,
+            "24": 8,
+            "25": 8,
+            "26": 8,
+            "27": 8,
+            "28": 8,
+            "29": 8,
+            "30": 8
           },
           "Branches": []
         }
@@ -11188,24 +11273,24 @@
       "PlayersBay.Services.Data.MessagesService/<CreateAsync>d__4": {
         "System.Void PlayersBay.Services.Data.MessagesService/<CreateAsync>d__4::MoveNext()": {
           "Lines": {
-            "32": 2,
             "33": 2,
             "34": 2,
-            "36": 2,
+            "35": 2,
             "37": 2,
             "38": 2,
             "39": 2,
             "40": 2,
             "41": 2,
             "42": 2,
-            "44": 2,
+            "43": 2,
             "45": 2,
-            "47": 2,
-            "48": 2
+            "46": 2,
+            "48": 2,
+            "49": 2
           },
           "Branches": [
             {
-              "Line": 33,
+              "Line": 34,
               "Offset": 235,
               "EndOffset": 305,
               "Path": 1,
@@ -11213,7 +11298,7 @@
               "Hits": 2
             },
             {
-              "Line": 34,
+              "Line": 35,
               "Offset": 505,
               "EndOffset": 577,
               "Path": 1,
@@ -11221,7 +11306,7 @@
               "Hits": 2
             },
             {
-              "Line": 45,
+              "Line": 46,
               "Offset": 745,
               "EndOffset": 814,
               "Path": 1,
@@ -11234,20 +11319,57 @@
       "PlayersBay.Services.Data.MessagesService/<DeleteAsync>d__5": {
         "System.Void PlayersBay.Services.Data.MessagesService/<DeleteAsync>d__5::MoveNext()": {
           "Lines": {
-            "51": 1,
-            "52": 1,
-            "53": 1,
-            "55": 1,
+            "52": 2,
+            "53": 2,
+            "55": 2,
             "56": 1,
-            "57": 1
+            "57": 1,
+            "58": 1,
+            "60": 1,
+            "61": 1,
+            "64": 1,
+            "65": 1,
+            "66": 1
           },
           "Branches": [
             {
-              "Line": 56,
-              "Offset": 241,
-              "EndOffset": 307,
+              "Line": 55,
+              "Offset": 198,
+              "EndOffset": 200,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 55,
+              "Offset": 198,
+              "EndOffset": 224,
               "Path": 1,
               "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 55,
+              "Offset": 227,
+              "EndOffset": 229,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 55,
+              "Offset": 227,
+              "EndOffset": 246,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            },
+            {
+              "Line": 65,
+              "Offset": 310,
+              "EndOffset": 377,
+              "Path": 1,
+              "Ordinal": 5,
               "Hits": 1
             }
           ]
@@ -11256,16 +11378,16 @@
       "PlayersBay.Services.Data.MessagesService/<MessageSeenAsync>d__6": {
         "System.Void PlayersBay.Services.Data.MessagesService/<MessageSeenAsync>d__6::MoveNext()": {
           "Lines": {
-            "60": 1,
-            "61": 1,
-            "62": 1,
-            "64": 1,
-            "65": 1,
-            "66": 1
+            "69": 1,
+            "70": 1,
+            "71": 1,
+            "73": 1,
+            "74": 1,
+            "75": 1
           },
           "Branches": [
             {
-              "Line": 65,
+              "Line": 74,
               "Offset": 246,
               "EndOffset": 312,
               "Path": 1,
@@ -11278,19 +11400,19 @@
       "PlayersBay.Services.Data.MessagesService/<GetAllMessagesAsync>d__7": {
         "System.Void PlayersBay.Services.Data.MessagesService/<GetAllMessagesAsync>d__7::MoveNext()": {
           "Lines": {
-            "69": 1,
-            "70": 1,
-            "72": 1,
-            "73": 1,
-            "74": 1,
-            "75": 1,
-            "76": 1,
             "78": 1,
-            "79": 1
+            "79": 1,
+            "81": 1,
+            "82": 1,
+            "83": 1,
+            "84": 1,
+            "85": 1,
+            "87": 1,
+            "88": 1
           },
           "Branches": [
             {
-              "Line": 72,
+              "Line": 81,
               "Offset": 338,
               "EndOffset": 405,
               "Path": 1,
@@ -11303,32 +11425,24 @@
       "PlayersBay.Services.Data.MessagesService/<GetOutboxAsync>d__8": {
         "System.Void PlayersBay.Services.Data.MessagesService/<GetOutboxAsync>d__8::MoveNext()": {
           "Lines": {
-            "82": 0,
-            "83": 0,
-            "85": 0,
-            "86": 0,
-            "87": 0,
-            "88": 0,
-            "89": 0,
-            "91": 0,
-            "92": 0
+            "91": 1,
+            "92": 1,
+            "94": 1,
+            "95": 1,
+            "96": 1,
+            "97": 1,
+            "98": 1,
+            "100": 1,
+            "101": 1
           },
           "Branches": [
             {
-              "Line": 85,
-              "Offset": 338,
-              "EndOffset": 340,
-              "Path": 0,
-              "Ordinal": 0,
-              "Hits": 0
-            },
-            {
-              "Line": 85,
+              "Line": 94,
               "Offset": 338,
               "EndOffset": 405,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         }
@@ -11469,15 +11583,23 @@
             "88": 1,
             "89": 1,
             "90": 1,
-            "92": 2,
-            "93": 2,
-            "94": 2,
-            "95": 2,
-            "96": 2,
-            "97": 2,
-            "99": 2,
-            "100": 2,
-            "101": 2
+            "92": 1,
+            "93": 0,
+            "94": 0,
+            "97": 1,
+            "98": 1,
+            "99": 1,
+            "100": 1,
+            "101": 1,
+            "103": 2,
+            "104": 2,
+            "105": 2,
+            "106": 2,
+            "107": 2,
+            "108": 2,
+            "110": 2,
+            "111": 2,
+            "112": 2
           },
           "Branches": [
             {
@@ -11498,34 +11620,50 @@
             },
             {
               "Line": 88,
-              "Offset": 295,
-              "EndOffset": 297,
+              "Offset": 264,
+              "EndOffset": 266,
               "Path": 0,
               "Ordinal": 4,
               "Hits": 1
             },
             {
-              "Line": 88,
-              "Offset": 295,
-              "EndOffset": 365,
+              "Line": 92,
+              "Offset": 349,
+              "EndOffset": 363,
               "Path": 1,
-              "Ordinal": 5,
+              "Ordinal": 7,
+              "Hits": 1
+            },
+            {
+              "Line": 98,
+              "Offset": 426,
+              "EndOffset": 428,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 1
+            },
+            {
+              "Line": 98,
+              "Offset": 426,
+              "EndOffset": 498,
+              "Path": 1,
+              "Ordinal": 9,
               "Hits": 1
             },
             {
               "Line": 86,
               "Offset": 228,
-              "EndOffset": 423,
+              "EndOffset": 564,
               "Path": 1,
               "Ordinal": 3,
               "Hits": 2
             },
             {
-              "Line": 100,
-              "Offset": 659,
-              "EndOffset": 728,
+              "Line": 111,
+              "Offset": 800,
+              "EndOffset": 869,
               "Path": 1,
-              "Ordinal": 7,
+              "Ordinal": 11,
               "Hits": 2
             }
           ]
@@ -11533,30 +11671,6 @@
       },
       "PlayersBay.Services.Data.OffersService/<GetAllOffersAsync>d__9": {
         "System.Void PlayersBay.Services.Data.OffersService/<GetAllOffersAsync>d__9::MoveNext()": {
-          "Lines": {
-            "104": 1,
-            "105": 1,
-            "106": 1,
-            "107": 1,
-            "108": 1,
-            "109": 1,
-            "111": 1,
-            "112": 1
-          },
-          "Branches": [
-            {
-              "Line": 105,
-              "Offset": 270,
-              "EndOffset": 337,
-              "Path": 1,
-              "Ordinal": 1,
-              "Hits": 1
-            }
-          ]
-        }
-      },
-      "PlayersBay.Services.Data.OffersService/<GetMyActiveOffersAsync>d__10": {
-        "System.Void PlayersBay.Services.Data.OffersService/<GetMyActiveOffersAsync>d__10::MoveNext()": {
           "Lines": {
             "115": 1,
             "116": 1,
@@ -11570,8 +11684,8 @@
           "Branches": [
             {
               "Line": 116,
-              "Offset": 295,
-              "EndOffset": 362,
+              "Offset": 270,
+              "EndOffset": 337,
               "Path": 1,
               "Ordinal": 1,
               "Hits": 1
@@ -11579,8 +11693,8 @@
           ]
         }
       },
-      "PlayersBay.Services.Data.OffersService/<GetMySoldOffersAsync>d__11": {
-        "System.Void PlayersBay.Services.Data.OffersService/<GetMySoldOffersAsync>d__11::MoveNext()": {
+      "PlayersBay.Services.Data.OffersService/<GetMyActiveOffersAsync>d__10": {
+        "System.Void PlayersBay.Services.Data.OffersService/<GetMyActiveOffersAsync>d__10::MoveNext()": {
           "Lines": {
             "126": 1,
             "127": 1,
@@ -11603,8 +11717,8 @@
           ]
         }
       },
-      "PlayersBay.Services.Data.OffersService/<GetMyBoughtOffersAsync>d__12": {
-        "System.Void PlayersBay.Services.Data.OffersService/<GetMyBoughtOffersAsync>d__12::MoveNext()": {
+      "PlayersBay.Services.Data.OffersService/<GetMySoldOffersAsync>d__11": {
+        "System.Void PlayersBay.Services.Data.OffersService/<GetMySoldOffersAsync>d__11::MoveNext()": {
           "Lines": {
             "137": 1,
             "138": 1,
@@ -11613,16 +11727,40 @@
             "141": 1,
             "142": 1,
             "144": 1,
-            "145": 1,
-            "146": 1,
-            "147": 1,
-            "148": 1,
-            "150": 1,
-            "151": 1
+            "145": 1
           },
           "Branches": [
             {
-              "Line": 144,
+              "Line": 138,
+              "Offset": 295,
+              "EndOffset": 362,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "PlayersBay.Services.Data.OffersService/<GetMyBoughtOffersAsync>d__12": {
+        "System.Void PlayersBay.Services.Data.OffersService/<GetMyBoughtOffersAsync>d__12::MoveNext()": {
+          "Lines": {
+            "148": 1,
+            "149": 1,
+            "150": 1,
+            "151": 1,
+            "152": 1,
+            "153": 1,
+            "155": 1,
+            "156": 1,
+            "157": 1,
+            "158": 1,
+            "159": 1,
+            "161": 1,
+            "162": 1
+          },
+          "Branches": [
+            {
+              "Line": 155,
               "Offset": 526,
               "EndOffset": 593,
               "Path": 1,
@@ -11635,21 +11773,21 @@
       "PlayersBay.Services.Data.OffersService/<GetViewModelAsync>d__13`1": {
         "System.Void PlayersBay.Services.Data.OffersService/<GetViewModelAsync>d__13`1::MoveNext()": {
           "Lines": {
-            "154": 2,
-            "155": 2,
-            "156": 2,
-            "157": 2,
-            "158": 2,
-            "159": 2,
-            "161": 2,
-            "162": 1,
-            "163": 1,
-            "166": 1,
-            "167": 1
+            "165": 2,
+            "166": 2,
+            "167": 2,
+            "168": 2,
+            "169": 2,
+            "170": 2,
+            "172": 2,
+            "173": 1,
+            "174": 1,
+            "177": 1,
+            "178": 1
           },
           "Branches": [
             {
-              "Line": 154,
+              "Line": 165,
               "Offset": 8,
               "EndOffset": 17,
               "Path": 0,
@@ -11657,7 +11795,7 @@
               "Hits": 2
             },
             {
-              "Line": 155,
+              "Line": 166,
               "Offset": 213,
               "EndOffset": 215,
               "Path": 0,
@@ -11665,7 +11803,7 @@
               "Hits": 0
             },
             {
-              "Line": 154,
+              "Line": 165,
               "Offset": 8,
               "EndOffset": 255,
               "Path": 1,
@@ -11673,7 +11811,7 @@
               "Hits": 0
             },
             {
-              "Line": 155,
+              "Line": 166,
               "Offset": 213,
               "EndOffset": 283,
               "Path": 1,
@@ -11681,7 +11819,7 @@
               "Hits": 2
             },
             {
-              "Line": 161,
+              "Line": 172,
               "Offset": 338,
               "EndOffset": 340,
               "Path": 0,
@@ -11689,7 +11827,7 @@
               "Hits": 1
             },
             {
-              "Line": 161,
+              "Line": 172,
               "Offset": 338,
               "EndOffset": 373,
               "Path": 1,
@@ -11725,13 +11863,13 @@
       "PlayersBay.Services.Data.TransfersService": {
         "System.Void PlayersBay.Services.Data.TransfersService::.ctor(PlayersBay.Data.Common.Repositories.IRepository`1<PlayersBay.Data.Models.Transfer>,PlayersBay.Data.Common.Repositories.IRepository`1<PlayersBay.Data.Models.ApplicationUser>)": {
           "Lines": {
-            "21": 8,
-            "22": 8,
-            "23": 8,
-            "24": 8,
-            "25": 8,
-            "26": 8,
-            "27": 8
+            "21": 9,
+            "22": 9,
+            "23": 9,
+            "24": 9,
+            "25": 9,
+            "26": 9,
+            "27": 9
           },
           "Branches": []
         }
@@ -11987,29 +12125,21 @@
       "PlayersBay.Services.Data.TransfersService/<DeclineTransferAsync>d__9": {
         "System.Void PlayersBay.Services.Data.TransfersService/<DeclineTransferAsync>d__9::MoveNext()": {
           "Lines": {
-            "132": 0,
-            "133": 0,
-            "135": 0,
-            "137": 0,
-            "138": 0,
-            "139": 0
+            "132": 1,
+            "133": 1,
+            "135": 1,
+            "137": 1,
+            "138": 1,
+            "139": 1
           },
           "Branches": [
-            {
-              "Line": 138,
-              "Offset": 241,
-              "EndOffset": 243,
-              "Path": 0,
-              "Ordinal": 0,
-              "Hits": 0
-            },
             {
               "Line": 138,
               "Offset": 241,
               "EndOffset": 307,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         }
@@ -12023,7 +12153,9 @@
             "22": 4,
             "23": 4,
             "24": 4,
-            "25": 4
+            "25": 4,
+            "26": 4,
+            "27": 4
           },
           "Branches": []
         }
@@ -12031,17 +12163,17 @@
       "PlayersBay.Services.Data.UsersService/<GetAllUsersAsync>d__3": {
         "System.Void PlayersBay.Services.Data.UsersService/<GetAllUsersAsync>d__3::MoveNext()": {
           "Lines": {
-            "28": 1,
-            "29": 1,
             "30": 1,
             "31": 1,
             "32": 1,
+            "33": 1,
             "34": 1,
-            "35": 1
+            "36": 1,
+            "37": 1
           },
           "Branches": [
             {
-              "Line": 29,
+              "Line": 31,
               "Offset": 68,
               "EndOffset": 135,
               "Path": 1,
@@ -12054,19 +12186,18 @@
       "PlayersBay.Services.Data.UsersService/<MakeModerator>d__4": {
         "System.Void PlayersBay.Services.Data.UsersService/<MakeModerator>d__4::MoveNext()": {
           "Lines": {
-            "38": 1,
-            "39": 1,
+            "40": 1,
             "41": 1,
-            "42": 0,
-            "43": 0,
-            "46": 1,
-            "47": 1,
+            "43": 1,
+            "44": 0,
+            "45": 0,
+            "48": 1,
             "49": 1,
             "50": 1
           },
           "Branches": [
             {
-              "Line": 39,
+              "Line": 41,
               "Offset": 84,
               "EndOffset": 153,
               "Path": 1,
@@ -12074,7 +12205,7 @@
               "Hits": 1
             },
             {
-              "Line": 41,
+              "Line": 43,
               "Offset": 218,
               "EndOffset": 223,
               "Path": 0,
@@ -12082,7 +12213,7 @@
               "Hits": 1
             },
             {
-              "Line": 41,
+              "Line": 43,
               "Offset": 264,
               "EndOffset": 335,
               "Path": 1,
@@ -12090,7 +12221,7 @@
               "Hits": 1
             },
             {
-              "Line": 41,
+              "Line": 43,
               "Offset": 218,
               "EndOffset": 360,
               "Path": 1,
@@ -12098,25 +12229,25 @@
               "Hits": 1
             },
             {
-              "Line": 41,
-              "Offset": 370,
-              "EndOffset": 379,
+              "Line": 43,
+              "Offset": 368,
+              "EndOffset": 377,
               "Path": 1,
               "Ordinal": 7,
               "Hits": 1
             },
             {
-              "Line": 46,
-              "Offset": 420,
-              "EndOffset": 491,
+              "Line": 48,
+              "Offset": 418,
+              "EndOffset": 489,
               "Path": 1,
               "Ordinal": 9,
               "Hits": 1
             },
             {
-              "Line": 47,
-              "Offset": 540,
-              "EndOffset": 608,
+              "Line": 49,
+              "Offset": 538,
+              "EndOffset": 606,
               "Path": 1,
               "Ordinal": 11,
               "Hits": 1
@@ -12134,8 +12265,7 @@
             "58": 0,
             "61": 1,
             "62": 1,
-            "64": 1,
-            "65": 1
+            "63": 1
           },
           "Branches": [
             {
@@ -12172,24 +12302,24 @@
             },
             {
               "Line": 56,
-              "Offset": 370,
-              "EndOffset": 379,
+              "Offset": 368,
+              "EndOffset": 377,
               "Path": 1,
               "Ordinal": 7,
               "Hits": 1
             },
             {
               "Line": 61,
-              "Offset": 420,
-              "EndOffset": 491,
+              "Offset": 418,
+              "EndOffset": 489,
               "Path": 1,
               "Ordinal": 9,
               "Hits": 1
             },
             {
               "Line": 62,
-              "Offset": 540,
-              "EndOffset": 608,
+              "Offset": 538,
+              "EndOffset": 606,
               "Path": 1,
               "Ordinal": 11,
               "Hits": 1
@@ -12200,16 +12330,16 @@
       "PlayersBay.Services.Data.UsersService/<DeleteAsync>d__6": {
         "System.Void PlayersBay.Services.Data.UsersService/<DeleteAsync>d__6::MoveNext()": {
           "Lines": {
+            "66": 1,
+            "67": 1,
             "68": 1,
-            "69": 1,
             "70": 1,
-            "72": 1,
-            "73": 1,
-            "74": 1
+            "71": 1,
+            "72": 1
           },
           "Branches": [
             {
-              "Line": 73,
+              "Line": 71,
               "Offset": 241,
               "EndOffset": 307,
               "Path": 1,
@@ -12292,29 +12422,74 @@
         }
       }
     },
+    "D:\\Programming\\PlayersBay\\src\\Services\\PlayersBay.Services.Data\\Utilities\\ImageFormat.cs": {
+      "PlayersBay.Services.Data.Utilities.ImageFormat": {
+        "System.Boolean PlayersBay.Services.Data.Utilities.ImageFormat::IsImageTypeValid(System.String)": {
+          "Lines": {
+            "6": 4,
+            "7": 4,
+            "8": 4
+          },
+          "Branches": [
+            {
+              "Line": 7,
+              "Offset": 12,
+              "EndOffset": 14,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 4
+            },
+            {
+              "Line": 7,
+              "Offset": 25,
+              "EndOffset": 27,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 2
+            },
+            {
+              "Line": 7,
+              "Offset": 12,
+              "EndOffset": 40,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 7,
+              "Offset": 25,
+              "EndOffset": 40,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 2
+            }
+          ]
+        }
+      }
+    },
     "D:\\Programming\\PlayersBay\\src\\Services\\PlayersBay.Services.Data\\Models\\Users\\UserViewModel.cs": {
       "PlayersBay.Services.Data.Models.Users.UserViewModel": {
         "System.String PlayersBay.Services.Data.Models.Users.UserViewModel::get_Id()": {
           "Lines": {
-            "8": 8
+            "6": 8
           },
           "Branches": []
         },
         "System.String PlayersBay.Services.Data.Models.Users.UserViewModel::get_Username()": {
           "Lines": {
-            "10": 8
+            "8": 8
           },
           "Branches": []
         },
         "System.String PlayersBay.Services.Data.Models.Users.UserViewModel::get_Email()": {
           "Lines": {
-            "12": 8
+            "10": 8
           },
           "Branches": []
         },
         "System.Decimal PlayersBay.Services.Data.Models.Users.UserViewModel::get_Balance()": {
           "Lines": {
-            "14": 2
+            "12": 2
           },
           "Branches": []
         }
@@ -12324,25 +12499,25 @@
       "PlayersBay.Services.Data.Models.Transfers.TransferInputModel": {
         "System.Int32 PlayersBay.Services.Data.Models.Transfers.TransferInputModel::get_Id()": {
           "Lines": {
-            "9": 4
+            "10": 4
           },
           "Branches": []
         },
         "System.Decimal PlayersBay.Services.Data.Models.Transfers.TransferInputModel::get_Amount()": {
           "Lines": {
-            "14": 6
+            "15": 6
           },
           "Branches": []
         },
         "PlayersBay.Data.Models.Enums.TransferType PlayersBay.Services.Data.Models.Transfers.TransferInputModel::get_Type()": {
           "Lines": {
-            "16": 4
+            "17": 4
           },
           "Branches": []
         },
         "PlayersBay.Data.Models.Enums.TransferStatus PlayersBay.Services.Data.Models.Transfers.TransferInputModel::get_Status()": {
           "Lines": {
-            "18": 4
+            "19": 4
           },
           "Branches": []
         }
@@ -12398,49 +12573,49 @@
       "PlayersBay.Services.Data.Models.Offers.OfferCreateInputModel": {
         "System.Int32 PlayersBay.Services.Data.Models.Offers.OfferCreateInputModel::get_GameId()": {
           "Lines": {
-            "11": 2
+            "12": 2
           },
           "Branches": []
         },
         "PlayersBay.Data.Models.Enums.OfferType PlayersBay.Services.Data.Models.Offers.OfferCreateInputModel::get_OfferType()": {
           "Lines": {
-            "15": 2
+            "16": 2
           },
           "Branches": []
         },
         "Microsoft.AspNetCore.Http.IFormFile PlayersBay.Services.Data.Models.Offers.OfferCreateInputModel::get_ImageUrl()": {
           "Lines": {
-            "18": 3
+            "19": 3
           },
           "Branches": []
         },
         "System.Int32 PlayersBay.Services.Data.Models.Offers.OfferCreateInputModel::get_Duration()": {
           "Lines": {
-            "21": 1
+            "22": 1
           },
           "Branches": []
         },
         "System.Decimal PlayersBay.Services.Data.Models.Offers.OfferCreateInputModel::get_Price()": {
           "Lines": {
-            "26": 2
+            "27": 2
           },
           "Branches": []
         },
         "System.String PlayersBay.Services.Data.Models.Offers.OfferCreateInputModel::get_Title()": {
           "Lines": {
-            "30": 3
+            "31": 3
           },
           "Branches": []
         },
         "System.String PlayersBay.Services.Data.Models.Offers.OfferCreateInputModel::get_Description()": {
           "Lines": {
-            "35": 2
+            "36": 2
           },
           "Branches": []
         },
         "System.String PlayersBay.Services.Data.Models.Offers.OfferCreateInputModel::get_MessageToBuyer()": {
           "Lines": {
-            "40": 2
+            "41": 2
           },
           "Branches": []
         }
@@ -12450,61 +12625,61 @@
       "PlayersBay.Services.Data.Models.Offers.OfferDetailsViewModel": {
         "System.Int32 PlayersBay.Services.Data.Models.Offers.OfferDetailsViewModel::get_Id()": {
           "Lines": {
-            "13": 0
+            "11": 0
           },
           "Branches": []
         },
         "System.Int32 PlayersBay.Services.Data.Models.Offers.OfferDetailsViewModel::get_GameId()": {
           "Lines": {
-            "16": 0
+            "14": 0
           },
           "Branches": []
         },
         "System.String PlayersBay.Services.Data.Models.Offers.OfferDetailsViewModel::get_SellerUsername()": {
           "Lines": {
-            "19": 0
+            "17": 0
           },
           "Branches": []
         },
         "System.String PlayersBay.Services.Data.Models.Offers.OfferDetailsViewModel::get_OfferType()": {
           "Lines": {
-            "22": 0
+            "20": 0
           },
           "Branches": []
         },
         "System.String PlayersBay.Services.Data.Models.Offers.OfferDetailsViewModel::get_ImageUrl()": {
           "Lines": {
-            "25": 0
+            "23": 0
           },
           "Branches": []
         },
         "System.DateTime PlayersBay.Services.Data.Models.Offers.OfferDetailsViewModel::get_ExpiryDate()": {
           "Lines": {
-            "27": 0
+            "25": 0
           },
           "Branches": []
         },
         "System.String PlayersBay.Services.Data.Models.Offers.OfferDetailsViewModel::get_OfferEnds()": {
           "Lines": {
-            "30": 0
+            "28": 0
           },
           "Branches": []
         },
         "System.Decimal PlayersBay.Services.Data.Models.Offers.OfferDetailsViewModel::get_Price()": {
           "Lines": {
-            "32": 0
+            "30": 0
           },
           "Branches": []
         },
         "System.String PlayersBay.Services.Data.Models.Offers.OfferDetailsViewModel::get_Title()": {
           "Lines": {
-            "34": 0
+            "32": 0
           },
           "Branches": []
         },
         "System.String PlayersBay.Services.Data.Models.Offers.OfferDetailsViewModel::get_Description()": {
           "Lines": {
-            "36": 0
+            "34": 0
           },
           "Branches": []
         }
@@ -12562,7 +12737,7 @@
         },
         "Microsoft.AspNetCore.Http.IFormFile PlayersBay.Services.Data.Models.Offers.OfferToEditViewModel::get_NewImage()": {
           "Lines": {
-            "36": 4
+            "36": 6
           },
           "Branches": []
         },
@@ -12608,71 +12783,83 @@
       "PlayersBay.Services.Data.Models.Offers.OfferViewModel": {
         "System.Int32 PlayersBay.Services.Data.Models.Offers.OfferViewModel::get_Id()": {
           "Lines": {
-            "12": 30
+            "13": 30
           },
           "Branches": []
         },
         "System.String PlayersBay.Services.Data.Models.Offers.OfferViewModel::get_SellerId()": {
           "Lines": {
-            "14": 28
+            "15": 28
           },
           "Branches": []
         },
         "PlayersBay.Data.Models.ApplicationUser PlayersBay.Services.Data.Models.Offers.OfferViewModel::get_Seller()": {
           "Lines": {
-            "16": 14
+            "17": 14
           },
           "Branches": []
         },
         "PlayersBay.Data.Models.Enums.OfferType PlayersBay.Services.Data.Models.Offers.OfferViewModel::get_OfferType()": {
           "Lines": {
-            "19": 29
+            "20": 29
           },
           "Branches": []
         },
         "System.String PlayersBay.Services.Data.Models.Offers.OfferViewModel::get_ImageUrl()": {
           "Lines": {
-            "21": 28
+            "22": 28
           },
           "Branches": []
         },
         "System.DateTime PlayersBay.Services.Data.Models.Offers.OfferViewModel::get_ExpiryDate()": {
           "Lines": {
-            "24": 7
+            "25": 7
           },
           "Branches": []
         },
         "System.DateTime PlayersBay.Services.Data.Models.Offers.OfferViewModel::get_CreatedOn()": {
           "Lines": {
-            "27": 7
+            "28": 7
+          },
+          "Branches": []
+        },
+        "System.String PlayersBay.Services.Data.Models.Offers.OfferViewModel::get_CreatedOnShort()": {
+          "Lines": {
+            "31": 0
+          },
+          "Branches": []
+        },
+        "System.String PlayersBay.Services.Data.Models.Offers.OfferViewModel::get_ExpiryDateShort()": {
+          "Lines": {
+            "34": 0
           },
           "Branches": []
         },
         "PlayersBay.Data.Models.Enums.OfferStatus PlayersBay.Services.Data.Models.Offers.OfferViewModel::get_Status()": {
           "Lines": {
-            "29": 28
+            "36": 28
           },
           "Branches": []
         },
         "System.Decimal PlayersBay.Services.Data.Models.Offers.OfferViewModel::get_Price()": {
           "Lines": {
-            "31": 29
+            "38": 29
           },
           "Branches": []
         },
         "System.String PlayersBay.Services.Data.Models.Offers.OfferViewModel::get_Title()": {
           "Lines": {
-            "33": 29
+            "40": 29
           },
           "Branches": []
         },
         "System.String PlayersBay.Services.Data.Models.Offers.OfferViewModel::get_ShrotTitle()": {
           "Lines": {
-            "36": 0
+            "43": 0
           },
           "Branches": [
             {
-              "Line": 36,
+              "Line": 43,
               "Offset": 31,
               "EndOffset": 33,
               "Path": 0,
@@ -12680,7 +12867,7 @@
               "Hits": 0
             },
             {
-              "Line": 36,
+              "Line": 43,
               "Offset": 31,
               "EndOffset": 39,
               "Path": 1,
@@ -12691,13 +12878,13 @@
         },
         "System.String PlayersBay.Services.Data.Models.Offers.OfferViewModel::get_Description()": {
           "Lines": {
-            "38": 29
+            "45": 29
           },
           "Branches": []
         },
         "System.String PlayersBay.Services.Data.Models.Offers.OfferViewModel::get_MessageToBuyer()": {
           "Lines": {
-            "41": 29
+            "48": 29
           },
           "Branches": []
         }
@@ -12707,19 +12894,19 @@
       "PlayersBay.Services.Data.Models.Messages.MessageInputModel": {
         "System.String PlayersBay.Services.Data.Models.Messages.MessageInputModel::get_Message()": {
           "Lines": {
-            "10": 4
+            "12": 4
           },
           "Branches": []
         },
         "System.String PlayersBay.Services.Data.Models.Messages.MessageInputModel::get_SenderName()": {
           "Lines": {
-            "12": 1
+            "14": 1
           },
           "Branches": []
         },
         "System.String PlayersBay.Services.Data.Models.Messages.MessageInputModel::get_ReceiverName()": {
           "Lines": {
-            "14": 4
+            "16": 4
           },
           "Branches": []
         }
@@ -12729,37 +12916,37 @@
       "PlayersBay.Services.Data.Models.Messages.MessageOutputModel": {
         "System.Int32 PlayersBay.Services.Data.Models.Messages.MessageOutputModel::get_Id()": {
           "Lines": {
-            "10": 4
+            "7": 8
           },
           "Branches": []
         },
         "System.DateTime PlayersBay.Services.Data.Models.Messages.MessageOutputModel::get_CreatedOn()": {
           "Lines": {
-            "12": 1
+            "9": 2
           },
           "Branches": []
         },
         "System.String PlayersBay.Services.Data.Models.Messages.MessageOutputModel::get_Sender()": {
           "Lines": {
-            "14": 4
+            "11": 8
           },
           "Branches": []
         },
         "System.String PlayersBay.Services.Data.Models.Messages.MessageOutputModel::get_Receiver()": {
           "Lines": {
-            "16": 4
+            "13": 8
           },
           "Branches": []
         },
         "System.String PlayersBay.Services.Data.Models.Messages.MessageOutputModel::get_Text()": {
           "Lines": {
-            "18": 4
+            "15": 8
           },
           "Branches": []
         },
         "System.Nullable`1<System.Boolean> PlayersBay.Services.Data.Models.Messages.MessageOutputModel::get_IsRead()": {
           "Lines": {
-            "20": 4
+            "17": 8
           },
           "Branches": []
         }
@@ -12769,19 +12956,19 @@
       "PlayersBay.Services.Data.Models.Games.GamesCreateInputModel": {
         "System.String PlayersBay.Services.Data.Models.Games.GamesCreateInputModel::get_Name()": {
           "Lines": {
-            "11": 2
+            "12": 4
           },
           "Branches": []
         },
         "Microsoft.AspNetCore.Http.IFormFile PlayersBay.Services.Data.Models.Games.GamesCreateInputModel::get_Image()": {
           "Lines": {
-            "15": 1
+            "16": 5
           },
           "Branches": []
         },
         "System.String PlayersBay.Services.Data.Models.Games.GamesCreateInputModel::get_ImageUrl()": {
           "Lines": {
-            "17": 2
+            "18": 2
           },
           "Branches": []
         }
@@ -12791,25 +12978,25 @@
       "PlayersBay.Services.Data.Models.Games.GameToEditViewModel": {
         "System.Int32 PlayersBay.Services.Data.Models.Games.GameToEditViewModel::get_Id()": {
           "Lines": {
-            "11": 6
+            "9": 9
           },
           "Branches": []
         },
         "System.String PlayersBay.Services.Data.Models.Games.GameToEditViewModel::get_Name()": {
           "Lines": {
-            "13": 8
+            "11": 10
           },
           "Branches": []
         },
         "System.String PlayersBay.Services.Data.Models.Games.GameToEditViewModel::get_ImageUrl()": {
           "Lines": {
-            "16": 1
+            "14": 2
           },
           "Branches": []
         },
         "Microsoft.AspNetCore.Http.IFormFile PlayersBay.Services.Data.Models.Games.GameToEditViewModel::get_NewImage()": {
           "Lines": {
-            "20": 5
+            "18": 11
           },
           "Branches": []
         }
@@ -12819,25 +13006,25 @@
       "PlayersBay.Services.Data.Models.Games.GameViewModel": {
         "System.Int32 PlayersBay.Services.Data.Models.Games.GameViewModel::get_Id()": {
           "Lines": {
-            "11": 14
+            "9": 14
           },
           "Branches": []
         },
         "System.String PlayersBay.Services.Data.Models.Games.GameViewModel::get_Name()": {
           "Lines": {
-            "13": 13
+            "11": 13
           },
           "Branches": []
         },
         "System.String PlayersBay.Services.Data.Models.Games.GameViewModel::get_ImageUrl()": {
           "Lines": {
-            "15": 13
+            "13": 13
           },
           "Branches": []
         },
         "System.Collections.Generic.ICollection`1<PlayersBay.Services.Data.Models.Offers.OfferViewModel> PlayersBay.Services.Data.Models.Games.GameViewModel::get_Offers()": {
           "Lines": {
-            "17": 3
+            "15": 3
           },
           "Branches": []
         }
@@ -12847,19 +13034,19 @@
       "PlayersBay.Services.Data.Models.Feedbacks.FeedbackInputModel": {
         "PlayersBay.Data.Models.Enums.FeedbackRating PlayersBay.Services.Data.Models.Feedbacks.FeedbackInputModel::get_FeedbackRating()": {
           "Lines": {
-            "11": 2
+            "12": 2
           },
           "Branches": []
         },
         "System.Int32 PlayersBay.Services.Data.Models.Feedbacks.FeedbackInputModel::get_OfferId()": {
           "Lines": {
-            "13": 2
+            "14": 2
           },
           "Branches": []
         },
         "System.String PlayersBay.Services.Data.Models.Feedbacks.FeedbackInputModel::get_Content()": {
           "Lines": {
-            "19": 2
+            "20": 2
           },
           "Branches": []
         }
@@ -12869,25 +13056,25 @@
       "PlayersBay.Services.Data.Models.Feedbacks.FeedbacksViewModel": {
         "PlayersBay.Data.Models.Enums.FeedbackRating PlayersBay.Services.Data.Models.Feedbacks.FeedbacksViewModel::get_FeedbackRating()": {
           "Lines": {
-            "9": 0
+            "7": 0
           },
           "Branches": []
         },
         "System.Int32 PlayersBay.Services.Data.Models.Feedbacks.FeedbacksViewModel::get_OfferId()": {
           "Lines": {
-            "11": 0
+            "9": 0
           },
           "Branches": []
         },
         "System.String PlayersBay.Services.Data.Models.Feedbacks.FeedbacksViewModel::get_Content()": {
           "Lines": {
-            "13": 0
+            "11": 0
           },
           "Branches": []
         },
         "System.Boolean PlayersBay.Services.Data.Models.Feedbacks.FeedbacksViewModel::get_HasFeedback()": {
           "Lines": {
-            "15": 0
+            "13": 0
           },
           "Branches": []
         }
@@ -12897,35 +13084,19 @@
       "PlayersBay.Services.Data.Models.Deals.DealInputModel": {
         "System.String PlayersBay.Services.Data.Models.Deals.DealInputModel::get_SellerName()": {
           "Lines": {
-            "5": 2
+            "5": 4
           },
           "Branches": []
         },
         "System.String PlayersBay.Services.Data.Models.Deals.DealInputModel::get_BuyerName()": {
           "Lines": {
-            "7": 1
+            "7": 2
           },
           "Branches": []
         },
         "System.Int32 PlayersBay.Services.Data.Models.Deals.DealInputModel::get_OfferId()": {
           "Lines": {
-            "9": 2
-          },
-          "Branches": []
-        }
-      }
-    },
-    "D:\\Programming\\PlayersBay\\src\\Services\\PlayersBay.Services.Data\\Models\\Deals\\TopUpInputModel.cs": {
-      "PlayersBay.Services.Data.Models.Deals.TopUpInputModel": {
-        "System.String PlayersBay.Services.Data.Models.Deals.TopUpInputModel::get_Username()": {
-          "Lines": {
-            "7": 0
-          },
-          "Branches": []
-        },
-        "System.Decimal PlayersBay.Services.Data.Models.Deals.TopUpInputModel::get_Amount()": {
-          "Lines": {
-            "12": 0
+            "9": 4
           },
           "Branches": []
         }
@@ -12938,10 +13109,10 @@
       "PlayersBay.Services.Mapping.AutoMapperConfig": {
         "System.Void PlayersBay.Services.Mapping.AutoMapperConfig::RegisterMappings(System.Reflection.Assembly[])": {
           "Lines": {
-            "15": 70,
-            "16": 70,
-            "17": 69,
-            "18": 69,
+            "15": 84,
+            "16": 84,
+            "17": 83,
+            "18": 82,
             "21": 1,
             "23": 2,
             "25": 1,
@@ -12964,7 +13135,7 @@
             "42": 1,
             "43": 1,
             "44": 2,
-            "45": 69
+            "45": 83
           },
           "Branches": [
             {
@@ -12973,7 +13144,7 @@
               "EndOffset": 16,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 69
+              "Hits": 83
             },
             {
               "Line": 16,
@@ -13468,12 +13639,12 @@
       "PlayersBay.Services.Mapping.QueryableMappingExtensions": {
         "System.Linq.IQueryable`1<TDestination> PlayersBay.Services.Mapping.QueryableMappingExtensions::To(System.Linq.IQueryable,System.Linq.Expressions.Expression`1<System.Func`2<TDestination,System.Object>>[])": {
           "Lines": {
-            "14": 13,
-            "15": 13,
+            "14": 16,
+            "15": 16,
             "16": 0,
             "17": 0,
-            "20": 13,
-            "21": 13
+            "20": 16,
+            "21": 16
           },
           "Branches": [
             {
@@ -13490,7 +13661,7 @@
               "EndOffset": 21,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 13
+              "Hits": 16
             }
           ]
         },
@@ -14286,7 +14457,7 @@
         }
       }
     },
-    "D:\\Programming\\PlayersBay\\src\\Web\\PlayersBay.Web\\Views\\ViewComponents\\MessageListViewComponent - Copy.cs": {
+    "D:\\Programming\\PlayersBay\\src\\Web\\PlayersBay.Web\\Views\\ViewComponents\\MessageListViewComponent.cs": {
       "PlayersBay.Web.Views.ViewComponents.MessageListViewComponent": {
         "System.Void PlayersBay.Web.Views.ViewComponents.MessageListViewComponent::.ctor(PlayersBay.Services.Data.Contracts.IMessagesService)": {
           "Lines": {
@@ -14806,67 +14977,22 @@
         }
       }
     },
-    "D:\\Programming\\PlayersBay\\src\\Web\\PlayersBay.Web\\Controllers\\BaseController.cs": {
-      "PlayersBay.Web.Controllers.BaseController": {
-        "System.Boolean PlayersBay.Web.Controllers.BaseController::IsImageTypeValid(System.String)": {
-          "Lines": {
-            "9": 0,
-            "10": 0,
-            "11": 0
-          },
-          "Branches": [
-            {
-              "Line": 10,
-              "Offset": 12,
-              "EndOffset": 14,
-              "Path": 0,
-              "Ordinal": 0,
-              "Hits": 0
-            },
-            {
-              "Line": 10,
-              "Offset": 25,
-              "EndOffset": 27,
-              "Path": 0,
-              "Ordinal": 2,
-              "Hits": 0
-            },
-            {
-              "Line": 10,
-              "Offset": 12,
-              "EndOffset": 40,
-              "Path": 1,
-              "Ordinal": 1,
-              "Hits": 0
-            },
-            {
-              "Line": 10,
-              "Offset": 25,
-              "EndOffset": 40,
-              "Path": 1,
-              "Ordinal": 3,
-              "Hits": 0
-            }
-          ]
-        }
-      }
-    },
     "D:\\Programming\\PlayersBay\\src\\Web\\PlayersBay.Web\\Controllers\\DealsController.cs": {
       "PlayersBay.Web.Controllers.DealsController": {
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Controllers.DealsController::Purchase(PlayersBay.Services.Data.Models.Deals.DealInputModel)": {
           "Lines": {
-            "22": 0,
             "23": 0,
             "24": 0,
             "25": 0,
-            "28": 0,
-            "30": 0,
-            "32": 0,
-            "33": 0
+            "26": 0,
+            "29": 0,
+            "31": 0,
+            "33": 0,
+            "34": 0
           },
           "Branches": [
             {
-              "Line": 23,
+              "Line": 24,
               "Offset": 17,
               "EndOffset": 19,
               "Path": 0,
@@ -14874,7 +15000,7 @@
               "Hits": 0
             },
             {
-              "Line": 23,
+              "Line": 24,
               "Offset": 17,
               "EndOffset": 30,
               "Path": 1,
@@ -14885,10 +15011,10 @@
         },
         "System.Void PlayersBay.Web.Controllers.DealsController::.ctor(PlayersBay.Services.Data.Contracts.IDealsService)": {
           "Lines": {
-            "14": 0,
             "15": 0,
             "16": 0,
-            "17": 0
+            "17": 0,
+            "18": 0
           },
           "Branches": []
         }
@@ -14898,33 +15024,28 @@
       "PlayersBay.Web.Controllers.FeedbacksController": {
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Controllers.FeedbacksController::Create(System.String)": {
           "Lines": {
-            "27": 0,
-            "28": 0,
-            "29": 0,
-            "30": 0
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0
           },
           "Branches": []
         },
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Controllers.FeedbacksController::Create(PlayersBay.Services.Data.Models.Feedbacks.FeedbackInputModel)": {
           "Lines": {
-            "35": 0,
-            "36": 0,
-            "37": 0,
-            "38": 0,
-            "40": 0,
-            "41": 0
+            "29": 0,
+            "30": 0,
+            "32": 0,
+            "33": 0
           },
           "Branches": []
         },
-        "System.Void PlayersBay.Web.Controllers.FeedbacksController::.ctor(PlayersBay.Services.Data.Contracts.IFeedbacksService,PlayersBay.Data.Common.Repositories.IRepository`1<PlayersBay.Data.Models.Offer>)": {
+        "System.Void PlayersBay.Web.Controllers.FeedbacksController::.ctor(PlayersBay.Services.Data.Contracts.IFeedbacksService)": {
           "Lines": {
-            "17": 0,
-            "18": 0,
-            "19": 0,
-            "20": 0,
-            "21": 0,
-            "22": 0,
-            "23": 0
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0
           },
           "Branches": []
         }
@@ -14934,33 +15055,31 @@
       "PlayersBay.Web.Controllers.HomeController": {
         "PlayersBay.Services.Data.Contracts.IGamesService PlayersBay.Web.Controllers.HomeController::get_GamesService()": {
           "Lines": {
-            "15": 0
+            "13": 0
           },
           "Branches": []
         },
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Controllers.HomeController::Index()": {
           "Lines": {
-            "18": 0,
+            "16": 0,
+            "17": 0,
             "19": 0,
-            "20": 0,
-            "21": 0,
-            "23": 0,
-            "24": 0
+            "20": 0
           },
           "Branches": []
         },
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Controllers.HomeController::Error()": {
           "Lines": {
-            "27": 0
+            "23": 0
           },
           "Branches": []
         },
         "System.Void PlayersBay.Web.Controllers.HomeController::.ctor(PlayersBay.Services.Data.Contracts.IGamesService)": {
           "Lines": {
+            "8": 0,
+            "9": 0,
             "10": 0,
-            "11": 0,
-            "12": 0,
-            "13": 0
+            "11": 0
           },
           "Branches": []
         }
@@ -14970,78 +15089,79 @@
       "PlayersBay.Web.Controllers.MessagesController": {
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Controllers.MessagesController::Inbox()": {
           "Lines": {
-            "28": 0,
             "29": 0,
-            "31": 0,
-            "33": 0,
-            "34": 0
+            "30": 0,
+            "32": 0,
+            "34": 0,
+            "35": 0
           },
           "Branches": []
         },
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Controllers.MessagesController::Outbox()": {
           "Lines": {
-            "38": 0,
             "39": 0,
-            "41": 0,
-            "43": 0,
-            "44": 0
+            "40": 0,
+            "42": 0,
+            "44": 0,
+            "45": 0
           },
           "Branches": []
         },
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Controllers.MessagesController::SendMessage(System.String)": {
           "Lines": {
-            "48": 0,
             "49": 0,
             "50": 0,
-            "51": 0
+            "52": 0,
+            "53": 0
           },
           "Branches": []
         },
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Controllers.MessagesController::SendMessage(PlayersBay.Services.Data.Models.Messages.MessageInputModel)": {
           "Lines": {
-            "55": 0,
-            "56": 0,
+            "57": 0,
             "58": 0,
             "60": 0,
-            "61": 0
+            "62": 0,
+            "63": 0
           },
           "Branches": []
         },
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Controllers.MessagesController::DeleteMessage(System.Int32)": {
           "Lines": {
-            "65": 0,
-            "66": 0,
+            "67": 0,
             "68": 0,
-            "69": 0
+            "70": 0,
+            "72": 0,
+            "73": 0
           },
           "Branches": []
         },
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Controllers.MessagesController::MessageSeen(System.Int32)": {
           "Lines": {
-            "73": 0,
-            "74": 0,
-            "76": 0,
-            "77": 0
+            "77": 0,
+            "78": 0,
+            "80": 0,
+            "81": 0
           },
           "Branches": []
         },
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Controllers.MessagesController::Reply(System.String)": {
           "Lines": {
-            "81": 0,
-            "82": 0,
-            "83": 0,
-            "84": 0
+            "85": 0,
+            "86": 0,
+            "88": 0,
+            "89": 0
           },
           "Branches": []
         },
         "System.Void PlayersBay.Web.Controllers.MessagesController::.ctor(PlayersBay.Services.Data.Contracts.IMessagesService,PlayersBay.Data.Common.Repositories.IRepository`1<PlayersBay.Data.Models.Message>,Microsoft.AspNetCore.Identity.UserManager`1<PlayersBay.Data.Models.ApplicationUser>)": {
           "Lines": {
-            "19": 0,
             "20": 0,
             "21": 0,
             "22": 0,
             "23": 0,
-            "24": 0
+            "24": 0,
+            "25": 0
           },
           "Branches": []
         }
@@ -15051,16 +15171,16 @@
       "PlayersBay.Web.Controllers.OffersController": {
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Controllers.OffersController::Index()": {
           "Lines": {
+            "38": 0,
             "39": 0,
-            "40": 0,
-            "41": 0
+            "40": 0
           },
           "Branches": []
         },
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Controllers.OffersController::Create()": {
           "Lines": {
+            "44": 0,
             "45": 0,
-            "46": 0,
             "47": 0,
             "48": 0
           },
@@ -15074,10 +15194,8 @@
             "57": 0,
             "58": 0,
             "61": 0,
-            "62": 0,
             "63": 0,
-            "65": 0,
-            "66": 0
+            "64": 0
           },
           "Branches": [
             {
@@ -15100,88 +15218,83 @@
         },
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Controllers.OffersController::Details(System.Int32)": {
           "Lines": {
-            "69": 0,
+            "67": 0,
+            "68": 0,
             "70": 0,
-            "71": 0,
             "72": 0,
-            "74": 0,
-            "76": 0,
-            "77": 0
+            "73": 0
           },
           "Branches": []
         },
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Controllers.OffersController::All(System.Int32)": {
           "Lines": {
-            "80": 0,
+            "76": 0,
+            "77": 0,
+            "79": 0,
             "81": 0,
-            "82": 0,
-            "83": 0,
-            "85": 0,
-            "87": 0,
-            "88": 0
+            "82": 0
           },
           "Branches": []
         },
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Controllers.OffersController::ActiveOffers()": {
           "Lines": {
-            "92": 0,
-            "93": 0,
-            "95": 0,
-            "97": 0,
-            "98": 0
+            "86": 0,
+            "87": 0,
+            "89": 0,
+            "91": 0,
+            "92": 0
           },
           "Branches": []
         },
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Controllers.OffersController::SoldOffers()": {
           "Lines": {
+            "96": 0,
+            "97": 0,
+            "98": 0,
+            "99": 0,
+            "100": 0,
+            "101": 0,
             "102": 0,
             "103": 0,
-            "104": 0,
             "105": 0,
-            "106": 0,
             "107": 0,
-            "108": 0,
             "109": 0,
-            "111": 0,
-            "113": 0,
-            "115": 0,
-            "116": 0
+            "110": 0
           },
           "Branches": []
         },
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Controllers.OffersController::BoughtOffers()": {
           "Lines": {
+            "114": 0,
+            "115": 0,
+            "116": 0,
+            "117": 0,
+            "118": 0,
+            "119": 0,
             "120": 0,
             "121": 0,
-            "122": 0,
             "123": 0,
-            "124": 0,
             "125": 0,
-            "126": 0,
             "127": 0,
-            "129": 0,
-            "131": 0,
-            "133": 0,
-            "134": 0
+            "128": 0
           },
           "Branches": []
         },
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Controllers.OffersController::Edit(System.Int32)": {
           "Lines": {
+            "132": 0,
+            "133": 0,
+            "135": 0,
+            "136": 0,
+            "137": 0,
             "138": 0,
-            "139": 0,
-            "140": 0,
             "141": 0,
-            "143": 0,
-            "144": 0,
-            "145": 0,
-            "148": 0,
-            "149": 0,
-            "150": 0
+            "142": 0,
+            "143": 0
           },
           "Branches": [
             {
-              "Line": 143,
+              "Line": 135,
               "Offset": 33,
               "EndOffset": 35,
               "Path": 0,
@@ -15189,36 +15302,61 @@
               "Hits": 0
             },
             {
-              "Line": 143,
+              "Line": 135,
               "Offset": 33,
-              "EndOffset": 50,
+              "EndOffset": 69,
               "Path": 1,
               "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 135,
+              "Offset": 67,
+              "EndOffset": 69,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 135,
+              "Offset": 67,
+              "EndOffset": 87,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 135,
+              "Offset": 90,
+              "EndOffset": 92,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 135,
+              "Offset": 90,
+              "EndOffset": 107,
+              "Path": 1,
+              "Ordinal": 5,
               "Hits": 0
             }
           ]
         },
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Controllers.OffersController::Edit(PlayersBay.Services.Data.Models.Offers.OfferToEditViewModel)": {
           "Lines": {
+            "148": 0,
+            "149": 0,
+            "150": 0,
+            "151": 0,
+            "154": 0,
             "155": 0,
-            "156": 0,
             "157": 0,
-            "158": 0,
-            "161": 0,
-            "162": 0,
-            "163": 0,
-            "164": 0,
-            "165": 0,
-            "166": 0,
-            "168": 0,
-            "170": 0,
-            "171": 0,
-            "173": 0,
-            "174": 0
+            "158": 0
           },
           "Branches": [
             {
-              "Line": 156,
+              "Line": 149,
               "Offset": 17,
               "EndOffset": 19,
               "Path": 0,
@@ -15226,83 +15364,104 @@
               "Hits": 0
             },
             {
-              "Line": 156,
+              "Line": 149,
               "Offset": 17,
-              "EndOffset": 33,
+              "EndOffset": 30,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
-            },
-            {
-              "Line": 161,
-              "Offset": 44,
-              "EndOffset": 46,
-              "Path": 0,
-              "Ordinal": 2,
-              "Hits": 0
-            },
-            {
-              "Line": 164,
-              "Offset": 85,
-              "EndOffset": 87,
-              "Path": 0,
-              "Ordinal": 4,
-              "Hits": 0
-            },
-            {
-              "Line": 164,
-              "Offset": 85,
-              "EndOffset": 98,
-              "Path": 1,
-              "Ordinal": 5,
-              "Hits": 0
-            },
-            {
-              "Line": 161,
-              "Offset": 44,
-              "EndOffset": 99,
-              "Path": 1,
-              "Ordinal": 3,
               "Hits": 0
             }
           ]
         },
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Controllers.OffersController::Delete(System.Int32)": {
           "Lines": {
-            "178": 0,
-            "179": 0,
-            "180": 0,
+            "162": 0,
+            "163": 0,
+            "164": 0,
+            "165": 0,
+            "167": 0,
+            "168": 0,
+            "169": 0,
+            "170": 0,
+            "173": 0,
+            "175": 0,
+            "176": 0
+          },
+          "Branches": [
+            {
+              "Line": 167,
+              "Offset": 49,
+              "EndOffset": 51,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 167,
+              "Offset": 49,
+              "EndOffset": 90,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 167,
+              "Offset": 88,
+              "EndOffset": 90,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 167,
+              "Offset": 88,
+              "EndOffset": 108,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 167,
+              "Offset": 111,
+              "EndOffset": 113,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 167,
+              "Offset": 111,
+              "EndOffset": 131,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        },
+        "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Controllers.OffersController::Delete(PlayersBay.Services.Data.Models.Offers.OfferToEditViewModel)": {
+          "Lines": {
             "181": 0,
+            "182": 0,
             "183": 0,
             "185": 0,
             "186": 0
           },
           "Branches": []
         },
-        "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Controllers.OffersController::Delete(PlayersBay.Services.Data.Models.Offers.OfferToEditViewModel)": {
+        "System.Collections.Generic.IEnumerable`1<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> PlayersBay.Web.Controllers.OffersController::SelectAllGames()": {
           "Lines": {
+            "189": 0,
+            "190": 0,
             "191": 0,
             "192": 0,
             "193": 0,
+            "194": 0,
             "195": 0,
             "196": 0
           },
-          "Branches": []
-        },
-        "System.Collections.Generic.IEnumerable`1<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> PlayersBay.Web.Controllers.OffersController::SelectAllGames()": {
-          "Lines": {
-            "199": 0,
-            "200": 0,
-            "201": 0,
-            "202": 0,
-            "203": 0,
-            "204": 0,
-            "205": 0,
-            "206": 0
-          },
           "Branches": [
             {
-              "Line": 200,
+              "Line": 190,
               "Offset": 31,
               "EndOffset": 33,
               "Path": 0,
@@ -15310,7 +15469,7 @@
               "Hits": 0
             },
             {
-              "Line": 200,
+              "Line": 190,
               "Offset": 31,
               "EndOffset": 56,
               "Path": 1,
@@ -15319,9 +15478,8 @@
             }
           ]
         },
-        "System.Void PlayersBay.Web.Controllers.OffersController::.ctor(PlayersBay.Services.Data.Contracts.IOffersService,PlayersBay.Services.Data.Contracts.IGamesService,PlayersBay.Data.Common.Repositories.IRepository`1<PlayersBay.Data.Models.Offer>,PlayersBay.Data.Common.Repositories.IRepository`1<PlayersBay.Data.Models.Game>,PlayersBay.Data.Common.Repositories.IRepository`1<PlayersBay.Data.Models.Feedback>)": {
+        "System.Void PlayersBay.Web.Controllers.OffersController::.ctor(PlayersBay.Services.Data.Contracts.IOffersService,PlayersBay.Services.Data.Contracts.IGamesService,PlayersBay.Data.Common.Repositories.IRepository`1<PlayersBay.Data.Models.Game>,PlayersBay.Data.Common.Repositories.IRepository`1<PlayersBay.Data.Models.Feedback>)": {
           "Lines": {
-            "24": 0,
             "25": 0,
             "26": 0,
             "27": 0,
@@ -15332,8 +15490,7 @@
             "32": 0,
             "33": 0,
             "34": 0,
-            "35": 0,
-            "36": 0
+            "35": 0
           },
           "Branches": []
         }
@@ -15397,33 +15554,31 @@
       "PlayersBay.Web.Controllers.TransfersController": {
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Controllers.TransfersController::All()": {
           "Lines": {
-            "26": 0,
             "27": 0,
-            "29": 0,
+            "28": 0,
             "30": 0,
             "31": 0,
-            "33": 0,
-            "34": 0
+            "32": 0,
+            "34": 0,
+            "35": 0
           },
           "Branches": []
         },
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Controllers.TransfersController::Deposit(PlayersBay.Services.Data.Models.Transfers.TransferInputModel)": {
           "Lines": {
-            "39": 0,
             "40": 0,
             "41": 0,
             "42": 0,
-            "45": 0,
-            "47": 0,
+            "43": 0,
+            "46": 0,
             "48": 0,
-            "49": 0,
             "50": 0,
-            "52": 0,
-            "53": 0
+            "51": 0,
+            "52": 0
           },
           "Branches": [
             {
-              "Line": 40,
+              "Line": 41,
               "Offset": 17,
               "EndOffset": 19,
               "Path": 0,
@@ -15431,7 +15586,7 @@
               "Hits": 0
             },
             {
-              "Line": 40,
+              "Line": 41,
               "Offset": 17,
               "EndOffset": 30,
               "Path": 1,
@@ -15442,21 +15597,21 @@
         },
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Controllers.TransfersController::Withdraw(PlayersBay.Services.Data.Models.Transfers.TransferInputModel)": {
           "Lines": {
+            "57": 0,
             "58": 0,
             "59": 0,
             "60": 0,
-            "61": 0,
-            "64": 0,
+            "63": 0,
+            "65": 0,
             "66": 0,
             "67": 0,
             "68": 0,
-            "69": 0,
-            "71": 0,
-            "72": 0
+            "70": 0,
+            "71": 0
           },
           "Branches": [
             {
-              "Line": 59,
+              "Line": 58,
               "Offset": 17,
               "EndOffset": 19,
               "Path": 0,
@@ -15464,7 +15619,7 @@
               "Hits": 0
             },
             {
-              "Line": 59,
+              "Line": 58,
               "Offset": 17,
               "EndOffset": 30,
               "Path": 1,
@@ -15475,13 +15630,13 @@
         },
         "System.Void PlayersBay.Web.Controllers.TransfersController::.ctor(PlayersBay.Services.Data.Contracts.ITransfersService,PlayersBay.Data.Common.Repositories.IRepository`1<PlayersBay.Data.Models.Transfer>)": {
           "Lines": {
-            "16": 0,
             "17": 0,
             "18": 0,
             "19": 0,
             "20": 0,
             "21": 0,
-            "22": 0
+            "22": 0,
+            "23": 0
           },
           "Branches": []
         }
@@ -18995,31 +19150,25 @@
       "PlayersBay.Web.Areas.Administrator.Controllers.GamesController": {
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Areas.Administrator.Controllers.GamesController::Create()": {
           "Lines": {
+            "19": 0,
             "20": 0,
-            "21": 0,
-            "22": 0
+            "21": 0
           },
           "Branches": []
         },
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Areas.Administrator.Controllers.GamesController::Create(PlayersBay.Services.Data.Models.Games.GamesCreateInputModel)": {
           "Lines": {
+            "25": 0,
             "26": 0,
             "27": 0,
             "28": 0,
-            "29": 0,
-            "32": 0,
-            "34": 0,
-            "35": 0,
-            "36": 0,
-            "39": 0,
-            "40": 0,
-            "41": 0,
-            "43": 0,
-            "44": 0
+            "31": 0,
+            "33": 0,
+            "34": 0
           },
           "Branches": [
             {
-              "Line": 27,
+              "Line": 26,
               "Offset": 17,
               "EndOffset": 19,
               "Path": 0,
@@ -19027,102 +19176,39 @@
               "Hits": 0
             },
             {
-              "Line": 27,
+              "Line": 26,
               "Offset": 17,
-              "EndOffset": 33,
+              "EndOffset": 30,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
-            },
-            {
-              "Line": 32,
-              "Offset": 39,
-              "EndOffset": 41,
-              "Path": 0,
-              "Ordinal": 2,
-              "Hits": 0
-            },
-            {
-              "Line": 32,
-              "Offset": 39,
-              "EndOffset": 59,
-              "Path": 1,
-              "Ordinal": 3,
-              "Hits": 0
-            },
-            {
-              "Line": 34,
-              "Offset": 95,
-              "EndOffset": 97,
-              "Path": 0,
-              "Ordinal": 4,
-              "Hits": 0
-            },
-            {
-              "Line": 34,
-              "Offset": 95,
-              "EndOffset": 108,
-              "Path": 1,
-              "Ordinal": 5,
               "Hits": 0
             }
           ]
         },
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Areas.Administrator.Controllers.GamesController::Edit(System.Int32)": {
           "Lines": {
-            "47": 0,
-            "48": 0,
-            "50": 0,
-            "51": 0,
-            "52": 0,
-            "53": 0,
-            "54": 0,
-            "55": 0,
-            "58": 0,
-            "59": 0
+            "37": 0,
+            "38": 0,
+            "40": 0,
+            "42": 0,
+            "43": 0
           },
-          "Branches": [
-            {
-              "Line": 53,
-              "Offset": 56,
-              "EndOffset": 58,
-              "Path": 0,
-              "Ordinal": 0,
-              "Hits": 0
-            },
-            {
-              "Line": 53,
-              "Offset": 56,
-              "EndOffset": 73,
-              "Path": 1,
-              "Ordinal": 1,
-              "Hits": 0
-            }
-          ]
+          "Branches": []
         },
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Areas.Administrator.Controllers.GamesController::Edit(PlayersBay.Services.Data.Models.Games.GameToEditViewModel)": {
           "Lines": {
-            "63": 0,
-            "64": 0,
-            "65": 0,
-            "66": 0,
-            "69": 0,
-            "70": 0,
-            "71": 0,
-            "72": 0,
-            "73": 0,
-            "74": 0,
-            "76": 0,
-            "78": 0,
-            "79": 0,
-            "80": 0,
-            "81": 0,
-            "83": 0,
-            "84": 0
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "53": 0,
+            "54": 0,
+            "56": 0,
+            "57": 0
           },
           "Branches": [
             {
-              "Line": 64,
+              "Line": 48,
               "Offset": 17,
               "EndOffset": 19,
               "Path": 0,
@@ -19130,107 +19216,55 @@
               "Hits": 0
             },
             {
-              "Line": 64,
+              "Line": 48,
               "Offset": 17,
               "EndOffset": 30,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
-            },
-            {
-              "Line": 69,
-              "Offset": 41,
-              "EndOffset": 43,
-              "Path": 0,
-              "Ordinal": 2,
-              "Hits": 0
-            },
-            {
-              "Line": 72,
-              "Offset": 82,
-              "EndOffset": 84,
-              "Path": 0,
-              "Ordinal": 4,
-              "Hits": 0
-            },
-            {
-              "Line": 72,
-              "Offset": 82,
-              "EndOffset": 95,
-              "Path": 1,
-              "Ordinal": 5,
-              "Hits": 0
-            },
-            {
-              "Line": 69,
-              "Offset": 41,
-              "EndOffset": 96,
-              "Path": 1,
-              "Ordinal": 3,
               "Hits": 0
             }
           ]
         },
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Areas.Administrator.Controllers.GamesController::Delete(System.Int32)": {
           "Lines": {
-            "87": 0,
-            "88": 0,
-            "89": 0,
-            "90": 0,
-            "91": 0,
-            "92": 0,
-            "93": 0,
-            "96": 0,
-            "97": 0
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "65": 0,
+            "66": 0
           },
-          "Branches": [
-            {
-              "Line": 91,
-              "Offset": 33,
-              "EndOffset": 35,
-              "Path": 0,
-              "Ordinal": 0,
-              "Hits": 0
-            },
-            {
-              "Line": 91,
-              "Offset": 33,
-              "EndOffset": 50,
-              "Path": 1,
-              "Ordinal": 1,
-              "Hits": 0
-            }
-          ]
+          "Branches": []
         },
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Areas.Administrator.Controllers.GamesController::Delete(PlayersBay.Services.Data.Models.Games.GameToEditViewModel)": {
           "Lines": {
-            "101": 0,
-            "102": 0,
-            "103": 0,
-            "104": 0,
-            "105": 0,
-            "107": 0,
-            "108": 0
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0,
+            "76": 0,
+            "77": 0
           },
           "Branches": []
         },
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Areas.Administrator.Controllers.GamesController::All()": {
           "Lines": {
-            "111": 0,
-            "112": 0,
-            "113": 0,
-            "114": 0,
-            "116": 0,
-            "117": 0
+            "80": 0,
+            "81": 0,
+            "82": 0,
+            "83": 0,
+            "85": 0,
+            "86": 0
           },
           "Branches": []
         },
         "System.Void PlayersBay.Web.Areas.Administrator.Controllers.GamesController::.ctor(PlayersBay.Services.Data.Contracts.IGamesService)": {
           "Lines": {
+            "13": 0,
             "14": 0,
             "15": 0,
-            "16": 0,
-            "17": 0
+            "16": 0
           },
           "Branches": []
         }
@@ -19297,50 +19331,48 @@
       "PlayersBay.Web.Areas.Administrator.Controllers.UsersController": {
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Areas.Administrator.Controllers.UsersController::All()": {
           "Lines": {
-            "17": 0,
             "18": 0,
             "19": 0,
-            "20": 0,
-            "22": 0,
-            "23": 0
+            "21": 0,
+            "22": 0
           },
           "Branches": []
         },
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Areas.Administrator.Controllers.UsersController::MakeUserModerator(System.String)": {
           "Lines": {
+            "25": 0,
             "26": 0,
-            "27": 0,
-            "29": 0,
-            "30": 0
+            "28": 0,
+            "29": 0
           },
           "Branches": []
         },
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Areas.Administrator.Controllers.UsersController::DemoteUserFromModerator(System.String)": {
           "Lines": {
+            "32": 0,
             "33": 0,
-            "34": 0,
-            "36": 0,
-            "37": 0
+            "35": 0,
+            "36": 0
           },
           "Branches": []
         },
         "Microsoft.AspNetCore.Mvc.IActionResult PlayersBay.Web.Areas.Administrator.Controllers.UsersController::Delete(System.String)": {
           "Lines": {
+            "39": 0,
             "40": 0,
             "41": 0,
             "42": 0,
-            "43": 0,
-            "45": 0,
-            "46": 0
+            "44": 0,
+            "45": 0
           },
           "Branches": []
         },
         "System.Void PlayersBay.Web.Areas.Administrator.Controllers.UsersController::.ctor(PlayersBay.Services.Data.Contracts.IUsersService)": {
           "Lines": {
-            "11": 0,
             "12": 0,
             "13": 0,
-            "14": 0
+            "14": 0,
+            "15": 0
           },
           "Branches": []
         }
@@ -30809,336 +30841,336 @@
             },
             {
               "Line": 42,
-              "Offset": 5307,
-              "EndOffset": 1597,
+              "Offset": 5300,
+              "EndOffset": 1600,
               "Path": 1,
               "Ordinal": 43,
               "Hits": 0
             },
             {
               "Line": 46,
-              "Offset": 1848,
-              "EndOffset": 1850,
+              "Offset": 1851,
+              "EndOffset": 1853,
               "Path": 0,
               "Ordinal": 10,
               "Hits": 0
             },
             {
               "Line": 42,
-              "Offset": 1522,
-              "EndOffset": 1890,
+              "Offset": 1525,
+              "EndOffset": 1893,
               "Path": 1,
               "Ordinal": 3,
               "Hits": 0
             },
             {
               "Line": 46,
-              "Offset": 1848,
-              "EndOffset": 1918,
+              "Offset": 1851,
+              "EndOffset": 1921,
               "Path": 1,
               "Ordinal": 11,
               "Hits": 0
             },
             {
               "Line": 51,
-              "Offset": 2845,
-              "EndOffset": 2847,
+              "Offset": 2838,
+              "EndOffset": 2840,
               "Path": 0,
               "Ordinal": 12,
               "Hits": 0
             },
             {
               "Line": 51,
-              "Offset": 2845,
-              "EndOffset": 2880,
+              "Offset": 2838,
+              "EndOffset": 2873,
               "Path": 1,
               "Ordinal": 13,
               "Hits": 0
             },
             {
               "Line": 53,
-              "Offset": 3070,
-              "EndOffset": 3072,
+              "Offset": 3063,
+              "EndOffset": 3065,
               "Path": 0,
               "Ordinal": 14,
               "Hits": 0
             },
             {
               "Line": 42,
-              "Offset": 1522,
-              "EndOffset": 3113,
+              "Offset": 1525,
+              "EndOffset": 3106,
               "Path": 2,
               "Ordinal": 4,
               "Hits": 0
             },
             {
               "Line": 53,
-              "Offset": 3070,
-              "EndOffset": 3142,
+              "Offset": 3063,
+              "EndOffset": 3135,
               "Path": 1,
               "Ordinal": 15,
               "Hits": 0
             },
             {
               "Line": 53,
-              "Offset": 3178,
-              "EndOffset": 3180,
+              "Offset": 3171,
+              "EndOffset": 3173,
               "Path": 0,
               "Ordinal": 16,
               "Hits": 0
             },
             {
               "Line": 53,
-              "Offset": 3211,
-              "EndOffset": 3213,
+              "Offset": 3204,
+              "EndOffset": 3206,
               "Path": 0,
               "Ordinal": 18,
               "Hits": 0
             },
             {
               "Line": 42,
-              "Offset": 1522,
-              "EndOffset": 3254,
+              "Offset": 1525,
+              "EndOffset": 3247,
               "Path": 3,
               "Ordinal": 5,
               "Hits": 0
             },
             {
               "Line": 53,
-              "Offset": 3211,
-              "EndOffset": 3283,
+              "Offset": 3204,
+              "EndOffset": 3276,
               "Path": 1,
               "Ordinal": 19,
               "Hits": 0
             },
             {
               "Line": 53,
-              "Offset": 3178,
-              "EndOffset": 3292,
+              "Offset": 3171,
+              "EndOffset": 3285,
               "Path": 1,
               "Ordinal": 17,
               "Hits": 0
             },
             {
               "Line": 54,
-              "Offset": 3428,
-              "EndOffset": 3430,
+              "Offset": 3421,
+              "EndOffset": 3423,
               "Path": 0,
               "Ordinal": 20,
               "Hits": 0
             },
             {
               "Line": 54,
-              "Offset": 3451,
-              "EndOffset": 3453,
+              "Offset": 3444,
+              "EndOffset": 3446,
               "Path": 0,
               "Ordinal": 22,
               "Hits": 0
             },
             {
               "Line": 54,
-              "Offset": 3428,
-              "EndOffset": 3497,
+              "Offset": 3421,
+              "EndOffset": 3490,
               "Path": 1,
               "Ordinal": 21,
               "Hits": 0
             },
             {
               "Line": 54,
-              "Offset": 3451,
-              "EndOffset": 3497,
+              "Offset": 3444,
+              "EndOffset": 3490,
               "Path": 1,
               "Ordinal": 23,
               "Hits": 0
             },
             {
               "Line": 54,
-              "Offset": 3502,
-              "EndOffset": 3507,
+              "Offset": 3495,
+              "EndOffset": 3500,
               "Path": 0,
               "Ordinal": 24,
               "Hits": 0
             },
             {
               "Line": 55,
-              "Offset": 3835,
-              "EndOffset": 3837,
+              "Offset": 3828,
+              "EndOffset": 3830,
               "Path": 0,
               "Ordinal": 26,
               "Hits": 0
             },
             {
               "Line": 55,
-              "Offset": 3835,
-              "EndOffset": 3870,
+              "Offset": 3828,
+              "EndOffset": 3863,
               "Path": 1,
               "Ordinal": 27,
               "Hits": 0
             },
             {
               "Line": 56,
-              "Offset": 4060,
-              "EndOffset": 4062,
+              "Offset": 4053,
+              "EndOffset": 4055,
               "Path": 0,
               "Ordinal": 28,
               "Hits": 0
             },
             {
               "Line": 42,
-              "Offset": 1522,
-              "EndOffset": 4103,
+              "Offset": 1525,
+              "EndOffset": 4096,
               "Path": 4,
               "Ordinal": 6,
               "Hits": 0
             },
             {
               "Line": 56,
-              "Offset": 4060,
-              "EndOffset": 4132,
+              "Offset": 4053,
+              "EndOffset": 4125,
               "Path": 1,
               "Ordinal": 29,
               "Hits": 0
             },
             {
               "Line": 56,
-              "Offset": 4168,
-              "EndOffset": 4170,
+              "Offset": 4161,
+              "EndOffset": 4163,
               "Path": 0,
               "Ordinal": 30,
               "Hits": 0
             },
             {
               "Line": 56,
-              "Offset": 4201,
-              "EndOffset": 4203,
+              "Offset": 4194,
+              "EndOffset": 4196,
               "Path": 0,
               "Ordinal": 32,
               "Hits": 0
             },
             {
               "Line": 42,
-              "Offset": 1522,
-              "EndOffset": 4244,
+              "Offset": 1525,
+              "EndOffset": 4237,
               "Path": 5,
               "Ordinal": 7,
               "Hits": 0
             },
             {
               "Line": 56,
-              "Offset": 4201,
-              "EndOffset": 4273,
+              "Offset": 4194,
+              "EndOffset": 4266,
               "Path": 1,
               "Ordinal": 33,
               "Hits": 0
             },
             {
               "Line": 56,
-              "Offset": 4168,
-              "EndOffset": 4282,
+              "Offset": 4161,
+              "EndOffset": 4275,
               "Path": 1,
               "Ordinal": 31,
               "Hits": 0
             },
             {
               "Line": 56,
-              "Offset": 4676,
-              "EndOffset": 4678,
+              "Offset": 4669,
+              "EndOffset": 4671,
               "Path": 0,
               "Ordinal": 34,
               "Hits": 0
             },
             {
               "Line": 56,
-              "Offset": 4676,
-              "EndOffset": 4711,
+              "Offset": 4669,
+              "EndOffset": 4704,
               "Path": 1,
               "Ordinal": 35,
               "Hits": 0
             },
             {
               "Line": 57,
-              "Offset": 4901,
-              "EndOffset": 4903,
+              "Offset": 4894,
+              "EndOffset": 4896,
               "Path": 0,
               "Ordinal": 36,
               "Hits": 0
             },
             {
               "Line": 42,
-              "Offset": 1522,
-              "EndOffset": 4944,
+              "Offset": 1525,
+              "EndOffset": 4937,
               "Path": 6,
               "Ordinal": 8,
               "Hits": 0
             },
             {
               "Line": 57,
-              "Offset": 4901,
-              "EndOffset": 4973,
+              "Offset": 4894,
+              "EndOffset": 4966,
               "Path": 1,
               "Ordinal": 37,
               "Hits": 0
             },
             {
               "Line": 57,
-              "Offset": 5009,
-              "EndOffset": 5011,
+              "Offset": 5002,
+              "EndOffset": 5004,
               "Path": 0,
               "Ordinal": 38,
               "Hits": 0
             },
             {
               "Line": 57,
-              "Offset": 5042,
-              "EndOffset": 5044,
+              "Offset": 5035,
+              "EndOffset": 5037,
               "Path": 0,
               "Ordinal": 40,
               "Hits": 0
             },
             {
               "Line": 42,
-              "Offset": 1522,
-              "EndOffset": 5085,
+              "Offset": 1525,
+              "EndOffset": 5078,
               "Path": 7,
               "Ordinal": 9,
               "Hits": 0
             },
             {
               "Line": 57,
-              "Offset": 5042,
-              "EndOffset": 5114,
+              "Offset": 5035,
+              "EndOffset": 5107,
               "Path": 1,
               "Ordinal": 41,
               "Hits": 0
             },
             {
               "Line": 57,
-              "Offset": 5009,
-              "EndOffset": 5123,
+              "Offset": 5002,
+              "EndOffset": 5116,
               "Path": 1,
               "Ordinal": 39,
               "Hits": 0
             },
             {
               "Line": 54,
-              "Offset": 3502,
-              "EndOffset": 5239,
+              "Offset": 3495,
+              "EndOffset": 5232,
               "Path": 1,
               "Ordinal": 25,
               "Hits": 0
             },
             {
               "Line": 42,
-              "Offset": 1522,
-              "EndOffset": 5296,
+              "Offset": 1525,
+              "EndOffset": 5289,
               "Path": 0,
               "Ordinal": 2,
               "Hits": 0
             },
             {
               "Line": 42,
-              "Offset": 5307,
-              "EndOffset": 5312,
+              "Offset": 5300,
+              "EndOffset": 5305,
               "Path": 0,
               "Ordinal": 42,
               "Hits": 0
@@ -37716,6 +37748,17 @@
         "System.Void AspNetCore.Views_Shared_Error/<ExecuteAsync>d__0::MoveNext()": {
           "Lines": {
             "2": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Programming\\PlayersBay\\src\\Web\\PlayersBay.Web\\Views\\Shared\\_AccessDenied.cshtml": {
+      "AspNetCore.Views_Shared__AccessDenied/<ExecuteAsync>d__0": {
+        "System.Void AspNetCore.Views_Shared__AccessDenied/<ExecuteAsync>d__0::MoveNext()": {
+          "Lines": {
+            "2": 0,
+            "6": 0
           },
           "Branches": []
         }
@@ -45862,7 +45905,7 @@
       "MessageSinkMessageExtensions": {
         "TMessage MessageSinkMessageExtensions::Cast(Xunit.Abstractions.IMessageSinkMessage,System.Collections.Generic.HashSet`1<System.String>)": {
           "Lines": {
-            "20": 11752
+            "20": 13922
           },
           "Branches": [
             {
@@ -45871,7 +45914,7 @@
               "EndOffset": 3,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 11752
+              "Hits": 13922
             },
             {
               "Line": 20,
@@ -45879,7 +45922,7 @@
               "EndOffset": 26,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 11571
+              "Hits": 13706
             },
             {
               "Line": 20,
@@ -45887,7 +45930,7 @@
               "EndOffset": 36,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 181
+              "Hits": 216
             },
             {
               "Line": 20,
@@ -45895,19 +45938,19 @@
               "EndOffset": 36,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 181
+              "Hits": 216
             }
           ]
         },
         "System.Boolean MessageSinkMessageExtensions::Dispatch(Xunit.Abstractions.IMessageSinkMessage,System.Collections.Generic.HashSet`1<System.String>,Xunit.MessageHandler`1<TMessage>)": {
           "Lines": {
-            "33": 28857,
-            "35": 11752,
-            "36": 11752,
-            "38": 181,
-            "39": 181,
-            "40": 181,
-            "44": 28676
+            "33": 34184,
+            "35": 13922,
+            "36": 13922,
+            "38": 216,
+            "39": 216,
+            "40": 216,
+            "44": 33968
           },
           "Branches": [
             {
@@ -45916,7 +45959,7 @@
               "EndOffset": 3,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 11752
+              "Hits": 13922
             },
             {
               "Line": 36,
@@ -45924,7 +45967,7 @@
               "EndOffset": 19,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 181
+              "Hits": 216
             },
             {
               "Line": 33,
@@ -45932,7 +45975,7 @@
               "EndOffset": 43,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 28676
+              "Hits": 33968
             },
             {
               "Line": 36,
@@ -45940,7 +45983,7 @@
               "EndOffset": 43,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 28676
+              "Hits": 33968
             }
           ]
         }
@@ -46755,7 +46798,7 @@
         },
         "System.Collections.Generic.Dictionary`2<TKey,TValue> DictionaryExtensions::ToDictionaryIgnoringDuplicateKeys(System.Collections.Generic.IEnumerable`1<TValue>,System.Func`2<TValue,TKey>,System.Collections.Generic.IEqualityComparer`1<TKey>)": {
           "Lines": {
-            "44": 79
+            "44": 91
           },
           "Branches": [
             {
@@ -46779,10 +46822,10 @@
         "System.Collections.Generic.Dictionary`2<TKey,TValue> DictionaryExtensions::ToDictionaryIgnoringDuplicateKeys(System.Collections.Generic.IEnumerable`1<TInput>,System.Func`2<TInput,TKey>,System.Func`2<TInput,TValue>,System.Collections.Generic.IEqualityComparer`1<TKey>)": {
           "Lines": {
             "51": 1,
-            "53": 158,
-            "55": 78,
-            "56": 78,
-            "57": 78,
+            "53": 182,
+            "55": 90,
+            "56": 90,
+            "57": 90,
             "60": 1
           },
           "Branches": [
@@ -46792,7 +46835,7 @@
               "EndOffset": 16,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 78
+              "Hits": 90
             },
             {
               "Line": 56,
@@ -46800,7 +46843,7 @@
               "EndOffset": 40,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 78
+              "Hits": 90
             },
             {
               "Line": 56,
@@ -46808,7 +46851,7 @@
               "EndOffset": 54,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 79
+              "Hits": 91
             },
             {
               "Line": 53,
@@ -47763,23 +47806,23 @@
         "System.Collections.Generic.List`1<Xunit.TestCaseDescriptor> Xunit.DefaultTestCaseDescriptorProvider::GetTestCaseDescriptors(System.Collections.Generic.List`1<Xunit.Abstractions.ITestCase>,System.Boolean)": {
           "Lines": {
             "23": 1,
-            "25": 72,
-            "27": 35,
-            "28": 35,
-            "29": 35,
-            "33": 35,
-            "34": 35,
-            "35": 35,
-            "36": 35,
-            "37": 35,
-            "38": 35,
-            "39": 35,
-            "40": 35,
-            "41": 35,
-            "42": 35,
-            "43": 35,
-            "44": 35,
-            "45": 35,
+            "25": 86,
+            "27": 42,
+            "28": 42,
+            "29": 42,
+            "33": 42,
+            "34": 42,
+            "35": 42,
+            "36": 42,
+            "37": 42,
+            "38": 42,
+            "39": 42,
+            "40": 42,
+            "41": 42,
+            "42": 42,
+            "43": 42,
+            "44": 42,
+            "45": 42,
             "46": 0,
             "49": 1
           },
@@ -47790,7 +47833,7 @@
               "EndOffset": 24,
               "Path": 1,
               "Ordinal": 11,
-              "Hits": 35
+              "Hits": 42
             },
             {
               "Line": 27,
@@ -47806,7 +47849,7 @@
               "EndOffset": 43,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 35
+              "Hits": 42
             },
             {
               "Line": 27,
@@ -47814,7 +47857,7 @@
               "EndOffset": 43,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 35
+              "Hits": 42
             },
             {
               "Line": 27,
@@ -47830,7 +47873,7 @@
               "EndOffset": 158,
               "Path": 0,
               "Ordinal": 4,
-              "Hits": 35
+              "Hits": 42
             },
             {
               "Line": 33,
@@ -47846,7 +47889,7 @@
               "EndOffset": 178,
               "Path": 0,
               "Ordinal": 6,
-              "Hits": 35
+              "Hits": 42
             },
             {
               "Line": 33,
@@ -47870,7 +47913,7 @@
               "EndOffset": 218,
               "Path": 1,
               "Ordinal": 9,
-              "Hits": 35
+              "Hits": 42
             },
             {
               "Line": 25,
@@ -47896,49 +47939,49 @@
       "Xunit.TestCaseDescriptor": {
         "System.String Xunit.TestCaseDescriptor::get_ClassName()": {
           "Lines": {
-            "76": 105
+            "76": 126
           },
           "Branches": []
         },
         "System.String Xunit.TestCaseDescriptor::get_DisplayName()": {
           "Lines": {
-            "79": 70
+            "79": 84
           },
           "Branches": []
         },
         "System.String Xunit.TestCaseDescriptor::get_MethodName()": {
           "Lines": {
-            "82": 105
+            "82": 126
           },
           "Branches": []
         },
         "System.String Xunit.TestCaseDescriptor::get_Serialization()": {
           "Lines": {
-            "85": 35
+            "85": 42
           },
           "Branches": []
         },
         "System.String Xunit.TestCaseDescriptor::get_SkipReason()": {
           "Lines": {
-            "88": 35
+            "88": 42
           },
           "Branches": []
         },
         "System.String Xunit.TestCaseDescriptor::get_SourceFileName()": {
           "Lines": {
-            "91": 70
+            "91": 84
           },
           "Branches": []
         },
         "System.Nullable`1<System.Int32> Xunit.TestCaseDescriptor::get_SourceLineNumber()": {
           "Lines": {
-            "94": 70
+            "94": 84
           },
           "Branches": []
         },
         "System.String Xunit.TestCaseDescriptor::get_UniqueID()": {
           "Lines": {
-            "100": 140
+            "100": 168
           },
           "Branches": []
         },
@@ -47967,7 +48010,7 @@
         },
         "System.Void Xunit.TestCaseDescriptor::.ctor()": {
           "Lines": {
-            "16": 70
+            "16": 84
           },
           "Branches": []
         },
@@ -48629,9 +48672,9 @@
         },
         "TValue Xunit.TestFrameworkOptions::GetValue(System.String)": {
           "Lines": {
-            "73": 79,
+            "73": 93,
             "74": 0,
-            "76": 79
+            "76": 93
           },
           "Branches": [
             {
@@ -48648,7 +48691,7 @@
               "EndOffset": 23,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 79
+              "Hits": 93
             }
           ]
         },
@@ -50435,20 +50478,20 @@
       "Xunit.OptimizedRemoteMessageSink": {
         "System.Collections.Generic.HashSet`1<System.String> Xunit.OptimizedRemoteMessageSink::GetMessageTypes(Xunit.Abstractions.IMessageSinkMessage)": {
           "Lines": {
-            "23": 451,
-            "26": 451,
-            "30": 451,
-            "31": 451,
-            "34": 451,
-            "35": 451,
-            "37": 451,
+            "23": 535,
+            "26": 535,
+            "30": 535,
+            "31": 535,
+            "34": 535,
+            "35": 535,
+            "37": 535,
             "39": 19,
             "43": 158,
             "44": 19,
             "45": 19,
             "48": 19,
             "49": 19,
-            "52": 451
+            "52": 535
           },
           "Branches": [
             {
@@ -50481,13 +50524,13 @@
               "EndOffset": 140,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 451
+              "Hits": 535
             }
           ]
         },
         "System.Boolean Xunit.OptimizedRemoteMessageSink::OnMessage(Xunit.Abstractions.IMessageSinkMessage)": {
           "Lines": {
-            "56": 451
+            "56": 535
           },
           "Branches": []
         },
@@ -53296,14 +53339,14 @@
         },
         "System.Void Xunit.DefaultRunnerReporterWithTypesMessageHandler::HandleTestPassed(Xunit.MessageHandlerArgs`1<Xunit.Abstractions.ITestPassed>)": {
           "Lines": {
-            "326": 35,
-            "327": 35,
-            "328": 35,
+            "326": 42,
+            "327": 42,
+            "328": 42,
             "330": 0,
             "332": 0,
             "333": 0,
             "334": 0,
-            "336": 35
+            "336": 42
           },
           "Branches": [
             {
@@ -53328,7 +53371,7 @@
               "EndOffset": 138,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 35
+              "Hits": 42
             },
             {
               "Line": 327,
@@ -53336,7 +53379,7 @@
               "EndOffset": 138,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 35
+              "Hits": 42
             }
           ]
         },
@@ -53591,7 +53634,7 @@
       "Xunit.AggregateMessageSink": {
         "System.Collections.Generic.List`1<Xunit.IMessageSinkWithTypes> Xunit.AggregateMessageSink::get_AggregatedSinks()": {
           "Lines": {
-            "16": 1690
+            "16": 1998
           },
           "Branches": []
         },
@@ -53670,11 +53713,11 @@
         },
         "System.Boolean Xunit.AggregateMessageSink::OnMessageWithTypes(Xunit.Abstractions.IMessageSinkMessage,System.Collections.Generic.HashSet`1<System.String>)": {
           "Lines": {
-            "63": 834,
-            "65": 834,
-            "66": 5842,
-            "67": 2087,
-            "69": 834
+            "63": 988,
+            "65": 988,
+            "66": 6920,
+            "67": 2472,
+            "69": 988
           },
           "Branches": [
             {
@@ -53683,7 +53726,7 @@
               "EndOffset": 33,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 2087
+              "Hits": 2472
             },
             {
               "Line": 66,
@@ -53691,7 +53734,7 @@
               "EndOffset": 59,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 834
+              "Hits": 988
             }
           ]
         }
@@ -55086,8 +55129,8 @@
         },
         "System.Boolean Xunit.DiagnosticEventSink::OnMessageWithTypes(Xunit.Abstractions.IMessageSinkMessage,System.Collections.Generic.HashSet`1<System.String>)": {
           "Lines": {
-            "27": 835,
-            "28": 835
+            "27": 989,
+            "28": 989
           },
           "Branches": [
             {
@@ -55096,7 +55139,7 @@
               "EndOffset": 15,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 835
+              "Hits": 989
             },
             {
               "Line": 27,
@@ -55120,8 +55163,8 @@
         },
         "System.Boolean Xunit.DiscoveryEventSink::OnMessageWithTypes(Xunit.Abstractions.IMessageSinkMessage,System.Collections.Generic.HashSet`1<System.String>)": {
           "Lines": {
-            "27": 36,
-            "28": 36
+            "27": 43,
+            "28": 43
           },
           "Branches": [
             {
@@ -55130,7 +55173,7 @@
               "EndOffset": 15,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 36
+              "Hits": 43
             },
             {
               "Line": 27,
@@ -55154,36 +55197,36 @@
         },
         "System.Boolean Xunit.ExecutionEventSink::OnMessageWithTypes(Xunit.Abstractions.IMessageSinkMessage,System.Collections.Generic.HashSet`1<System.String>)": {
           "Lines": {
-            "167": 834,
-            "168": 834,
-            "169": 834,
-            "170": 834,
-            "171": 834,
-            "172": 834,
-            "173": 834,
-            "174": 834,
-            "175": 834,
-            "176": 834,
-            "177": 834,
-            "178": 834,
-            "179": 834,
-            "180": 834,
-            "181": 834,
-            "182": 834,
-            "183": 834,
-            "184": 834,
-            "185": 834,
-            "186": 834,
-            "187": 834,
-            "188": 834,
-            "189": 834,
-            "190": 834,
-            "191": 834,
-            "192": 834,
-            "193": 834,
-            "194": 834,
-            "195": 834,
-            "196": 834
+            "167": 988,
+            "168": 988,
+            "169": 988,
+            "170": 988,
+            "171": 988,
+            "172": 988,
+            "173": 988,
+            "174": 988,
+            "175": 988,
+            "176": 988,
+            "177": 988,
+            "178": 988,
+            "179": 988,
+            "180": 988,
+            "181": 988,
+            "182": 988,
+            "183": 988,
+            "184": 988,
+            "185": 988,
+            "186": 988,
+            "187": 988,
+            "188": 988,
+            "189": 988,
+            "190": 988,
+            "191": 988,
+            "192": 988,
+            "193": 988,
+            "194": 988,
+            "195": 988,
+            "196": 988
           },
           "Branches": [
             {
@@ -55192,7 +55235,7 @@
               "EndOffset": 18,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 834
+              "Hits": 988
             },
             {
               "Line": 167,
@@ -55200,7 +55243,7 @@
               "EndOffset": 36,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 834
+              "Hits": 988
             },
             {
               "Line": 167,
@@ -55208,7 +55251,7 @@
               "EndOffset": 54,
               "Path": 0,
               "Ordinal": 4,
-              "Hits": 834
+              "Hits": 988
             },
             {
               "Line": 167,
@@ -55216,7 +55259,7 @@
               "EndOffset": 72,
               "Path": 0,
               "Ordinal": 6,
-              "Hits": 834
+              "Hits": 988
             },
             {
               "Line": 167,
@@ -55224,7 +55267,7 @@
               "EndOffset": 90,
               "Path": 0,
               "Ordinal": 8,
-              "Hits": 834
+              "Hits": 988
             },
             {
               "Line": 167,
@@ -55232,7 +55275,7 @@
               "EndOffset": 108,
               "Path": 0,
               "Ordinal": 10,
-              "Hits": 834
+              "Hits": 988
             },
             {
               "Line": 167,
@@ -55240,7 +55283,7 @@
               "EndOffset": 126,
               "Path": 0,
               "Ordinal": 12,
-              "Hits": 834
+              "Hits": 988
             },
             {
               "Line": 167,
@@ -55248,7 +55291,7 @@
               "EndOffset": 144,
               "Path": 0,
               "Ordinal": 14,
-              "Hits": 834
+              "Hits": 988
             },
             {
               "Line": 167,
@@ -55256,7 +55299,7 @@
               "EndOffset": 162,
               "Path": 0,
               "Ordinal": 16,
-              "Hits": 834
+              "Hits": 988
             },
             {
               "Line": 167,
@@ -55264,7 +55307,7 @@
               "EndOffset": 180,
               "Path": 0,
               "Ordinal": 18,
-              "Hits": 834
+              "Hits": 988
             },
             {
               "Line": 167,
@@ -55272,7 +55315,7 @@
               "EndOffset": 198,
               "Path": 0,
               "Ordinal": 20,
-              "Hits": 834
+              "Hits": 988
             },
             {
               "Line": 167,
@@ -55280,7 +55323,7 @@
               "EndOffset": 216,
               "Path": 0,
               "Ordinal": 22,
-              "Hits": 834
+              "Hits": 988
             },
             {
               "Line": 167,
@@ -55288,7 +55331,7 @@
               "EndOffset": 234,
               "Path": 0,
               "Ordinal": 24,
-              "Hits": 834
+              "Hits": 988
             },
             {
               "Line": 167,
@@ -55296,7 +55339,7 @@
               "EndOffset": 252,
               "Path": 0,
               "Ordinal": 26,
-              "Hits": 834
+              "Hits": 988
             },
             {
               "Line": 167,
@@ -55304,7 +55347,7 @@
               "EndOffset": 270,
               "Path": 0,
               "Ordinal": 28,
-              "Hits": 834
+              "Hits": 988
             },
             {
               "Line": 167,
@@ -55312,7 +55355,7 @@
               "EndOffset": 288,
               "Path": 0,
               "Ordinal": 30,
-              "Hits": 834
+              "Hits": 988
             },
             {
               "Line": 167,
@@ -55320,7 +55363,7 @@
               "EndOffset": 306,
               "Path": 0,
               "Ordinal": 32,
-              "Hits": 834
+              "Hits": 988
             },
             {
               "Line": 167,
@@ -55328,7 +55371,7 @@
               "EndOffset": 324,
               "Path": 0,
               "Ordinal": 34,
-              "Hits": 834
+              "Hits": 988
             },
             {
               "Line": 167,
@@ -55336,7 +55379,7 @@
               "EndOffset": 342,
               "Path": 0,
               "Ordinal": 36,
-              "Hits": 834
+              "Hits": 988
             },
             {
               "Line": 167,
@@ -55344,7 +55387,7 @@
               "EndOffset": 360,
               "Path": 0,
               "Ordinal": 38,
-              "Hits": 834
+              "Hits": 988
             },
             {
               "Line": 167,
@@ -55352,7 +55395,7 @@
               "EndOffset": 378,
               "Path": 0,
               "Ordinal": 40,
-              "Hits": 834
+              "Hits": 988
             },
             {
               "Line": 167,
@@ -55360,7 +55403,7 @@
               "EndOffset": 393,
               "Path": 0,
               "Ordinal": 42,
-              "Hits": 834
+              "Hits": 988
             },
             {
               "Line": 167,
@@ -55368,7 +55411,7 @@
               "EndOffset": 408,
               "Path": 0,
               "Ordinal": 44,
-              "Hits": 834
+              "Hits": 988
             },
             {
               "Line": 167,
@@ -55376,7 +55419,7 @@
               "EndOffset": 423,
               "Path": 0,
               "Ordinal": 46,
-              "Hits": 834
+              "Hits": 988
             },
             {
               "Line": 167,
@@ -55384,7 +55427,7 @@
               "EndOffset": 438,
               "Path": 0,
               "Ordinal": 48,
-              "Hits": 834
+              "Hits": 988
             },
             {
               "Line": 167,
@@ -55392,7 +55435,7 @@
               "EndOffset": 453,
               "Path": 0,
               "Ordinal": 50,
-              "Hits": 834
+              "Hits": 988
             },
             {
               "Line": 167,
@@ -55400,7 +55443,7 @@
               "EndOffset": 468,
               "Path": 0,
               "Ordinal": 52,
-              "Hits": 834
+              "Hits": 988
             },
             {
               "Line": 167,
@@ -55408,7 +55451,7 @@
               "EndOffset": 483,
               "Path": 0,
               "Ordinal": 54,
-              "Hits": 834
+              "Hits": 988
             },
             {
               "Line": 167,
@@ -55416,7 +55459,7 @@
               "EndOffset": 498,
               "Path": 0,
               "Ordinal": 56,
-              "Hits": 834
+              "Hits": 988
             },
             {
               "Line": 167,
@@ -55658,7 +55701,7 @@
       "Xunit.MessageHandlerArgs": {
         "System.Boolean Xunit.MessageHandlerArgs::get_IsStopped()": {
           "Lines": {
-            "13": 181
+            "13": 216
           },
           "Branches": []
         },
@@ -55673,15 +55716,15 @@
       "Xunit.MessageHandlerArgs`1": {
         "TMessage Xunit.MessageHandlerArgs`1::get_Message()": {
           "Lines": {
-            "43": 180
+            "43": 215
           },
           "Branches": []
         },
         "System.Void Xunit.MessageHandlerArgs`1::.ctor(TMessage)": {
           "Lines": {
-            "35": 181,
-            "37": 181,
-            "38": 181
+            "35": 216,
+            "37": 216,
+            "38": 216
           },
           "Branches": []
         }
@@ -55697,11 +55740,11 @@
         },
         "System.Boolean Xunit.RunnerEventSink::OnMessageWithTypes(Xunit.Abstractions.IMessageSinkMessage,System.Collections.Generic.HashSet`1<System.String>)": {
           "Lines": {
-            "42": 419,
-            "43": 419,
-            "44": 419,
-            "45": 419,
-            "46": 419
+            "42": 496,
+            "43": 496,
+            "44": 496,
+            "45": 496,
+            "46": 496
           },
           "Branches": [
             {
@@ -55710,7 +55753,7 @@
               "EndOffset": 15,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 419
+              "Hits": 496
             },
             {
               "Line": 42,
@@ -55718,7 +55761,7 @@
               "EndOffset": 30,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 419
+              "Hits": 496
             },
             {
               "Line": 42,
@@ -55726,7 +55769,7 @@
               "EndOffset": 45,
               "Path": 0,
               "Ordinal": 4,
-              "Hits": 419
+              "Hits": 496
             },
             {
               "Line": 42,
@@ -55734,7 +55777,7 @@
               "EndOffset": 60,
               "Path": 0,
               "Ordinal": 6,
-              "Hits": 419
+              "Hits": 496
             },
             {
               "Line": 42,
@@ -55776,7 +55819,7 @@
       "Xunit.TestDiscoverySink": {
         "System.Collections.Generic.List`1<Xunit.Abstractions.ITestCase> Xunit.TestDiscoverySink::get_TestCases()": {
           "Lines": {
-            "33": 38
+            "33": 45
           },
           "Branches": []
         },
@@ -55800,8 +55843,8 @@
         },
         "System.Boolean Xunit.TestDiscoverySink::OnMessageWithTypes(Xunit.Abstractions.IMessageSinkMessage,System.Collections.Generic.HashSet`1<System.String>)": {
           "Lines": {
-            "49": 36,
-            "50": 36
+            "49": 43,
+            "50": 43
           },
           "Branches": [
             {
@@ -55810,7 +55853,7 @@
               "EndOffset": 15,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 36
+              "Hits": 43
             },
             {
               "Line": 49,
@@ -55824,7 +55867,7 @@
         },
         "System.Void Xunit.TestDiscoverySink::<.ctor>b__2_1(Xunit.MessageHandlerArgs`1<Xunit.Abstractions.ITestCaseDiscoveryMessage>)": {
           "Lines": {
-            "26": 36
+            "26": 43
           },
           "Branches": []
         },
@@ -56350,8 +56393,8 @@
             "37": 0,
             "38": 0,
             "40": 1,
-            "41": 79,
-            "42": 79,
+            "41": 91,
+            "42": 91,
             "44": 0,
             "46": 0
           },
@@ -56433,7 +56476,7 @@
               "EndOffset": 3,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 78
+              "Hits": 90
             },
             {
               "Line": 41,
@@ -78834,23 +78877,23 @@
         },
         "Microsoft.VisualStudio.TestPlatform.ObjectModel.TestCase Xunit.Runner.VisualStudio.VsDiscoverySink::CreateVsTestCase(System.String,Xunit.TestCaseDescriptor,LoggerHelper,Xunit.Runner.VisualStudio.TestPlatformContext)": {
           "Lines": {
-            "83": 35,
-            "84": 35,
-            "86": 35,
+            "83": 42,
+            "84": 42,
+            "86": 42,
             "87": 0,
-            "89": 35,
-            "90": 35,
-            "91": 35,
-            "93": 35,
-            "95": 35,
-            "97": 70,
+            "89": 42,
+            "90": 42,
+            "91": 42,
+            "93": 42,
+            "95": 42,
+            "97": 84,
             "98": 0,
             "99": 0,
-            "102": 35,
+            "102": 42,
             "104": 0,
             "106": 0,
             "107": 0,
-            "109": 35
+            "109": 42
           },
           "Branches": [
             {
@@ -78867,7 +78910,7 @@
               "EndOffset": 77,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 35
+              "Hits": 42
             },
             {
               "Line": 93,
@@ -78875,7 +78918,7 @@
               "EndOffset": 143,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 35
+              "Hits": 42
             },
             {
               "Line": 97,
@@ -78907,7 +78950,7 @@
               "EndOffset": 248,
               "Path": 0,
               "Ordinal": 6,
-              "Hits": 35
+              "Hits": 42
             },
             {
               "Line": 93,
@@ -78915,15 +78958,15 @@
               "EndOffset": 264,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 35
+              "Hits": 42
             }
           ]
         },
         "System.String Xunit.Runner.VisualStudio.VsDiscoverySink::Escape(System.String)": {
           "Lines": {
-            "113": 35,
+            "113": 42,
             "114": 0,
-            "116": 35
+            "116": 42
           },
           "Branches": [
             {
@@ -78940,14 +78983,14 @@
               "EndOffset": 9,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 35
+              "Hits": 42
             }
           ]
         },
         "System.String Xunit.Runner.VisualStudio.VsDiscoverySink::Truncate(System.String)": {
           "Lines": {
-            "121": 35,
-            "122": 35,
+            "121": 42,
+            "122": 42,
             "124": 0
           },
           "Branches": [
@@ -78957,7 +79000,7 @@
               "EndOffset": 13,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 35
+              "Hits": 42
             },
             {
               "Line": 121,
@@ -79182,10 +79225,10 @@
         },
         "System.Guid Xunit.Runner.VisualStudio.VsDiscoverySink::GuidFromString(System.String)": {
           "Lines": {
-            "236": 35,
-            "237": 35,
-            "238": 35,
-            "239": 35
+            "236": 42,
+            "237": 42,
+            "238": 42,
+            "239": 42
           },
           "Branches": []
         },
@@ -79282,8 +79325,8 @@
         },
         "Microsoft.VisualStudio.TestPlatform.ObjectModel.TestCase Xunit.Runner.VisualStudio.VsExecutionSink::FindTestCase(Xunit.Abstractions.ITestCase)": {
           "Lines": {
-            "65": 105,
-            "66": 105,
+            "65": 126,
+            "66": 126,
             "68": 0,
             "69": 0
           },
@@ -79294,7 +79337,7 @@
               "EndOffset": 21,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 105
+              "Hits": 126
             },
             {
               "Line": 65,
@@ -79308,20 +79351,20 @@
         },
         "System.Void Xunit.Runner.VisualStudio.VsExecutionSink::TryAndReport(System.String,Xunit.Abstractions.ITestCase,System.Action)": {
           "Lines": {
-            "76": 105,
-            "77": 105,
+            "76": 126,
+            "77": 126,
             "78": 0,
             "80": 0,
             "81": 0,
-            "82": 105
+            "82": 126
           },
           "Branches": []
         },
         "System.Void Xunit.Runner.VisualStudio.VsExecutionSink::HandleCancellation(Xunit.MessageHandlerArgs)": {
           "Lines": {
-            "86": 106,
+            "86": 127,
             "87": 0,
-            "88": 106
+            "88": 127
           },
           "Branches": [
             {
@@ -79338,7 +79381,7 @@
               "EndOffset": 19,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 106
+              "Hits": 127
             }
           ]
         },
@@ -79398,13 +79441,13 @@
         },
         "System.Void Xunit.Runner.VisualStudio.VsExecutionSink::HandleTestPassed(Xunit.MessageHandlerArgs`1<Xunit.Abstractions.ITestPassed>)": {
           "Lines": {
-            "132": 35,
-            "133": 35,
-            "134": 35,
-            "135": 70,
+            "132": 42,
+            "133": 42,
+            "134": 42,
+            "135": 84,
             "137": 0,
-            "139": 35,
-            "140": 35
+            "139": 42,
+            "140": 42
           },
           "Branches": [
             {
@@ -79413,7 +79456,7 @@
               "EndOffset": 42,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 35
+              "Hits": 42
             },
             {
               "Line": 134,
@@ -79456,13 +79499,13 @@
         },
         "System.Void Xunit.Runner.VisualStudio.VsExecutionSink::HandleTestCaseStarting(Xunit.MessageHandlerArgs`1<Xunit.Abstractions.ITestCaseStarting>)": {
           "Lines": {
-            "156": 35,
-            "157": 35,
-            "158": 35,
-            "159": 70,
+            "156": 42,
+            "157": 42,
+            "158": 42,
+            "159": 84,
             "161": 0,
-            "163": 35,
-            "164": 35
+            "163": 42,
+            "164": 42
           },
           "Branches": [
             {
@@ -79471,7 +79514,7 @@
               "EndOffset": 46,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 35
+              "Hits": 42
             },
             {
               "Line": 158,
@@ -79485,13 +79528,13 @@
         },
         "System.Void Xunit.Runner.VisualStudio.VsExecutionSink::HandleTestCaseFinished(Xunit.MessageHandlerArgs`1<Xunit.Abstractions.ITestCaseFinished>)": {
           "Lines": {
-            "168": 35,
-            "169": 35,
-            "170": 35,
-            "171": 70,
+            "168": 42,
+            "169": 42,
+            "170": 42,
+            "171": 84,
             "173": 0,
-            "175": 35,
-            "176": 35
+            "175": 42,
+            "176": 42
           },
           "Branches": [
             {
@@ -79500,7 +79543,7 @@
               "EndOffset": 56,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 35
+              "Hits": 42
             },
             {
               "Line": 170,
@@ -79622,7 +79665,7 @@
         },
         "Microsoft.VisualStudio.TestPlatform.ObjectModel.TestResult Xunit.Runner.VisualStudio.VsExecutionSink::MakeVsTestResult(Microsoft.VisualStudio.TestPlatform.ObjectModel.TestOutcome,Xunit.Abstractions.ITestResultMessage)": {
           "Lines": {
-            "257": 35
+            "257": 42
           },
           "Branches": []
         },
@@ -79634,23 +79677,23 @@
         },
         "Microsoft.VisualStudio.TestPlatform.ObjectModel.TestResult Xunit.Runner.VisualStudio.VsExecutionSink::MakeVsTestResult(Microsoft.VisualStudio.TestPlatform.ObjectModel.TestOutcome,Xunit.Abstractions.ITestCase,System.String,System.Double,System.String)": {
           "Lines": {
-            "264": 35,
-            "265": 35,
+            "264": 42,
+            "265": 42,
             "266": 0,
-            "268": 35,
-            "269": 35,
-            "270": 35,
-            "271": 35,
-            "272": 35,
-            "273": 35,
-            "274": 35,
-            "275": 35,
-            "276": 35,
-            "279": 35,
+            "268": 42,
+            "269": 42,
+            "270": 42,
+            "271": 42,
+            "272": 42,
+            "273": 42,
+            "274": 42,
+            "275": 42,
+            "276": 42,
+            "279": 42,
             "280": 0,
-            "282": 35,
+            "282": 42,
             "283": 0,
-            "285": 35
+            "285": 42
           },
           "Branches": [
             {
@@ -79667,7 +79710,7 @@
               "EndOffset": 13,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 35
+              "Hits": 42
             },
             {
               "Line": 279,
@@ -79683,7 +79726,7 @@
               "EndOffset": 103,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 35
+              "Hits": 42
             },
             {
               "Line": 282,
@@ -79699,19 +79742,19 @@
               "EndOffset": 135,
               "Path": 1,
               "Ordinal": 5,
-              "Hits": 35
+              "Hits": 42
             }
           ]
         },
         "Microsoft.VisualStudio.TestPlatform.ObjectModel.TestOutcome Xunit.Runner.VisualStudio.VsExecutionSink::GetAggregatedTestOutcome(Xunit.Abstractions.ITestCaseFinished)": {
           "Lines": {
-            "290": 35,
+            "290": 42,
             "291": 0,
-            "292": 35,
+            "292": 42,
             "293": 0,
-            "294": 35,
+            "294": 42,
             "295": 0,
-            "297": 35
+            "297": 42
           },
           "Branches": [
             {
@@ -79728,7 +79771,7 @@
               "EndOffset": 10,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 35
+              "Hits": 42
             },
             {
               "Line": 292,
@@ -79744,7 +79787,7 @@
               "EndOffset": 21,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 35
+              "Hits": 42
             },
             {
               "Line": 294,
@@ -79760,14 +79803,14 @@
               "EndOffset": 32,
               "Path": 1,
               "Ordinal": 5,
-              "Hits": 35
+              "Hits": 42
             }
           ]
         },
         "System.Boolean Xunit.Runner.VisualStudio.VsExecutionSink::OnMessageWithTypes(Xunit.Abstractions.IMessageSinkMessage,System.Collections.Generic.HashSet`1<System.String>)": {
           "Lines": {
-            "302": 415,
-            "303": 415
+            "302": 492,
+            "303": 492
           },
           "Branches": []
         },
@@ -79815,7 +79858,7 @@
         },
         "System.Boolean Xunit.Runner.VisualStudio.TestPlatformContext::get_RequireXunitTestProperty()": {
           "Lines": {
-            "20": 36
+            "20": 43
           },
           "Branches": []
         }
@@ -80254,10 +80297,10 @@
       "Xunit.Runner.VisualStudio.TestCaseFilter": {
         "System.Boolean Xunit.Runner.VisualStudio.TestCaseFilter::MatchTestCase(Microsoft.VisualStudio.TestPlatform.ObjectModel.TestCase)": {
           "Lines": {
-            "30": 35,
+            "30": 42,
             "33": 0,
-            "35": 35,
-            "38": 35,
+            "35": 42,
+            "38": 42,
             "41": 0
           },
           "Branches": [
@@ -80275,7 +80318,7 @@
               "EndOffset": 30,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 35
+              "Hits": 42
             },
             {
               "Line": 35,
@@ -80283,7 +80326,7 @@
               "EndOffset": 38,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 35
+              "Hits": 42
             },
             {
               "Line": 35,
@@ -81496,7 +81539,7 @@
             "499": 1,
             "502": 1,
             "503": 1,
-            "504": 38,
+            "504": 45,
             "505": 1,
             "506": 1,
             "507": 2,
@@ -81518,15 +81561,15 @@
             "525": 0,
             "526": 0,
             "528": 0,
-            "532": 36,
+            "532": 43,
             "533": 1,
-            "534": 36,
-            "536": 72,
-            "538": 35,
-            "539": 35,
+            "534": 43,
+            "536": 86,
+            "538": 42,
+            "539": 42,
             "540": 0,
-            "543": 35,
-            "544": 35,
+            "543": 42,
+            "544": 42,
             "552": 0,
             "553": 0,
             "554": 0,
@@ -81559,7 +81602,7 @@
             "602": 0,
             "603": 0,
             "606": 1,
-            "608": 107,
+            "608": 128,
             "610": 1,
             "611": 1,
             "612": 0,
@@ -81717,7 +81760,7 @@
               "EndOffset": 579,
               "Path": 1,
               "Ordinal": 21,
-              "Hits": 35
+              "Hits": 42
             },
             {
               "Line": 539,
@@ -81733,7 +81776,7 @@
               "EndOffset": 682,
               "Path": 1,
               "Ordinal": 19,
-              "Hits": 35
+              "Hits": 42
             },
             {
               "Line": 536,
@@ -82034,8 +82077,8 @@
             "705": 2,
             "707": 1184,
             "711": 590,
-            "712": 105792,
-            "715": 99366,
+            "712": 105888,
+            "715": 99414,
             "719": 24,
             "720": 12,
             "722": 0,
@@ -82143,7 +82186,7 @@
               "EndOffset": 375,
               "Path": 1,
               "Ordinal": 27,
-              "Hits": 52306
+              "Hits": 52354
             },
             {
               "Line": 715,
@@ -82151,7 +82194,7 @@
               "EndOffset": 391,
               "Path": 0,
               "Ordinal": 10,
-              "Hits": 52306
+              "Hits": 52354
             },
             {
               "Line": 715,
@@ -82159,7 +82202,7 @@
               "EndOffset": 403,
               "Path": 0,
               "Ordinal": 12,
-              "Hits": 42514
+              "Hits": 42558
             },
             {
               "Line": 715,
@@ -82167,7 +82210,7 @@
               "EndOffset": 425,
               "Path": 0,
               "Ordinal": 14,
-              "Hits": 42512
+              "Hits": 42556
             },
             {
               "Line": 715,
@@ -82175,7 +82218,7 @@
               "EndOffset": 447,
               "Path": 0,
               "Ordinal": 16,
-              "Hits": 42510
+              "Hits": 42554
             },
             {
               "Line": 715,
@@ -82191,7 +82234,7 @@
               "EndOffset": 485,
               "Path": 1,
               "Ordinal": 19,
-              "Hits": 42510
+              "Hits": 42554
             },
             {
               "Line": 715,
@@ -82239,7 +82282,7 @@
               "EndOffset": 613,
               "Path": 1,
               "Ordinal": 11,
-              "Hits": 52896
+              "Hits": 52944
             },
             {
               "Line": 715,
@@ -82247,7 +82290,7 @@
               "EndOffset": 613,
               "Path": 1,
               "Ordinal": 13,
-              "Hits": 52896
+              "Hits": 52944
             },
             {
               "Line": 715,
@@ -82255,7 +82298,7 @@
               "EndOffset": 613,
               "Path": 1,
               "Ordinal": 15,
-              "Hits": 52896
+              "Hits": 52944
             },
             {
               "Line": 715,
@@ -82263,7 +82306,7 @@
               "EndOffset": 613,
               "Path": 1,
               "Ordinal": 17,
-              "Hits": 52896
+              "Hits": 52944
             },
             {
               "Line": 715,
@@ -82271,7 +82314,7 @@
               "EndOffset": 613,
               "Path": 1,
               "Ordinal": 21,
-              "Hits": 52896
+              "Hits": 52944
             },
             {
               "Line": 712,
@@ -82297,10 +82340,10 @@
             "795": 1,
             "796": 1,
             "797": 1,
-            "799": 72,
-            "801": 35,
-            "802": 35,
-            "803": 35,
+            "799": 86,
+            "801": 42,
+            "802": 42,
+            "803": 42,
             "806": 1
           },
           "Branches": [
@@ -82326,7 +82369,7 @@
               "EndOffset": 47,
               "Path": 1,
               "Ordinal": 5,
-              "Hits": 35
+              "Hits": 42
             },
             {
               "Line": 802,
@@ -82334,7 +82377,7 @@
               "EndOffset": 82,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 35
+              "Hits": 42
             },
             {
               "Line": 802,
@@ -82342,7 +82385,7 @@
               "EndOffset": 90,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 35
+              "Hits": 42
             },
             {
               "Line": 799,
@@ -82397,37 +82440,37 @@
         },
         "System.Collections.Generic.IEnumerable`1<System.String> Xunit.Runner.VisualStudio.VsTestRunner/DiscoveredTestCase::get_TraitNames()": {
           "Lines": {
-            "819": 35
+            "819": 42
           },
           "Branches": []
         },
         "Microsoft.VisualStudio.TestPlatform.ObjectModel.TestCase Xunit.Runner.VisualStudio.VsTestRunner/DiscoveredTestCase::get_VSTestCase()": {
           "Lines": {
-            "821": 105
+            "821": 126
           },
           "Branches": []
         },
         "Xunit.Abstractions.ITestCase Xunit.Runner.VisualStudio.VsTestRunner/DiscoveredTestCase::get_TestCase()": {
           "Lines": {
-            "823": 35
+            "823": 42
           },
           "Branches": []
         },
         "System.String Xunit.Runner.VisualStudio.VsTestRunner/DiscoveredTestCase::get_UniqueID()": {
           "Lines": {
-            "825": 35
+            "825": 42
           },
           "Branches": []
         },
         "System.Void Xunit.Runner.VisualStudio.VsTestRunner/DiscoveredTestCase::.ctor(System.String,Xunit.TestCaseDescriptor,Xunit.Abstractions.ITestCase,LoggerHelper,Xunit.Runner.VisualStudio.TestPlatformContext)": {
           "Lines": {
-            "827": 35,
-            "829": 35,
-            "830": 35,
-            "831": 35,
-            "832": 35,
-            "833": 35,
-            "834": 35
+            "827": 42,
+            "829": 42,
+            "830": 42,
+            "831": 42,
+            "832": 42,
+            "833": 42,
+            "834": 42
           },
           "Branches": []
         }

@@ -3,11 +3,12 @@
     using System.ComponentModel.DataAnnotations;
 
     using Microsoft.AspNetCore.Http;
+    using PlayersBay.Services.Data.Utilities;
 
     public class GamesCreateInputModel
     {
         [Required]
-        [StringLength(Constants.Game.GameMaxLength, MinimumLength = Constants.Game.GameMinLength, ErrorMessage = Constants.Game.GameLengthError)]
+        [StringLength(DataConstants.Game.GameMaxLength, MinimumLength = DataConstants.Game.GameMinLength, ErrorMessage = DataConstants.Game.GameLengthError)]
         public string Name { get; set; }
 
         [Required]

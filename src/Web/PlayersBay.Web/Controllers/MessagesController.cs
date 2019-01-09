@@ -8,6 +8,7 @@
     using PlayersBay.Data.Models;
     using PlayersBay.Services.Data.Contracts;
     using PlayersBay.Services.Data.Models.Messages;
+    using PlayersBay.Services.Data.Utilities;
 
     [Authorize]
     public class MessagesController : BaseController
@@ -58,15 +59,17 @@
 
             this.messagesService.CreateAsync(senderUsername, inputModel).GetAwaiter().GetResult();
 
-            return this.RedirectToAction("Outbox", "Messages").WithSuccess("Success", "Message sent.");
+            return this.RedirectToAction("Outbox", "Messages").WithSuccess(DataConstants.NotificationMessages.Success, string.Format(DataConstants.NotificationMessages.MessageSent, inputModel.ReceiverName));
         }
 
         [HttpGet]
         public IActionResult DeleteMessage(int id)
         {
-            this.messagesService.DeleteAsync(id).GetAwaiter().GetResult();
+            var user = this.userManager.GetUserAsync(this.HttpContext.User);
 
-            return this.RedirectToAction("Inbox", "Messages").WithInfo("Success", $"Message with id #{id} deleted.");
+            this.messagesService.DeleteAsync(user.Result.Id, id).GetAwaiter().GetResult();
+
+            return this.RedirectToAction("Inbox", "Messages").WithInfo(DataConstants.NotificationMessages.Info, string.Format(DataConstants.NotificationMessages.MessageDeleted, id));
         }
 
         [HttpGet]

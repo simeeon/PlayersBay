@@ -1,7 +1,7 @@
 ﻿namespace PlayersBay.Services.Data
 {
+    using System;
     using System.Linq;
-    using System.Threading;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Identity;
@@ -10,6 +10,7 @@
     using PlayersBay.Data.Models;
     using PlayersBay.Services.Data.Contracts;
     using PlayersBay.Services.Data.Models.Messages;
+    using PlayersBay.Services.Data.Utilities;
     using PlayersBay.Services.Mapping;
 
     public class MessagesService : IMessagesService
@@ -47,10 +48,18 @@
             return message.Id;
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(string userId, int id)
         {
             var message = this.messageRepository.All().FirstOrDefault(d => d.Id == id);
-            message.IsDeleted = true;
+
+            if (message.ReceiverId == userId || message.SenderId == userId)
+            {
+                message.IsDeleted = true;
+            }
+            else
+            {
+                throw new InvalidOperationException(DataConstants.InvalidDeleteMessage);
+            }
 
             this.messageRepository.Update(message);
             await this.messageRepository.SaveChangesAsync();

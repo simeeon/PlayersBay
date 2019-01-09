@@ -178,6 +178,23 @@ namespace PlayersBay.Services.Data.Tests
         }
 
         [Fact]
+        public async Task DeclineTransferAsyncDeclinesDepositRequest()
+        {
+            await this.AddTestingUserToDb(FirstUserId, FirstUsername, FirstEmail);
+            await this.AddTestingUserToDb(SecondUserId, SecondUsername, SecondEmail);
+
+            await AddTestingTransferToDb(FirstTransferId, FirstTransferAmount, FirstType, FirstStatus, FirstUserId);
+            await AddTestingTransferToDb(SecondTransferId, SecondTransferAmount, SecondType, FirstStatus, FirstUserId);
+            await AddTestingTransferToDb(ThirdTransferId, ThirdTransferAmount, ThirdType, ThirdStatus, SecondUserId);
+
+            var transfer = this.DbContext.Transfers.FirstOrDefault(u => u.Id == FirstTransferId);
+
+            Assert.True(transfer.Status == TransferStatus.Pending);
+            await this.TransfersServiceMock.DeclineTransferAsync(FirstTransferId);
+            Assert.True(transfer.Status == TransferStatus.Declined);
+        }
+
+        [Fact]
         public async Task ApproveTransferAsyncApprovesWithdrawtRequest()
         {
             await this.AddTestingUserToDb(FirstUserId, FirstUsername, FirstEmail);

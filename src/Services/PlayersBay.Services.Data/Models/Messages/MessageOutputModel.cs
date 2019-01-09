@@ -2,10 +2,7 @@
 {
     using System;
 
-    using PlayersBay.Data.Models;
-    using PlayersBay.Services.Mapping;
-
-    public class MessageOutputModel : IMapFrom<Message>
+    public class MessageOutputModel
     {
         public int Id { get; set; }
 

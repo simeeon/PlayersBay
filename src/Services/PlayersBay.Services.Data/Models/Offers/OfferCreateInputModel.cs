@@ -4,6 +4,7 @@
 
     using Microsoft.AspNetCore.Http;
     using PlayersBay.Data.Models.Enums;
+    using PlayersBay.Services.Data.Utilities;
 
     public class OfferCreateInputModel
     {
@@ -22,21 +23,21 @@
 
         [Required]
         [DataType(DataType.Currency)]
-        [Range(Constants.Offer.MinPrice, Constants.Offer.MaxPrice)]
+        [Range(DataConstants.Offer.MinPrice, DataConstants.Offer.MaxPrice)]
         public decimal Price { get; set; }
 
         [Required]
-        [StringLength(Constants.Offer.TitleMaxLength, MinimumLength = Constants.Offer.TitleMinLength, ErrorMessage = Constants.Offer.TitleLengthError)]
+        [StringLength(DataConstants.Offer.TitleMaxLength, MinimumLength = DataConstants.Offer.TitleMinLength, ErrorMessage = DataConstants.Offer.TitleLengthError)]
         public string Title { get; set; }
 
         [Required]
         [DataType(DataType.MultilineText)]
-        [StringLength(Constants.Offer.DescriptionMaxLength, MinimumLength = Constants.Offer.DescriptionMinLength, ErrorMessage = Constants.Offer.DescriptionLengthError)]
+        [StringLength(DataConstants.Offer.DescriptionMaxLength, MinimumLength = DataConstants.Offer.DescriptionMinLength, ErrorMessage = DataConstants.Offer.DescriptionLengthError)]
         public string Description { get; set; }
 
         [Display(Name = "Message to Buyer")]
         [DataType(DataType.MultilineText)]
-        [StringLength(Constants.Offer.MessageToBuyerMaxLength, MinimumLength = Constants.Offer.MessageToBuyerMinLength, ErrorMessage = Constants.Offer.MessageToBuyerLengthError)]
+        [StringLength(DataConstants.Offer.MessageToBuyerMaxLength, MinimumLength = DataConstants.Offer.MessageToBuyerMinLength, ErrorMessage = DataConstants.Offer.MessageToBuyerLengthError)]
         public string MessageToBuyer { get; set; }
     }
 }

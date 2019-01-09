@@ -8,7 +8,7 @@
     {
         Task<int> CreateAsync(string senderUsername, MessageInputModel inputModel);
 
-        Task DeleteAsync(int id);
+        Task DeleteAsync(string username, int id);
 
         Task MessageSeenAsync(int id);
 

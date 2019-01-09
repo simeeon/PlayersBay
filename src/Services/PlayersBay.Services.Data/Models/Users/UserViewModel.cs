@@ -1,9 +1,7 @@
 ﻿namespace PlayersBay.Services.Data.Models.Users
 {
-    using PlayersBay.Data.Models;
-    using PlayersBay.Services.Mapping;
 
-    public class UserViewModel : IMapFrom<ApplicationUser>
+    public class UserViewModel
     {
         public string Id { get; set; }
 

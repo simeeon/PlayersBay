@@ -5,10 +5,8 @@
     using System.Globalization;
 
     using PlayersBay.Common;
-    using PlayersBay.Data.Models;
-    using PlayersBay.Services.Mapping;
 
-    public class OfferDetailsViewModel : IMapFrom<Offer>
+    public class OfferDetailsViewModel
     {
         public int Id { get; set; }
 

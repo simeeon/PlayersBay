@@ -24,6 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="InvalidImage.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="newImage.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

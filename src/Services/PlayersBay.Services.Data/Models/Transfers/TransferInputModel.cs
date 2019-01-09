@@ -3,6 +3,7 @@
     using System.ComponentModel.DataAnnotations;
 
     using PlayersBay.Data.Models.Enums;
+    using PlayersBay.Services.Data.Utilities;
 
     public class TransferInputModel
     {
@@ -10,7 +11,7 @@
 
         [Required]
         [DataType(DataType.Currency)]
-        [Range(Constants.Transfer.MinAmount, Constants.Transfer.MaxAmount)]
+        [Range(DataConstants.Transfer.MinAmount, DataConstants.Transfer.MaxAmount)]
         public decimal Amount { get; set; }
 
         public TransferType Type { get; set; }

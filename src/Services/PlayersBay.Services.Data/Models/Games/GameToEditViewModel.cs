@@ -3,10 +3,8 @@
     using System.ComponentModel.DataAnnotations;
 
     using Microsoft.AspNetCore.Http;
-    using PlayersBay.Data.Models;
-    using PlayersBay.Services.Mapping;
 
-    public class GameToEditViewModel : IMapFrom<Game>
+    public class GameToEditViewModel
     {
         public int Id { get; set; }
 

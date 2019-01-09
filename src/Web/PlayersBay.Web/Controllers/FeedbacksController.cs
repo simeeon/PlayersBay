@@ -3,8 +3,6 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using PlayersBay.Common.Extensions.Alerts;
-    using PlayersBay.Data.Common.Repositories;
-    using PlayersBay.Data.Models;
     using PlayersBay.Services.Data.Contracts;
     using PlayersBay.Services.Data.Models.Feedbacks;
     using PlayersBay.Services.Data.Utilities;

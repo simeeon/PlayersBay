@@ -2,11 +2,9 @@
 {
     using System.Collections.Generic;
 
-    using PlayersBay.Data.Models;
     using PlayersBay.Services.Data.Models.Offers;
-    using PlayersBay.Services.Mapping;
 
-    public class GameViewModel : IMapFrom<Game>
+    public class GameViewModel
     {
         public int Id { get; set; }
 

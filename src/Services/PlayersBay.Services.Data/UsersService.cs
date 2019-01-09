@@ -18,7 +18,9 @@
 
         private readonly UserManager<ApplicationUser> userManager;
 
-        public UsersService(IRepository<ApplicationUser> usersRepository, UserManager<ApplicationUser> userManager)
+        public UsersService(
+            IRepository<ApplicationUser> usersRepository,
+            UserManager<ApplicationUser> userManager)
         {
             this.usersRepository = usersRepository;
             this.userManager = userManager;
@@ -34,7 +36,7 @@
             return users;
         }
 
-        public async Task<string> MakeModerator(string id)
+        public async Task MakeModerator(string id)
         {
             var user = await this.userManager.FindByIdAsync(id);
 
@@ -45,11 +47,9 @@
 
             await this.userManager.RemoveFromRoleAsync(user, Common.GlobalConstants.UserRoleName);
             await this.userManager.AddToRoleAsync(user, Common.GlobalConstants.ModeratorRoleName);
-
-            return $"{user.UserName} promoted";
         }
 
-        public async Task<string> DemoteFromModerator(string id)
+        public async Task DemoteFromModerator(string id)
         {
             var user = await this.userManager.FindByIdAsync(id);
 
@@ -60,8 +60,6 @@
 
             await this.userManager.RemoveFromRoleAsync(user, Common.GlobalConstants.ModeratorRoleName);
             await this.userManager.AddToRoleAsync(user, Common.GlobalConstants.UserRoleName);
-
-            return $"{user.UserName} demoted.";
         }
 
         public async Task DeleteAsync(string id)

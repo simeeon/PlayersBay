@@ -2,6 +2,7 @@
 using PlayersBay.Data.Models;
 using PlayersBay.Services.Data.Contracts;
 using PlayersBay.Services.Data.Models.Deals;
+using PlayersBay.Services.Data.Utilities;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -49,7 +50,40 @@ namespace PlayersBay.Services.Data.Tests
             var offersCount = this.DbContext.Offers.Count();
 
             Assert.Equal(offersCount, offerId);
-        }        
+        }
+
+        [Fact]
+        public async Task CreateAsyncReturnsInvalidOperationExceptionWhenInsufficientFunds()
+        {
+            await this.AddTestingUserToDb(FirstId, Username, Email);
+            await this.AddTestingUserToDb(SecondId, UsernameTwo, EmailTwo);
+
+            var offerPrice = InitialBalance + 1;
+            this.DbContext.Offers.Add(new Offer
+            {
+                Description = OfferDescription,
+                Id = offerId,
+                Price = offerPrice,
+                OfferType = PlayersBay.Data.Models.Enums.OfferType.Items,
+                Status = PlayersBay.Data.Models.Enums.OfferStatus.Active,
+                Title = OfferTitle,
+                MessageToBuyer = OfferMessagetoBuyer,
+            });
+
+            await this.DbContext.SaveChangesAsync();
+
+            var dealInputModel = new DealInputModel
+            {
+                BuyerName = Username,
+                SellerName = UsernameTwo,
+                OfferId = offerId
+            };
+
+            var exception = await Assert.ThrowsAsync<InvalidOperationException>(() =>
+                this.DealsServiceMock.CreateAsync(Username, dealInputModel));
+
+            Assert.Equal(string.Format(DataConstants.InsufficientFundsError, offerPrice, InitialBalance), exception.Message);
+        }
 
         private async Task AddTestingUserToDb(string id, string username, string email)
         {
