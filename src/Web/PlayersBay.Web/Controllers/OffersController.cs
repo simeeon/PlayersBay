@@ -6,6 +6,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
+    using PlayersBay.Common;
     using PlayersBay.Common.Extensions.Alerts;
     using PlayersBay.Data.Common.Repositories;
     using PlayersBay.Data.Models;
@@ -17,20 +18,17 @@
     {
         private readonly IOffersService offersService;
         private readonly IGamesService gamesService;
-        private readonly IRepository<Offer> offerRepository;
         private readonly IRepository<Feedback> feedbackRepository;
         private readonly IRepository<Game> gameRepository;
 
         public OffersController(
             IOffersService offersService,
             IGamesService gamesService,
-            IRepository<Offer> offerRepository,
             IRepository<Game> gameRepository,
             IRepository<Feedback> feedbackRepository)
         {
             this.offersService = offersService;
             this.gamesService = gamesService;
-            this.offerRepository = offerRepository;
             this.gameRepository = gameRepository;
             this.feedbackRepository = feedbackRepository;
         }
@@ -44,6 +42,7 @@
         public IActionResult Create()
         {
             this.ViewData["Games"] = this.SelectAllGames();
+
             return this.View();
         }
 
@@ -58,18 +57,14 @@
                 return this.View(createInputModel);
             }
 
-            var offerId = this.offersService.CreateAsync(sellerUsername, createInputModel)
-                .GetAwaiter()
-                .GetResult();
+            var offerId = this.offersService.CreateAsync(sellerUsername, createInputModel).GetAwaiter().GetResult();
 
-            return this.RedirectToAction("ActiveOffers", "Offers", new { username = this.User.Identity.Name }).WithInfo("Success!", $"Offer #{offerId} created.");
+            return this.RedirectToAction("ActiveOffers", "Offers").WithInfo("Success!", $"Offer #{offerId} created.");
         }
 
         public IActionResult Details(int id)
         {
-            var detailViewModel = this.offersService.GetViewModelAsync<OfferDetailsViewModel>(id)
-                .GetAwaiter()
-                .GetResult();
+            var detailViewModel = this.offersService.GetViewModelAsync<OfferDetailsViewModel>(id).GetAwaiter().GetResult();
 
             this.ViewData["Game"] = this.gameRepository.All().FirstOrDefault(g => g.Id == detailViewModel.GameId).Name;
 
@@ -78,9 +73,7 @@
 
         public IActionResult All(int id)
         {
-            var offers = this.offersService.GetAllOffersAsync(id)
-                .GetAwaiter()
-                .GetResult();
+            var offers = this.offersService.GetAllOffersAsync(id).GetAwaiter().GetResult();
 
             this.ViewData["Game"] = this.gameRepository.All().FirstOrDefault(g => g.Id == id).Name;
 
@@ -136,13 +129,12 @@
         [Authorize]
         public IActionResult Edit(int id)
         {
-            var offerToEdit = this.offersService.GetViewModelAsync<OfferToEditViewModel>(id)
-                .GetAwaiter()
-                .GetResult();
+            var offerToEdit = this.offersService.GetViewModelAsync<OfferToEditViewModel>(id).GetAwaiter().GetResult();
 
-            if (offerToEdit == null)
+            if ((offerToEdit.Seller == null || offerToEdit.Seller.UserName != this.User.Identity.Name) &&
+                this.User.IsInRole(GlobalConstants.UserRoleName))
             {
-                return this.Redirect("/");
+                return this.View("_AccessDenied");
             }
 
             this.ViewData["Games"] = this.SelectAllGames();
@@ -158,19 +150,10 @@
                 return this.View(offerToEditViewModel);
             }
 
-            if (offerToEditViewModel.NewImage != null)
-            {
-                var fileType = offerToEditViewModel.NewImage.ContentType.Split('/')[1];
-                if (!this.IsImageTypeValid(fileType))
-                {
-                    return this.View(offerToEditViewModel);
-                }
-            }
-
-            var id = offerToEditViewModel.Id;
+            var offerId = offerToEditViewModel.Id;
             this.offersService.EditAsync(offerToEditViewModel).GetAwaiter().GetResult();
 
-            return this.RedirectToAction("Details", "Offers", new { id }).WithInfo("Success!", $"Offer #{id} edited");
+            return this.RedirectToAction("Details", "Offers", new { offerId }).WithInfo("Success!", $"Offer #{offerId} edited");
         }
 
         [Authorize]
@@ -179,6 +162,12 @@
             var offerToDelete = this.offersService.GetViewModelAsync<OfferToEditViewModel>(id)
                 .GetAwaiter()
                 .GetResult();
+
+            if ((offerToDelete.Seller == null || offerToDelete.Seller.UserName != this.User.Identity.Name) &&
+                this.User.IsInRole(GlobalConstants.UserRoleName))
+            {
+                return this.View("_AccessDenied");
+            }
 
             this.ViewData["Game"] = this.gameRepository.All().FirstOrDefault(g => g.Id == offerToDelete.GameId).Name;
 
@@ -192,7 +181,7 @@
             var id = offerToEditViewModel.Id;
             this.offersService.DeleteAsync(id).GetAwaiter().GetResult();
 
-            return this.RedirectToAction("ActiveOffers", "Offers", new { username = this.User.Identity.Name }).WithInfo("Success!", $"Offer deleted.");
+            return this.RedirectToAction("ActiveOffers", "Offers").WithInfo("Success!", $"Offer deleted.");
         }
 
         private IEnumerable<SelectListItem> SelectAllGames()

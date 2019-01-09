@@ -47,6 +47,7 @@
         public IActionResult SendMessage(string receiver)
         {
             this.ViewData["receiver"] = receiver;
+
             return this.View();
         }
 
@@ -73,13 +74,14 @@
         {
             this.messagesService.MessageSeenAsync(id).GetAwaiter().GetResult();
 
-            return this.RedirectToAction("Inbox", "Messages", new { username = this.User.Identity.Name });
+            return this.RedirectToAction("Inbox", "Messages");
         }
 
         [HttpGet]
         public IActionResult Reply(string receiver)
         {
             this.ViewData["receiver"] = receiver;
+
             return this.View();
         }
     }

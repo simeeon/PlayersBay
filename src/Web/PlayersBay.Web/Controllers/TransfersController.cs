@@ -7,6 +7,7 @@
     using PlayersBay.Data.Models;
     using PlayersBay.Services.Data.Contracts;
     using PlayersBay.Services.Data.Models.Transfers;
+    using PlayersBay.Services.Data.Utilities;
 
     public class TransfersController : BaseController
     {
@@ -44,12 +45,10 @@
 
             var username = this.User.Identity.Name;
 
-            this.transfersService
-                .CreateDepositRequestAsync(username, inputModel)
-                .GetAwaiter()
-                .GetResult();
+            this.transfersService.CreateDepositRequestAsync(username, inputModel).GetAwaiter().GetResult();
 
-            return this.RedirectToAction("All", "Transfers").WithInfo("Done.", $"Debit request for ${inputModel.Amount} created.");
+            return this.RedirectToAction("All", "Transfers")
+                .WithInfo(DataConstants.NotificationMessages.Info, string.Format(DataConstants.NotificationMessages.DebitRequest, inputModel.Amount));
         }
 
         [Authorize]
@@ -68,7 +67,7 @@
                 .GetAwaiter()
                 .GetResult();
 
-            return this.RedirectToAction("All", "Transfers").WithInfo("Done.", $"Withdrawal request for ${inputModel.Amount} created.");
+            return this.RedirectToAction("All", "Transfers").WithInfo(DataConstants.NotificationMessages.Info, string.Format(DataConstants.NotificationMessages.WithdrawalRequest, inputModel.Amount));
         }
     }
 }

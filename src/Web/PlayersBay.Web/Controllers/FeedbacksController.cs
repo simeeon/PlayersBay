@@ -1,6 +1,5 @@
 ﻿namespace PlayersBay.Web.Controllers
 {
-
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using PlayersBay.Common.Extensions.Alerts;
@@ -8,18 +7,15 @@
     using PlayersBay.Data.Models;
     using PlayersBay.Services.Data.Contracts;
     using PlayersBay.Services.Data.Models.Feedbacks;
+    using PlayersBay.Services.Data.Utilities;
 
     public class FeedbacksController : BaseController
     {
         private readonly IFeedbacksService feedbacksService;
-        private readonly IRepository<Offer> offerRepository;
 
-        public FeedbacksController(
-            IFeedbacksService feedbacksService,
-            IRepository<Offer> offerRepository)
+        public FeedbacksController(IFeedbacksService feedbacksService)
         {
             this.feedbacksService = feedbacksService;
-            this.offerRepository = offerRepository;
         }
 
         [Authorize]
@@ -33,11 +29,9 @@
         [HttpPost]
         public IActionResult Create(FeedbackInputModel inputModel)
         {
-            this.feedbacksService.CreateAsync(inputModel)
-                .GetAwaiter()
-                .GetResult();
+            this.feedbacksService.CreateAsync(inputModel).GetAwaiter().GetResult();
 
-            return this.RedirectToAction("BoughtOffers", "Offers").WithSuccess("Success", "Feedback added.");
+            return this.RedirectToAction("BoughtOffers", "Offers").WithSuccess(DataConstants.NotificationMessages.Success, DataConstants.NotificationMessages.FeedbackAdded);
         }
     }
 }

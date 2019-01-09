@@ -30,12 +30,12 @@ else
                     @Html.DisplayNameFor(model => model.Price)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.CreatedOn)
+                    @Html.DisplayNameFor(model => model.CreatedOnShort)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ExpiryDate)
+                    @Html.DisplayNameFor(model => model.ExpiryDateShort)
                 </th>
-                <th>Actions</th>
+                <th class="text-center">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -47,9 +47,9 @@ else
                     <td>@item.OfferType.ToString()</td>
                     <td>@item.ShrotTitle</td>
                     <td>$ @item.Price</td>
-                    <td>@item.CreatedOn</td>
-                    <td>@item.ExpiryDate</td>
-                    <td>
+                    <td>@item.CreatedOnShort</td>
+                    <td>@item.ExpiryDateShort</td>
+                    <td class="text-center">
                         <a class="btn btn-outline-primary" asp-controller="Offers" asp-action="Details" asp-route-id=@item.Id>View</a>
                         @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName) || this.User.IsInRole(GlobalConstants.ModeratorRoleName) || this.User.Identity.Name == @item.Seller.UserName)
                         {

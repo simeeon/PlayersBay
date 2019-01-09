@@ -6,6 +6,7 @@
     using PlayersBay.Common.Extensions.Alerts;
     using PlayersBay.Services.Data.Contracts;
     using PlayersBay.Services.Data.Models.Deals;
+    using PlayersBay.Services.Data.Utilities;
 
     public class DealsController : BaseController
     {
@@ -29,7 +30,7 @@
 
             this.dealsService.CreateAsync(buyerUsername, createInputModel).GetAwaiter().GetResult();
 
-            return this.RedirectToAction("BoughtOffers", "Offers").WithSuccess("Success!", $"Offer #{createInputModel.OfferId} purchased.");
+            return this.RedirectToAction("BoughtOffers", "Offers").WithSuccess(DataConstants.NotificationMessages.Success, string.Format(DataConstants.NotificationMessages.OfferPurchased, createInputModel.OfferId));
         }
     }
 }

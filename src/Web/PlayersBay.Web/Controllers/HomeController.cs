@@ -1,8 +1,6 @@
 ﻿namespace PlayersBay.Web.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
-    using PlayersBay.Common.Extensions.Alerts;
-    using PlayersBay.Services.Data;
     using PlayersBay.Services.Data.Contracts;
 
     public class HomeController : BaseController
@@ -16,9 +14,7 @@
 
         public IActionResult Index()
         {
-            var allGamesViewModel = this.GamesService.GetAllGamesAsync()
-                .GetAwaiter()
-                .GetResult();
+            var allGamesViewModel = this.GamesService.GetAllGamesAsync().GetAwaiter().GetResult();
 
             return this.View(allGamesViewModel);
         }

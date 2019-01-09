@@ -1,11 +1,10 @@
 ﻿namespace PlayersBay.Web.Areas.Administrator.Controllers
 {
-    using CloudinaryDotNet;
     using Microsoft.AspNetCore.Mvc;
     using PlayersBay.Common.Extensions.Alerts;
-    using PlayersBay.Services.Data;
     using PlayersBay.Services.Data.Contracts;
     using PlayersBay.Services.Data.Models.Games;
+    using PlayersBay.Services.Data.Utilities;
 
     public class GamesController : AdministratorController
     {
@@ -29,31 +28,16 @@
                 return this.View(gameCreateInputModel);
             }
 
-            var fileType = gameCreateInputModel.ImageUrl == null ? gameCreateInputModel.Image.ContentType.Split('/')[1] : gameCreateInputModel.ImageUrl.Split('/')[1];
+            var gameId = this.gamesService.CreateAsync(gameCreateInputModel).GetAwaiter().GetResult();
 
-            if (!this.IsImageTypeValid(fileType))
-            {
-                return this.View(gameCreateInputModel);
-            }
-
-            var gameId = this.gamesService.CreateAsync(gameCreateInputModel)
-                .GetAwaiter()
-                .GetResult();
-
-            return this.Redirect("/").WithSuccess("Success!", "Game created.");
+            return this.Redirect("/").WithSuccess(DataConstants.NotificationMessages.Success, string.Format(DataConstants.NotificationMessages.GameCreated, gameCreateInputModel.Name));
         }
 
         public IActionResult Edit(int id)
         {
             this.ViewData["id"] = id;
 
-            var gameToEdit = this.gamesService.GetViewModelAsync<GameToEditViewModel>(id)
-                .GetAwaiter()
-                .GetResult();
-            if (gameToEdit == null)
-            {
-                return this.Redirect("/");
-            }
+            var gameToEdit = this.gamesService.GetViewModelAsync<GameToEditViewModel>(id).GetAwaiter().GetResult();
 
             return this.View(gameToEdit);
         }
@@ -66,21 +50,10 @@
                 return this.View(gameToEditViewModel);
             }
 
-            if (gameToEditViewModel.NewImage != null)
-            {
-                var fileType = gameToEditViewModel.NewImage.ContentType.Split('/')[1];
-                if (!this.IsImageTypeValid(fileType))
-                {
-                    return this.View(gameToEditViewModel);
-                }
-            }
-
             var id = gameToEditViewModel.Id;
-            this.gamesService.EditAsync(gameToEditViewModel)
-                .GetAwaiter()
-                .GetResult();
+            this.gamesService.EditAsync(gameToEditViewModel).GetAwaiter().GetResult();
 
-            return this.Redirect("/");
+            return this.Redirect("/").WithSuccess(DataConstants.NotificationMessages.Success, string.Format(DataConstants.NotificationMessages.GameEdited, gameToEditViewModel.Name));
         }
 
         public IActionResult Delete(int id)
@@ -88,23 +61,19 @@
             var gameToDelete = this.gamesService.GetViewModelAsync<GameToEditViewModel>(id)
                 .GetAwaiter()
                 .GetResult();
-            if (gameToDelete == null)
-            {
-                return this.Redirect("/");
-            }
 
             return this.View(gameToDelete);
         }
 
         [HttpPost]
-        public IActionResult Delete(GameToEditViewModel activityToEditViewModel)
+        public IActionResult Delete(GameToEditViewModel gameToEditViewModel)
         {
-            var id = activityToEditViewModel.Id;
+            var id = gameToEditViewModel.Id;
             this.gamesService.DeleteAsync(id)
                 .GetAwaiter()
                 .GetResult();
 
-            return this.Redirect("/");
+            return this.Redirect("/").WithInfo(DataConstants.NotificationMessages.Info, string.Format(DataConstants.NotificationMessages.GameDeleted, gameToEditViewModel.Name));
         }
 
         public IActionResult All()

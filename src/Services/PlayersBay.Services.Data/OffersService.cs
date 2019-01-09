@@ -85,8 +85,19 @@
 
             if (offerToEdit.NewImage != null)
             {
-                var newImageUrl = await ApplicationCloudinary.UploadImage(this.cloudinary, offerToEdit.NewImage, offerToEdit.Title);
-                offer.ImageUrl = newImageUrl;
+                var fileType = offerToEdit.NewImage.ContentType.IndexOf('/') >= 0 ?
+                    offerToEdit.NewImage.ContentType.Split('/')[1]
+                    : offerToEdit.NewImage.ContentType;
+
+                if (!ImageFormat.IsImageTypeValid(fileType))
+                {
+                    throw new InvalidOperationException(DataConstants.InvalidImageFormat);
+                }
+                else
+                {
+                    var newImageUrl = await ApplicationCloudinary.UploadImage(this.cloudinary, offerToEdit.NewImage, offerToEdit.Title);
+                    offer.ImageUrl = newImageUrl;
+                }
             }
 
             offer.Price = offerToEdit.Price;

@@ -2,7 +2,8 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
-
+    using System.Globalization;
+    using PlayersBay.Common;
     using PlayersBay.Data.Models;
     using PlayersBay.Data.Models.Enums;
     using PlayersBay.Services.Mapping;
@@ -25,6 +26,12 @@
 
         [Display(Name = "Created On")]
         public DateTime CreatedOn { get; set; }
+
+        [Display(Name = "Created")]
+        public string CreatedOnShort => this.CreatedOn.ToString(GlobalConstants.DateFormat, CultureInfo.InvariantCulture);
+
+        [Display(Name = "Expires")]
+        public string ExpiryDateShort => this.ExpiryDate.ToString(GlobalConstants.DateFormat, CultureInfo.InvariantCulture);
 
         public OfferStatus Status { get; set; }
 

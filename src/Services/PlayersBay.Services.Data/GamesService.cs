@@ -1,5 +1,6 @@
 ﻿namespace PlayersBay.Services.Data
 {
+    using System;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -32,6 +33,15 @@
 
             if (inputModel.Image != null)
             {
+                var fileType = inputModel.Image.ContentType.IndexOf('/') >= 0 ?
+                    inputModel.Image.ContentType.Split('/')[1]
+                    : inputModel.Image.ContentType;
+
+                if (!ImageFormat.IsImageTypeValid(fileType))
+                {
+                    throw new InvalidOperationException(DataConstants.InvalidImageFormat);
+                }
+
                 game.ImageUrl = await ApplicationCloudinary.UploadImage(this.cloudinary, inputModel.Image, inputModel.Name);
             }
             else
@@ -60,8 +70,19 @@
 
             if (editViewModel.NewImage != null)
             {
-                var newImageUrl = await ApplicationCloudinary.UploadImage(this.cloudinary, editViewModel.NewImage, editViewModel.Name);
-                game.ImageUrl = newImageUrl;
+                var fileType = editViewModel.NewImage.ContentType.IndexOf('/') >= 0 ?
+                    editViewModel.NewImage.ContentType.Split('/')[1]
+                    : editViewModel.NewImage.ContentType;
+
+                if (!ImageFormat.IsImageTypeValid(fileType))
+                {
+                    throw new InvalidOperationException(DataConstants.InvalidImageFormat);
+                }
+                else
+                {
+                    var newImageUrl = await ApplicationCloudinary.UploadImage(this.cloudinary, editViewModel.NewImage, editViewModel.Name);
+                    game.ImageUrl = newImageUrl;
+                }
             }
 
             game.Name = editViewModel.Name;
@@ -82,11 +103,12 @@
 
         public async Task<TViewModel> GetViewModelAsync<TViewModel>(int id)
         {
-            var game = await this.gamesRepository
-                .All()
-                .Where(a => a.Id == id)
-                .To<TViewModel>()
-                .FirstOrDefaultAsync();
+            var game = await this.gamesRepository.All().Where(a => a.Id == id).To<TViewModel>().FirstOrDefaultAsync();
+
+            if (game == null)
+            {
+                throw new NullReferenceException(string.Format(DataConstants.NullReferenceOfferId, id));
+            }
 
             return game;
         }
