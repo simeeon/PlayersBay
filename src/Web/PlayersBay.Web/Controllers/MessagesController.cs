@@ -49,7 +49,7 @@
         {
             this.ViewData["receiver"] = receiver;
 
-            return this.View();
+            return this.View("Reply");
         }
 
         [HttpPost]

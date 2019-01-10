@@ -12,42 +12,48 @@
 
 @if (!Model.Any())
 {
-<h2 class="text-center" style="color: #ffa709">You have no transfers.</h2>
+    <div class="text-center">
+        <a class="text-center btn btn-dark" style="margin: 0 auto;" asp-controller="Messages" asp-action="SendMessage" asp-route-receiver="admin">Contact admin</a>
+    </div>
+    <h2 class="text-center" style="color: #ffa709">You have no transfers.</h2>
 }
 else
 {
-<div>
-    <h2 class="text-center">All transfers</h2>
-</div>
-<table id="my-transfers" class="table table-hover">
-    <thead>
-        <tr>
-            <th>
-                Created
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Type)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Amount)
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
+    <div class="text-center">
+        <a class="text-center btn btn-dark" style="margin: 0 auto;" asp-controller="Messages" asp-action="SendMessage" asp-route-receiver="admin">Contact admin</a>
+    </div>
+    <div>
+        <h2 class="text-center">All transfers</h2>
+    </div>
+    <table id="my-transfers" class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    Created
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Amount)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
             {
-        <tr>
-            <td>@item.CreatedOn</td>
-            <td>@item.Type</td>
-            <td>@item.Status</td>
-            <td>$ @item.Amount</td>
-        </tr>
+                <tr>
+                    <td>@item.CreatedOn</td>
+                    <td>@item.Type</td>
+                    <td>@item.Status</td>
+                    <td>$ @item.Amount</td>
+                </tr>
             }
-    </tbody>
-</table>
+        </tbody>
+    </table>
 }
 
 @section scripts{
